@@ -1,0 +1,1 @@
+puts "todos.user_id = ? and todos.state = ? and todos.completed_at is not null"

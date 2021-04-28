@@ -1,0 +1,11 @@
+*.log
+log
+tmp
+output
+../log/output_diaspora.log
+apps/*
+log/*
+.bundle
+vendor
+Gemfile.lock
+.solargraph.yml
