@@ -11,7 +11,7 @@ MetaQuery2 = Struct.new(:raw_query, :has_distinct, :has_limit, :fields, :sql, :s
 QueryComponent = Struct.new(:meth, :param)
 #QueryComponent = Struct.new(:table, :arg, :ruby_meth)
 
-TableSchema = Struct.new(:class_name, :fields, :associations)
+TableSchema = Struct.new(:class_name, :fields, :associations, :table_name)
 
 FileOutput = Struct.new(:file, :issues) do
     def to_s

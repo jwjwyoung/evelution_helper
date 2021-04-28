@@ -198,7 +198,7 @@ module RailsBestPractices
 				end
 
         source = to_source(node).chomp
-        
+        puts "source is #{source}"
         if (MULTI_QUERY_METHODS+SINGLE_QUERY_METHODS).map{|x| source.include?(x)}.any?
           @collected_queries << {:class => @combined_class_name, :stmt => source, :caller_class_lst => caller_class_lst, :method_name => func_name, :filename => @node.file, :line => node.line_number}
         end

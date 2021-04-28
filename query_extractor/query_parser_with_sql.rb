@@ -253,7 +253,8 @@ def extract_query_string_from_list_node(call_ident, arg_node, base_table)
 	preds = []
 	if is_query_predicate_func?(call_ident)
 		fields = extract_fields_from_args_for_where(arg_node)
-		puts "arg[0] #{arg_node[0].source} #{arg_node[0].length}"
+		# string lieratal #where("articles.author = ?")
+		puts "arg[0] #{arg_node[0].source} #{arg_node[0].length} fields : #{fields}"
 		if  [':all', ':first'].include?arg_node[0].source.to_s
 			if arg_node.length > 1 and is_valid_node?(arg_node[1]) and arg_node[1].type == :list
 				arg_node[1].each do |c|
@@ -739,8 +740,14 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 				if !field.is_a?(Hash)
 					field.table = field.table.gsub("::",'')
 					field.table = convert_tablename(field.table)
-					t = schema.select{|x| x.class_name.class_name == field.table}[0]
-					table_field = "#{field.table}_#{field.column}"
+					model_class_name = field.table
+					# find the specific schema
+					t = schema.select{|x| x.class_name.class_name == model_class_name}[0]
+					next unless t
+					table_name = t&.table_name
+					table_name ||= model_class_name.downcase.pluralize
+					table_field = "#{field.table}.#{field.column}"
+					
 					puts "TF: #{table_field}"
 					if change.length > 0
 						# hanlde id case separately
@@ -751,17 +758,16 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 							end
 							if change[:col_ren].include?table_field
 								line_content = open(raw_query.filename).readlines[loc]
-							
+								new_column_name = change[:col_ren][table_field]
 								offset = line_content.index(field.column)
 								unless offset.nil?
 									endset = offset + field.column.length
-									patch = "rename the column"
+									patch = "#{new_column_name}"
 									change_type = "column rename"
-									detailed_reason = "#{table_field} is RENAMED TO #{change[:col_ren][table_field]}"
+									detailed_reason = "#{table_field} is RENAMED TO #{new_column_name}"
 									issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
 									if not file2issues[filename].include?issue.position
 										file2issues[filename][issue.position] = issue
-										puts "-ERROR: #{table_field} is RENAMED TO #{change[:col_ren][table_field]} #{offset} #{raw_query.line}"
 									end
 								end
 							end
@@ -770,19 +776,37 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 							puts "-ERROR: #{field.table} is DELETED"
 						end
 						if change[:tab_ren].include?field.table
-							puts "-ERROR: #{field.table} is RENAMED"
+							# find Article text
 							line_content = open(raw_query.filename).readlines[raw_query.line - 1]
 							offset = line_content.index(field.table)
+							new_class_name = change[:tab_ren][field.table]
+							new_table_name = new_class_name.downcase.pluralize
 							unless offset.nil?
 								endset = offset + field.table.length
 								puts line_content[offset...endset]
-								patch = "rename the table"
+								patch = "#{new_class_name}"
+								change_type = "table rename"
+								detailed_reason = "#{field.table} is RENAMED TO #{new_class_name} "
+								issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
+								if not file2issues[filename].include?issue.position
+									file2issues[filename][issue.position] = issue
+								end
+							end
+							puts "hello"
+							# check cases like articles.xx
+							offset = line_content.index(table_name + ".")
+							puts("LINE CONTENT #{line_content.strip} #{table_name} #{offset}")
+							if offset.present?
+								# check whether it ends with a dot
+								endset = offset + table_name.length
+								puts "#{endset}  #{line_content[endset]}"
+								puts line_content[offset...endset]
+								patch = "#{new_table_name}"
 								change_type = "table rename"
 								detailed_reason = "#{field.table} is RENAMED TO #{change[:tab_ren][field.table]} "
 								issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
 								if not file2issues[filename].include?issue.position
 									file2issues[filename][issue.position] = issue
-									puts "-ERROR: #{field.table} is RENAMED TO #{change[:tab_ren][field.table]} #{change[:tab_ren].keys}"
 								end
 							end
 						end

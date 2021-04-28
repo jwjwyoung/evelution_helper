@@ -1,7 +1,7 @@
 class File_class
   attr_accessor :filename, :class_name, :upper_class_name, :ast, :is_activerecord, :is_deleted, :indices,
                 :contents, :functions, :has_many_classes, :prev_class_name, :foreign_keys,
-                :has_one_classes, :has_belong_classes, :included_concerns, :relations
+                :has_one_classes, :has_belong_classes, :included_concerns, :relations, :table_name
   attr_reader :columns
 
   def initialize(filename)
@@ -24,6 +24,7 @@ class File_class
     @prev_class_name = nil
     @included_concerns = Set.new 
     @relations = []
+    @table_name = nil
   end
 
   def addRelation(column, dic, rel)

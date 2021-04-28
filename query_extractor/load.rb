@@ -47,7 +47,7 @@ def extract_queries_and_scopes(app_dir, output_dir, rails_best_practices_cmd, ve
         puts "FIELDS FROM constriant #{fields}"
       end
     end
-    TableSchema.new(klass, fields, hmap[:associations]) 
+    TableSchema.new(klass, fields, hmap[:associations], version.activerecord_files[klass.class_name]&.table_name) 
   end 
   # delete tmp files
   [query_output_file, scope_output_file, schema_output_file].each do |tmp_f|

@@ -67,11 +67,21 @@ end
 def extract_fields_from_args_for_where(node,table=nil)
   return [] if node == nil
   output = []
+  puts("node.type is #{node.type }")
   if node.type == :list
     if check_node_type(node[0], :list)
       node = node[0]
     end
     node.each do |child|
+      if check_node_type(child, :string_literal)
+        child.source.split(",").each do |key|
+          key = key.split("=")[0]
+          table = key.split(".")[0].strip
+          field = key.split(".")[1].strip
+          output << {:table => table, :column => field, :is_not_null => false} 
+        end
+        return output
+      end
       next if !check_node_type(child, :assoc)
       key = extract_string(child[0])
 

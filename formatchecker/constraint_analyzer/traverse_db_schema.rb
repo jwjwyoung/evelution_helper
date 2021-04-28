@@ -268,12 +268,12 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
         column_changes[table][col] += 1 unless action == :col_add
         if action == :col_del
           puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table} #{args}"       
-          change[action] << "#{table}_#{args[0]}"
+          change[action] << "#{table}.#{args[0]}"
           puts change
         end
         if action == :col_ren
           puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table} #{args}"         
-          change[action]["#{table}_#{args[-1]}"] = args[1]
+          change[action]["#{table}.#{args[-1]}"] = args[1]
           puts change
         end
       when :fk_del, :has_one_del, :has_many_del

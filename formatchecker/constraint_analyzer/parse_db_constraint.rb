@@ -105,6 +105,7 @@ def handle_change_column(ast, is_deleted = false)
     table_class.is_activerecord = true
     $dangling_classes[class_name] = table_class
   end
+  table_class.table_name = table if table_class
   if is_deleted
     table_class.getColumns[column_name].is_deleted = true
     constraint_delete_keys = table_class.getConstraints.select do |k, _v|
@@ -199,6 +200,7 @@ def handle_create_table(ast)
         constraints = create_constraints(class_name, column_name, column_type, Constraint::DB, dic)
         table_class.addConstraints(constraints)
       end
+      table_class.table_name = table_name if table_class
     end
   end
 end
@@ -228,6 +230,7 @@ def handle_change_column_null(ast)
       constraint = Presence_constraint.new(class_name, column_name, Constraint::DB)
       table_class.addConstraints([constraint])
     end
+    table_class.table_name = table_name if table_class
   end
 end
 
@@ -284,6 +287,7 @@ def handle_reversible(ast)
       constraints = create_constraints(class_name, column_name, column_type, Constraint::DB, dic)
       table_class.addConstraints(constraints)
     end
+    table_class.table_name = table_name if table_class
   end
 end
 
@@ -326,6 +330,7 @@ def handle_add_timestamps(ast)
   dic = extract_hash_from_list(children[-1])
   class_name = convert_tablename(table_name)
   table_class = $model_classes[class_name] || $dangling_classes[class_name]
+  table_class.table_name = table_name if table_class
   return unless table_class
 
   column_type = "Timestamp"
@@ -359,6 +364,7 @@ def handle_change_column_default(ast)
   puts "#{table} = #{column_name} = #{column_type} --- #{dic}" if $debug_mode
   class_name = convert_tablename(table)
   table_class = $model_classes[class_name]
+  table_class.table_name = table_name
   table_class ||= $dangling_classes[class_name]
   unless table_class
     table_class = File_class.new("")
@@ -381,10 +387,13 @@ def handle_rename_table(ast)
   new_table_name = handle_symbol_literal_node(children[1]) || handle_string_literal_node(children[1])
   old_class_name = convert_tablename(old_table_name)
   new_class_name = convert_tablename(new_table_name)
+  
   # puts "n: #{new_class_name} o: #{old_class_name}" if $debug_mode
   old_class = $model_classes[old_class_name]
   old_class ||= $dangling_classes[old_class_name]
   new_class = $model_classes[new_class_name]
+  old_class.table_name = old_table_name if old_class.present?
+  new_class.table_name = new_table_name if new_class.present?
   # handle cases that model class hasn't been renamed
   if new_class.nil?
     puts "new_class is nil #{new_class.nil?} #{$model_classes.include?new_class_name}"
@@ -411,6 +420,7 @@ def handle_drop_table(ast)
   table_class = $model_classes[class_name]
   table_class ||= $dangling_classes[class_name]
   table_class.is_deleted = true if table_class
+  table_class.table_name = table_name if table_class
 end
 
 def handle_add_index(ast)
@@ -435,6 +445,7 @@ def handle_add_index(ast)
     table_class.is_activerecord = true
     $dangling_classes[class_name] = table_class
   end
+  table_class.table_name = table_name if table_class
 
   dic = extract_hash_from_list(children[2])
   index_name = handle_symbol_literal_node(dic["name"]) || handle_string_literal_node(dic["name"])
@@ -462,6 +473,7 @@ def handle_rename_column(ast)
   table_class = $model_classes[class_name]
   table_class ||= $dangling_classes[class_name]
   if table_class
+    table_class.table_name = table_name 
     column = table_class.getColumns[old_column_name]
     column.prev_column = table_class.getColumns[old_column_name].clone
     column.column_name = new_column_name

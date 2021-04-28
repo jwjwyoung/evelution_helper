@@ -23,13 +23,12 @@ require "active_support/core_ext/string"
 require "regexp-examples"
 load_validate_api # load the model api
 load_html_constraint_api # load the html api
-
-require "/Users/junwenyang/Research/query_constraint_analyzer/query_parser_with_sql.rb"
-require "/Users/junwenyang/Research/query_constraint_analyzer/load.rb"
+require_relative '../../query_extractor/query_parser_with_sql.rb'
+require "../../query_extractor/load.rb"
 $read_html = true
 $read_db = true
 $read_constraints = true
-app_dir = "/Users/junwenyang/Research/ruby_apps/example_app"
-commits = ["df04a3b70834cd8e343c9bf8e5934595598684b4", "811fabb7b1779629f78e1b975691a382e82e32ee"]
+app_dir = "/Users/junwenyang/Research/evolution_helper/ruby_apps/example_app"
+commits = ["table_rename", "811fabb7b1779629f78e1b975691a382e82e32ee"]
 versions = commits.map{|commit| Version_class.new(app_dir, commit)}
 traverse_all_for_db_schema(app_dir, nil, versions)
