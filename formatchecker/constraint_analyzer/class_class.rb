@@ -11,10 +11,10 @@ class File_class
     @upper_class_name = nil
     @ast = nil
     @constraints = {}
-    @columns = {}
+    @columns = {"id" => Column.new(self, 'id', 'int', nil)}
     @is_deleted = false
     @indices = {}
-    @foreign_keys = []
+    @foreign_keys = {}
     @instance_var_refs = []
     @contents = ""
     @functions = {}
@@ -30,12 +30,22 @@ class File_class
   def addRelation(column, dic, rel)
     class_name  = handle_string_literal_node(dic['class_name']) || handle_tstring_content_node(dic['class_name'])
     foreign_key = handle_string_literal_node(dic['foreign_key']) || handle_tstring_content_node(dic['foreign_key'])
+
     if not class_name
-      class_name = column.singularize
+      class_name = column.singularize    
     end
+    if not foreign_key or foreign_key.length == 0
+      if ["belongs_to"].include?rel
+        foreign_key = "#{class_name.downcase}_id"
+      else
+        foreign_key = "#{self.class_name.downcase}_id"
+      end
+    end  
     class_name = class_name.capitalize
     relation = {:rel => rel, :field => column, :class_name => class_name, :column => foreign_key}
+    puts "relation: #{relation}"
     @relations << relation
+    return relation
   end
   
   def to_schema()
@@ -94,7 +104,7 @@ class File_class
   end
 
   def addForeignKey(key_name)
-    @foreign_keys << key_name
+    #@foreign_keys[key_name] 
   end
 
   def getForeignKeys
@@ -193,7 +203,7 @@ end
 class Column
   # belongs to model class which is active record
   attr_accessor :column_type, :column_name, :file_class, :prev_column, :is_deleted, :default_value,
-                :table_class, :auto_increment, :has_constraints
+                :table_class, :auto_increment, :has_constraints, :referenced_to, :referenced_by
 
   def initialize(table_class, column_name, column_type, file_class, dic = {})
     @table_class = table_class
@@ -203,6 +213,8 @@ class Column
     @is_deleted = false
     @auto_increment = false
     @has_constraints = false
+    @referenced_to = nil
+    @referenced_by = nil
     parse(dic)
     puts "dic: #{dic}" if $debug_mode
   end

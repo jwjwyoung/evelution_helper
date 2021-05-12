@@ -73,7 +73,35 @@ def parse_db_constraint_function(_table, funcname, ast)
     handle_rename_table(ast[1])
   when "rename_column"
     handle_rename_column(ast[1])
+  when "remove_reference"
+    handle_remove_reference(ast[1])
+  when "add_reference"
+    handle_add_reference(ast[1])  
+  when "add_foreign_key"
+    handle_add_foreign_key(ast[1])
   end
+end
+
+def handle_add_foreign_key(ast)
+
+end
+
+def handle_remove_foreign_key(ast)
+end
+
+def handle_add_reference(ast)
+end
+
+def handle_remove_reference(ast)
+  # remove_references :comments, :article, foreign_key: true
+  children = ast.children
+  table_name = handle_symbol_literal_node(children[0]) || handle_string_literal_node(children[0])
+  referenced_class_name = handle_symbol_literal_node(children[1]) || handle_string_literal_node(children[1])
+  table_class = $model_classes[convert_tablename(table_name)]
+  column_name = "#{referenced_class_name}_id"
+  column = table_class.getColumns[column_name]
+  column.is_deleted = true
+  puts "column #{column}"
 end
 
 def handle_change_table(ast)
@@ -145,7 +173,7 @@ def handle_create_table(ast)
       next unless c.type.to_s == "command_call"
 
       column_type = c[2].source
-      column_type = "string" if column_type == "references"
+      #column_type = "string" if column_type == "references"
       column_type = handle_symbol_literal_node(c[3][1]) if column_type == "column"
       column_ast = c[-1]
       next unless (column_ast.class.name == "YARD::Parser::Ruby::AstNode") && (column_ast.type.to_s == "list")
@@ -158,6 +186,20 @@ def handle_create_table(ast)
         $dangling_classes[class_name] = table_class
       end
       dic = extract_hash_from_list(column_ast.children[-1])
+      if  ["references", "belongs_to"].include?(column_type)
+        referenced_name = handle_symbol_literal_node(c[3][0]) || handle_string_literal_node(c[3][0])
+        referenced_class_name = convert_tablename(referenced_name)
+        referenced_class = $model_classes[referenced_class_name]
+        column_name = "#{referenced_name}_id"
+        column_type = "int"
+        if referenced_class
+          referenced_column = referenced_class&.getColumns["id"]
+          column = Column.new(table_class, column_name, column_type, $cur_class)
+          column.referenced_to = referenced_column
+          referenced_column.referenced_by = column
+          table_class.addColumn(column) # add the column to the table
+        end
+      end
       if column_type == "remove"
         column_name = handle_symbol_literal_node(c[3][0]) || handle_string_literal_node(c[3][0])
         table_class.columns[column_name].is_deleted = true

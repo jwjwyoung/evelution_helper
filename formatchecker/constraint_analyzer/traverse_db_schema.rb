@@ -36,6 +36,8 @@ class Version_class
     raise "please provide a block to compare_db_schema" unless block_given?
 
     renamed_tab = Set.new
+
+    deleted_cols = []
     @activerecord_files.each_key do |key|
       file = @activerecord_files[key]
       old_file = old_vers.activerecord_files[key]
@@ -61,46 +63,12 @@ class Version_class
       old_one = old_file.has_one_classes.keys.to_set
       new_both = file.has_belong_classes
       old_both = old_file.has_belong_classes
+      
 
       new_has = aggregate_many_one(new_fk, new_many, new_one, new_both)
       old_has = aggregate_many_one(old_fk, old_many, old_one, old_both)
       new_keys = new_fk + new_one + new_many + new_both
       old_keys = old_fk + old_one + old_many + old_both
-
-      # association change
-      new_keys.intersection(old_keys).each do |k|
-        if old_has[k] != new_has[k]
-          yield :assoc_change, key, k, new_has[k], old_has[k]
-        end
-      end
-
-      # association add
-      (new_keys - old_keys).each do |k|
-        case new_has[k]
-        when :belongs
-          yield :fk_add, key, k
-        when :many
-          yield :has_many_add, key, k
-        when :one
-          yield :has_one_add, key, k
-        when :has_belong
-          yield :has_belong_add, key, k
-        end
-      end
-
-      # association delete
-      (old_keys - new_keys).each do |k|
-        case old_has[k]
-        when :belongs
-          yield :fk_del, key, k
-        when :many
-          yield :has_many_del, key, k
-        when :one
-          yield :has_one_del, key, k
-        when :has_belong
-          yield :has_belong_del, key, k
-        end
-      end
 
       # Index add/del
       idx = file.indices.keys.to_set
@@ -129,6 +97,7 @@ class Version_class
         end
       end
 
+
       newfile_columns = file.columns.values.reject(&:is_deleted).map(&:column_name).to_set
       old_file.columns.each_key do |col|
         old_col = old_file.columns[col]
@@ -140,11 +109,11 @@ class Version_class
         # 2. the first occurrence of true of is_deleted marks a deletion
         if new_col.nil? || new_col.is_deleted
           if !old_col.is_deleted && !newfile_columns.include?(old_name)
+            deleted_cols.append(old_col)
             yield :col_del, key, col, old_name, new_col.nil?
           end
           next
         end
-
         # Change column type
         old_type = old_col.column_type
         new_type = new_col.column_type
@@ -154,9 +123,41 @@ class Version_class
            Set.new([old_type, new_type]) != Set.new(%w[double float])
           yield :col_type, key, col, new_col.column_name, new_type, old_type
         end
-      end
+      end        
+      # need to handle assoc deletion case 
     end
 
+    @activerecord_files.each_key do |key|
+      file = @activerecord_files[key]
+      old_file = old_vers.activerecord_files[key]
+      unless old_file
+        next
+      end
+      old_relations = old_file.relations
+      new_relations = file.relations
+      old_relations.each do |r|
+        puts "RELATION : #{r} #{new_relations}"
+        # check whether the foreign key is deleted
+        if ["has_many", "has_one"].include?r[:rel]
+          table_class = r[:class_name]
+        else
+          table_class = old_file.class_name
+        end
+        if deleted_cols.detect{|x| x.table_class.class_name == table_class and x.column_name == r[:column]}
+          yield :assoc_del, file.class_name, r[:field], r 
+        else
+          unless new_relations.include?r
+            same_type_different_name = new_relations.detect{|x| x[:rel] == r[:rel] and x[:class_name] == r[:class_name] and x[:column] == r[:column] }
+            if same_type_different_name
+              yield :assoc_ren, file.class_name, r[:field], same_type_different_name[:field]
+            else
+              same_name_different_type = new_relations.detect{|x| x[:field].singularize == r[:field].singularize and x[:class_name] == r[:class_name] and x[:column] == r[:column] }
+              yield :assoc_change, file.class_name, r[:field], r, same_name_different_type if same_name_different_type
+            end
+          end
+        end
+      end
+    end
     # Delete table: missing new file
     dtab = old_vers.activerecord_files.each_key.reject do |k|
       @activerecord_files[k] || renamed_tab.include?(k)
@@ -236,7 +237,7 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
     col_add col_del col_ren col_type tab_add tab_del tab_ren fk_add fk_del
     has_many_add has_many_del has_one_add has_one_del
     has_belong_add has_belong_del assoc_change
-    idx_add idx_del
+    idx_add idx_del assoc_ren assoc_del
   ].each_with_object({}) { |obj, memo| memo[obj] = 0 }
   # total number of actions
   total_action = version_with.clone
@@ -256,6 +257,9 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
     end
     change[:col_ren] = {}
     change[:tab_ren] = {}
+    change[:assoc_change] = {}
+    change[:assoc_ren] = {}
+    change[:assoc_del] = {}
     newv.compare_db_schema(curv) do |action, table, *args|
       case action
       when :tab_del
@@ -263,6 +267,10 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
         puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table}"   
       when :tab_ren
         change[action][args[0]] = table
+      when :assoc_ren
+        change[:assoc_ren][table] = {} unless change[:assoc_ren].include?table
+        change[:assoc_ren][table][args[0]] = args[1] 
+        puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table} #{args[0]} #{args[1]}"   
       when :col_ren, :col_del, :col_type, :col_add
         col = args[0]
         column_changes[table][col] += 1 unless action == :col_add
@@ -276,10 +284,16 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
           change[action]["#{table}.#{args[-1]}"] = args[1]
           puts change
         end
-      when :fk_del, :has_one_del, :has_many_del
+      when :fk_del, :has_one_del, :has_many_del, :has_many_add
         puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table} #{args[0]}"
       when :assoc_change
-        puts "#{shortvo} #{shortv} \e[33;1m#{action}\e[37;0m #{table} #{args[0]} #{args[-1]} → #{args[-2]}"
+        puts "#{shortvo} #{shortv} \e[33;1m#{action}\e[37;0m #{table} #{args[0]} #{args[-2]} → #{args[-1]}"
+        change[:assoc_change][table] = {} unless change[:assoc_change].include?table
+        change[:assoc_change][table][args[0]] = [args[-2], args[-1]]
+      when :assoc_del
+        puts "#{shortvo} #{shortv} \e[33;1m#{action}\e[37;0m #{table} #{args[0]} #{args[1]}"
+        change[:assoc_del][table] = {} unless change[:assoc_del].include?table
+        change[:assoc_del][table][args[0]] = args[1]
       when :idx_del
         puts "#{shortvo} #{shortv} \e[34;1m#{action}\e[37;0m #{table} #{args[0]} #{args[1]}"
       end
@@ -288,8 +302,10 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
     if change.values.map{|x| x.length}.sum > 0    
       #exit
       # checkout to current version
+
+      curv.extract_queries
       newv.extract_queries
-      newv.check_queries(change)
+      newv.check_queries(curv.schema, change)
     end
     version_chg << [newv.commit, this_version_has]
     this_version_has.each do |ac, num|

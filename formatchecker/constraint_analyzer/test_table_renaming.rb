@@ -29,6 +29,20 @@ $read_html = true
 $read_db = true
 $read_constraints = true
 app_dir = "/Users/junwenyang/Research/evolution_helper/ruby_apps/example_app"
+def test_change(app_dir, commits)
+    versions = commits.map{|commit| Version_class.new(app_dir, commit)}
+    traverse_all_for_db_schema(app_dir, nil, versions)
+end
+
+# table renaming
+
 commits = ["table_rename", "811fabb7b1779629f78e1b975691a382e82e32ee"]
-versions = commits.map{|commit| Version_class.new(app_dir, commit)}
-traverse_all_for_db_schema(app_dir, nil, versions)
+# test_change(app_dir, commits)
+
+# association renaming
+commits = ["association_renaming", "9571281eb0afe01da3625f350b48511dbc7efcda"]
+test_change(app_dir, commits)
+
+# association deletion
+commits = ["association_deletion", "9571281eb0afe01da3625f350b48511dbc7efcda"]
+#test_change(app_dir, commits)

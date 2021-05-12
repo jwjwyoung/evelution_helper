@@ -56,8 +56,9 @@ class Version_class
     #print_detail_with_sql(@raw_queries, @scopes, @schema, change)
     #exit
   end 
-  def check_queries(change)
-    print_detail_with_sql(@raw_queries, @scopes, @schema, change)
+  def check_queries(schema, change)
+    # use the old version's schema
+    print_detail_with_sql(@raw_queries, @scopes, schema, change)
   end
 
   def extract_constraints

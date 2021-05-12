@@ -244,7 +244,7 @@ def is_query_predicate_func?(call_ident)
 	call_ident[0].to_s.start_with?('find_by') or ["find", "where","rewhere", "where!","not"].include?(call_ident[0].to_s)
 end
 def is_join_func?(call_ident)
-	["joins","left_outer_joins","includes","eager_load","preload"].include?(call_ident[0].to_s)
+	["joins","left_outer_joins","includes","eager_load","preload", "references"].include?(call_ident[0].to_s)
 end
 def is_order_func?(call_ident)
 	["order","reorder"].include?(call_ident[0].to_s)
@@ -323,7 +323,6 @@ def extract_query_string_from_symbol_node(call_ident, arg_node, base_table)
 	# 		preds << QueryColumn.new(base_table, n.source.gsub(/:/,''))
 	# 	end
 	# end
-
 	return "", preds
 end
 
@@ -338,7 +337,7 @@ def extract_query_string_from_param(call_ident, node, base_table)
 		else
 			if node[0].type == :list
 				arg_nodes = [node[0]]
-				puts "node 0 #{node[0].source}"
+				# puts "node 0 #{node[0].source}"
 			else
 				arg_nodes = [node[0][0]]
 			end
@@ -380,6 +379,7 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 	base_table = prev_state[:base_table]
 	prev_calls = prev_state[:prev_calls]
 	node = call_ident
+	function = node[0].to_s
 	if !is_valid_table?(base_table)
 		return "",[],prev_state
 	end
@@ -387,38 +387,39 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 	table_schema = find_table_in_schema(base_table)
 	str_param, components = extract_query_string_from_param(call_ident, arg_node, base_table)
 	ret_str = str_param
-
+	
+	puts "components #{components.length} #{components}"
 	# where
 	if ["where", "where!", "rewhere", "find_by", "find_by!", "not"].include?(node[0].to_s)
 		ret_str = " #{prev_contains_where(prev_state) ? 'AND' : 'WHERE'} #{str_param}"
-		if node[0].to_s == "NOT"
+		if function == "NOT"
 			ret_str = " NOT (#{ret_str})"
 		end
 
 	# find (by id)
-	elsif node[0].to_s == "find"
+	elsif function == "find"
 		ret_str = " #{prev_contains_where(prev_state) ? 'AND' : 'WHERE'} id = ?"
 		#components << QueryColumn.new(base_table, "id")
 		components << QueryPredicate.new(QueryColumn.new(base_table, "id"), '=', '?')
 
 	# find_by_sql
-	elsif node[0] == "find_by_sql"
+	elsif function == "find_by_sql"
 		# concat all strings together
 		ret_str = " " + str_param
 
 	# find_by ??
-	elsif node[0].to_s.start_with?("find_by")
+	elsif function.start_with?("find_by")
 		ret_str = str_param
 		connect = prev_contains_where(prev_state) ? 'AND' : 'WHERE'
-		if node[0].to_s.include?"_and_"
-			node[0].to_s.sub!("find_by_","").split('_and_').each do |column|
+		if function.include?"_and_"
+			function.sub!("find_by_","").split('_and_').each do |column|
 				components << QueryPredicate.new(QueryColumn.new(base_table, column), '=', '?')
 				ret_str += " #{connect} #{column} = ?"
 				connect = 'AND'
 			end
 		end
-		if node[0].to_s.include?"_or_"
-			node[0].to_s.sub!("find_by_","").split('_or_').each do |column|
+		if function.include?"_or_"
+			function.sub!("find_by_","").split('_or_').each do |column|
 				components << QueryPredicate.new(QueryColumn.new(base_table, column), '=', '?')
 				ret_str += " #{connect} #{column} = ?"
 				connect = 'or'
@@ -429,10 +430,10 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 	#elsif table_schema.
 	
 	# explicit join or inexplicit join via association
-	elsif ["joins","left_outer_joins","includes","eager_load","preload"].include?(node[0].to_s) or associations.select { |ax| ax[:field]==node[0].to_s }.length > 0
-		is_explicit_join = ["joins","left_outer_joins","includes","eager_load","preload"].include?(node[0].to_s)
+	elsif ["joins","left_outer_joins","includes","references", "eager_load","preload"].include?(function) or associations.select { |ax| ax[:field]==function}.length > 0
+		is_explicit_join = ["joins","left_outer_joins","includes","eager_load","preload", "references"].include?(function)
 		if str_param.blank?
-			columns = is_explicit_join ? get_fields_and_tables_for_query(components) : [QueryColumn.new(base_table, node[0].to_s)]
+			columns = is_explicit_join ? get_fields_and_tables_for_query(components) : [QueryColumn.new(base_table, function)]
 			ret_str = ""
 			#puts "JOIN components = #{components}"
 			components = []
@@ -442,20 +443,33 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 					associations = find_table_in_schema(column.table).associations
 					base_table = column.table
 				end
-				assoc = associations.select { |ax| ax[:field]==column_symb }
+					
+				assoc = associations.select { |ax| ax[:field]==column_symb or ax[:field] == column_symb.singularize.downcase }
+				
 				if assoc.length > 0
+					singular_name = column_symb.singularize.downcase
+					plural_name = column_symb.pluralize.downcase
+					if singular_name == column_symb
+						relation = "has_one"
+					else
+						relation = "has_many"
+					end
 					assoc = assoc[0]
 					assoc_db_table = tablename_pluralize(assoc[:class_name])
 					base_db_table = tablename_pluralize(base_table)
-					pk = assoc[:rel]=="has_many"? "#{base_db_table}.id" : "#{assoc_db_table}.id"
-					fk = assoc[:rel]=="has_many"? "#{assoc_db_table}.#{base_db_table.singularize}_id" : "#{base_db_table}.#{assoc_db_table.singularize}_id"
+					puts "HERE #{function} #{assoc}, #{assoc_db_table}, #{base_db_table}"
+					pk = ([relation].include?assoc[:rel])? "#{base_db_table}.id" : "#{assoc_db_table}.id"
+					fk = ([relation].include?assoc[:rel])? "#{assoc_db_table}.#{base_db_table.singularize}_id" : "#{base_db_table}.#{assoc_db_table.singularize}_id"
+					
 					ret_str += " #{node[0]=='joins'? ' INNER':' LEFT OUTER'} JOIN #{assoc_db_table} ON #{pk} = #{fk}" 
 					# components << QueryPredicate.new(QueryColumn.new(base_table, assoc[:rel]=="has_many"? 'id' : "#{assoc_db_table.singularize}_id"), 
 					# 	'=', 
 					# 	QueryColumn.new(assoc[:class_name], assoc[:rel]=="has_many"? "#{base_db_table.singularize}_id" : 'id'))
 					if is_explicit_join
-						if ["includes","eager_load","preload"].include?(node[0].to_s)
+						if ["includes","eager_load","preload"].include?(function)
 							join_meth =  'includes'
+						elsif function == "references"
+							join_meth = function
 						elsif ["left_outer_joins"].include?(node[0].to_s)
 							join_meth = 'left_outer_joins' 
 						else
@@ -463,6 +477,7 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 						end
 						components << QueryColumn.new(base_table, assoc[:field], join_meth)
 					else
+						components << QueryColumn.new(base_table, assoc[:field])
 						if assoc[:rel]=="has_many"
 							components << QueryPredicate.new(QueryColumn.new(assoc[:class_name], "#{base_db_table.singularize}_id"), '=', '?')
 						else
@@ -684,12 +699,13 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 	output = []
 	$schema = schema
 	$scopes = scopes
+	$change = change
 	succ_cnt = 0
 	qcnt = 0
 
 	outputf = File.open("query.py","w" )
 	output_dics = []
-	raw_queries = raw_queries.sort_by { |w| w.stmt }
+	raw_queries = raw_queries.sort_by { |w| w.line }
 
 	file2issues = {} # filename => issues []
 
@@ -698,9 +714,11 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 		# 	next
 		# end
 		filename = raw_query.filename
-		file2issues[filename] = {}
+		# initialize the filename2pos hash
+		if not file2issues.include?filename
+			file2issues[filename] = {}
+		end
 		loc = raw_query.line - 1
-		puts "raw_query = #{raw_query.stmt} line: #{raw_query.line}\n"
 		old_stmt = raw_query.stmt
 		meta = parse_one_query(raw_query) 
 		metas << meta
@@ -721,7 +739,7 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 			#puts "\tparsed: query = #{meta.sql}"
 			puts "\tcomponents = #{(meta.fields.select{|xxx| !xxx.is_a?(Hash)}.map {|xxx| xxx.table+":"+xxx.column}).join(', ')}"
 			print_str = meta.components.select{|xxx| !xxx.is_a?(Hash)}.map{|xxx| "\t"+component_str(xxx)}.join(" \\\n")
-			puts "\tcomponents = #{print_str}"
+			puts "\t #{meta.fields} components = #{print_str}"
 			if meta.fields.length > 1
 				succ_cnt += 1
 			end
@@ -730,6 +748,9 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 			puts "\tquery cannot be handled #{meta.fields.length}"
 		end
 		
+		line_content = open(raw_query.filename).readlines[loc]
+		puts "raw_query = #{raw_query.stmt} line: #{raw_query.line} #{line_content}\n"
+								
 		if meta.fields.length >= 1
 			outputf << "# Q #{qcnt} : " + raw_query.stmt.split("\n").map{|xxx| "# "+xxx}.join("\n")
 			outputf << "\nQuery(#{meta.table})\n" + meta.components.select{|xxx| !xxx.is_a?(Hash)}.map{|xxx| dump_component(xxx)}.select{|xxx| !xxx.blank?}.join("\n")
@@ -748,27 +769,88 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 					table_name ||= model_class_name.downcase.pluralize
 					table_field = "#{field.table}.#{field.column}"
 					
-					puts "TF: #{table_field}"
+					puts "TF: #{table_field} #{change.length}"
 					if change.length > 0
 						# hanlde id case separately
-						unless field.column.include?'_id'
-							if change[:col_del].include?table_field
-								puts "-ERROR: #{table_field} is DELETED"
-								
+						if change[:col_del].include?table_field
+							puts "-ERROR: #{table_field} is DELETED"
+							offset = (/[^a-zA-Z_\@0-9]#{field.column}/ =~ line_content) + 1
+							unless offset.nil?
+								endset = offset + field.column.length
+								patch = ""
+								change_type = "column delete"
+								detailed_reason = "#{table_field} is DELETED"
+								issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
+								if not file2issues[filename].include?issue.position
+									file2issues[filename][issue.position] = issue
+								end
 							end
-							if change[:col_ren].include?table_field
-								line_content = open(raw_query.filename).readlines[loc]
-								new_column_name = change[:col_ren][table_field]
-								offset = line_content.index(field.column)
-								unless offset.nil?
-									endset = offset + field.column.length
-									patch = "#{new_column_name}"
-									change_type = "column rename"
-									detailed_reason = "#{table_field} is RENAMED TO #{new_column_name}"
-									issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
-									if not file2issues[filename].include?issue.position
-										file2issues[filename][issue.position] = issue
+						end
+						if change[:assoc_del]&.include?(model_class_name) and change[:assoc_del][model_class_name]&.include?field.column
+							offset = (/[^a-zA-Z_\@0-9]#{field.column}/ =~ line_content) + 1
+							if offset.present?
+								new_assciation_name = change[:assoc_del][model_class_name][field.column]
+								change_type = "association delete"
+								patch = ""
+								detailed_reason = "#{model_class_name}.#{field.column} is DELETED"
+								endset = offset + field.column.length
+								if offset == 0 or is_not_variable_char(line_content[offset-1])
+									if endset == line_content.length or is_not_variable_char(line_content[endset])
+										issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
+										if not file2issues[filename].include?issue.position
+											file2issues[filename][issue.position] = issue
+										end
 									end
+								end
+							end
+						end
+						if change[:assoc_change]&.include?(model_class_name) and change[:assoc_change][model_class_name]&.include?field.column
+							offset = (/[^a-zA-Z_\@0-9]#{field.column}/ =~ line_content) + 1
+							if offset.present?
+								new_assciation_name = change[:assoc_change][model_class_name][field.column]
+								change_type = "association type change"
+								patch = "#{new_assciation_name[1][:field]}"
+								detailed_reason = "#{model_class_name}.#{field.column} is CHANGED FROM #{new_assciation_name[0][:rel]} TO #{new_assciation_name[1][:rel]}"
+								endset = offset + field.column.length
+								if offset == 0 or is_not_variable_char(line_content[offset-1])
+									if endset == line_content.length or is_not_variable_char(line_content[endset])
+										issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
+										if not file2issues[filename].include?issue.position
+											file2issues[filename][issue.position] = issue
+										end
+									end
+								end
+							end
+						end
+						if change[:assoc_ren].include?(model_class_name) and change[:assoc_ren][model_class_name].include?field.column
+							offset = (/[^a-zA-Z_\@0-9]#{field.column}/ =~ line_content) + 1
+							if offset.present?
+								new_assciation_name = change[:assoc_ren][model_class_name][field.column]
+								change_type = "association rename"
+								patch = "#{new_assciation_name}"
+								detailed_reason = "#{model_class_name}.#{field.column} is RENAMED TO #{new_assciation_name}"
+								endset = offset + field.column.length
+								if offset == 0 or is_not_variable_char(line_content[offset-1])
+									if endset == line_content.length or is_not_variable_char(line_content[endset])
+										issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
+										if not file2issues[filename].include?issue.position
+											file2issues[filename][issue.position] = issue
+										end
+									end
+								end
+							end
+						end
+						if change[:col_ren].include?table_field
+							new_column_name = change[:col_ren][table_field]
+							offset = line_content.index(field.column)
+							unless offset.nil?
+								endset = offset + field.column.length
+								patch = "#{new_column_name}"
+								change_type = "column rename"
+								detailed_reason = "#{table_field} is RENAMED TO #{new_column_name}"
+								issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
+								if not file2issues[filename].include?issue.position
+									file2issues[filename][issue.position] = issue
 								end
 							end
 						end
@@ -777,7 +859,6 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 						end
 						if change[:tab_ren].include?field.table
 							# find Article text
-							line_content = open(raw_query.filename).readlines[raw_query.line - 1]
 							offset = line_content.index(field.table)
 							new_class_name = change[:tab_ren][field.table]
 							new_table_name = new_class_name.downcase.pluralize
@@ -826,7 +907,7 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 						columns.each do |column|
 							column = column.strip
 							if (not t.fields.include?column) and (not t.fields.include?"#{column}_id") and (not ['id','*',''].include?column)
-								puts "field doesn't exist #{field} #{column}"
+								# puts "field doesn't exist #{field} #{column}"
 							end
 						end
 					end
@@ -841,4 +922,14 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 	dump_file2issues(file2issues)
 	puts "success: #{succ_cnt} / total #{raw_queries.length}"
 	outputf.close   
+end
+
+def is_variable_char(c)
+	variable_chars = (0...36).map{ |i| i.to_s 36 }
+	variable_chars << "@"
+	return variable_chars.include?c.downcase
+end
+
+def is_not_variable_char(c)
+	return (not is_variable_char(c))
 end

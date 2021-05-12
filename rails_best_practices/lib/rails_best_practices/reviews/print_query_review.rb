@@ -8,7 +8,7 @@ module RailsBestPractices
       interesting_files CONTROLLER_FILES, MODEL_FILES, LIB_FILES, HELPER_FILES #VIEW_FILES
       url 'https://rails-bestpractices.com/posts/2010/10/03/use-query-attribute/'
 
-      MULTI_QUERY_METHODS = %w[where where! pluck distinct eager_load from group having includes joins left_outer_joins limit offset order preload readonly reorder select reselect select_all reverse_order unscope find_each rewhere execute uniq all].freeze
+      MULTI_QUERY_METHODS = %w[where where! pluck distinct eager_load from group having includes joins left_outer_joins limit offset order preload readonly reorder select reselect select_all reverse_order unscope find_each rewhere execute uniq all references].freeze
       SINGLE_QUERY_METHODS = %w[find find! take take! first first! last last! find_by find_by!].freeze
 
       def initialize(options = {})
@@ -199,9 +199,9 @@ module RailsBestPractices
 
         source = to_source(node).chomp
         puts "source is #{source}"
-        if (MULTI_QUERY_METHODS+SINGLE_QUERY_METHODS).map{|x| source.include?(x)}.any?
+        #if (MULTI_QUERY_METHODS+SINGLE_QUERY_METHODS).map{|x| source.include?(x)}.any?
           @collected_queries << {:class => @combined_class_name, :stmt => source, :caller_class_lst => caller_class_lst, :method_name => func_name, :filename => @node.file, :line => node.line_number}
-        end
+        #end
       end
 
       def process_scope(node)

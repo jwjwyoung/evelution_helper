@@ -1,6 +1,6 @@
-# Q 0 : # Article.all
-Query(Article)
-
-# Q 1 : # where(author: nil)
+# Q 0 : # where(author: nil)
 Query(Article)
 .where("author = ?")
+# Q 1 : # Article.all
+Query(Article)
+

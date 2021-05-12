@@ -32,3 +32,7 @@ app_dir = "/Users/junwenyang/Research/evolution_helper/ruby_apps/example_app"
 commits = ["97efa7af416a77c44e9fd26286ae1348e671f649", "e8f32819a06ef586ecab0a3844687d90194dbfba"]
 versions = commits.map{|commit| Version_class.new(app_dir, commit)}
 traverse_all_for_db_schema(app_dir, nil, versions)
+
+commits = ["column_deletion", "e8f32819a06ef586ecab0a3844687d90194dbfba"]
+versions = commits.map{|commit| Version_class.new(app_dir, commit)}
+traverse_all_for_db_schema(app_dir, nil, versions)

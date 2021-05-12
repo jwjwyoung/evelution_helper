@@ -48,7 +48,7 @@ def parse_model_constraint_file(ast)
       key_field = parse_foreign_key(ast[1])
       if key_field
         # puts "foreign key: #{key_field}"
-        $cur_class.addForeignKey(key_field)
+        # $cur_class.addForeignKey(key_field)
       end
     end
     if %w[has_many has_one belongs_to has_and_belongs_to_many].include? funcname
@@ -73,10 +73,12 @@ def parse_model_constraint_file(ast)
       end
       case funcname
       when "has_many"
+        # puts "columns #{dic}"
         columns.each do |column|
           # puts "#{column} #{dic}"
           $cur_class.addHasMany(column.singularize, dic)
-          $cur_class.addRelation(column, dic, "has_many")
+          r = $cur_class.addRelation(column, dic, "has_many")
+          puts "relation #{r[:class_name]}"
         end
       when "has_one"
         columns.each do |column|
