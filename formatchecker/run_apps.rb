@@ -21,7 +21,7 @@ if args.include? "--commit-index"
 end
 
 main_folder = 'constraint_analyzer'
-app_folder = '../apps'
+app_folder = `realpath ../ruby_apps`.strip + "/"
 command = args[0] || "-s"
 return unless app_folder
 

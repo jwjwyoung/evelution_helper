@@ -76,8 +76,8 @@ def extract_fields_from_args_for_where(node,table=nil)
       if check_node_type(child, :string_literal)
         child.source.split(",").each do |key|
           key = key.split("=")[0]
-          table = key.split(".")[0].strip
-          field = key.split(".")[1].strip
+          table = key.split(".")[0]&.strip
+          field = key.split(".")[1]&.strip
           output << {:table => table, :column => field, :is_not_null => false} 
         end
         return output

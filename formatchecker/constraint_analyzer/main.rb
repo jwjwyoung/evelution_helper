@@ -23,9 +23,8 @@ require "active_support/core_ext/string"
 require "regexp-examples"
 load_validate_api # load the model api
 load_html_constraint_api # load the html api
-
-require "/Users/junwenyang/Research/query_constraint_analyzer/query_parser_with_sql.rb"
-require "/Users/junwenyang/Research/query_constraint_analyzer/load.rb"
+require_relative '../../query_extractor/query_parser_with_sql.rb'
+require "../../query_extractor/load.rb"
 options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: main.rb -a APP_DIR [options]"

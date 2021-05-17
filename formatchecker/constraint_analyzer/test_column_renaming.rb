@@ -25,14 +25,20 @@ load_validate_api # load the model api
 load_html_constraint_api # load the html api
 require_relative '../../query_extractor/query_parser_with_sql.rb'
 require "../../query_extractor/load.rb"
-$read_html = true
+$read_html = false
 $read_db = true
-$read_constraints = true
-app_dir = "/Users/junwenyang/Research/evolution_helper/ruby_apps/example_app"
-commits = ["97efa7af416a77c44e9fd26286ae1348e671f649", "e8f32819a06ef586ecab0a3844687d90194dbfba"]
-versions = commits.map{|commit| Version_class.new(app_dir, commit)}
-traverse_all_for_db_schema(app_dir, nil, versions)
+$read_constraints = false
+$extract_constraints = false
+# app_dir = "/Users/junwenyang/Research/evolution_helper/ruby_apps/example_app"
+# commits = ["97efa7af416a77c44e9fd26286ae1348e671f649", "e8f32819a06ef586ecab0a3844687d90194dbfba"]
+# versions = commits.map{|commit| Version_class.new(app_dir, commit)}
+# traverse_all_for_db_schema(app_dir, nil, versions)
 
-commits = ["column_deletion", "e8f32819a06ef586ecab0a3844687d90194dbfba"]
+# commits = ["column_deletion", "e8f32819a06ef586ecab0a3844687d90194dbfba"]
+# versions = commits.map{|commit| Version_class.new(app_dir, commit)}
+# traverse_all_for_db_schema(app_dir, nil, versions)
+
+app_dir = "/Users/junwenyang/Research/evolution_helper/ruby_apps/onebody"
+commits = ["3.4.0", "3.3.0"]
 versions = commits.map{|commit| Version_class.new(app_dir, commit)}
 traverse_all_for_db_schema(app_dir, nil, versions)

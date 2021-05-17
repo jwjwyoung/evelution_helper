@@ -20,6 +20,7 @@ class Version_class
     @queries = nil
     @scope = nil
     @schema = nil
+    @raw_queries = []
   end
   
   def to_schema()
@@ -47,10 +48,12 @@ class Version_class
   end
     
   def extract_queries
+    puts "====start extracting queries===="
     app_name = @app_dir.split("/")[-1]
     options, app_dir = get_config(app_name)
     puts "CONFIG : #{options} #{app_dir}"
     `cd #{app_dir}; git checkout -f #{self.commit}`
+    return if @raw_queries.length > 0 # already has queries, no need to run
     @raw_queries, @scopes, @schema = load_queries_and_schema(@app_dir, options[:tmp_dir], options[:rails_best_practices_cmd], self)
     puts "QUERY NUM #{@raw_queries.length}"
     #print_detail_with_sql(@raw_queries, @scopes, @schema, change)
@@ -555,7 +558,7 @@ class Version_class
   def build
     extract_files
     annotate_model_class
-    extract_constraints
+    extract_constraints if $extract_constraints
     apply_concerns
     print_columns
     #extract_queries
@@ -567,6 +570,7 @@ class Version_class
   end
 
   def apply_concerns
+    puts "===start applying concerns====="
     @activerecord_files.each_value do |file|
       file.included_concerns.each do |con_name|
         con = @concerns[con_name]
@@ -580,8 +584,8 @@ class Version_class
           # TODO: dic["dependent"]
           memo[obj] = true
         end
-        file.foreign_keys += con.belongs_tos.to_a
-        file.has_belong_classes += con.has_belongs
+        # file.foreign_keys += con.belongs_tos.to_a
+        # file.has_belong_classes += con.has_belongs
       end
     end
   end

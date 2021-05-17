@@ -37,12 +37,13 @@ end
 # table renaming
 
 commits = ["table_rename", "811fabb7b1779629f78e1b975691a382e82e32ee"]
-# test_change(app_dir, commits)
-
+#test_change(app_dir, commits)
 # association renaming
 commits = ["association_renaming", "9571281eb0afe01da3625f350b48511dbc7efcda"]
-test_change(app_dir, commits)
+#test_change(app_dir, commits)
 
 # association deletion
 commits = ["association_deletion", "9571281eb0afe01da3625f350b48511dbc7efcda"]
 #test_change(app_dir, commits)
+
+commits = ["0.6.0", '0.5.1']

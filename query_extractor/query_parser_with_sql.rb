@@ -273,6 +273,20 @@ def extract_query_string_from_list_node(call_ident, arg_node, base_table)
 		end 
 		fields.each do |field|
 			puts "fields: #{field[:table]}"
+			# e.g. lower(email)
+			if field[:table]&.include?"("
+				start_offset = field[:table].index("(")
+				end_offset = field[:table].index(")")
+				field[:table] = field[:table][start_offset+1...end_offset]
+				if field[:table].include?"."
+					field[:column] = field[:table].split(".")[-1]
+					field[:table] = field[:table].split(".")[0]
+				else
+					field[:column] = field[:table]
+					field[:table] = ""
+				end
+			end
+			puts "fields after: #{field[:column]}"
 			preds << QueryPredicate.new(QueryColumn.new(field[:table].blank? ? base_table : field[:table], field[:column]), '=', '?')
 		end
 		return fields.map{ |x| "#{tablename_pluralize(base_table)}.#{x[:column]}=?" }.join(' AND '), preds
@@ -380,6 +394,7 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 	prev_calls = prev_state[:prev_calls]
 	node = call_ident
 	function = node[0].to_s
+	puts "function #{function}"
 	if !is_valid_table?(base_table)
 		return "",[],prev_state
 	end
@@ -687,7 +702,7 @@ def dump_file2issues(files2issues)
 		end
 	end
 	puts JSON.pretty_generate c
-	return c.to_json
+	return c
 end
 def generate_issue(patch, loc, offset, endset, t, detailed_reason)
 	position = Position.new(Point.new(loc, offset), Point.new(loc, endset))
@@ -700,20 +715,22 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 	$schema = schema
 	$scopes = scopes
 	$change = change
+	puts "name #{$app_name}"
 	succ_cnt = 0
 	qcnt = 0
-
+	puts "====scopes===="
+	puts $scopes
 	outputf = File.open("query.py","w" )
 	output_dics = []
 	raw_queries = raw_queries.sort_by { |w| w.line }
 
 	file2issues = {} # filename => issues []
-
+	
 	raw_queries.each do |raw_query|
 		# if raw_query[:method_name].blank? #only checks scopes
 		# 	next
 		# end
-		filename = raw_query.filename
+		filename = raw_query.filename.split($app_name.downcase)[-1]
 		# initialize the filename2pos hash
 		if not file2issues.include?filename
 			file2issues[filename] = {}
@@ -737,7 +754,7 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 
 		if !meta.sql.blank?
 			#puts "\tparsed: query = #{meta.sql}"
-			puts "\tcomponents = #{(meta.fields.select{|xxx| !xxx.is_a?(Hash)}.map {|xxx| xxx.table+":"+xxx.column}).join(', ')}"
+			puts "\tcomponents = #{(meta.fields.select{|xxx| !xxx.is_a?(Hash)}.map {|xxx| "#{xxx.table}:#{xxx.column}"}).join(', ')}"
 			print_str = meta.components.select{|xxx| !xxx.is_a?(Hash)}.map{|xxx| "\t"+component_str(xxx)}.join(" \\\n")
 			puts "\t #{meta.fields} components = #{print_str}"
 			if meta.fields.length > 1
@@ -768,127 +785,130 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 					table_name = t&.table_name
 					table_name ||= model_class_name.downcase.pluralize
 					table_field = "#{field.table}.#{field.column}"
-					
 					puts "TF: #{table_field} #{change.length}"
 					if change.length > 0
 						# hanlde id case separately
 						if change[:col_del].include?table_field
 							puts "-ERROR: #{table_field} is DELETED"
-							offset = (/[^a-zA-Z_\@0-9]#{field.column}/ =~ line_content) + 1
-							unless offset.nil?
-								endset = offset + field.column.length
+							regex = /[^a-zA-Z_\@0-9]#{field.column}[^a-zA-Z_\@0-9]/
+							matches = line_content.to_enum(:scan, regex).map  { Regexp.last_match }
+							matches.each do |m|
+								offset = m.offset(0)[0] + 1
+								endset = m.offset(0)[1] - 1
 								patch = ""
 								change_type = "column delete"
 								detailed_reason = "#{table_field} is DELETED"
 								issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
-								if not file2issues[filename].include?issue.position
-									file2issues[filename][issue.position] = issue
-								end
-							end
-						end
-						if change[:assoc_del]&.include?(model_class_name) and change[:assoc_del][model_class_name]&.include?field.column
-							offset = (/[^a-zA-Z_\@0-9]#{field.column}/ =~ line_content) + 1
-							if offset.present?
-								new_assciation_name = change[:assoc_del][model_class_name][field.column]
-								change_type = "association delete"
-								patch = ""
-								detailed_reason = "#{model_class_name}.#{field.column} is DELETED"
-								endset = offset + field.column.length
-								if offset == 0 or is_not_variable_char(line_content[offset-1])
-									if endset == line_content.length or is_not_variable_char(line_content[endset])
-										issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
-										if not file2issues[filename].include?issue.position
-											file2issues[filename][issue.position] = issue
-										end
-									end
-								end
-							end
-						end
-						if change[:assoc_change]&.include?(model_class_name) and change[:assoc_change][model_class_name]&.include?field.column
-							offset = (/[^a-zA-Z_\@0-9]#{field.column}/ =~ line_content) + 1
-							if offset.present?
-								new_assciation_name = change[:assoc_change][model_class_name][field.column]
-								change_type = "association type change"
-								patch = "#{new_assciation_name[1][:field]}"
-								detailed_reason = "#{model_class_name}.#{field.column} is CHANGED FROM #{new_assciation_name[0][:rel]} TO #{new_assciation_name[1][:rel]}"
-								endset = offset + field.column.length
-								if offset == 0 or is_not_variable_char(line_content[offset-1])
-									if endset == line_content.length or is_not_variable_char(line_content[endset])
-										issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
-										if not file2issues[filename].include?issue.position
-											file2issues[filename][issue.position] = issue
-										end
-									end
-								end
-							end
-						end
-						if change[:assoc_ren].include?(model_class_name) and change[:assoc_ren][model_class_name].include?field.column
-							offset = (/[^a-zA-Z_\@0-9]#{field.column}/ =~ line_content) + 1
-							if offset.present?
-								new_assciation_name = change[:assoc_ren][model_class_name][field.column]
-								change_type = "association rename"
-								patch = "#{new_assciation_name}"
-								detailed_reason = "#{model_class_name}.#{field.column} is RENAMED TO #{new_assciation_name}"
-								endset = offset + field.column.length
-								if offset == 0 or is_not_variable_char(line_content[offset-1])
-									if endset == line_content.length or is_not_variable_char(line_content[endset])
-										issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
-										if not file2issues[filename].include?issue.position
-											file2issues[filename][issue.position] = issue
-										end
-									end
-								end
+								file2issues[filename][issue.position] = issue
 							end
 						end
 						if change[:col_ren].include?table_field
+							regex = /[^a-zA-Z_\@0-9]#{field.column}[^a-zA-Z_\@0-9]/
 							new_column_name = change[:col_ren][table_field]
-							offset = line_content.index(field.column)
-							unless offset.nil?
-								endset = offset + field.column.length
+							matches = line_content.to_enum(:scan, regex).map  { Regexp.last_match }
+							matches&.each do |m|
+								offset = m.offset(0)[0] + 1
+								endset = m.offset(0)[1] - 1
 								patch = "#{new_column_name}"
 								change_type = "column rename"
 								detailed_reason = "#{table_field} is RENAMED TO #{new_column_name}"
 								issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
-								if not file2issues[filename].include?issue.position
-									file2issues[filename][issue.position] = issue
-								end
+								file2issues[filename][issue.position] = issue
+							end
+						end
+						if change[:assoc_del]&.include?(model_class_name) and change[:assoc_del][model_class_name]&.include?field.column
+							regex = /[^a-zA-Z_\@0-9]#{field.column}[^a-zA-Z_\@0-9]/
+							matches = line_content.to_enum(:scan, regex).map  { Regexp.last_match }
+							matches.each do |m|
+								offset = m.offset(0)[0] + 1
+								endset = m.offset(0)[1] - 1
+								new_assciation_name = change[:assoc_del][model_class_name][field.column]
+								change_type = "association delete"
+								patch = ""
+								detailed_reason = "#{model_class_name}.#{field.column} is DELETED"
+								issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
+								file2issues[filename][issue.position] = issue
+							end
+						end
+						if change[:assoc_change]&.include?(model_class_name) and change[:assoc_change][model_class_name]&.include?field.column
+							regex = /[^a-zA-Z_\@0-9]#{field.column}[^a-zA-Z_\@0-9]/
+							matches = line_content.to_enum(:scan, regex).map  { Regexp.last_match }
+							puts "===== #{line_content} #{matches}"
+							matches&.each do |m|
+								offset = m.offset(0)[0] + 1
+								endset = m.offset(0)[1] - 1
+								puts "offset, end set #{offset}, #{endset}"
+								new_assciation_name = change[:assoc_change][model_class_name][field.column]
+								change_type = "association type change"
+								patch = "#{new_assciation_name[1][:field]}"
+								detailed_reason = "#{model_class_name}.#{field.column} is CHANGED FROM #{new_assciation_name[0][:rel]} TO #{new_assciation_name[1][:rel]}"
+								issue = generate_issue(patch, loc, offset, endset , change_type, detailed_reason)
+								file2issues[filename][issue.position] = issue
+							end
+						end
+						if change[:assoc_ren].include?(model_class_name) and change[:assoc_ren][model_class_name].include?field.column
+							regex = /#{field.ruby_meth}[^a-zA-Z_\@0-9]+#{field.column}[^a-zA-Z_\@0-9]/
+							matches = line_content.to_enum(:scan, regex).map  { Regexp.last_match }
+							puts "LINE #{line_content} #{matches}"
+							matches&.each do |m|
+								offset = m.offset(0)[0] + 1 
+								offset += field.ruby_meth.length if field.ruby_meth
+								endset = m.offset(0)[1] - 1
+								new_assciation_name = change[:assoc_ren][model_class_name][field.column]
+								change_type = "association rename"
+								patch = "#{new_assciation_name}"
+								detailed_reason = "#{model_class_name}.#{field.column} is RENAMED TO #{new_assciation_name}"
+								issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
+								file2issues[filename][issue.position] = issue
+							end
+						end
+						if change[:idx_del].include?field.table and change[:assoc_ren][idx_del].include?field.column
+							regex = /[^a-zA-Z_\@0-9]#{field.column}[^a-zA-Z_\@0-9]/
+							matches = line_content.to_enum(:scan, regex).map  { Regexp.last_match }
+							matches&.each do |m|
+								offset = m.offset(0)[0] + 1
+								endset = m.offset(0)[1] - 1
+								patch = ""
+								change_type = "index delete"
+								detailed_reason = "index on #{table_field} has been DELETED"
+								issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
+								file2issues[filename][issue.position] = issue
 							end
 						end
 						if change[:tab_del].include?field.table
 							puts "-ERROR: #{field.table} is DELETED"
 						end
-						if change[:tab_ren].include?field.table
+						if change[:tab_ren].include?field.table or change[:tab_del].include?field.table
 							# find Article text
-							offset = line_content.index(field.table)
-							new_class_name = change[:tab_ren][field.table]
-							new_table_name = new_class_name.downcase.pluralize
-							unless offset.nil?
-								endset = offset + field.table.length
-								puts line_content[offset...endset]
-								patch = "#{new_class_name}"
+							new_class_name = ""
+							new_table_name = ""
+							change_type = "table delete"
+							if change[:tab_ren].include?field.table
+								new_class_name = change[:tab_ren][field.table]
+								new_table_name = new_class_name.downcase.pluralize
 								change_type = "table rename"
+							end
+							table_regex = /[^a-zA-Z_\@0-9]#{field.table}[^a-zA-Z_\@0-9]/
+							matches = line_content.to_enum(:scan, table_regex).map  { Regexp.last_match }
+							matches&.each do |m|
+								offset = m.offset(0)[0] + 1
+								endset = m.offset(0)[1] - 1
+								patch = "#{new_class_name}"
 								detailed_reason = "#{field.table} is RENAMED TO #{new_class_name} "
 								issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
-								if not file2issues[filename].include?issue.position
-									file2issues[filename][issue.position] = issue
-								end
+								file2issues[filename][issue.position] = issue
 							end
 							puts "hello"
 							# check cases like articles.xx
-							offset = line_content.index(table_name + ".")
-							puts("LINE CONTENT #{line_content.strip} #{table_name} #{offset}")
-							if offset.present?
-								# check whether it ends with a dot
-								endset = offset + table_name.length
-								puts "#{endset}  #{line_content[endset]}"
-								puts line_content[offset...endset]
+							table_regex = /[^a-zA-Z_\@0-9]#{table_name}[^a-zA-Z_\@0-9]/
+							matches = line_content.to_enum(:scan, table_regex).map  { Regexp.last_match }
+							matches&.each do |m|
+								offset = m.offset(0)[0] + 1
+								endset = m.offset(0)[1] - 1
 								patch = "#{new_table_name}"
-								change_type = "table rename"
 								detailed_reason = "#{field.table} is RENAMED TO #{change[:tab_ren][field.table]} "
 								issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
-								if not file2issues[filename].include?issue.position
-									file2issues[filename][issue.position] = issue
-								end
+								file2issues[filename][issue.position] = issue
 							end
 						end
 					end
@@ -901,7 +921,7 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 					
 					if t 
 						columns = [field.column]
-						if field.column.include?','
+						if field.column&.include?','
 							columns = field.column.split(",")
 						end
 						columns.each do |column|
@@ -919,9 +939,10 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 		# 	exit
 		# end
 	end
-	dump_file2issues(file2issues)
+	json_contents = dump_file2issues(file2issues)
 	puts "success: #{succ_cnt} / total #{raw_queries.length}"
-	outputf.close   
+	outputf.close  
+	return json_contents 
 end
 
 def is_variable_char(c)

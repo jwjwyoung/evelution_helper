@@ -209,7 +209,7 @@ def get_versions(app_dir, interval)
                end
              else
                #extract_commits(app_dir, interval, false)
-               extract_commits(app_dir, 10, false)
+               extract_commits(app_dir, 100, true)
              end
   # app_name = File.basename(app_dir)
   # version_his_folder = File.expand_path("../log/vhf_#{app_name}", __dir__)
@@ -222,11 +222,11 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
   if versions.size == 0
     versions = get_versions(app_dir, interval)
   end
-
   app_name = File.basename(app_dir)
   version_his_folder = File.expand_path("../log/vhf_#{app_name}", __dir__)
   Dir.mkdir(version_his_folder) unless Dir.exist? version_his_folder
-  puts("LENGTH: #{versions.length}")
+  puts("LENGTH: #{versions.length} #{versions[0].commit}")
+  
   return if versions.length <= 0
 
   # versions << Version_class.new(app_dir, "00000000")
@@ -260,57 +260,71 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
     change[:assoc_change] = {}
     change[:assoc_ren] = {}
     change[:assoc_del] = {}
-    newv.compare_db_schema(curv) do |action, table, *args|
-      case action
-      when :tab_del
-        change[action] << "#{table}"
-        puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table}"   
-      when :tab_ren
-        change[action][args[0]] = table
-      when :assoc_ren
-        change[:assoc_ren][table] = {} unless change[:assoc_ren].include?table
-        change[:assoc_ren][table][args[0]] = args[1] 
-        puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table} #{args[0]} #{args[1]}"   
-      when :col_ren, :col_del, :col_type, :col_add
-        col = args[0]
-        column_changes[table][col] += 1 unless action == :col_add
-        if action == :col_del
-          puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table} #{args}"       
-          change[action] << "#{table}.#{args[0]}"
-          puts change
+    change[:idx_del] = {}
+    begin
+      newv.compare_db_schema(curv) do |action, table, *args|
+        case action
+        when :tab_del
+          change[action] << "#{table}"
+          puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table}"   
+        when :tab_ren
+          change[action][args[0]] = table
+        when :assoc_ren
+          change[:assoc_ren][table] = {} unless change[:assoc_ren].include?table
+          change[:assoc_ren][table][args[0]] = args[1] 
+          puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table} #{args[0]} #{args[1]}"   
+        when :col_ren, :col_del, :col_type, :col_add
+          col = args[0]
+          column_changes[table][col] += 1 unless action == :col_add
+          if action == :col_del
+            puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table} #{args}"       
+            change[action] << "#{table}.#{args[0]}"
+            puts change
+          end
+          if action == :col_ren
+            puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table} #{args}"         
+            change[action]["#{table}.#{args[-1]}"] = args[1]
+            puts change
+          end
+        when :fk_del, :has_one_del, :has_many_del, :has_many_add
+          puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table} #{args[0]}"
+        when :assoc_change
+          puts "#{shortvo} #{shortv} \e[33;1m#{action}\e[37;0m #{table} #{args[0]} #{args[-2]} → #{args[-1]}"
+          change[:assoc_change][table] = {} unless change[:assoc_change].include?table
+          change[:assoc_change][table][args[0]] = [args[-2], args[-1]]
+        when :assoc_del
+          puts "#{shortvo} #{shortv} \e[33;1m#{action}\e[37;0m #{table} #{args[0]} #{args[1]}"
+          change[:assoc_del][table] = {} unless change[:assoc_del].include?table
+          change[:assoc_del][table][args[0]] = args[1]
+        when :idx_del
+          puts "#{shortvo} #{shortv} \e[34;1m#{action}\e[37;0m #{table} #{args[0]} #{args[1]}"
+          change[:idx_del][table] = {} unless change[:idx_del].include?table
+          change[:idx_del][table][args[0]] = 'deleted'
         end
-        if action == :col_ren
-          puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table} #{args}"         
-          change[action]["#{table}.#{args[-1]}"] = args[1]
-          puts change
-        end
-      when :fk_del, :has_one_del, :has_many_del, :has_many_add
-        puts "#{shortvo} #{shortv} \e[31;1m#{action}\e[37;0m #{table} #{args[0]}"
-      when :assoc_change
-        puts "#{shortvo} #{shortv} \e[33;1m#{action}\e[37;0m #{table} #{args[0]} #{args[-2]} → #{args[-1]}"
-        change[:assoc_change][table] = {} unless change[:assoc_change].include?table
-        change[:assoc_change][table][args[0]] = [args[-2], args[-1]]
-      when :assoc_del
-        puts "#{shortvo} #{shortv} \e[33;1m#{action}\e[37;0m #{table} #{args[0]} #{args[1]}"
-        change[:assoc_del][table] = {} unless change[:assoc_del].include?table
-        change[:assoc_del][table][args[0]] = args[1]
-      when :idx_del
-        puts "#{shortvo} #{shortv} \e[34;1m#{action}\e[37;0m #{table} #{args[0]} #{args[1]}"
+        this_version_has[action] += 1
       end
-      this_version_has[action] += 1
-    end
-    if change.values.map{|x| x.length}.sum > 0    
-      #exit
-      # checkout to current version
-
-      curv.extract_queries
-      newv.extract_queries
-      newv.check_queries(curv.schema, change)
-    end
-    version_chg << [newv.commit, this_version_has]
-    this_version_has.each do |ac, num|
-      version_with[ac] += 1 unless num.zero?
-      total_action[ac] += num
+      if change.values.map{|x| x.length}.sum > 0    
+        #exit
+        # checkout to current version
+        puts  "====change====\n#{change}"
+        curv.extract_queries
+        newv.extract_queries
+        json_contents = newv.check_queries(curv.schema, change)
+        if json_contents.length > 0
+          log_filename = "#{app_name}_#{curv.commit}_#{newv.commit}.log".gsub("/",'')
+          log_filepath = File.join(File.expand_path(File.dirname(__FILE__)), "../log/#{log_filename}")
+          json_dump = open(log_filepath, 'w')
+          json_contents = JSON.pretty_generate json_contents
+          json_dump.write(json_contents)
+          json_dump.close()
+        end
+      end
+      version_chg << [newv.commit, this_version_has]
+      this_version_has.each do |ac, num|
+        version_with[ac] += 1 unless num.zero?
+        total_action[ac] += num
+      end
+    rescue
     end
   end
   p "#{version_with_change(version_chg)}/#{version_chg.length}"

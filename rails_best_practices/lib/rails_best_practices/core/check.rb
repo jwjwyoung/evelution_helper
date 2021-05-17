@@ -8,6 +8,7 @@ module RailsBestPractices
       CONTROLLER_FILES = /app\/(controllers|cells)\/.*\.rb$/
       MIGRATION_FILES = /db\/migrate\/.*\.rb$/
       MODEL_FILES = /app\/models\/.*\.rb$/
+      SPEC_FILES = /spec\/.*\.rb$/
       MAILER_FILES = /app\/models\/.*mailer\.rb$|app\/mailers\/.*\.rb/
       VIEW_FILES = /app\/(views|cells)\/.*\.(erb|haml|slim|builder|rxml)$/
       PARTIAL_VIEW_FILES = /app\/(views|cells)\/.*\/_.*\.(erb|haml|slim|builder|rxml)$/

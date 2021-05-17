@@ -4,12 +4,12 @@ require 'pp'
 module RailsBestPractices
   module Reviews
     class PrintQueryReview < Review
-      interesting_nodes :def, :defs, :command, :module, :class, :method_add_arg, :method_add_block
-      interesting_files CONTROLLER_FILES, MODEL_FILES, LIB_FILES, HELPER_FILES #VIEW_FILES
+      interesting_nodes :def, :defs, :command, :module, :class, :method_add_arg, :method_add_block, :do_block, :brace_block
+      interesting_files CONTROLLER_FILES, MODEL_FILES, LIB_FILES, HELPER_FILES, SPEC_FILES#VIEW_FILES
       url 'https://rails-bestpractices.com/posts/2010/10/03/use-query-attribute/'
 
-      MULTI_QUERY_METHODS = %w[where where! pluck distinct eager_load from group having includes joins left_outer_joins limit offset order preload readonly reorder select reselect select_all reverse_order unscope find_each rewhere execute uniq all references].freeze
-      SINGLE_QUERY_METHODS = %w[find find! take take! first first! last last! find_by find_by!].freeze
+      MULTI_QUERY_METHODS = %w[where where! pluck distinct eager_load from group having includes joins left_outer_joins limit offset order reload preload readonly reorder select reselect select_all reverse_order unscope find_each rewhere execute uniq all references].freeze
+      SINGLE_QUERY_METHODS = %w[find find! take take! first first! last last! find_by find_by! create create! count].freeze
 
       def initialize(options = {})
         super(options)
@@ -50,7 +50,7 @@ module RailsBestPractices
       end
 
 
-      add_callback :start_def, :start_defs, :start_command do |node|
+      add_callback :start_def, :start_defs, :start_command, :start_do_block, :start_brace_block do |node|
           if node.sexp_type == :def or node.sexp_type == :defs
               node.recursive_children do |child|
                 begin
@@ -65,11 +65,26 @@ module RailsBestPractices
                 rescue => error
                 end
               end
-          #elsif node.sexp_type == :command and (node.message.to_s == "scope" or node.message.to_s == "named_scope")
-          #  process_scope(node)
-          #end
+          elsif node.sexp_type == :do_block or node.sexp_type  == :brace_block
+            bnode = node.children[-1]
+            if bnode.sexp_type == :bodystmt
+              # puts "type #{node.children[-1].children[-1].recursive_children}"
+              # process_method_call_node(node.children[-1].children[-1], "")
+              #puts "HERE #{node.children}"
+              node.recursive_children do |child|
+                begin
+                  #puts "child #{child} #{child.sexp_type}"
+                  if child.sexp_type == :stmts_add
+                    # puts "child #{child[2].children}"
+                    process_method_call_node(child[2], "")
+                  end
+                rescue
+                end
+              end
+           
+           end
 		  		elsif node.sexp_type == :command
-          	case node.message.to_s
+            case node.message.to_s
           	  when 'named_scope', 'scope'
           			process_scope(node)
           			scope_name = node.arguments.all[0].to_s
@@ -131,23 +146,21 @@ module RailsBestPractices
       
       def process_method_call_node(node, func_name)
 				is_scope = ->() {func_name!=""}
-
-				
-
         @processed_node ||= []
-        return nil if @processed_node.include?(node)
-				node.recursive_children do |child|
-          if [:method_add_arg, :method_add_block, :call].include?child.sexp_type
-            @processed_node << child
-          end
-        end
+        # puts "include: #{node} #{@processed_node.include?(node)}"
+        # return nil if @processed_node.include?(node)
+        cnt = 0
+
         @processed_node << node
 
+        # puts "processed_node length #{ @processed_node.length}"
         call_node = nil
         node_list = []
         #if is_call_node?(node) 
+        # puts "is method_call #{is_method_call?node}"
 				if is_method_call?(node)
 					call_node = node
+          # puts "call_node #{call_node}"
 				elsif (is_scope.call() and node.sexp_type == :command)
 					call_node = node
 				else
@@ -157,7 +170,14 @@ module RailsBestPractices
             end
           end
         end
-			
+        if call_node == nil
+          node.recursive_children do |child|
+            if is_method_call?child
+              # puts "\t\tchild #{child} #{is_method_call?child}"
+              process_method_call_node(child, "")
+            end
+          end
+        end
 				return nil if call_node == nil
 
 				node_list << call_node
@@ -166,26 +186,28 @@ module RailsBestPractices
             node_list << child
           end
         end
-
-				caller_class_lst ||= []
+        # initialize caller_class_lst
+        caller_class_lst ||= []
 				if is_scope.call()
 					caller_class_lst << {:method=>call_node.message.to_s, :class=>@current_class_name}
 				else
         	variable_node = variable(call_node)
-        	return nil if !is_model?(variable_node) && !is_query_function?(node)
+          # puts "@@@ variable_node #{variable_node} is_mode: #{is_model?(variable_node)} is_query: #{is_query_function?(node)}"
+          return nil if !is_model?(variable_node) && !is_query_function?(node)
 					variable_node = variable_node.blank? ? node : variable_node
-        	class_name = get_class_name(variable_node)
-					caller_class_lst << {:method=>variable_node.to_s, :class=>class_name}	
+          class_name = get_class_name(variable_node)
+          meth = {:method=>variable_node.to_s, :class=>class_name}	
+          caller_class_lst << meth
 				end
         
 			
-				if ! is_scope.call()	
-					@processed_node = @processed_node + node_list
+				if !is_scope.call()	
+          @processed_node = @processed_node + node_list
         	contain_query = false
         	classes ||= [class_name]
-        	node_list.reverse.each do |cnode|
+          node_list.reverse.each do |cnode|
         	  fcall_name = cnode.message.to_s
-        	  if model_association?(class_name, fcall_name)
+            if model_association?(class_name, fcall_name)
         	    class_name = model_association?(class_name, fcall_name)['class_name']
         	    classes << class_name
         	  elsif model_method?(class_name, fcall_name)
@@ -196,11 +218,17 @@ module RailsBestPractices
 						end
         	end
 				end
-
+        # add processed nodes
+				node.recursive_children do |child|
+          if [:method_add_arg, :method_add_block, :call].include?child.sexp_type
+            @processed_node << child
+            cnt +=1
+          end
+        end
         source = to_source(node).chomp
         puts "source is #{source}"
         #if (MULTI_QUERY_METHODS+SINGLE_QUERY_METHODS).map{|x| source.include?(x)}.any?
-          @collected_queries << {:class => @combined_class_name, :stmt => source, :caller_class_lst => caller_class_lst, :method_name => func_name, :filename => @node.file, :line => node.line_number}
+        @collected_queries << {:class => @combined_class_name, :stmt => source, :caller_class_lst => caller_class_lst, :method_name => func_name, :filename => @node.file, :line => node.line_number.to_i}
         #end
       end
 
@@ -244,7 +272,8 @@ module RailsBestPractices
         elsif variable_node.const?
           class_name = variable_node.to_s
         else
-          class_name = variable_node.to_s.sub(/^@/, '').classify
+          # puts "#{variable_node.to_s.sub(/^@/, '').gsub(/[0-9]/, '')}"
+          class_name = variable_node.to_s.sub(/^@/, '').sub(/[0-9]/, '').classify
         end
         models.include?(class_name)
       end
@@ -259,7 +288,7 @@ module RailsBestPractices
         elsif variable_node.const?
           return variable_node.to_s
         else
-          return variable_node.to_s.sub(/^@/, '').classify
+          return variable_node.to_s.sub(/^@/, '').sub(/[0-9]/,'').classify
         end
       end
 
