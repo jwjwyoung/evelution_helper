@@ -38,7 +38,7 @@ $extract_constraints = false
 # versions = commits.map{|commit| Version_class.new(app_dir, commit)}
 # traverse_all_for_db_schema(app_dir, nil, versions)
 
-app_dir = "/Users/junwenyang/Research/evolution_helper/ruby_apps/onebody"
+app_dir = "/home/junwen/Research/evolution_helper/ruby_apps/onebody"
 commits = ["3.4.0", "3.3.0"]
 versions = commits.map{|commit| Version_class.new(app_dir, commit)}
 traverse_all_for_db_schema(app_dir, nil, versions)

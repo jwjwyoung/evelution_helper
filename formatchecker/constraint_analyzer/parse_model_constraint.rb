@@ -78,7 +78,7 @@ def parse_model_constraint_file(ast)
           # puts "#{column} #{dic}"
           $cur_class.addHasMany(column.singularize, dic)
           r = $cur_class.addRelation(column, dic, "has_many")
-          puts "relation #{r[:class_name]}"
+          # puts "relation #{r[:class_name]}"
         end
       when "has_one"
         columns.each do |column|

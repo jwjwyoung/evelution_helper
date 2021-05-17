@@ -10,7 +10,8 @@ def extract_queries_and_scopes(app_dir, output_dir, rails_best_practices_cmd, ve
   scope_output_file = File.join(output_dir, "scope_output_#{app_name}")
   schema_output_file = File.join(output_dir, "schema_output_#{app_name}")
   if !File.exist?(query_output_file) or !File.exist?(scope_output_file) or !File.exist?(schema_output_file)
-    `cd #{app_dir} && echo "PrintQueryCheck: { output_filename_query: \"#{query_output_file}\", output_filename_scope: \"#{scope_output_file}\", output_filename_schema: \"#{schema_output_file}\"}" &> ./config/rails_best_practices.yml && #{rails_best_practices_cmd} . -c ./config/rails_best_practices.yml`
+    `echo "PrintQueryCheck: { output_filename_query: \"#{query_output_file}\", output_filename_scope: \"#{scope_output_file}\", output_filename_schema: \"#{schema_output_file}\"}" > #{app_dir}/config/rails_best_practices.yml`
+    `cd #{app_dir} && #{rails_best_practices_cmd} . -c ./config/rails_best_practices.yml`
   end
 
   queries = Marshal.load(File.binread(query_output_file)).map do |obj|

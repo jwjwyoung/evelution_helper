@@ -1,4 +1,4 @@
-apps_dir: /Users/junwenyang/Research/evolution_helper/ruby_apps/
-constraint_analyzer_dir: /Users/junwenyang/Research/evolution_helper/constraint_analyzer/
-tmp_output_dir: /Users/junwenyang/Research/evolution_helper/tmp/
-rails_best_practices_cmd: /Users/junwenyang/Research/evolution_helper/rails_best_practices/bin/rails_best_practices
+apps_dir: /home/junwen/Research/evolution_helper/ruby_apps/
+constraint_analyzer_dir: /home/junwen/Research/evolution_helper/constraint_analyzer/
+tmp_output_dir: /home/junwen/Research/evolution_helper/tmp/
+rails_best_practices_cmd: /home/junwen/Research/evolution_helper/rails_best_practices/bin/rails_best_practices

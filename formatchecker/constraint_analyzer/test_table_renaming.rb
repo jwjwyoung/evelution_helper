@@ -21,11 +21,12 @@ require "active_support"
 require "active_support/inflector"
 require "active_support/core_ext/string"
 require "regexp-examples"
+require "test/unit"
 load_validate_api # load the model api
 load_html_constraint_api # load the html api
 require_relative '../../query_extractor/query_parser_with_sql.rb'
 require "../../query_extractor/load.rb"
-$read_html = true
+$read_html = false
 $read_db = true
 $read_constraints = true
 app_dir = "/Users/junwenyang/Research/evolution_helper/ruby_apps/example_app"
@@ -35,15 +36,22 @@ def test_change(app_dir, commits)
 end
 
 # table renaming
+class TestVersionClassConstraint < Test::Unit::TestCase
+    def test_extract_uniquess_columns
+        app_dir = "/Users/junwenyang/Research/evolution_helper/ruby_apps/example_app"
+        commits = ["table_rename", "811fabb7b1779629f78e1b975691a382e82e32ee"]
+        #test_change(app_dir, commits)
+        # association renaming
+        commits = ["association_renaming", "9571281eb0afe01da3625f350b48511dbc7efcda"]
+        #test_change(app_dir, commits)
 
-commits = ["table_rename", "811fabb7b1779629f78e1b975691a382e82e32ee"]
-#test_change(app_dir, commits)
-# association renaming
-commits = ["association_renaming", "9571281eb0afe01da3625f350b48511dbc7efcda"]
-#test_change(app_dir, commits)
-
-# association deletion
-commits = ["association_deletion", "9571281eb0afe01da3625f350b48511dbc7efcda"]
-#test_change(app_dir, commits)
-
-commits = ["0.6.0", '0.5.1']
+        # association deletion
+        commits = ["association_deletion", "9571281eb0afe01da3625f350b48511dbc7efcda"]
+        #test_change(app_dir, commits)
+    end
+    def test_redmine
+        commits = ["0.6.0", '0.5.1']
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/redmine"
+        test_change(app_dir, commits)
+    end
+end

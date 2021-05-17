@@ -1,1 +1,1 @@
-puts %i{issue_id filename}
+puts " " + "/" * 66

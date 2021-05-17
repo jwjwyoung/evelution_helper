@@ -166,9 +166,9 @@ class Version_class
   def print_columns
     # puts"---------------columns-----------------"
     get_activerecord_files.each do |key, file|
-      # puts"#{key} #{file.getColumns.length}"
+      puts"#{key} #{file.getColumns.length}"
       file.getColumns.each do |key, column|
-        # puts"\t#{column.column_name}"
+         puts"\t#{column.column_name}"
       end
     end
   end
@@ -560,7 +560,6 @@ class Version_class
     annotate_model_class
     extract_constraints if $extract_constraints
     apply_concerns
-    print_columns
     #extract_queries
     begin
       calculate_loc

@@ -43,7 +43,7 @@ class File_class
     end  
     class_name = class_name.capitalize
     relation = {:rel => rel, :field => column, :class_name => class_name, :column => foreign_key}
-    puts "relation: #{relation}"
+    # puts "relation: #{relation}"
     @relations << relation
     return relation
   end
