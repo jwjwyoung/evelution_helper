@@ -36,9 +36,9 @@ class File_class
     end
     if not foreign_key or foreign_key.length == 0
       if ["belongs_to"].include?rel
-        foreign_key = "#{class_name.downcase}_id"
+        foreign_key = "#{class_name&.downcase}_id"
       else
-        foreign_key = "#{self.class_name.downcase}_id"
+        foreign_key = "#{self.class_name&.downcase}_id"
       end
     end  
     class_name = class_name.capitalize

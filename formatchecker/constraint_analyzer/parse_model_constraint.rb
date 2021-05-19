@@ -34,7 +34,7 @@ def parse_model_constraint_file(ast)
       parse_model_constraint_file(c3)
     end
   end
-  if ast.type.to_s == "command"
+  if ["command", "fcall"].include?ast.type.to_s
     funcname = ast[0].source
     if $read_constraints && $validate_apis&.include?(funcname)
       # puts"funcname #{funcname} #{ast.source}"
@@ -51,10 +51,14 @@ def parse_model_constraint_file(ast)
         # $cur_class.addForeignKey(key_field)
       end
     end
-    if %w[has_many has_one belongs_to has_and_belongs_to_many].include? funcname
+    if %w[has_many has_one belongs_to has_and_belongs_to_many delegate].include? funcname
       columns = []
       dic = {}
-      ast[1].children.each do |child|
+      new_ast = ast[1]
+      if ast.type.to_s == "fcall"
+        new_ast = ast[0][0]
+      end
+      new_ast.children.each do |child|
         if child.type.to_s == "symbol_literal"
           column = handle_symbol_literal_node(child)
           columns << column

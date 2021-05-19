@@ -39,6 +39,8 @@ def parse_db_constraint_function(_table, funcname, ast)
   case funcname
   when "add_column"
     handle_add_column(ast[1])
+  when "add_column_with_default"
+    handle_add_column(ast[1])
   when "create_table"
     handle_create_table(ast)
   when "change_column"
@@ -135,7 +137,7 @@ def handle_change_column(ast, is_deleted = false)
   end
   table_class.table_name = table if table_class
   if is_deleted
-    table_class.getColumns[column_name].is_deleted = true
+    table_class.getColumns[column_name]&.is_deleted = true
     constraint_delete_keys = table_class.getConstraints.select do |k, _v|
       k.start_with? "#{class_name}-#{column_name}"
     end
@@ -160,7 +162,7 @@ def handle_change_column(ast, is_deleted = false)
 end
 
 def handle_create_table(ast)
-  return unless ast[1].type == :list && ast[2].type == :do_block
+  return unless ast[1]&.type == :list && ast[2]&.type == :do_block
 
   symbol_node = ast[1][0]
   table_name = handle_symbol_literal_node(symbol_node) || handle_string_literal_node(symbol_node)
@@ -406,20 +408,20 @@ def handle_change_column_default(ast)
   puts "#{table} = #{column_name} = #{column_type} --- #{dic}" if $debug_mode
   class_name = convert_tablename(table)
   table_class = $model_classes[class_name]
-  table_class.table_name = table_name
   table_class ||= $dangling_classes[class_name]
   unless table_class
     table_class = File_class.new("")
     $dangling_classes[class_name] = table_class
   end
+  table_class.table_name = table
   if table && column_name && table_class
-    table_class = $model_classes[class_name]
+    # table_class = $model_classes[class_name]
     columns = table_class.getColumns
     column = columns[column_name]
-    new_default = dic["to"].source if dic["to"].type.to_s == "var_ref"
+    new_default = dic["to"].source if dic["to"]&.type.to_s == "var_ref"
     new_default = new_default || handle_symbol_literal_node(dic["to"]) \
       || handle_string_literal_node(dic["to"])
-    column.default_value = new_default
+    column&.default_value = new_default
   end
 end
 
@@ -444,15 +446,15 @@ def handle_rename_table(ast)
     $model_classes.delete(old_class_name)
     $model_classes[new_class_name] = old_class
   end
-  puts "new classes #{$model_classes.keys}"
+  # puts "new classes #{$model_classes.keys}"
   return unless old_class && new_class
   old_class.getColumns.each do |_k, v|
     new_class.addColumn(v)
     v.table_class = new_class
   end
-  old_class.is_deleted = true
-  new_class.prev_class_name = old_class_name
-  new_class.addConstraints(old_class.getConstraints.values)
+  old_class.is_deleted = true if old_class
+  new_class.prev_class_name = old_class_name if new_class
+  new_class.addConstraints(old_class.getConstraints.values) if new_class
 end
 
 def handle_drop_table(ast)
@@ -507,6 +509,7 @@ def handle_remove_index(ast)
 end
 
 def handle_rename_column(ast)
+  puts "handle_rename_column"
   children = ast.children
   table_name = handle_symbol_literal_node(children[0]) || handle_string_literal_node(children[0])
   old_column_name = handle_symbol_literal_node(children[1]) || handle_string_literal_node(children[1])
@@ -514,23 +517,26 @@ def handle_rename_column(ast)
   class_name = convert_tablename(table_name)
   table_class = $model_classes[class_name]
   table_class ||= $dangling_classes[class_name]
+  puts "NAME #{old_column_name} #{new_column_name}"
   if table_class
     table_class.table_name = table_name 
     column = table_class.getColumns[old_column_name]
-    column.prev_column = table_class.getColumns[old_column_name].clone
-    column.column_name = new_column_name
-    constraints = table_class.getConstraints
-    new_constraints = []
-    constraints.each do |k, v|
-      prefix = "#{class_name}-#{old_column_name}-"
-      next unless k.start_with? prefix
+    if column
+      column.prev_column = table_class.getColumns[old_column_name].clone
+      column.column_name = new_column_name
+      constraints = table_class.getConstraints
+      new_constraints = []
+      constraints.each do |k, v|
+        prefix = "#{class_name}-#{old_column_name}-"
+        next unless k.start_with? prefix
 
-      v.column = new_column_name
-      new_constraints << v
-      # delete the old key instead of setting it to be nil
-      constraints.delete(k)
+        v.column = new_column_name
+        new_constraints << v
+        # delete the old key instead of setting it to be nil
+        constraints.delete(k)
+      end
+      table_class.addConstraints(new_constraints)
     end
-    table_class.addConstraints(new_constraints)
   end
 end
 

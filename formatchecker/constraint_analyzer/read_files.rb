@@ -110,13 +110,15 @@ def read_constraint_files(application_dir = nil, version = "")
       file = File.open(filename)
       contents = file.read
       file.close
+      
       begin
         ast = YARD::Parser::Ruby::RubyParser.parse(contents).root
         $cur_class = File_class.new(filename)
         $cur_class.ast = ast
         parse_db_constraint_file(ast)
         cnt += 1
-      rescue StandardError
+      rescue Exception  => e
+        puts "ERROR #{e.backtrace} #{filename}\n#{e}"
       end
     end
   end

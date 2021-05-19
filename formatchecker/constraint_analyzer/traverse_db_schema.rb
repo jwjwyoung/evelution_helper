@@ -91,8 +91,9 @@ class Version_class
           new_name = col.column_name
           prev_name = col.prev_column.column_name
           old_prev_name = old_file.columns[ckey]&.prev_column&.column_name
+          puts "RENAME #{new_name} #{prev_name}  #{file.functions.nil?}"
           if prev_name != new_name && (old_prev_name.nil? || old_prev_name != prev_name)
-            yield :col_ren, key, ckey, new_name, prev_name unless file.functions.include?(prev_name)
+            yield :col_ren, key, ckey, new_name, prev_name unless file.functions&.include?(prev_name)
           end
         end
       end
@@ -144,12 +145,12 @@ class Version_class
           table_class = old_file.class_name
         end
         if deleted_cols.detect{|x| x.table_class.class_name == table_class and x.column_name == r[:column]}
-          yield :assoc_del, file.class_name, r[:field], r  unless file.functions.include?(r[:field])
+          yield :assoc_del, file.class_name, r[:field], r  unless file.functions&.include?(r[:field])
         else
           unless new_relations.include?r
             same_type_different_name = new_relations.detect{|x| x[:rel] == r[:rel] and x[:class_name] == r[:class_name] and x[:column] == r[:column] }
             if same_type_different_name
-              yield :assoc_ren, file.class_name, r[:field], same_type_different_name[:field] unless file.functions.include?(r[:field])
+              yield :assoc_ren, file.class_name, r[:field], same_type_different_name[:field] unless file.functions&.include?(r[:field])
             else
               same_name_different_type = new_relations.detect{|x| x[:field].singularize == r[:field].singularize and x[:class_name] == r[:class_name] and x[:column] == r[:column] }
               yield :assoc_change, file.class_name, r[:field], r, same_name_different_type if same_name_different_type
@@ -324,7 +325,8 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
         version_with[ac] += 1 unless num.zero?
         total_action[ac] += num
       end
-    rescue
+    rescue StandardError => e
+      puts "#{e}"
     end
   end
   p "#{version_with_change(version_chg)}/#{version_chg.length}"

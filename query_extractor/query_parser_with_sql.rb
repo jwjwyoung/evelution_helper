@@ -400,7 +400,11 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 	end
 	associations = find_table_in_schema(base_table).associations
 	table_schema = find_table_in_schema(base_table)
-	str_param, components = extract_query_string_from_param(call_ident, arg_node, base_table)
+	if function != "find_in_state"
+		str_param, components = extract_query_string_from_param(call_ident, arg_node, base_table)
+	else
+		str_param, components = "", []
+	end
 	ret_str = str_param
 	
 	puts "components #{components.length} #{components}"
@@ -410,7 +414,6 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 		if function == "NOT"
 			ret_str = " NOT (#{ret_str})"
 		end
-
 	# find (by id)
 	elsif function == "find"
 		ret_str = " #{prev_contains_where(prev_state) ? 'AND' : 'WHERE'} id = ?"
@@ -723,13 +726,14 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 	outputf = File.open("query.py","w" )
 	output_dics = []
 	raw_queries = raw_queries.sort_by { |w| w.line }
-
+	puts "after sort"
 	file2issues = {} # filename => issues []
 	
 	raw_queries.each do |raw_query|
 		# if raw_query[:method_name].blank? #only checks scopes
 		# 	next
 		# end
+		puts "####QUERY##"
 		filename = raw_query.filename.split($app_name.downcase)[-1]
 		# initialize the filename2pos hash
 		if not file2issues.include?filename
@@ -741,9 +745,6 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 		metas << meta
 		base_table = clean_prefix(raw_query[:caller_class_lst].length==0 ? raw_query[:class]: raw_query[:caller_class_lst][0][:class])
 		if !is_valid_table?(base_table)
-			# puts "query = #{raw_query.stmt} #{raw_query[:caller_class_lst]}"
-			# puts "Table #{base_table} does not exist!"
-			# puts ""
 			next
 		end
 
