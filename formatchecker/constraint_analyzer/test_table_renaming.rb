@@ -123,6 +123,7 @@ class TestVersionClassConstraint < Test::Unit::TestCase
         test_change(app_dir, commits)
     end
     def test_diaspora3
+        # all table is deleted, no schema, should not count
         commits = ["e0f583d7d3ce94b8f3a72c5de13cacc52b3864d9", "f043c9cc7e1e162734c435abe9eab0527baaf85f"]
         app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/diaspora"
         test_change(app_dir, commits)
@@ -133,7 +134,21 @@ class TestVersionClassConstraint < Test::Unit::TestCase
         app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/diaspora"
         test_change(app_dir, commits)
     end    
+    def test_diaspora5
+        # index deletion
+        commits = ["e9f6dbdffd8b9c74238e1183cff3918a487e4a89", "b7cd9d6238b7a62f0ca2e5bf940d02c491bad694"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/diaspora"
+        test_change(app_dir, commits)
+    end
+    def test_diaspora6
+         # index deletion
+         commits = ["95def40c5532a130ce30dd00426d55e6028c06a2", "87d0778086c0f262ee31d5e6000345f0582cd19d"]
+         app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/diaspora"
+         test_change(app_dir, commits)
+    end
     def test_gitlab1
+        # Jul 26 => AUG 1, takes 6 days
+        # fix commit 5e3a208f58a7a887370888055da180f64b3692a3
         commits = ["e5e1c907c01b53194f77e8d8de53554ba1824e7c", "eb2d4adf38726da62f62e850d181cedf12c64c5e"]
         app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/gitlabhq"
         test_change(app_dir, commits)

@@ -18,7 +18,7 @@ end
 
 def clean_prefix(name)
   #name.include?('::') ? name.gsub(/[^:]+::/,'') : name
-  name.demodulize
+  name&.demodulize
 end
 def tablename_plural?(name)
 	name[0]==name[0].downcase

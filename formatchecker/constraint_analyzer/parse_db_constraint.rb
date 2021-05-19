@@ -125,6 +125,15 @@ def handle_change_column(ast, is_deleted = false)
   table = handle_symbol_literal_node(children[0]) || handle_string_literal_node(children[0])
   column_name = handle_symbol_literal_node(children[1]) || handle_string_literal_node(children[1])
   column_type = handle_symbol_literal_node(children[2]) || handle_string_literal_node(children[2])
+  columns = []
+  if is_deleted
+    children.each do |c|
+      columns << (handle_symbol_literal_node(c) || handle_string_literal_node(c))
+ end
+  else
+    columns << column_name
+  end
+  puts "TABLE #{table} #{column_name} #{column_type}"
   dic = {}
   dic = extract_hash_from_list(children[-1])
   class_name = convert_tablename(table)
@@ -143,20 +152,21 @@ def handle_change_column(ast, is_deleted = false)
     end
     table_class.getConstraints.delete_if { |k, _v| constraint_delete_keys.include? k }
   end
-
-  if table && column_name && column_type
-    column = Column.new(table_class, column_name, column_type, $cur_class, dic)
-    column.is_deleted = is_deleted
-    columns = table_class.getColumns
-    # column.prev_column = columns[column_name]
-    table_class.addColumn(column)
-    constraint_delete_keys = table_class.getConstraints.select do |k, _v|
-      k.include? "#{class_name}-#{column_name}-#{Presence_constraint}-#{Constraint::DB}" or
-        k.include? "#{class_name}-#{column_name}-#{Length_constraint}-#{Constraint::DB}"
+  columns.each do |column_name|
+    if table && column_name && column_type
+      column = Column.new(table_class, column_name, column_type, $cur_class, dic)
+      column.is_deleted = is_deleted
+      columns = table_class.getColumns
+      # column.prev_column = columns[column_name]
+      table_class.addColumn(column)
+      constraint_delete_keys = table_class.getConstraints.select do |k, _v|
+        k.include? "#{class_name}-#{column_name}-#{Presence_constraint}-#{Constraint::DB}" or
+          k.include? "#{class_name}-#{column_name}-#{Length_constraint}-#{Constraint::DB}"
+      end
+      table_class.getConstraints.delete_if { |k, _v| constraint_delete_keys.include? k }
+      constraints = create_constraints(class_name, column_name, column_type, Constraint::DB, dic)
+      table_class.addConstraints(constraints)
     end
-    table_class.getConstraints.delete_if { |k, _v| constraint_delete_keys.include? k }
-    constraints = create_constraints(class_name, column_name, column_type, Constraint::DB, dic)
-    table_class.addConstraints(constraints)
   end
   # puts"table: #{table} column: #{column} column_type: #{column_type}"
 end
@@ -358,6 +368,7 @@ def create_constraints(class_name, column_name, column_type, type, dic)
 end
 
 def handle_remove_column(ast)
+  puts "REMOVE #{ast.source}"
   handle_change_column(ast, true)
 end
 
@@ -400,12 +411,11 @@ def handle_change_column_default(ast)
   # puts "ast.source #{ast.source} \n#{ast[0].type}"
   table = nil
   column_name = nil
-  column_type = nil
   table = handle_symbol_literal_node(children[0]) || handle_string_literal_node(children[0])
   column_name = handle_symbol_literal_node(children[1]) || handle_string_literal_node(children[1])
   dic = {}
   dic = extract_hash_from_list(children[-1])
-  puts "#{table} = #{column_name} = #{column_type} --- #{dic}" if $debug_mode
+  puts "#{table} = #{column_name} = #{column_type} --- #{dic}" #if $debug_mode
   class_name = convert_tablename(table)
   table_class = $model_classes[class_name]
   table_class ||= $dangling_classes[class_name]
@@ -501,11 +511,25 @@ end
 
 def handle_remove_index(ast)
   table_name = handle_symbol_literal_node(ast[0]) || handle_string_literal_node(ast[0])
+  children = ast.children
+  columns = []
+  if children[1].type.to_s == "symbol_literal"
+    columns = [handle_symbol_literal_node(children[1])]
+  elsif children[1].type.to_s == "string_literal"
+    columns = [handle_string_literal_node(children[1])]
+  elsif children[1].type.to_s == "array"
+    columns = handle_array_node(children[1])
+  end
+  # puts "COLUMNS #{columns} "
   table = $model_classes[table_name.classify] || $dangling_classes[table_name.classify]
   dic = extract_hash_from_list(ast[1])
   index_name = handle_symbol_literal_node(dic["name"]) || handle_string_literal_node(dic["name"])
-  index_name ||= "#{table_name}_#{columns.join('_')}"
   table.indices.except! index_name
+  # puts "index-name: #{index_name} #{index_name.blank?}"
+  if index_name.blank?
+    old_index = table.indices.detect{|k, v| v.columns.sort == columns.sort}
+    table.indices.except! old_index[0] if old_index
+  end
 end
 
 def handle_rename_column(ast)

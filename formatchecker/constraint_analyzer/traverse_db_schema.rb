@@ -300,7 +300,7 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
         when :idx_del
           puts "#{shortvo} #{shortv} \e[34;1m#{action}\e[37;0m #{table} #{args[0]} #{args[1]}"
           change[:idx_del][table] = {} unless change[:idx_del].include?table
-          change[:idx_del][table][args[0]] = 'deleted'
+          change[:idx_del][table][args[1]] = 'deleted'
         end
         this_version_has[action] += 1
       end

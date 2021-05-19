@@ -251,7 +251,7 @@ def is_order_func?(call_ident)
 end
 def extract_query_string_from_list_node(call_ident, arg_node, base_table)
 	preds = []
-	if is_query_predicate_func?(call_ident)
+	if is_query_predicate_func?(call_ident) or call_ident[0].to_s == "build_from_defaults"
 		fields = extract_fields_from_args_for_where(arg_node)
 		# string lieratal #where("articles.author = ?")
 		puts "arg[0] #{arg_node[0].source} #{arg_node[0].length} fields : #{fields}"
@@ -366,6 +366,7 @@ def extract_query_string_from_param(call_ident, node, base_table)
 		next if !is_valid_node?(arg_node)
 		ptype = arg_node.type
 		s1,q1="",[]
+		puts "PTYPE #{ptype}"
 		if ptype == :list
 			s1,q1 = extract_query_string_from_list_node(call_ident, arg_node, base_table)
 		elsif ptype == :array
@@ -733,7 +734,7 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 		# if raw_query[:method_name].blank? #only checks scopes
 		# 	next
 		# end
-		puts "####QUERY##"
+		puts "####QUERY #{raw_query.stmt}##"
 		filename = raw_query.filename.split($app_name.downcase)[-1]
 		# initialize the filename2pos hash
 		if not file2issues.include?filename

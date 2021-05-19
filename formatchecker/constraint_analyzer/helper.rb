@@ -112,3 +112,15 @@ def is_number(obj)
   return true if obj =~ /\A\d+\Z/
   true if Float(obj) rescue false
 end
+
+def replace(conc)
+  # regex = /\#\{.*\}/
+  # matches = conc.to_enum(:scan, regex).map  { Regexp.last_match }
+  # matches.reverse.each do |m|
+  #   start_set = m.offset(0)[0]
+  #   end_set = m.offset(0)[1]
+  #   conc[start_set..end_set] = '?'
+  # end
+  conc = conc.gsub("\\", ' ').gsub("\"",' ').gsub("\n",' ').gsub("#", " ").gsub("{", " ").gsub("}", " ")
+  return conc
+end
