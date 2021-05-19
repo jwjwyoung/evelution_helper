@@ -554,7 +554,6 @@ class Version_class
       end
     end
   end
-
   def build
     extract_files
     annotate_model_class
@@ -562,7 +561,7 @@ class Version_class
     apply_concerns
     #extract_queries
     puts "-----total files: #{self.activerecord_files.length}--------"
-    puts "---#{activerecord_files['Message'].columns.map{|k,v| v.column_name + ' ' + v.is_deleted.to_s}}"
+    puts "---#{activerecord_files['Story'].columns.map{|k,v| v.column_name + ' ' + v.is_deleted.to_s}}"
     begin
       calculate_loc
     rescue StandardError

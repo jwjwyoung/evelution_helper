@@ -304,9 +304,20 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
         end
         this_version_has[action] += 1
       end
-      if change.values.map{|x| x.length}.sum > 0    
-        #exit
-        # checkout to current version
+      if change.values.map{|x| x.length}.sum > 0   
+        newv.activerecord_files.each do |key, file|
+          file.indices.each do |name, index|
+            index.columns.each do |column|
+              # puts "index #{index} #{column} #{ change[:col_ren].keys}"
+              if change[:col_ren].include?"#{key}.#{column}"
+                puts "ERROR COLUMN #{column} is renamed"
+              end
+              if change[:col_del].include?"#{key}.#{column}"
+                puts "ERROR COLUMN #{column} is deleted"
+              end
+            end
+          end
+        end
         puts  "====change====\n#{change}"
         curv.extract_queries
         newv.extract_queries

@@ -366,7 +366,15 @@ def extract_query_string_from_param(call_ident, node, base_table)
 		next if !is_valid_node?(arg_node)
 		ptype = arg_node.type
 		s1,q1="",[]
-		puts "PTYPE #{ptype}"
+		puts "PTYPE #{ptype} #{arg_node.source}"
+		if ptype == :string_concat
+			puts "STRING CONCAT"
+			new_sql = replace(arg_node.source)
+			contents = "\"" + new_sql + "\""
+			puts "CONTENTS #{contents}"
+			arg_node = YARD::Parser::Ruby::RubyParser.parse(contents).root[0]
+			ptype = :string_literal
+		end
 		if ptype == :list
 			s1,q1 = extract_query_string_from_list_node(call_ident, arg_node, base_table)
 		elsif ptype == :array
@@ -410,7 +418,7 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 	
 	puts "components #{components.length} #{components}"
 	# where
-	if ["where", "where!", "rewhere", "find_by", "find_by!", "not"].include?(node[0].to_s)
+	if ["where", "where!", "rewhere", "find_by", "find_by!", "not"].include?(function)
 		ret_str = " #{prev_contains_where(prev_state) ? 'AND' : 'WHERE'} #{str_param}"
 		if function == "NOT"
 			ret_str = " NOT (#{ret_str})"
@@ -449,7 +457,7 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 	#elsif table_schema.
 	
 	# explicit join or inexplicit join via association
-	elsif ["joins","left_outer_joins","includes","references", "eager_load","preload"].include?(function) or associations.select { |ax| ax[:field]==function}.length > 0
+	elsif ["joins","left_outer_joins","includes","references", "eager_load","preload"].include?(function) or associations&.select { |ax| ax[:field]==function}.length > 0
 		is_explicit_join = ["joins","left_outer_joins","includes","eager_load","preload", "references"].include?(function)
 		if str_param.blank?
 			columns = is_explicit_join ? get_fields_and_tables_for_query(components) : [QueryColumn.new(base_table, function)]
@@ -489,7 +497,7 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 							join_meth =  'includes'
 						elsif function == "references"
 							join_meth = function
-						elsif ["left_outer_joins"].include?(node[0].to_s)
+						elsif ["left_outer_joins"].include?(function)
 							join_meth = 'left_outer_joins' 
 						else
 							join_meth = 'joins'
@@ -518,7 +526,7 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 		end
 
 	# order
-	elsif ['order',"reorder"].include?(node[0].to_s)
+	elsif ['order',"reorder"].include?(function)
 		symbs = []
 		get_fields_and_tables_for_query(components).map{|xx| [xx.table, xx.column] }.uniq.each do |table, column_symb|
 			ret_str = " ORDER BY #{table}.#{column_symb}"
@@ -528,7 +536,7 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 		#components << QueryColumn.new(base_table, symbs.join(', '), 'order')
 
 	# group
-	elsif ['group','groupby'].include?(node[0].to_s)
+	elsif ['group','groupby'].include?(function)
 		symbs = []
 		get_fields_and_tables_for_query(components).map{|xx| xx.column }.uniq.each do |column_symb|
 			ret_str = " GROUP BY #{column_symb}"
@@ -537,16 +545,16 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 		components << QueryColumn.new(base_table, symbs.join(', '), 'group')
 
 	# first
-	elsif ['first','first!','exists','exists?','take','last','last!'].include?(node[0].to_s)
+	elsif ['first','first!','exists','exists?','take','last','last!'].include?(function)
 		ret_str = " LIMIT 1"
 		components<< QueryComponent.new("return_limit", "1")
 
 	# limit
-	elsif ['limit'].include?(node[0].to_s)
+	elsif ['limit'].include?(function)
 		components<< QueryComponent.new("return_limit", str_param)
 
 	# pluck
-	elsif ['pluck', 'select', 'try'].include?(node[0].to_s)
+	elsif ['pluck', 'select', 'try'].include?(function)
 		if str_param.blank?
 			get_fields_and_tables_for_query(components).map{|xx| xx.column }.each do |column_symb|
 				components << QueryColumn.new(base_table, column_symb, 'select')
@@ -556,32 +564,32 @@ def extract_query_string_from_call(call_ident, arg_node, prev_state)
 		end
 
 	# field
-	elsif table_schema.fields.include?(node[0].to_s)
-		components << QueryColumn.new(base_table, node[0].to_s, 'select')
-
+	elsif table_schema.fields.include?(function)
+		components << QueryColumn.new(base_table, function, 'select')
+		puts "INCLUDED #{table_schema.fields.include?(function)} #{components}" 
 	# distinct
-	elsif ['distinct','uniq'].include?(node[0].to_s)
+	elsif ['distinct','uniq'].include?(function)
 		components << QueryComponent.new('distinct')
 	
-	elsif ['compact'].include?(node[0].to_s)
+	elsif ['compact'].include?(function)
 		components << QueryPredicate.new(QueryColumn.new(base_table, 'id'), "!=", "0")
 	# collect = project
-	elsif ['collect'].include?(node[0].to_s)
+	elsif ['collect'].include?(function)
 		# TODO
 
 	# scope...
-	elsif find_scope(base_table, node[0].to_s)
-		components << {:class => base_table, :meth => node[0].to_s}
+	elsif find_scope(base_table, function)
+		components << {:class => base_table, :meth => function}
 
 	end
 	# components.map { |x| 
 	# 	if !x.is_a?(Hash)
-	# 		x.ruby_meth = node[0].to_s 
+	# 		x.ruby_meth = function 
 	# 	end
 	# 	x }
 	
 	prev_state[:base_table] = base_table
-	prev_state[:prev_calls] << node[0].to_s
+	prev_state[:prev_calls] << function
 	return ret_str, components, prev_state 
 end
 
@@ -641,7 +649,7 @@ def parse_one_query(raw_query)
 	components += post_process_sql_string(sql, base_table)
 	puts "csize2: #{components.length}"
 	fields = get_fields_and_tables_for_query(components)
-
+	puts "fields: #{fields} #{sql}"
 	methods = get_all_methods(query_node)
 	base_object_type = nil
   if !(base_object_type = infer_object_type(query_node))
@@ -729,12 +737,13 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 	raw_queries = raw_queries.sort_by { |w| w.line }
 	puts "after sort"
 	file2issues = {} # filename => issues []
-	
+	cnt = 0
 	raw_queries.each do |raw_query|
 		# if raw_query[:method_name].blank? #only checks scopes
 		# 	next
 		# end
-		puts "####QUERY #{raw_query.stmt}##"
+		cnt += 1
+		puts "#####{cnt} / #{raw_queries.length} QUERY #{raw_query.stmt}##"
 		filename = raw_query.filename.split($app_name.downcase)[-1]
 		# initialize the filename2pos hash
 		if not file2issues.include?filename
@@ -744,6 +753,7 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 		old_stmt = raw_query.stmt
 		meta = parse_one_query(raw_query) 
 		metas << meta
+		across_lines = raw_query.stmt.split("\n").length
 		base_table = clean_prefix(raw_query[:caller_class_lst].length==0 ? raw_query[:class]: raw_query[:caller_class_lst][0][:class])
 		if !is_valid_table?(base_table)
 			next
@@ -766,8 +776,8 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 		else
 			puts "\tquery cannot be handled #{meta.fields.length}"
 		end
-		
-		line_content = open(raw_query.filename).readlines[loc]
+		all_lines = open(raw_query.filename).readlines
+		line_content = all_lines[loc]
 		puts "raw_query = #{raw_query.stmt} line: #{raw_query.line} #{line_content}\n"
 								
 		if meta.fields.length >= 1
@@ -851,7 +861,6 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 						if change[:assoc_ren].include?(model_class_name) and change[:assoc_ren][model_class_name].include?field.column
 							regex = /#{field.ruby_meth}[^a-zA-Z_\@0-9]+#{field.column}[^a-zA-Z_\@0-9]/
 							matches = line_content.to_enum(:scan, regex).map  { Regexp.last_match }
-							puts "LINE #{line_content} #{matches}"
 							matches&.each do |m|
 								offset = m.offset(0)[0] + 1 
 								offset += field.ruby_meth.length if field.ruby_meth
@@ -864,17 +873,24 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 								file2issues[filename][issue.position] = issue
 							end
 						end
-						if change[:idx_del].include?field.table and change[:assoc_ren][idx_del].include?field.column
-							regex = /[^a-zA-Z_\@0-9]#{field.column}[^a-zA-Z_\@0-9]/
-							matches = line_content.to_enum(:scan, regex).map  { Regexp.last_match }
-							matches&.each do |m|
-								offset = m.offset(0)[0] + 1
-								endset = m.offset(0)[1] - 1
-								patch = ""
-								change_type = "index delete"
-								detailed_reason = "index on #{table_field} has been DELETED"
-								issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
-								file2issues[filename][issue.position] = issue
+						if change[:idx_del].include?field.table  
+							deleted_indices = change[:idx_del][field.table].keys
+							is_affected = deleted_indices.detect{|x| x.length == 1 and x.include?field.column}
+							if is_affected
+								regex = /[^a-zA-Z_\@0-9]#{field.column}[^a-zA-Z_\@0-9]/
+								for i in 0...across_lines
+									line_content = all_lines[loc + i]
+									matches = line_content.to_enum(:scan, regex).map  { Regexp.last_match }
+									matches&.each do |m|
+										offset = m.offset(0)[0] + 1
+										endset = m.offset(0)[1] - 1
+										patch = ""
+										change_type = "index delete"
+										detailed_reason = "index on #{table_field} has been DELETED"
+										issue = generate_issue(patch, loc + i, offset, endset, change_type, detailed_reason)
+										file2issues[filename][issue.position] = issue
+									end
+								end
 							end
 						end
 						if change[:tab_del].include?field.table

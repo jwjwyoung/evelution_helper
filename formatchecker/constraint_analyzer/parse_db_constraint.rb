@@ -51,6 +51,8 @@ def parse_db_constraint_function(_table, funcname, ast)
     handle_change_column_null(ast)
   when "remove_column"
     handle_remove_column(ast[1])
+  when "remove_columns"
+    handle_remove_column(ast[1], true)
   when "execute"
     parse_sql(ast[1])
   when "create_join_table"
@@ -114,7 +116,7 @@ def handle_add_column(ast)
   handle_change_column(ast, false)
 end
 
-def handle_change_column(ast, is_deleted = false)
+def handle_change_column(ast, is_deleted = false, is_multiple =false)
   # puts "handle_change_column"
   children = ast.children
   # puts "is_deleted: #{is_deleted}"
@@ -126,14 +128,14 @@ def handle_change_column(ast, is_deleted = false)
   column_name = handle_symbol_literal_node(children[1]) || handle_string_literal_node(children[1])
   column_type = handle_symbol_literal_node(children[2]) || handle_string_literal_node(children[2])
   columns = []
-  if is_deleted
-    children.each do |c|
-      columns << (handle_symbol_literal_node(c) || handle_string_literal_node(c))
- end
-  else
-    columns << column_name
+  columns << column_name
+  if is_multiple
+    columns = []
+    children.each do  |c|
+      columns << handle_symbol_literal_node(c) || handle_string_literal_node(c)
+    end
   end
-  puts "TABLE #{table} #{column_name} #{column_type}"
+  # puts "TABLE #{table} #{column_name} #{column_type}"
   dic = {}
   dic = extract_hash_from_list(children[-1])
   class_name = convert_tablename(table)
@@ -367,9 +369,9 @@ def create_constraints(class_name, column_name, column_type, type, dic)
   constraints
 end
 
-def handle_remove_column(ast)
-  puts "REMOVE #{ast.source}"
-  handle_change_column(ast, true)
+def handle_remove_column(ast, is_multiple=false)
+  # puts "REMOVE #{ast.source}"
+  handle_change_column(ast, true, is_multiple)
 end
 
 def handle_create_join_table(ast); end
