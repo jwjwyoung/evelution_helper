@@ -5,7 +5,7 @@ module RailsBestPractices
   module Reviews
     class PrintQueryReview < Review
       interesting_nodes :def, :defs, :command, :module, :class, :method_add_arg, :method_add_block, :do_block, :brace_block
-      interesting_files CONTROLLER_FILES, MODEL_FILES, LIB_FILES, HELPER_FILES, SPEC_FILES#VIEW_FILES
+      interesting_files SPEC_FILES, CONTROLLER_FILES, MODEL_FILES, LIB_FILES, HELPER_FILES, VIEW_FILES
       url 'https://rails-bestpractices.com/posts/2010/10/03/use-query-attribute/'
 
       MULTI_QUERY_METHODS = %w[where where! pluck distinct eager_load from group having includes joins left_outer_joins limit offset order reload preload readonly reorder select reselect select_all reverse_order unscope find_each rewhere execute uniq all references].freeze
@@ -228,7 +228,18 @@ module RailsBestPractices
         source = to_source(node).chomp
         puts "source is #{source}"
         #if (MULTI_QUERY_METHODS+SINGLE_QUERY_METHODS).map{|x| source.include?(x)}.any?
-        @collected_queries << {:class => @combined_class_name, :stmt => source, :caller_class_lst => caller_class_lst, :method_name => func_name, :filename => @node.file, :line => node.line_number.to_i}
+        q = {:class => @combined_class_name, :stmt => source, :caller_class_lst => caller_class_lst, :method_name => func_name, :filename => @node.file, :line => node.line_number.to_i}
+        @collected_queries << q
+        # queries_sameline = @collected_queries.detect{|x| x[:filename] == q[:filename] and x[:line] == q[:line] and x[:stmt].include?q[:stmt]}
+        # unique = true
+        # queries_sameline.each do |q_same|
+        #   if q_same.stmt.include?q.stmt
+        #     unique = false
+        #     break
+        #   end
+        # end
+        # puts "UNIQUE #{unique}"
+        # @collected_queries << q if unique
         #end
       end
 

@@ -86,7 +86,7 @@ class TestVersionClassConstraint < Test::Unit::TestCase
     end
     def test_tracks2
         # RIGHT case
-        # 4 column delete, 
+        # 4 column delete, Todo.done
         commits = ["c51587e4229f7dad7876ae8be33f1e8af0f5c487", "883bcb30bb3b4027375fb03185e5d11b80d622b5"]
         app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/tracks"
         test_change(app_dir, commits)
