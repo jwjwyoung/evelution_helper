@@ -4,8 +4,8 @@ require 'pp'
 module RailsBestPractices
   module Reviews
     class PrintQueryReview < Review
-      interesting_nodes :def, :defs, :command, :module, :class, :method_add_arg, :method_add_block, :do_block, :brace_block
-      interesting_files SPEC_FILES, CONTROLLER_FILES, MODEL_FILES, LIB_FILES, HELPER_FILES, VIEW_FILES
+      interesting_nodes :def, :defs, :command, :call, :module, :class, :method_add_arg, :method_add_block, :do_block, :brace_block
+      interesting_files SPEC_FILES, CONTROLLER_FILES, MODEL_FILES, LIB_FILES, HELPER_FILES, VIEW_FILES, EXTRA_FILES
       url 'https://rails-bestpractices.com/posts/2010/10/03/use-query-attribute/'
 
       MULTI_QUERY_METHODS = %w[where where! pluck distinct eager_load from group having includes joins left_outer_joins limit offset order reload preload readonly reorder select reselect select_all reverse_order unscope find_each rewhere execute uniq all references].freeze
@@ -50,8 +50,8 @@ module RailsBestPractices
       end
 
 
-      add_callback :start_def, :start_defs, :start_command, :start_do_block, :start_brace_block do |node|
-          if node.sexp_type == :def or node.sexp_type == :defs
+      add_callback :start_def, :start_defs, :start_call, :start_command, :start_do_block, :start_brace_block do |node|
+        if node.sexp_type == :def or node.sexp_type == :defs
               node.recursive_children do |child|
                 begin
                   if is_method_call?(child)
@@ -65,6 +65,8 @@ module RailsBestPractices
                 rescue => error
                 end
               end
+          elsif is_method_call?(node)
+            process_method_call_node(node, "")
           elsif node.sexp_type == :do_block or node.sexp_type  == :brace_block
             bnode = node.children[-1]
             if bnode.sexp_type == :bodystmt

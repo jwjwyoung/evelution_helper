@@ -413,6 +413,7 @@ def handle_change_column_default(ast)
   # puts "ast.source #{ast.source} \n#{ast[0].type}"
   table = nil
   column_name = nil
+  column_type = nil
   table = handle_symbol_literal_node(children[0]) || handle_string_literal_node(children[0])
   column_name = handle_symbol_literal_node(children[1]) || handle_string_literal_node(children[1])
   dic = {}

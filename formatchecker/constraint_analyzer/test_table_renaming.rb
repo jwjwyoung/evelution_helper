@@ -29,6 +29,7 @@ require "../../query_extractor/load.rb"
 $read_html = false
 $read_db = true
 $read_constraints = true
+$check_queries = true
 app_dir = "/Users/junwenyang/Research/evolution_helper/ruby_apps/example_app"
 def test_change(app_dir, commits)
     versions = commits.map{|commit| Version_class.new(app_dir, commit)}
@@ -68,7 +69,14 @@ class TestVersionClassConstraint < Test::Unit::TestCase
         commits = ["d4e9e024aa8d8aab70591a6084e8f4bc0fa030bb", "20c870b78be753cd6a2e9440326eb78701bf85fa"]
         app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/lobsters"
         test_change(app_dir, commits)
-        # 1 column_rename in lobsters
+        # 1 column_rename in lobsters for 10 commits
+    end
+
+    def test_lobsters3
+        commits = ["89cdf1101adf25be32232ca543822fd7a24486a9", "67fc2cc75c3df047d2d04e210058341dcdc73dc0"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/lobsters"
+        test_change(app_dir, commits)
+        # 2 column_rename in lobsters
     end
 
     def test_tracks
@@ -146,6 +154,12 @@ class TestVersionClassConstraint < Test::Unit::TestCase
          app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/diaspora"
          test_change(app_dir, commits)
     end
+    def test_spree2
+        # index deletion
+        commits = ["dc429bb3350629e73633b40c107ad3a0862f3d85", "8e02594ac94ae6adbaa021a6fe6f7362b7ef2849"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/spree"
+        test_change(app_dir, commits)
+   end
     def test_gitlab1
         # Jul 26 => AUG 1, takes 6 days
         # fix commit 5e3a208f58a7a887370888055da180f64b3692a3

@@ -97,6 +97,9 @@ OptionParser.new do |opts|
   opts.on("--check", "check errors") do |_|
     options[:check] = true
   end
+  opts.on("--consistency", "check inconsistency") do |_|
+    options[:consistency] = true
+  end
   opts.on("--cvers version", "which version to check") do |v|
     options[:check_vers] = v
   end
@@ -112,7 +115,7 @@ end.parse!
 $read_html = true
 $read_db = true
 $read_constraints = true
-
+$check_queries = false
 abort("Error: you must specify an application directory with the -a/--app option") unless options[:app]
 
 application_dir = options[:app]
@@ -131,11 +134,17 @@ end
 if options[:check]
   check_code(application_dir, options[:check_vers] || "master", options[:check_tab], options[:check_col])
 end
-
+if options[:consistency]
+  $check_queries = true
+end
+tag_unit = true
+if options[:commit_unit]
+  tag_unit = false
+end
 if options[:tschema]
   $read_html = false
   $read_constraints = false
-  traverse_all_for_db_schema(application_dir, options[:interval])
+  traverse_all_for_db_schema(application_dir, options[:interval], [], tag_unit)
 end
 
 extract_table_size_comparison(application_dir, interval) if options[:compare_column_size] && interval

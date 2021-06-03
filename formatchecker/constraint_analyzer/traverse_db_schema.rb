@@ -111,7 +111,7 @@ class Version_class
         if new_col.nil? || new_col.is_deleted
           if !old_col.is_deleted && !newfile_columns.include?(old_name)
             deleted_cols.append(old_col)
-            yield :col_del, key, col, old_name, new_col.nil?
+            yield :col_del, key, col, old_name, new_col.nil? unless file.functions&.include?(old_name)
           end
           next
         end
@@ -203,14 +203,14 @@ end
 # Gets the versions for `app_dir` and build them. If the file "#{app_dir}/versions"
 # exists, every line in the file is treated as a version. Otherwise use the original
 # `extract_commits`.
-def get_versions(app_dir, interval)
+def get_versions(app_dir, interval, tag_unit)
   versions = if File.readable?(File.join(app_dir, "versions"))
                File.read(File.join(app_dir, "versions")).lines.map do |v|
                  Version_class.new(app_dir, v)
                end
              else
                #extract_commits(app_dir, interval, false)
-               extract_commits(app_dir, 100, true)
+               extract_commits(app_dir, interval, tag_unit)
              end
   # app_name = File.basename(app_dir)
   # version_his_folder = File.expand_path("../log/vhf_#{app_name}", __dir__)
@@ -219,9 +219,9 @@ def get_versions(app_dir, interval)
   # Parallel.map(versions) { |v| load_version(version_his_folder, v) }
 end
 
-def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
+def traverse_all_for_db_schema(app_dir, interval = nil, versions=[], tag_unit=true)
   if versions.size == 0
-    versions = get_versions(app_dir, interval)
+    versions = get_versions(app_dir, interval, tag_unit)
   end
   app_name = File.basename(app_dir)
   version_his_folder = File.expand_path("../log/vhf_#{app_name}", __dir__)
@@ -244,6 +244,7 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
   total_action = version_with.clone
   # change in columns: column_changes[table_name][column_name] = count
   column_changes = Hash.new { |hash, k| hash[k] = Hash.new 0 }
+  json_contents = nil
   # newest versions come first
   build_version(version_his_folder, versions[0])
   versions.each_cons(2).each do |newv, curv|
@@ -319,16 +320,18 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
           end
         end
         puts  "====change====\n#{change}"
-        curv.extract_queries
-        newv.extract_queries
-        json_contents = newv.check_queries(curv.schema, change)
-        if json_contents.length > 0
-          log_filename = "#{app_name}_#{curv.commit}_#{newv.commit}.log".gsub("/",'')
-          log_filepath = File.join(File.expand_path(File.dirname(__FILE__)), "../log/#{log_filename}")
-          json_dump = open(log_filepath, 'w')
-          json_contents = JSON.pretty_generate json_contents
-          json_dump.write(json_contents)
-          json_dump.close()
+        if $check_queries
+          curv.extract_queries
+          newv.extract_queries
+          json_contents = newv.check_queries(curv.schema, change)
+          if json_contents.length > 0
+            log_filename = "#{app_name}_#{curv.commit}_#{newv.commit}.log".gsub("/",'')
+            log_filepath = File.join(File.expand_path(File.dirname(__FILE__)), "../log/#{log_filename}")
+            json_dump = open(log_filepath, 'w')
+            json_contents = JSON.pretty_generate json_contents
+            json_dump.write(json_contents)
+            json_dump.close()
+          end
         end
       end
       version_chg << [newv.commit, this_version_has]
@@ -343,6 +346,7 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[])
   p "#{version_with_change(version_chg)}/#{version_chg.length}"
   p freq_change_column(column_changes).join "/"
   p total_action
+  return json_contents
 end
 
 def text_typed_indexes(app_dir, interval = nil)

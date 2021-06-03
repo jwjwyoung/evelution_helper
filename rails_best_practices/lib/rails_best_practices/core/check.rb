@@ -9,6 +9,7 @@ module RailsBestPractices
       MIGRATION_FILES = /db\/migrate\/.*\.rb$/
       MODEL_FILES = /app\/models\/.*\.rb$/
       SPEC_FILES = /spec\/(models|serializers|jobs|services)\/.*\.rb$/
+      EXTRA_FILES = /extras\/.*\.rb$/
       #SPEC_FILES = /spec\/services\/self_monitoring\/project\/create_service_spec.rb$/
       MAILER_FILES = /app\/models\/.*mailer\.rb$|app\/mailers\/.*\.rb/
       VIEW_FILES = /app\/(views|cells)\/.*\.(erb|haml|slim|builder|rxml)$/

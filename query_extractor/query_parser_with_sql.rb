@@ -611,12 +611,15 @@ end
 # some hacky stuff to change the query string
 def preprocess_raw_query(raw_query)
 	# 0. current_user -> user
-	if raw_query.stmt.include?('current_user')
-		raw_query.stmt.gsub!('current_user','user')
-		raw_query.caller_class_lst.map!{|x| 
-			x[:class].gsub!('CurrentUser','user') 
-			x 
-		}
+	user_strings = [['current_user', 'CurrentUser'], ['admin_user', 'AdminUser']]
+	user_strings.each do |n1, n2|
+		if raw_query.stmt.include?n1
+			raw_query.stmt.gsub!(n1,'user')
+			raw_query.caller_class_lst.map!{|x| 
+				x[:class].gsub!(n2,'user') 
+				x 
+			}
+		end
 	end
 	# 1. #{Project.table_name} --> Project
 	if raw_query.stmt.include?('#') && raw_query.stmt.include?('table_name')
@@ -735,7 +738,7 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 	outputf = File.open("query.py","w" )
 	output_dics = []
 	raw_queries = raw_queries.sort_by { |w| w.line }
-	puts "after sort"
+	puts "after sort #{raw_queries.length}"
 	file2issues = {} # filename => issues []
 	cnt = 0
 	raw_queries.each do |raw_query|
@@ -860,11 +863,13 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 						end
 						if change[:assoc_ren].include?(model_class_name) and change[:assoc_ren][model_class_name].include?field.column
 							regex = /#{field.ruby_meth}[^a-zA-Z_\@0-9]+#{field.column}[^a-zA-Z_\@0-9]/
+							puts "ruby_meth #{field.ruby_meth}"
 							matches = line_content.to_enum(:scan, regex).map  { Regexp.last_match }
 							matches&.each do |m|
 								offset = m.offset(0)[0] + 1 
 								offset += field.ruby_meth.length if field.ruby_meth
 								endset = m.offset(0)[1] - 1
+								offset = endset - field.column.length
 								new_assciation_name = change[:assoc_ren][model_class_name][field.column]
 								change_type = "association rename"
 								patch = "#{new_assciation_name}"

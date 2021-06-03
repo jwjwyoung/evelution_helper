@@ -10,8 +10,8 @@ end
 
 def canonicalize_classname(name)
   name = clean_prefix(name)
-  if name.start_with?($app_name)
-    name = name.gsub($app_name, '')
+  if name&.start_with?($app_name)
+    name = name&.gsub($app_name, '')
   end
   name
 end

@@ -545,7 +545,7 @@ class Version_class
     @validation_functions = nil
     @activerecord_files.each do |_key, file|
       file.ast = nil
-      file.functions = nil
+      # file.functions = nil
       file.contents = nil
       file.included_concerns = nil
       file&.getColumns.each do |_name, column|
