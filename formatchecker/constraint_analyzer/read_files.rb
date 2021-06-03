@@ -93,6 +93,8 @@ def read_constraint_files(application_dir = nil, version = "")
       model_classes[c.class_name] = c
     end
   rescue StandardError => error
+    $cur_class.class_name = filename.split("/")[-1].split(".")[0].classify
+    model_classes[$cur_class.class_name] = $cur_class.dup
     puts error
   end
   concerns = concern_files.each_with_object({}) do |filename, memo|

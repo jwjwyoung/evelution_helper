@@ -917,7 +917,7 @@ def print_detail_with_sql(raw_queries, scopes, schema, change={})
 								offset = m.offset(0)[0] + 1
 								endset = m.offset(0)[1] - 1
 								patch = "#{new_class_name}"
-								detailed_reason = "#{field.table} is RENAMED TO #{new_class_name} "
+								detailed_reason = "#{field.table} is DELETED "
 								issue = generate_issue(patch, loc, offset, endset, change_type, detailed_reason)
 								file2issues[filename][issue.position] = issue
 							end
