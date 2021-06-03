@@ -78,7 +78,12 @@ class TestVersionClassConstraint < Test::Unit::TestCase
         test_change(app_dir, commits)
         # 2 column_rename in lobsters
     end
-
+    def test_lobsters4
+        # false positive caused by deleted models
+        commits = ["a15c5d540ed4529d1f2551cee3aa2a337a8d7c8d", "113bb5e9ccd1a3419997adc3b73a31f8bd93fa61"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/lobsters"
+        test_change(app_dir, commits)
+    end 
     def test_tracks
         # false positive caused by has_many(xxx) cannot be handled correctly
         # has_many(projects, xxx, xxx) do 

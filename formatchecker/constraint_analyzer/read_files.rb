@@ -81,10 +81,10 @@ def read_constraint_files(application_dir = nil, version = "")
     file = File.open(filename)
     contents = file.readlines.reject { |l| /^\s*#/.match l }.join
     file.close
-    ast = YARD::Parser::Ruby::RubyParser.parse(contents).root
     $cur_class = File_class.new(filename)
-    $cur_class.ast = ast
     $cur_class.contents = contents
+    ast = YARD::Parser::Ruby::RubyParser.parse(contents).root
+    $cur_class.ast = ast
     $module_name = ""
     $classes = []
     parse_model_constraint_file(ast)
@@ -94,7 +94,10 @@ def read_constraint_files(application_dir = nil, version = "")
     end
   rescue StandardError => error
     $cur_class.class_name = filename.split("/")[-1].split(".")[0].classify
-    model_classes[$cur_class.class_name] = $cur_class.dup
+    model_classes[$cur_class.class_name] = $cur_class
+    if $cur_class.contents.include?("ApplicationRecord") or $cur_class.contents.include?("ActiveRecord")
+      $cur_class.is_activerecord = true
+    end
     puts error
   end
   concerns = concern_files.each_with_object({}) do |filename, memo|

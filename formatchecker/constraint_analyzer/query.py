@@ -48,80 +48,77 @@ Query(Story)
 # Q 15 : # story.vote
 Query(Story)
 
-# Q 16 : # comment.score
+# Q 16 : # story.errors.count
+Query(Story)
+
+# Q 17 : # story.errors
+Query(Story)
+
+# Q 18 : # story.already_posted_story
+Query(Story)
+
+# Q 19 : # comment.score
 Query(Comment)
 
-# Q 17 : # @message.author_user_id
+# Q 20 : # @message.author_user_id
 Query(Message)
 .select('author_user_id')
-# Q 18 : # @user.id
+# Q 21 : # @user.id
 Query(User)
 
-# Q 19 : # @message.url
+# Q 22 : # @message.url
 Query(Message)
 
-# Q 20 : # @user.username
-Query(User)
-.select('username')
-# Q 21 : # @invitation_request.ip_address
+# Q 23 : # @invitation_request.ip_address
 Query(InvitationRequest)
 .select('ip_address')
-# Q 22 : # @comment.plaintext_comment
+# Q 24 : # @comment.plaintext_comment
 Query(Comment)
 
-# Q 23 : # @comment.plaintext_comment
+# Q 25 : # @comment.plaintext_comment
 Query(Comment)
 
-# Q 24 : # @invitation.user.username
+# Q 26 : # @invitation.user.username
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 25 : # @invitation.user
+# Q 27 : # @invitation.user
 Query(User)
 .where("id = ?")
-# Q 26 : # @invitation.memo.present?
+# Q 28 : # @invitation.memo.present?
 Query(Invitation)
 .select('memo')
-# Q 27 : # @invitation.memo
+# Q 29 : # @invitation.memo
 Query(Invitation)
 .select('memo')
-# Q 28 : # @invitation.memo
+# Q 30 : # @invitation.memo
 Query(Invitation)
 .select('memo')
-# Q 29 : # story.vote
+# Q 31 : # story.vote
 Query(Story)
 
-# Q 30 : # story.vote
+# Q 32 : # story.vote
 Query(Story)
 
-# Q 31 : # comment.short_id
+# Q 33 : # comment.short_id
 Query(Comment)
 .select('short_id')
-# Q 32 : # comment.short_id
-Query(Comment)
-.select('short_id')
-# Q 33 : # story.score
+# Q 34 : # story.score
 Query(Story)
 
-# Q 34 : # User.where(:username => params[:username]).first!
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 35 : # User.where(:username => params[:username]).first!
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 36 : # User.where(:username => params[:username])
-Query(User)
-.where("username = ?")
-# Q 37 : # User.where(:username => params[:username]).first!
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 38 : # User.make!(:username => nil)
+# Q 35 : # User.make!(:username => nil)
 Query(User)
 
-# Q 39 : # User.make!
+# Q 36 : # User.make!
+Query(User)
+
+# Q 37 : # User.make!(:username => nil)
+Query(User)
+
+# Q 38 : # User.make!
+Query(User)
+
+# Q 39 : # User.make!(:username => nil)
 Query(User)
 
 # Q 40 : # User.make!(:username => nil)
@@ -133,708 +130,904 @@ Query(User)
 # Q 42 : # User.make!(:username => nil)
 Query(User)
 
-# Q 43 : # User.make!(:username => nil)
+# Q 43 : # User.make!
 Query(User)
 
 # Q 44 : # User.make!
 Query(User)
 
-# Q 45 : # User.make!(:username => nil)
+# Q 45 : # @user = User.make!
 Query(User)
 
-# Q 46 : # User.make!
+# Q 46 : # @user = User.make!
 Query(User)
 
 # Q 47 : # User.make!
 Query(User)
 
-# Q 48 : # @user = User.make!
-Query(User)
-
-# Q 49 : # @user = User.make!
-Query(User)
-
-# Q 50 : # User.make!
-Query(User)
-
-# Q 51 : # Story.make!(:title => "hello", :url => "http://example.com/")
+# Q 48 : # Story.make!(:title => "hello", :url => "http://example.com/")
 Query(Story)
 
-# Q 52 : # Story.make!
+# Q 49 : # Story.make!
 Query(Story)
 
-# Q 53 : # Story.make!(:title => "hello", :url => "http://example.com/")
+# Q 50 : # Story.make!(:title => "hello", :url => "http://example.com/")
+Query(Story)
+
+# Q 51 : # Story.make!
+Query(Story)
+
+# Q 52 : # Story.make!(:title => "hello", :url => "http://example.com/")
+Query(Story)
+
+# Q 53 : # Story.make!
 Query(Story)
 
 # Q 54 : # Story.make!
 Query(Story)
 
-# Q 55 : # Story.make!(:title => "hello", :url => "http://example.com/")
-Query(Story)
-
-# Q 56 : # Story.make!
-Query(Story)
-
-# Q 57 : # Story.make!
-Query(Story)
-
-# Q 58 : # Comment.make!(:comment => "hello")
+# Q 55 : # Comment.make!(:comment => "hello")
 Query(Comment)
 
-# Q 59 : # Comment.make!
+# Q 56 : # Comment.make!
 Query(Comment)
 
-# Q 60 : # Comment.make!(:comment => "hello")
+# Q 57 : # Comment.make!(:comment => "hello")
+Query(Comment)
+
+# Q 58 : # Comment.make!
+Query(Comment)
+
+# Q 59 : # Comment.make!(:comment => "hello")
+Query(Comment)
+
+# Q 60 : # Comment.make!
 Query(Comment)
 
 # Q 61 : # Comment.make!
 Query(Comment)
 
-# Q 62 : # Comment.make!(:comment => "hello")
-Query(Comment)
+# Q 62 : # Story.make!
+Query(Story)
 
-# Q 63 : # Comment.make!
-Query(Comment)
+# Q 63 : # s = Story.make!
+Query(Story)
 
-# Q 64 : # Comment.make!
-Query(Comment)
+# Q 64 : # s = Story.make!
+Query(Story)
 
 # Q 65 : # Story.make!
 Query(Story)
 
-# Q 66 : # s = Story.make!
-Query(Story)
+# Q 66 : # Message.make!
+Query(Message)
 
-# Q 67 : # s = Story.make!
-Query(Story)
+# Q 67 : # m = Message.make!
+Query(Message)
 
-# Q 68 : # Story.make!
-Query(Story)
+# Q 68 : # m = Message.make!
+Query(Message)
 
 # Q 69 : # Message.make!
 Query(Message)
 
-# Q 70 : # m = Message.make!
-Query(Message)
-
-# Q 71 : # m = Message.make!
-Query(Message)
-
-# Q 72 : # Message.make!
-Query(Message)
-
-# Q 73 : # if comment.errors.any?
+# Q 70 : # if comment.errors.any?
 #   
 #   
 #   errors_for comment
 # end
 Query(Comment)
 
-# Q 74 : # comment.errors.any?
+# Q 71 : # comment.errors.any?
 Query(Comment)
 
-# Q 75 : # comment.errors
+# Q 72 : # comment.errors
 Query(Comment)
 
-# Q 76 : # comment.persisted?
-Query(Comment)
-
-# Q 77 : # comment.short_id
+# Q 73 : # comment.short_id
 Query(Comment)
 .select('short_id')
-# Q 78 : # @comment.url
+# Q 74 : # @comment.url
 Query(Comment)
 
-# Q 79 : # @comment.url
+# Q 75 : # @comment.url
 Query(Comment)
 
-# Q 80 : # story.score
+# Q 76 : # story.score
 Query(Story)
 
-# Q 81 : # Moderation.count
-Query(Moderation)
+# Q 77 : # story.already_posted_story.created_at
+Query(Story)
+.select('created_at')
+# Q 78 : # story.already_posted_story
+Query(Story)
 
-# Q 82 : # Moderation.count
-Query(Moderation)
+# Q 79 : # user.avatar_url(size)
+Query(User)
 
-# Q 83 : # Search.new
+# Q 80 : # user.avatar_url
+Query(User)
+
+# Q 81 : # user.avatar_url
+Query(User)
+
+# Q 82 : # @user.undeleted_received_messages
+Query(User)
+
+# Q 83 : # @user.undeleted_received_messages
+Query(User)
+
+# Q 84 : # @user.undeleted_received_messages
+Query(User)
+
+# Q 85 : # User.moderators.map(&:username)
+Query(User)
+
+# Q 86 : # User.moderators.map
+Query(User)
+
+# Q 87 : # User.moderators
+Query(User)
+
+# Q 88 : # User.moderators.map
+Query(User)
+
+# Q 89 : # User.moderators
+Query(User)
+
+# Q 90 : # Search.new
 Query(Search)
 
-# Q 84 : # Search.new
+# Q 91 : # Search.new
 Query(Search)
 
-# Q 85 : # Search.new
+# Q 92 : # Search.new
 Query(Search)
 
-# Q 86 : # Tag.all_with_story_counts_for(nil)
+# Q 93 : # User.where(:username => params[:username]).first!
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 94 : # User.where(:username => params[:username]).first!
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 95 : # User.where(:username => params[:username])
+Query(User)
+.where("username = ?")
+# Q 96 : # User.where(:username => params[:username]).first!
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 97 : # Tag.all_with_story_counts_for(nil)
 Query(Tag)
 
-# Q 87 : # Tag.all_with_story_counts_for(nil)
+# Q 98 : # Tag.all_with_story_counts_for(nil)
 Query(Tag)
 
-# Q 88 : # Tag.all_with_story_counts_for
+# Q 99 : # Tag.all_with_story_counts_for
 Query(Tag)
 
-# Q 89 : # Tag.all_with_story_counts_for
+# Q 100 : # Tag.all_with_story_counts_for
 Query(Tag)
 
-# Q 90 : # User.make!(:username => "")
+# Q 101 : # User.make!(:username => "")
 Query(User)
 
-# Q 91 : # User.make!
+# Q 102 : # User.make!
 Query(User)
 
-# Q 92 : # User.make!(:username => "")
+# Q 103 : # User.make!(:username => "")
 Query(User)
 
-# Q 93 : # User.make!
+# Q 104 : # User.make!
 Query(User)
 
-# Q 94 : # User.make!(:username => "")
+# Q 105 : # User.make!(:username => "")
 Query(User)
 
-# Q 95 : # User.make!(:username => "")
+# Q 106 : # User.make!(:username => "")
 Query(User)
 
-# Q 96 : # User.make!
+# Q 107 : # User.make!
 Query(User)
 
-# Q 97 : # User.make!(:username => "")
+# Q 108 : # User.make!(:username => "")
 Query(User)
 
-# Q 98 : # User.make!
+# Q 109 : # User.make!
 Query(User)
 
-# Q 99 : # Story.make!(:user => @user)
+# Q 110 : # Story.make!(:user => @user)
 Query(Story)
 
-# Q 100 : # Story.make!
+# Q 111 : # Story.make!
 Query(Story)
 
-# Q 101 : # Story.make!(:user => @user)
+# Q 112 : # Story.make!(:user => @user)
 Query(Story)
 
-# Q 102 : # Story.make!
+# Q 113 : # Story.make!
 Query(Story)
 
-# Q 103 : # Story.make!(:user => @user)
+# Q 114 : # Story.make!(:user => @user)
 Query(Story)
 
-# Q 104 : # Story.make!
+# Q 115 : # Story.make!
 Query(Story)
 
-# Q 105 : # Story.make!
+# Q 116 : # Story.make!
 Query(Story)
 
-# Q 106 : # comment.current_vote
+# Q 117 : # comment.persisted?
 Query(Comment)
 
-# Q 107 : # comment.current_vote
+# Q 118 : # comment.short_id
 Query(Comment)
-
-# Q 108 : # @hat_requests.count
+.select('short_id')
+# Q 119 : # @hat_requests.count
 Query(HatRequest)
 
-# Q 109 : # @tags.map { |t|
+# Q 120 : # @tags.map { |t|
 #   
 #   t.stories_count
 # }.max
 Query(Tag)
 
-# Q 110 : # @tags.map
+# Q 121 : # @tags.map
 Query(Tag)
 
-# Q 111 : # @invitation_request.name
+# Q 122 : # @invitation_request.name
 Query(InvitationRequest)
 .select('name')
-# Q 112 : # story.score
+# Q 123 : # story.score
 Query(Story)
 
-# Q 113 : # @story.short_id
+# Q 124 : # @story.short_id
 Query(Story)
 .select('short_id')
-# Q 114 : # @story.short_id
+# Q 125 : # @story.short_id
 Query(Story)
 .select('short_id')
-# Q 115 : # self.where(:key => key).first
+# Q 126 : # where(user_id: user_id).order(comment_created_at: :desc).preload(:comment => [:story, :user])
+Query(ReplyingComment)
+.where("user_id = ?")
+.order('comment_created_at')
+.includes('comment')
+# Q 127 : # where(user_id: user_id).order(comment_created_at: :desc).preload
+Query(ReplyingComment)
+.where("user_id = ?")
+.order('comment_created_at')
+# Q 128 : # where(user_id: user_id).order
+Query(ReplyingComment)
+.where("user_id = ?")
+# Q 129 : # self.where(:key => key).first
 Query(Keystore)
 .where("key = ?")
 .return_limit('1')
-# Q 116 : # self.where(:key => key)
+# Q 130 : # self.where(:key => key)
 Query(Keystore)
 .where("key = ?")
-# Q 117 : # self.where(:key => key).first
+# Q 131 : # self.where(:key => key).first
 Query(Keystore)
 .where("key = ?")
 .return_limit('1')
-# Q 118 : # @user.stories_submitted_count
+# Q 132 : # user.avatar_url(size)
 Query(User)
 
-# Q 119 : # @user.stories_submitted_count
+# Q 133 : # user.avatar_url
 Query(User)
 
-# Q 120 : # InvitationRequest.new
+# Q 134 : # user.avatar_url(size * 2)
+Query(User)
+
+# Q 135 : # user.avatar_url
+Query(User)
+
+# Q 136 : # user.avatar_url
+Query(User)
+
+# Q 137 : # user.avatar_url
+Query(User)
+
+# Q 138 : # @user.stories_submitted_count
+Query(User)
+
+# Q 139 : # @user.stories_submitted_count
+Query(User)
+
+# Q 140 : # InvitationRequest.new
 Query(InvitationRequest)
 
-# Q 121 : # InvitationRequest.new
+# Q 141 : # InvitationRequest.new
 Query(InvitationRequest)
 
-# Q 122 : # InvitationRequest.new
+# Q 142 : # InvitationRequest.new
 Query(InvitationRequest)
 
-# Q 123 : # @user.dup
+# Q 143 : # User.make!(:username => "*")
 Query(User)
 
-# Q 124 : # @user.dup
+# Q 144 : # User.make!
 Query(User)
 
-# Q 125 : # @user.dup
+# Q 145 : # User.make!(:username => "*")
 Query(User)
 
-# Q 126 : # User.make!(:username => "*")
+# Q 146 : # User.make!
 Query(User)
 
-# Q 127 : # User.make!
+# Q 147 : # User.make!(:username => "*")
 Query(User)
 
-# Q 128 : # User.make!(:username => "*")
+# Q 148 : # User.make!(:username => "*")
 Query(User)
 
-# Q 129 : # User.make!
+# Q 149 : # User.make!
 Query(User)
 
-# Q 130 : # User.make!(:username => "*")
+# Q 150 : # User.make!(:username => "*")
 Query(User)
 
-# Q 131 : # User.make!(:username => "*")
+# Q 151 : # User.make!
 Query(User)
 
-# Q 132 : # User.make!
-Query(User)
+# Q 152 : # comment.current_vote
+Query(Comment)
 
-# Q 133 : # User.make!(:username => "*")
-Query(User)
+# Q 153 : # comment.current_vote
+Query(Comment)
 
-# Q 134 : # User.make!
-Query(User)
-
-# Q 135 : # @tags.each
+# Q 154 : # @tags.each
 Query(Tag)
 
-# Q 136 : # @invitation_request.email
+# Q 155 : # @invitation_request.email
 Query(InvitationRequest)
 .select('email')
-# Q 137 : # @users.each
+# Q 156 : # @users.each
 Query(User)
 
-# Q 138 : # @invitation.code
+# Q 157 : # @invitation.code
 Query(Invitation)
 .select('code')
-# Q 139 : # @story.markeddown_description.present?
+# Q 158 : # @invitation.code
+Query(Invitation)
+.select('code')
+# Q 159 : # @invitation.code
+Query(Invitation)
+.select('code')
+# Q 160 : # @story.markeddown_description.present?
 Query(Story)
 .select('markeddown_description')
-# Q 140 : # @story.markeddown_description
+# Q 161 : # @story.markeddown_description
 Query(Story)
 .select('markeddown_description')
-# Q 141 : # story.is_hidden_by_cur_user
+# Q 162 : # story.is_hidden_by_cur_user
 Query(Story)
 
-# Q 142 : # @user.password_reset_token
+# Q 163 : # story.already_posted_story.comments_path
+Query(Story)
+
+# Q 164 : # story.already_posted_story
+Query(Story)
+
+# Q 165 : # @user.password_reset_token
 Query(User)
 .select('password_reset_token')
-# Q 143 : # HiddenStory.where(:user_id => user_id, :story_id => story_id).first_or_initialize.save!
+# Q 166 : # SavedStory.where(:user_id => user_id, :story_id => story_id).first_or_initialize.save!
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 167 : # SavedStory.where(:user_id => user_id, :story_id => story_id).first_or_initialize
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 168 : # SavedStory.where(:user_id => user_id, :story_id => story_id)
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 169 : # SavedStory.where(:user_id => user_id, :story_id => story_id).first_or_initialize.save!
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 170 : # SavedStory.where(:user_id => user_id, :story_id => story_id).first_or_initialize
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 171 : # HiddenStory.where(:user_id => user_id, :story_id => story_id).first_or_initialize.save!
 Query(HiddenStory)
 .where("user_id = ?")
 .where("story_id = ?")
-# Q 144 : # HiddenStory.where(:user_id => user_id, :story_id => story_id).first_or_initialize
+# Q 172 : # HiddenStory.where(:user_id => user_id, :story_id => story_id).first_or_initialize
 Query(HiddenStory)
 .where("user_id = ?")
 .where("story_id = ?")
-# Q 145 : # HiddenStory.where(:user_id => user_id, :story_id => story_id)
+# Q 173 : # HiddenStory.where(:user_id => user_id, :story_id => story_id)
 Query(HiddenStory)
 .where("user_id = ?")
 .where("story_id = ?")
-# Q 146 : # HiddenStory.where(:user_id => user_id, :story_id => story_id).first_or_initialize.save!
+# Q 174 : # HiddenStory.where(:user_id => user_id, :story_id => story_id).first_or_initialize.save!
 Query(HiddenStory)
 .where("user_id = ?")
 .where("story_id = ?")
-# Q 147 : # HiddenStory.where(:user_id => user_id, :story_id => story_id).first_or_initialize
+# Q 175 : # HiddenStory.where(:user_id => user_id, :story_id => story_id).first_or_initialize
 Query(HiddenStory)
 .where("user_id = ?")
 .where("story_id = ?")
-# Q 148 : # Tag.active.all_with_story_counts_for(@user)
+# Q 176 : # Tag.active.all_with_story_counts_for(@user)
 Query(Tag)
 
-# Q 149 : # Tag.active.all_with_story_counts_for(@user)
+# Q 177 : # Tag.active.all_with_story_counts_for(@user)
 Query(Tag)
 
-# Q 150 : # Tag.active.all_with_story_counts_for
+# Q 178 : # Tag.active.all_with_story_counts_for
 Query(Tag)
 
-# Q 151 : # Tag.active
+# Q 179 : # Tag.active
 Query(Tag)
 
-# Q 152 : # Tag.active.all_with_story_counts_for
+# Q 180 : # Tag.active.all_with_story_counts_for
 Query(Tag)
 
-# Q 153 : # Tag.active
+# Q 181 : # Tag.active
 Query(Tag)
 
-# Q 154 : # User.make!
+# Q 182 : # User.make!
 Query(User)
 
-# Q 155 : # @commentor = User.make!
+# Q 183 : # @commentor = User.make!
 Query(User)
 
-# Q 156 : # @commentor = User.make!
+# Q 184 : # @commentor = User.make!
 Query(User)
 
-# Q 157 : # User.make!
+# Q 185 : # User.make!
 Query(User)
 
-# Q 158 : # comment.highlighted
-Query(Comment)
-
-# Q 159 : # tag.stories_count.to_f
+# Q 186 : # tag.stories_count.to_f
 Query(Tag)
 
-# Q 160 : # tag.stories_count
+# Q 187 : # tag.stories_count
 Query(Tag)
 
-# Q 161 : # max_size.to_f / tag.stories_count.to_f
+# Q 188 : # tag.stories_count.to_f
 Query(Tag)
 
-# Q 162 : # tag.stories_count.to_f
+# Q 189 : # tag.stories_count
 Query(Tag)
 
-# Q 163 : # tag.stories_count
+# Q 190 : # (
+# tag.stories_count.to_f == 0) ? 1 : tag.stories_count.to_f
 Query(Tag)
 
-# Q 164 : # @invitation_request.memo
+# Q 191 : # tag.stories_count.to_f == 0
+Query(Tag)
+
+# Q 192 : # tag.stories_count.to_f
+Query(Tag)
+
+# Q 193 : # tag.stories_count
+Query(Tag)
+
+# Q 194 : # tag.stories_count.to_f
+Query(Tag)
+
+# Q 195 : # tag.stories_count
+Query(Tag)
+
+# Q 196 : # @invitation_request.memo
 Query(InvitationRequest)
 .select('memo')
-# Q 165 : # @user.invited_by_user.try
+# Q 197 : # @user.invited_by_user.try
 Query(User)
 .where("id = ?")
-# Q 166 : # @user.invited_by_user
+# Q 198 : # @user.invited_by_user
 Query(User)
 .where("id = ?")
-# Q 167 : # @invitation.code
-Query(Invitation)
-.select('code')
-# Q 168 : # @invitation.code
-Query(Invitation)
-.select('code')
-# Q 169 : # @search.q
+# Q 199 : # @search.q
 Query(Search)
 
-# Q 170 : # @search.q
+# Q 200 : # @search.q
 Query(Search)
 
-# Q 171 : # story.is_expired?
+# Q 201 : # story.is_saved_by_cur_user
 Query(Story)
 
-# Q 172 : # where(:inactive => false)
+# Q 202 : # where(:inactive => false)
 Query(Tag)
 .where("inactive = ?")
-# Q 173 : # HatRequest.new
+# Q 203 : # HatRequest.new
 Query(HatRequest)
 
-# Q 174 : # HatRequest.new
+# Q 204 : # HatRequest.new
 Query(HatRequest)
 
-# Q 175 : # HatRequest.new
+# Q 205 : # HatRequest.new
 Query(HatRequest)
 
-# Q 176 : # Message.new
-Query(Message)
-
-# Q 177 : # Message.new
-Query(Message)
-
-# Q 178 : # Message.new
-Query(Message)
-
-# Q 179 : # User.make!(:username => "test")
+# Q 206 : # @user.present?
 Query(User)
 
-# Q 180 : # User.make!
+# Q 207 : # @user.dup
 Query(User)
 
-# Q 181 : # User.make!(:username => "test")
+# Q 208 : # @user.dup
 Query(User)
 
-# Q 182 : # User.make!(:username => "test")
+# Q 209 : # @user.dup
 Query(User)
 
-# Q 183 : # User.make!
+# Q 210 : # ReplyingComment.for_user(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE).limit(REPLIES_PER_PAGE)
+Query(ReplyingComment)
+.return_limit('')
+# Q 211 : # ReplyingComment.for_user(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE).limit(REPLIES_PER_PAGE)
+Query(ReplyingComment)
+.return_limit('')
+# Q 212 : # ReplyingComment.for_user(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE).limit
+Query(ReplyingComment)
+.return_limit('')
+# Q 213 : # ReplyingComment.for_user(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE)
+Query(ReplyingComment)
+
+# Q 214 : # ReplyingComment.for_user(@user.id).offset
+Query(ReplyingComment)
+
+# Q 215 : # ReplyingComment.for_user(@user.id)
+Query(ReplyingComment)
+
+# Q 216 : # ReplyingComment.for_user
+Query(ReplyingComment)
+
+# Q 217 : # ReplyingComment.for_user(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE).limit
+Query(ReplyingComment)
+.return_limit('')
+# Q 218 : # ReplyingComment.for_user(@user.id).offset
+Query(ReplyingComment)
+
+# Q 219 : # ReplyingComment.for_user
+Query(ReplyingComment)
+
+# Q 220 : # User.make!(:username => "test")
 Query(User)
 
-# Q 184 : # Comment.make!(:story => @story, :user => @commentor)
+# Q 221 : # User.make!
+Query(User)
+
+# Q 222 : # User.make!(:username => "test")
+Query(User)
+
+# Q 223 : # User.make!(:username => "test")
+Query(User)
+
+# Q 224 : # User.make!
+Query(User)
+
+# Q 225 : # Comment.make!(:story => @story, :user => @commentor)
 Query(Comment)
 
-# Q 185 : # Comment.make!
+# Q 226 : # Comment.make!
 Query(Comment)
 
-# Q 186 : # Comment.make!(:story => @story, :user => @commentor)
+# Q 227 : # Comment.make!(:story => @story, :user => @commentor)
 Query(Comment)
 
-# Q 187 : # Comment.make!
+# Q 228 : # Comment.make!
 Query(Comment)
 
-# Q 188 : # Comment.make!(:story => @story, :user => @commentor)
+# Q 229 : # Comment.make!(:story => @story, :user => @commentor)
 Query(Comment)
 
-# Q 189 : # Comment.make!
+# Q 230 : # Comment.make!
 Query(Comment)
 
-# Q 190 : # Comment.make!
+# Q 231 : # Comment.make!
 Query(Comment)
 
-# Q 191 : # comment.story.short_id
+# Q 232 : # comment.story.short_id
 Query(Story)
 .where("id = ?")
 .select('short_id')
-# Q 192 : # comment.story
+# Q 233 : # comment.story
 Query(Story)
 .where("id = ?")
-# Q 193 : # comment.story.short_id
+# Q 234 : # comment.story.short_id
 Query(Story)
 .where("id = ?")
 .select('short_id')
-# Q 194 : # comment.story
+# Q 235 : # comment.story
 Query(Story)
 .where("id = ?")
-# Q 195 : # comment.score
+# Q 236 : # comment.score
 Query(Comment)
 
-# Q 196 : # @hat_requests.each_with_index
+# Q 237 : # @hat_requests.each_with_index
 Query(HatRequest)
 
-# Q 197 : # tag.tag
+# Q 238 : # tag.tag
 Query(Tag)
 .select('tag')
-# Q 198 : # tag.css_class
+# Q 239 : # tag.css_class
 Query(Tag)
 
-# Q 199 : # tag.tag
+# Q 240 : # tag.tag
 Query(Tag)
 .select('tag')
-# Q 200 : # tag.css_class
+# Q 241 : # tag.css_class
 Query(Tag)
 
-# Q 201 : # user.username
+# Q 242 : # user.username
 Query(User)
 .select('username')
-# Q 202 : # user.username
+# Q 243 : # user.username
 Query(User)
 .select('username')
-# Q 203 : # @story.markeddown_description
+# Q 244 : # @story.markeddown_description
 Query(Story)
 .select('markeddown_description')
-# Q 204 : # InvitationRequest.where(:is_verified => true).count
+# Q 245 : # story.is_expired?
+Query(Story)
+
+# Q 246 : # InvitationRequest.where(:is_verified => true).count
 Query(InvitationRequest)
 .where("is_verified = ?")
-# Q 205 : # InvitationRequest.where(:is_verified => true)
+# Q 247 : # InvitationRequest.where(:is_verified => true)
 Query(InvitationRequest)
 .where("is_verified = ?")
-# Q 206 : # InvitationRequest.where(:is_verified => true).count
+# Q 248 : # InvitationRequest.where(:is_verified => true).count
 Query(InvitationRequest)
 .where("is_verified = ?")
-# Q 207 : # User.make!(:username => "test")
+# Q 249 : # user.username
+Query(User)
+.select('username')
+# Q 250 : # user.username
+Query(User)
+.select('username')
+# Q 251 : # @user.id
 Query(User)
 
-# Q 208 : # User.make!
+# Q 252 : # @user.id
 Query(User)
 
-# Q 209 : # User.make!(:username => "test")
+# Q 253 : # User.make!(:username => "test")
 Query(User)
 
-# Q 210 : # User.make!
+# Q 254 : # User.make!
 Query(User)
 
-# Q 211 : # User.make!(:username => "test")
+# Q 255 : # User.make!(:username => "test")
 Query(User)
 
-# Q 212 : # User.make!(:username => "test")
+# Q 256 : # User.make!
 Query(User)
 
-# Q 213 : # User.make!
+# Q 257 : # User.make!(:username => "test")
 Query(User)
 
-# Q 214 : # User.make!(:username => "test")
+# Q 258 : # User.make!(:username => "test")
 Query(User)
-
-# Q 215 : # User.make!
-Query(User)
-
-# Q 216 : # @stories.each
-Query(Story)
-
-# Q 217 : # comment.score
-Query(Comment)
-
-# Q 218 : # @comments.each
-Query(Comment)
-
-# Q 219 : # user.is_active?
-Query(User)
-
-# Q 220 : # user.is_active?
-Query(User)
-
-# Q 221 : # self.where(:key => key).first.try(:value)
-Query(Keystore)
-.where("key = ?")
-.return_limit('1')
-.select('value')
-# Q 222 : # self.where(:key => key).first.try
-Query(Keystore)
-.where("key = ?")
-.return_limit('1')
-# Q 223 : # self.where(:key => key).first
-Query(Keystore)
-.where("key = ?")
-.return_limit('1')
-# Q 224 : # self.where(:key => key)
-Query(Keystore)
-.where("key = ?")
-# Q 225 : # self.where(:key => key).first.try
-Query(Keystore)
-.where("key = ?")
-.return_limit('1')
-# Q 226 : # self.where(:key => key).first
-Query(Keystore)
-.where("key = ?")
-.return_limit('1')
-# Q 227 : # Moderation.joins(:story).where("stories.user_id = ? AND moderations.created_at > ?", @user.id, 5.days.ago).count
-Query(Moderation)
-.joins('story')
-.where("user_id = ?")
-# Q 228 : # Moderation.joins(:story).where("stories.user_id = ? AND moderations.created_at > ?", @user.id, 5.days.ago)
-Query(Moderation)
-.joins('story')
-.where("user_id = ?")
-# Q 229 : # Moderation.joins(:story).where
-Query(Moderation)
-.joins('story')
-# Q 230 : # Moderation.joins(:story)
-Query(Moderation)
-.joins('story')
-# Q 231 : # Moderation.joins
-Query(Moderation)
-
-# Q 232 : # Moderation.joins(:story).where("stories.user_id = ? AND moderations.created_at > ?", @user.id, 5.days.ago).count
-Query(Moderation)
-.joins('story')
-.where("user_id = ?")
-# Q 233 : # Moderation.joins(:story).where
-Query(Moderation)
-.joins('story')
-# Q 234 : # Moderation.joins
-Query(Moderation)
-
-# Q 235 : # @user.tag_filter_tags.to_a
-Query(Tag)
-.where("user_id = ?")
-# Q 236 : # @user.tag_filter_tags.to_a
-Query(Tag)
-.where("user_id = ?")
-# Q 237 : # @user.tag_filter_tags
-Query(Tag)
-.where("user_id = ?")
-# Q 238 : # @user.tag_filter_tags.to_a
-Query(Tag)
-.where("user_id = ?")
-# Q 239 : # @user.tag_filter_tags
-Query(Tag)
-.where("user_id = ?")
-# Q 240 : # @user.try(:authenticate, params[:user][:password].to_s)
-Query(User)
-.select('authenticate')
-# Q 241 : # @user.try
-Query(User)
-
-# Q 242 : # @user.try
-Query(User)
-
-# Q 243 : # User.make!(:mailing_list_mode => 1)
-Query(User)
-
-# Q 244 : # User.make!
-Query(User)
-
-# Q 245 : # User.make!(:mailing_list_mode => 1)
-Query(User)
-
-# Q 246 : # User.make!
-Query(User)
-
-# Q 247 : # User.make!(:mailing_list_mode => 1)
-Query(User)
-
-# Q 248 : # User.make!
-Query(User)
-
-# Q 249 : # User.make!
-Query(User)
-
-# Q 250 : # Story.make!(:title => "hello", :url => "", :description => "")
-Query(Story)
-
-# Q 251 : # Story.make!
-Query(Story)
-
-# Q 252 : # Story.make!(:title => "hello", :url => "", :description => "")
-Query(Story)
-
-# Q 253 : # Story.make!
-Query(Story)
-
-# Q 254 : # Story.make!(:title => "hello", :url => "", :description => "")
-Query(Story)
-
-# Q 255 : # Story.make!(:title => "hello", :url => "", :description => "")
-Query(Story)
-
-# Q 256 : # Story.make!
-Query(Story)
-
-# Q 257 : # Story.make!(:title => "hello", :url => "", :description => "")
-Query(Story)
-
-# Q 258 : # Story.make!
-Query(Story)
 
 # Q 259 : # User.make!
 Query(User)
 
-# Q 260 : # u = User.make!
+# Q 260 : # User.make!(:username => "test")
 Query(User)
 
-# Q 261 : # u = User.make!
+# Q 261 : # User.make!
 Query(User)
 
-# Q 262 : # User.make!
+# Q 262 : # User.make!(:username => "blahblah")
 Query(User)
 
-# Q 263 : # if comment.parent_comment
+# Q 263 : # User.make!
+Query(User)
+
+# Q 264 : # User.make!(:username => "blahblah")
+Query(User)
+
+# Q 265 : # User.make!(:username => "blahblah")
+Query(User)
+
+# Q 266 : # User.make!
+Query(User)
+
+# Q 267 : # @stories.each
+Query(Story)
+
+# Q 268 : # @comments.each
+Query(Comment)
+
+# Q 269 : # @user.username
+Query(User)
+.select('username')
+# Q 270 : # user.is_active?
+Query(User)
+
+# Q 271 : # user.is_active?
+Query(User)
+
+# Q 272 : # for_user(user_id).where(is_unread: true)
+Query(ReplyingComment)
+.where("is_unread = ?")
+# Q 273 : # for_user(user_id).where
+Query(ReplyingComment)
+
+# Q 274 : # self.where(:key => key).first.try(:value)
+Query(Keystore)
+.where("key = ?")
+.return_limit('1')
+.select('value')
+# Q 275 : # self.where(:key => key).first.try
+Query(Keystore)
+.where("key = ?")
+.return_limit('1')
+# Q 276 : # self.where(:key => key).first
+Query(Keystore)
+.where("key = ?")
+.return_limit('1')
+# Q 277 : # self.where(:key => key)
+Query(Keystore)
+.where("key = ?")
+# Q 278 : # self.where(:key => key).first.try
+Query(Keystore)
+.where("key = ?")
+.return_limit('1')
+# Q 279 : # self.where(:key => key).first
+Query(Keystore)
+.where("key = ?")
+.return_limit('1')
+# Q 280 : # Moderation.joins(:story).where("stories.user_id = ? AND moderations.created_at > ?", @user.id, 5.days.ago).exists?
+Query(Moderation)
+.joins('story')
+.where("user_id = ?")
+.return_limit('1')
+# Q 281 : # Moderation.joins(:story).where("stories.user_id = ? AND moderations.created_at > ?", @user.id, 5.days.ago)
+Query(Moderation)
+.joins('story')
+.where("user_id = ?")
+# Q 282 : # Moderation.joins(:story).where
+Query(Moderation)
+.joins('story')
+# Q 283 : # Moderation.joins(:story)
+Query(Moderation)
+.joins('story')
+# Q 284 : # Moderation.joins
+Query(Moderation)
+
+# Q 285 : # Moderation.joins(:story).where("stories.user_id = ? AND moderations.created_at > ?", @user.id, 5.days.ago).exists?
+Query(Moderation)
+.joins('story')
+.where("user_id = ?")
+.return_limit('1')
+# Q 286 : # Moderation.joins(:story).where
+Query(Moderation)
+.joins('story')
+# Q 287 : # Moderation.joins
+Query(Moderation)
+
+# Q 288 : # @user.tag_filter_tags.to_a
+Query(Tag)
+.where("user_id = ?")
+# Q 289 : # @user.tag_filter_tags.to_a
+Query(Tag)
+.where("user_id = ?")
+# Q 290 : # @user.tag_filter_tags
+Query(Tag)
+.where("user_id = ?")
+# Q 291 : # @user.tag_filter_tags.to_a
+Query(Tag)
+.where("user_id = ?")
+# Q 292 : # @user.tag_filter_tags
+Query(Tag)
+.where("user_id = ?")
+# Q 293 : # User.make!(:mailing_list_mode => 1)
+Query(User)
+
+# Q 294 : # User.make!
+Query(User)
+
+# Q 295 : # User.make!(:mailing_list_mode => 1)
+Query(User)
+
+# Q 296 : # User.make!
+Query(User)
+
+# Q 297 : # User.make!(:mailing_list_mode => 1)
+Query(User)
+
+# Q 298 : # User.make!
+Query(User)
+
+# Q 299 : # User.make!
+Query(User)
+
+# Q 300 : # Story.make!(:title => "hello", :url => "", :description => "")
+Query(Story)
+
+# Q 301 : # Story.make!
+Query(Story)
+
+# Q 302 : # Story.make!(:title => "hello", :url => "", :description => "")
+Query(Story)
+
+# Q 303 : # Story.make!
+Query(Story)
+
+# Q 304 : # Story.make!(:title => "hello", :url => "", :description => "")
+Query(Story)
+
+# Q 305 : # Story.make!(:title => "hello", :url => "", :description => "")
+Query(Story)
+
+# Q 306 : # Story.make!
+Query(Story)
+
+# Q 307 : # Story.make!(:title => "hello", :url => "", :description => "")
+Query(Story)
+
+# Q 308 : # Story.make!
+Query(Story)
+
+# Q 309 : # User.make!
+Query(User)
+
+# Q 310 : # u = User.make!
+Query(User)
+
+# Q 311 : # u = User.make!
+Query(User)
+
+# Q 312 : # User.make!
+Query(User)
+
+# Q 313 : # if comment.parent_comment
 #   
 #   
 #   hidden_field_tag "parent_comment_short_id", comment.parent_comment.short_id
 # end
 Query(Comment)
 
-# Q 264 : # comment.parent_comment
+# Q 314 : # comment.parent_comment
 Query(Comment)
 .where("id = ?")
-# Q 265 : # comment.is_gone?
+# Q 315 : # comment.id
 Query(Comment)
 
-# Q 266 : # @message.subject
+# Q 316 : # comment.id
+Query(Comment)
+
+# Q 317 : # comment.id
+Query(Comment)
+
+# Q 318 : # comment.id
+Query(Comment)
+
+# Q 319 : # @message.subject
 Query(Message)
 .select('subject')
-# Q 267 : # if @user.is_moderator?
+# Q 320 : # if @user.has_2fa?
+#   
+#   
+# else
+#   
+#   
+# end
+Query(User)
+
+# Q 321 : # @user.has_2fa?
+Query(User)
+
+# Q 322 : # story.errors.any?
+Query(Story)
+
+# Q 323 : # story.errors
+Query(Story)
+
+# Q 324 : # if @user.is_moderator?
 #   
 #   
 #   f.label :merge_story_short_id, "Merge Into:", :class => "required"
@@ -846,1763 +1039,1772 @@ Query(Message)
 #     
 #     
 #     f.label :moderation_reason, "Mod Reason:", :class => "required"
-#     f.text_field :moderation_reason, :autocomplete => "off"
+#     f.text_field :moderation_reason
 #   end
 # end
 Query(User)
 
-# Q 268 : # @user.is_moderator?
+# Q 325 : # @user.is_moderator?
 Query(User)
 
-# Q 269 : # self.tag
+# Q 326 : # self.tag
 Query(Tag)
 .select('tag')
-# Q 270 : # self.tag
+# Q 327 : # self.tag
 Query(Tag)
 .select('tag')
-# Q 271 : # Message.new
+# Q 328 : # Message.new
 Query(Message)
 
-# Q 272 : # Message.new
+# Q 329 : # Message.new
 Query(Message)
 
-# Q 273 : # Message.new
+# Q 330 : # Message.new
 Query(Message)
 
-# Q 274 : # Moderation.new
+# Q 331 : # Moderation.new
 Query(Moderation)
 
-# Q 275 : # Moderation.new
+# Q 332 : # Moderation.new
 Query(Moderation)
 
-# Q 276 : # Moderation.new
+# Q 333 : # Moderation.new
 Query(Moderation)
 
-# Q 277 : # self.transaction
+# Q 334 : # self.transaction
 Query(HatRequest)
 
-# Q 278 : # self.transaction
+# Q 335 : # self.transaction
 Query(HatRequest)
 
-# Q 279 : # @user.id
+# Q 336 : # @user.id
 Query(User)
 
-# Q 280 : # @user.id
+# Q 337 : # @user.id
 Query(User)
 
-# Q 281 : # @user.undeleted_received_messages
+# Q 338 : # @user.username
 Query(User)
-
-# Q 282 : # @user.undeleted_received_messages
+.select('username')
+# Q 339 : # @user.username
 Query(User)
-
-# Q 283 : # @user.undeleted_received_messages
-Query(User)
-
-# Q 284 : # @user.delete!
-Query(User)
-
-# Q 285 : # @user.delete!
-Query(User)
-
-# Q 286 : # User.where(:session_token => session[:u].to_s).first
-Query(User)
-.where("session_token = ?")
-.return_limit('1')
-# Q 287 : # User.where(:session_token => session[:u].to_s).first
-Query(User)
-.where("session_token = ?")
-.return_limit('1')
-# Q 288 : # User.where(:session_token => session[:u].to_s)
-Query(User)
-.where("session_token = ?")
-# Q 289 : # User.where(:session_token => session[:u].to_s).first
-Query(User)
-.where("session_token = ?")
-.return_limit('1')
-# Q 290 : # story.title
+.select('username')
+# Q 340 : # story.title
 Query(Story)
 .select('title')
-# Q 291 : # story.title
+# Q 341 : # story.title
 Query(Story)
 .select('title')
-# Q 292 : # comment.story.title
+# Q 342 : # comment.short_id
+Query(Comment)
+.select('short_id')
+# Q 343 : # comment.story.title
 Query(Story)
 .where("id = ?")
 .select('title')
-# Q 293 : # comment.story
+# Q 344 : # comment.story
 Query(Story)
 .where("id = ?")
-# Q 294 : # comment.story.title
+# Q 345 : # comment.story.title
 Query(Story)
 .where("id = ?")
 .select('title')
-# Q 295 : # comment.story
+# Q 346 : # comment.story
 Query(Story)
 .where("id = ?")
-# Q 296 : # user.is_new?
+# Q 347 : # user.is_new?
 Query(User)
 
-# Q 297 : # user.is_new?
+# Q 348 : # user.is_new?
 Query(User)
 
-# Q 298 : # self.moderator_user_id
+# Q 349 : # for_user(user_id).where("parent_comment_id is not null")
+Query(ReplyingComment)
+.where(" = ?")
+# Q 350 : # for_user(user_id).where
+Query(ReplyingComment)
+
+# Q 351 : # self.moderator_user_id
 Query(Moderation)
 .select('moderator_user_id')
-# Q 299 : # self.moderator_user_id
+# Q 352 : # self.moderator_user_id
 Query(Moderation)
 .select('moderator_user_id')
-# Q 300 : # self.moderator_user_id
+# Q 353 : # self.moderator_user_id
 Query(Moderation)
 .select('moderator_user_id')
-# Q 301 : # self.user_id
+# Q 354 : # self.user_id
 Query(Hat)
 .select('user_id')
-# Q 302 : # self.user_id
+# Q 355 : # self.user_id
 Query(Hat)
 .select('user_id')
-# Q 303 : # self.user_id
+# Q 356 : # self.user_id
 Query(Hat)
 .select('user_id')
-# Q 304 : # Hat.new
+# Q 357 : # Hat.new
 Query(Hat)
 
-# Q 305 : # Hat.new
+# Q 358 : # Hat.new
 Query(Hat)
 
-# Q 306 : # h = Hat.new
+# Q 359 : # h = Hat.new
 Query(Hat)
 
-# Q 307 : # Hat.new
+# Q 360 : # Hat.new
 Query(Hat)
 
-# Q 308 : # Story.where(:short_id => params[:story_id]).first
-Query(Story)
-.where("short_id = ?")
-.return_limit('1')
-# Q 309 : # Story.where(:short_id => params[:story_id]).first
-Query(Story)
-.where("short_id = ?")
-.return_limit('1')
-# Q 310 : # Story.where(:short_id => params[:story_id])
-Query(Story)
-.where("short_id = ?")
-# Q 311 : # Story.where(:short_id => params[:story_id]).first
-Query(Story)
-.where("short_id = ?")
-.return_limit('1')
-# Q 312 : # user.is_active?
+# Q 361 : # Message.new
+Query(Message)
+
+# Q 362 : # Message.new
+Query(Message)
+
+# Q 363 : # @new_message = Message.new
+Query(Message)
+
+# Q 364 : # Message.new
+Query(Message)
+
+# Q 365 : # @user.try(:authenticate, params[:user][:password].to_s)
+Query(User)
+.select('authenticate')
+# Q 366 : # @user.try
 Query(User)
 
-# Q 313 : # user.is_active?
+# Q 367 : # @user.try
 Query(User)
 
-# Q 314 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, nil, u.id, nil)
+# Q 368 : # Story.where(:short_id => params[:story_id]).first
+Query(Story)
+.where("short_id = ?")
+.return_limit('1')
+# Q 369 : # Story.where(:short_id => params[:story_id]).first
+Query(Story)
+.where("short_id = ?")
+.return_limit('1')
+# Q 370 : # Story.where(:short_id => params[:story_id])
+Query(Story)
+.where("short_id = ?")
+# Q 371 : # Story.where(:short_id => params[:story_id]).first
+Query(Story)
+.where("short_id = ?")
+.return_limit('1')
+# Q 372 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, nil, u.id, nil)
 Query(Vote)
 
-# Q 315 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+# Q 373 : # Vote.vote_thusly_on_story_or_comment_for_user_because
 Query(Vote)
 
-# Q 316 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, nil, u.id, nil)
+# Q 374 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, nil, u.id, nil)
 Query(Vote)
 
-# Q 317 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, nil, u.id, nil)
+# Q 375 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, nil, u.id, nil)
 Query(Vote)
 
-# Q 318 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+# Q 376 : # Vote.vote_thusly_on_story_or_comment_for_user_because
 Query(Vote)
 
-# Q 319 : # story.url_or_comments_url
+# Q 377 : # story.url_or_comments_url
 Query(Story)
 
-# Q 320 : # story.url_or_comments_url
+# Q 378 : # story.url_or_comments_url
 Query(Story)
 
-# Q 321 : # comment.parent_comment.short_id
+# Q 379 : # comment.parent_comment.short_id
 Query(Comment)
 .where("id = ?")
 .select('short_id')
-# Q 322 : # comment.parent_comment
+# Q 380 : # comment.parent_comment
 Query(Comment)
 .where("id = ?")
-# Q 323 : # comment.parent_comment.short_id
+# Q 381 : # comment.parent_comment.short_id
 Query(Comment)
 .where("id = ?")
 .select('short_id')
-# Q 324 : # comment.parent_comment
+# Q 382 : # comment.parent_comment
 Query(Comment)
 .where("id = ?")
-# Q 325 : # comment.url
+# Q 383 : # comment.url
 Query(Comment)
 
-# Q 326 : # comment.url
+# Q 384 : # comment.url
 Query(Comment)
 
-# Q 327 : # @moderations.each
-Query(Moderation)
-
-# Q 328 : # @invitation_request.code
+# Q 385 : # @invitation_request.code
 Query(InvitationRequest)
 .select('code')
-# Q 329 : # @story.is_unavailable
+# Q 386 : # @story.is_unavailable
 Query(Story)
 
-# Q 330 : # @story.story_cache.present?
-Query(Story)
-.select('story_cache')
-# Q 331 : # @story.story_cache
+# Q 387 : # @story.story_cache.present?
 Query(Story)
 .select('story_cache')
-# Q 332 : # user.id
+# Q 388 : # @story.story_cache
+Query(Story)
+.select('story_cache')
+# Q 389 : # story.errors.any?
+Query(Story)
+
+# Q 390 : # story.errors
+Query(Story)
+
+# Q 391 : # story.already_posted_story
+Query(Story)
+
+# Q 392 : # for_user(user_id).where("parent_comment_id is null")
+Query(ReplyingComment)
+.where(" = ?")
+# Q 393 : # for_user(user_id).where
+Query(ReplyingComment)
+
+# Q 394 : # user.id
 Query(User)
 
-# Q 333 : # user.id
+# Q 395 : # user.id
 Query(User)
 
-# Q 334 : # user.id
+# Q 396 : # user.id
 Query(User)
 
-# Q 335 : # self.user_id
+# Q 397 : # self.user_id
 Query(HatRequest)
 .select('user_id')
-# Q 336 : # self.user_id
+# Q 398 : # self.user_id
 Query(HatRequest)
 .select('user_id')
-# Q 337 : # self.user_id
+# Q 399 : # self.user_id
 Query(HatRequest)
 .select('user_id')
-# Q 338 : # Story.new(story_params)
-Query(Story)
-
-# Q 339 : # Story.new(story_params)
-Query(Story)
-
-# Q 340 : # Story.new
-Query(Story)
-
-# Q 341 : # Story.new
-Query(Story)
-
-# Q 342 : # Moderation.order("id desc").limit(50).offset((
-# @page - 1) * 50)
-Query(Moderation)
-.order('id')
-.order('id')
-.return_limit('')
-# Q 343 : # Moderation.order("id desc").limit(50).offset((
-# @page - 1) * 50)
-Query(Moderation)
-.order('id')
-.order('id')
-.return_limit('')
-# Q 344 : # Moderation.order("id desc").limit(50).offset
-Query(Moderation)
-.order('id')
-.order('id')
-.return_limit('')
-# Q 345 : # Moderation.order("id desc").limit(50)
-Query(Moderation)
-.order('id')
-.order('id')
-.return_limit('')
-# Q 346 : # Moderation.order("id desc").limit
-Query(Moderation)
-.order('id')
-.order('id')
-.return_limit('')
-# Q 347 : # Moderation.order("id desc")
-Query(Moderation)
-.order('id')
-.order('id')
-# Q 348 : # Moderation.order
-Query(Moderation)
-
-# Q 349 : # Moderation.order("id desc").limit(50).offset
-Query(Moderation)
-.order('id')
-.order('id')
-.return_limit('')
-# Q 350 : # Moderation.order("id desc").limit
-Query(Moderation)
-.order('id')
-.order('id')
-.return_limit('')
-# Q 351 : # Moderation.order
-Query(Moderation)
-
-# Q 352 : # story.is_gone?
-Query(Story)
-
-# Q 353 : # story.is_gone?
-Query(Story)
-
-# Q 354 : # User.make!(:email => "user@example.com")
+# Q 400 : # @user.delete!
 Query(User)
 
-# Q 355 : # User.make!
+# Q 401 : # @user.delete!
 Query(User)
 
-# Q 356 : # User.make!(:email => "user@example.com")
+# Q 402 : # story.is_gone?
+Query(Story)
+
+# Q 403 : # story.is_gone?
+Query(Story)
+
+# Q 404 : # User.make!(:email => "user@example.com")
 Query(User)
 
-# Q 357 : # User.make!(:email => "user@example.com")
+# Q 405 : # User.make!
 Query(User)
 
-# Q 358 : # User.make!
+# Q 406 : # User.make!(:email => "user@example.com")
 Query(User)
 
-# Q 359 : # Story.make!(:title => "hello", :description => "hi", :url => nil)
+# Q 407 : # User.make!(:email => "user@example.com")
+Query(User)
+
+# Q 408 : # User.make!
+Query(User)
+
+# Q 409 : # Story.make!(:title => "hello", :description => "hi", :url => nil)
 Query(Story)
 
-# Q 360 : # Story.make!
+# Q 410 : # Story.make!
 Query(Story)
 
-# Q 361 : # Story.make!(:title => "hello", :description => "hi", :url => nil)
+# Q 411 : # Story.make!(:title => "hello", :description => "hi", :url => nil)
 Query(Story)
 
-# Q 362 : # Story.make!
+# Q 412 : # Story.make!
 Query(Story)
 
-# Q 363 : # Story.make!(:title => "hello", :description => "hi", :url => nil)
+# Q 413 : # Story.make!(:title => "hello", :description => "hi", :url => nil)
 Query(Story)
 
-# Q 364 : # Story.make!(:title => "hello", :description => "hi", :url => nil)
+# Q 414 : # Story.make!(:title => "hello", :description => "hi", :url => nil)
 Query(Story)
 
-# Q 365 : # Story.make!
+# Q 415 : # Story.make!
 Query(Story)
 
-# Q 366 : # Story.make!(:title => "hello", :description => "hi", :url => nil)
+# Q 416 : # Story.make!(:title => "hello", :description => "hi", :url => nil)
 Query(Story)
 
-# Q 367 : # Story.make!
+# Q 417 : # Story.make!
 Query(Story)
 
-# Q 368 : # story.short_id_url
+# Q 418 : # story.short_id_url
 Query(Story)
 
-# Q 369 : # story.short_id_url
+# Q 419 : # story.short_id_url
 Query(Story)
 
-# Q 370 : # comment.id
+# Q 420 : # comment.short_id_url
 Query(Comment)
 
-# Q 371 : # comment.id
+# Q 421 : # comment.short_id_url
 Query(Comment)
 
-# Q 372 : # comment.id
-Query(Comment)
-
-# Q 373 : # comment.id
-Query(Comment)
-
-# Q 374 : # comment.id
-Query(Comment)
-
-# Q 375 : # comment.short_id_url
-Query(Comment)
-
-# Q 376 : # comment.short_id_url
-Query(Comment)
-
-# Q 377 : # self.hat
+# Q 422 : # self.hat
 Query(Hat)
 .select('hat')
-# Q 378 : # self.hat
+# Q 423 : # self.hat
 Query(Hat)
 .select('hat')
-# Q 379 : # user.id
+# Q 424 : # user.id
 Query(User)
 
-# Q 380 : # user.id
+# Q 425 : # user.id
 Query(User)
 
-# Q 381 : # user.id
+# Q 426 : # user.id
 Query(User)
 
-# Q 382 : # Keystore.connection.adapter_name
+# Q 427 : # Keystore.connection.adapter_name
 Query(Keystore)
 
-# Q 383 : # Keystore.connection
+# Q 428 : # Keystore.connection
 Query(Keystore)
 
-# Q 384 : # Keystore.connection.adapter_name
+# Q 429 : # Keystore.connection.adapter_name
 Query(Keystore)
 
-# Q 385 : # Keystore.connection
+# Q 430 : # Keystore.connection
 Query(Keystore)
 
-# Q 386 : # @user.id
+# Q 431 : # Story.new(story_params)
+Query(Story)
+
+# Q 432 : # Story.new(story_params)
+Query(Story)
+
+# Q 433 : # Story.new
+Query(Story)
+
+# Q 434 : # Story.new
+Query(Story)
+
+# Q 435 : # @user.can_see_invitation_requests?
 Query(User)
 
-# Q 387 : # @user.id
+# Q 436 : # @user.can_see_invitation_requests?
 Query(User)
 
-# Q 388 : # @user.id
-Query(User)
-
-# Q 389 : # InvitationRequest.where(:is_verified => true)
-Query(InvitationRequest)
-.where("is_verified = ?")
-# Q 390 : # InvitationRequest.where(:is_verified => true)
-Query(InvitationRequest)
-.where("is_verified = ?")
-# Q 391 : # @user.id
-Query(User)
-
-# Q 392 : # @user.username
-Query(User)
-.select('username')
-# Q 393 : # @user.id
-Query(User)
-
-# Q 394 : # @user.username
-Query(User)
-.select('username')
-# Q 395 : # story.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 396 : # story.user.username
+# Q 437 : # story.url.to_s.match(/\.pdf$/i)
+Query(Story)
+.select('url')
+# Q 438 : # story.url.to_s.match
+Query(Story)
+.select('url')
+# Q 439 : # story.url.to_s
+Query(Story)
+.select('url')
+# Q 440 : # story.url
+Query(Story)
+.select('url')
+# Q 441 : # story.url.to_s.match
+Query(Story)
+.select('url')
+# Q 442 : # story.url.to_s
+Query(Story)
+.select('url')
+# Q 443 : # story.url
+Query(Story)
+.select('url')
+# Q 444 : # story.user.username
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 397 : # story.user
-Query(User)
-.where("id = ?")
-# Q 398 : # comment.user.username
+# Q 445 : # story.user.username
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 399 : # comment.user.username
+# Q 446 : # story.user
+Query(User)
+.where("id = ?")
+# Q 447 : # comment.user.username
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 400 : # comment.user
+# Q 448 : # comment.user.username
 Query(User)
 .where("id = ?")
-# Q 401 : # @message.author
+.select('username')
+# Q 449 : # comment.user
 Query(User)
 .where("id = ?")
-# Q 402 : # user.username
+# Q 450 : # @message.author
+Query(User)
+.where("id = ?")
+# Q 451 : # user.username
 Query(User)
 .select('username')
-# Q 403 : # user.username
+# Q 452 : # user.username
 Query(User)
 .select('username')
-# Q 404 : # @story.unavailable_at
+# Q 453 : # @story.unavailable_at
 Query(Story)
 .select('unavailable_at')
-# Q 405 : # TagFilter.group(:tag_id).count
+# Q 454 : # TagFilter.group(:tag_id).count
 Query(TagFilter)
 .group('tag_id')
-# Q 406 : # TagFilter.group(:tag_id).count
+# Q 455 : # TagFilter.group(:tag_id).count
 Query(TagFilter)
 .group('tag_id')
-# Q 407 : # TagFilter.group(:tag_id)
+# Q 456 : # TagFilter.group(:tag_id)
 Query(TagFilter)
 .group('tag_id')
-# Q 408 : # TagFilter.group
+# Q 457 : # TagFilter.group
 Query(TagFilter)
 .group('')
-# Q 409 : # TagFilter.group(:tag_id).count
+# Q 458 : # TagFilter.group(:tag_id).count
 Query(TagFilter)
 .group('tag_id')
-# Q 410 : # TagFilter.group
+# Q 459 : # TagFilter.group
 Query(TagFilter)
 .group('')
-# Q 411 : # self.assign_short_id_and_upvote
+# Q 460 : # self.assign_short_id_and_upvote
 Query(Comment)
 
-# Q 412 : # self.assign_short_id_and_upvote
+# Q 461 : # self.assign_short_id_and_upvote
 Query(Comment)
 
-# Q 413 : # where(:has_been_read => false, :deleted_by_recipient => false)
+# Q 462 : # where(:has_been_read => false, :deleted_by_recipient => false)
 Query(Message)
 .where("has_been_read = ?")
 .where("deleted_by_recipient = ?")
-# Q 414 : # self.hat
+# Q 463 : # self.hat
 Query(HatRequest)
 .select('hat')
-# Q 415 : # self.hat
+# Q 464 : # self.hat
 Query(HatRequest)
 .select('hat')
-# Q 416 : # self.hat
+# Q 465 : # self.hat
 Query(HatRequest)
 .select('hat')
-# Q 417 : # Keystore.connection.execute
+# Q 466 : # Keystore.connection.execute
 Query(Keystore)
 
-# Q 418 : # Keystore.connection
+# Q 467 : # Keystore.connection
 Query(Keystore)
 
-# Q 419 : # Keystore.connection.execute
+# Q 468 : # Keystore.connection.execute
 Query(Keystore)
 
-# Q 420 : # Keystore.connection
+# Q 469 : # Keystore.connection
 Query(Keystore)
 
-# Q 421 : # story.created_at.rfc2822
+# Q 470 : # @user.id
+Query(User)
+
+# Q 471 : # @user.id
+Query(User)
+
+# Q 472 : # @user.id
+Query(User)
+
+# Q 473 : # Moderation.all.eager_load(:moderator, :story, :comment, :user)
+Query(Moderation)
+.includes('moderator')
+.includes('story')
+.includes('comment')
+.includes('user')
+# Q 474 : # Moderation.all.eager_load(:moderator, :story, :comment, :user)
+Query(Moderation)
+.includes('moderator')
+.includes('story')
+.includes('comment')
+.includes('user')
+# Q 475 : # Moderation.all.eager_load
+Query(Moderation)
+
+# Q 476 : # Moderation.all
+Query(Moderation)
+
+# Q 477 : # Moderation.all.eager_load
+Query(Moderation)
+
+# Q 478 : # Moderation.all
+Query(Moderation)
+
+# Q 479 : # @user.disown_comments!
+Query(User)
+
+# Q 480 : # @user.disown_comments!
+Query(User)
+
+# Q 481 : # story.created_at.rfc2822
 Query(Story)
 .select('created_at')
-# Q 422 : # story.created_at.rfc2822
+# Q 482 : # story.created_at.rfc2822
 Query(Story)
 .select('created_at')
-# Q 423 : # story.created_at
+# Q 483 : # story.created_at
 Query(Story)
 .select('created_at')
-# Q 424 : # comment.created_at.rfc2822
-Query(Comment)
-.select('created_at')
-# Q 425 : # comment.created_at.rfc2822
-Query(Comment)
-.select('created_at')
-# Q 426 : # comment.created_at
-Query(Comment)
-.select('created_at')
-# Q 427 : # @comments.any?
+# Q 484 : # comment.is_gone?
 Query(Comment)
 
-# Q 428 : # @message.author.username
+# Q 485 : # comment.created_at.rfc2822
+Query(Comment)
+.select('created_at')
+# Q 486 : # comment.created_at.rfc2822
+Query(Comment)
+.select('created_at')
+# Q 487 : # comment.created_at
+Query(Comment)
+.select('created_at')
+# Q 488 : # @comments.any?
+Query(Comment)
+
+# Q 489 : # @message.author.username
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 429 : # @message.author
+# Q 490 : # @message.author
 Query(User)
 .where("id = ?")
-# Q 430 : # if user.is_admin?
+# Q 491 : # if user.is_admin?
+#   
+#   
+# elsif user.is_moderator?
 #   
 #   
 # else
 #   
 #   
 #   user.karma
-#   if user.is_moderator?
-#     
-#     
-#   end
 # end
 Query(User)
 
-# Q 431 : # user.is_admin?
+# Q 492 : # user.is_admin?
 Query(User)
 
-# Q 432 : # @search.what
+# Q 493 : # @search.what
 Query(Search)
 
-# Q 433 : # story.score
-Query(Story)
-
-# Q 434 : # @story.short_id
+# Q 494 : # @story.short_id
 Query(Story)
 .select('short_id')
-# Q 435 : # self.assign_initial_confidence
+# Q 495 : # story.already_posted_story.created_at
+Query(Story)
+.select('created_at')
+# Q 496 : # story.already_posted_story
+Query(Story)
+
+# Q 497 : # self.assign_initial_confidence
 Query(Comment)
 
-# Q 436 : # self.assign_initial_confidence
+# Q 498 : # self.assign_initial_confidence
 Query(Comment)
 
-# Q 437 : # self.link
+# Q 499 : # self.link
 Query(HatRequest)
 .select('link')
-# Q 438 : # self.link
+# Q 500 : # self.link
 Query(HatRequest)
 .select('link')
-# Q 439 : # self.link
+# Q 501 : # self.link
 Query(HatRequest)
 .select('link')
-# Q 440 : # Keystore.table_name
+# Q 502 : # Keystore.table_name
 Query(Keystore)
 
-# Q 441 : # Keystore.table_name
+# Q 503 : # Keystore.table_name
 Query(Keystore)
 
-# Q 442 : # Hat.all.includes(:user).each
+# Q 504 : # Hat.all.includes(:user).each
 Query(Hat)
 .includes('user')
-# Q 443 : # Hat.all.includes(:user)
+# Q 505 : # Hat.all.includes(:user)
 Query(Hat)
 .includes('user')
-# Q 444 : # Hat.all.includes
+# Q 506 : # Hat.all.includes
 Query(Hat)
 
-# Q 445 : # Hat.all
+# Q 507 : # Hat.all
 Query(Hat)
 
-# Q 446 : # Hat.all.includes(:user).each
+# Q 508 : # Hat.all.includes(:user).each
 Query(Hat)
 .includes('user')
-# Q 447 : # Hat.all.includes
+# Q 509 : # Hat.all.includes
 Query(Hat)
 
-# Q 448 : # Hat.all
+# Q 510 : # Hat.all
 Query(Hat)
 
-# Q 449 : # @story.valid?
-Query(Story)
-
-# Q 450 : # @story.already_posted_story
-Query(Story)
-
-# Q 451 : # @story.seen_previous
-Query(Story)
-
-# Q 452 : # @story.valid?
-Query(Story)
-
-# Q 453 : # @story.already_posted_story
-Query(Story)
-
-# Q 454 : # @story.seen_previous
-Query(Story)
-
-# Q 455 : # User.make!(:email => "user@example.com")
+# Q 511 : # User.make!(:email => "user@example.com")
 Query(User)
 
-# Q 456 : # User.make!
+# Q 512 : # User.make!
 Query(User)
 
-# Q 457 : # User.make!(:email => "user@example.com")
+# Q 513 : # User.make!(:email => "user@example.com")
 Query(User)
 
-# Q 458 : # User.make!
+# Q 514 : # User.make!
 Query(User)
 
-# Q 459 : # User.make!(:email => "user@example.com")
+# Q 515 : # User.make!(:email => "user@example.com")
 Query(User)
 
-# Q 460 : # User.make!(:email => "user@example.com")
+# Q 516 : # User.make!(:email => "user@example.com")
 Query(User)
 
-# Q 461 : # User.make!
+# Q 517 : # User.make!
 Query(User)
 
-# Q 462 : # User.make!(:email => "user@example.com")
+# Q 518 : # User.make!(:email => "user@example.com")
 Query(User)
 
-# Q 463 : # User.make!
+# Q 519 : # User.make!
 Query(User)
 
-# Q 464 : # Story.make!(:title => "hello", :url => "http://ex.com/", :description => nil)
+# Q 520 : # Story.make!(:title => "hello", :url => "http://ex.com/", :description => nil)
 Query(Story)
 
-# Q 465 : # Story.make!
+# Q 521 : # Story.make!
 Query(Story)
 
-# Q 466 : # Story.make!(:title => "hello", :url => "http://ex.com/", :description => nil)
+# Q 522 : # Story.make!(:title => "hello", :url => "http://ex.com/", :description => nil)
 Query(Story)
 
-# Q 467 : # Story.make!
+# Q 523 : # Story.make!
 Query(Story)
 
-# Q 468 : # Story.make!(:title => "hello", :url => "http://ex.com/", :description => nil)
+# Q 524 : # Story.make!(:title => "hello", :url => "http://ex.com/", :description => nil)
 Query(Story)
 
-# Q 469 : # Story.make!(:title => "hello", :url => "http://ex.com/", :description => nil)
+# Q 525 : # Story.make!(:title => "hello", :url => "http://ex.com/", :description => nil)
 Query(Story)
 
-# Q 470 : # Story.make!
+# Q 526 : # Story.make!
 Query(Story)
 
-# Q 471 : # Story.make!(:title => "hello", :url => "http://ex.com/", :description => nil)
+# Q 527 : # Story.make!(:title => "hello", :url => "http://ex.com/", :description => nil)
 Query(Story)
 
-# Q 472 : # Story.make!
+# Q 528 : # Story.make!
 Query(Story)
 
-# Q 473 : # story.comments_url
+# Q 529 : # story.comments_url
 Query(Story)
 
-# Q 474 : # story.comments_url
+# Q 530 : # story.comments_url
 Query(Story)
 
-# Q 475 : # comment.comment
+# Q 531 : # comment.comment
 Query(Comment)
 .select('comment')
-# Q 476 : # comment.comment
+# Q 532 : # comment.comment
 Query(Comment)
 .select('comment')
-# Q 477 : # comment.url
+# Q 533 : # @user.can_downvote?
+Query(User)
+
+# Q 534 : # comment.url
 Query(Comment)
 
-# Q 478 : # comment.url
+# Q 535 : # comment.url
 Query(Comment)
 
-# Q 479 : # @message.author.username
+# Q 536 : # @message.author.username
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 480 : # @message.author
+# Q 537 : # @message.author
 Query(User)
 .where("id = ?")
-# Q 481 : # User.username_regex
-Query(User)
+# Q 538 : # story.score
+Query(Story)
 
-# Q 482 : # User.username_regex
-Query(User)
-
-# Q 483 : # CandidateId.new(klass)
+# Q 539 : # CandidateId.new(klass)
 Query(CandidateId)
 
-# Q 484 : # CandidateId.new
+# Q 540 : # CandidateId.new
 Query(CandidateId)
 
-# Q 485 : # CandidateId.new
+# Q 541 : # CandidateId.new
 Query(CandidateId)
 
-# Q 486 : # Tag.active.order(:tag).select { |t|
+# Q 542 : # Tag.active.order(:tag).select { |t|
 #   
 #   t.valid_for?(user)
 # }.map
 Query(Tag)
 .order('tag')
-# Q 487 : # Tag.active.order(:tag).select
+# Q 543 : # Tag.active.order(:tag).select
 Query(Tag)
 .order('tag')
-# Q 488 : # Tag.active.order(:tag)
+# Q 544 : # Tag.active.order(:tag)
 Query(Tag)
 .order('tag')
-# Q 489 : # Tag.active.order
+# Q 545 : # Tag.active.order
 Query(Tag)
 
-# Q 490 : # Tag.active
+# Q 546 : # Tag.active
 Query(Tag)
 
-# Q 491 : # Tag.active.order(:tag).select { |t|
+# Q 547 : # Tag.active.order(:tag).select { |t|
 #   
 #   t.valid_for?(user)
 # }.map
 Query(Tag)
 .order('tag')
-# Q 492 : # Tag.active.order(:tag).select
+# Q 548 : # Tag.active.order(:tag).select
 Query(Tag)
 .order('tag')
-# Q 493 : # Tag.active.order
+# Q 549 : # Tag.active.order
 Query(Tag)
 
-# Q 494 : # Tag.active
+# Q 550 : # Tag.active
 Query(Tag)
 
-# Q 495 : # self.assign_thread_id
+# Q 551 : # self.assign_thread_id
 Query(Comment)
 
-# Q 496 : # self.assign_thread_id
+# Q 552 : # self.assign_thread_id
 Query(Comment)
 
-# Q 497 : # self.story
+# Q 553 : # self.story
 Query(Story)
 .where("id = ?")
-# Q 498 : # self.story
+# Q 554 : # self.story
 Query(Story)
 .where("id = ?")
-# Q 499 : # self.destroy
-Query(Hat)
-
-# Q 500 : # self.destroy
-Query(Hat)
-
-# Q 501 : # @story.save
+# Q 555 : # @story.valid?
 Query(Story)
 
-# Q 502 : # @story.save
+# Q 556 : # @story.already_posted_story
 Query(Story)
 
-# Q 503 : # User.order("karma DESC, id ASC").to_a
-Query(User)
-.order('id')
-.order('karma')
-.order('id')
-# Q 504 : # User.order("karma DESC, id ASC").to_a
-Query(User)
-.order('id')
-.order('karma')
-.order('id')
-# Q 505 : # User.order("karma DESC, id ASC")
-Query(User)
-.order('id')
-.order('karma')
-.order('id')
-# Q 506 : # User.order
-Query(User)
+# Q 557 : # @story.seen_previous
+Query(Story)
 
-# Q 507 : # User.order("karma DESC, id ASC").to_a
-Query(User)
-.order('id')
-.order('karma')
-.order('id')
-# Q 508 : # User.order
-Query(User)
+# Q 558 : # @story.valid?
+Query(Story)
 
-# Q 509 : # story.comments.build
+# Q 559 : # @story.already_posted_story
+Query(Story)
+
+# Q 560 : # @story.seen_previous
+Query(Story)
+
+# Q 561 : # User.last.id
+Query(User)
+.return_limit('1')
+# Q 562 : # User.last.id
+Query(User)
+.return_limit('1')
+# Q 563 : # User.last
+Query(User)
+.return_limit('1')
+# Q 564 : # User.last.id
+Query(User)
+.return_limit('1')
+# Q 565 : # User.last
+Query(User)
+.return_limit('1')
+# Q 566 : # story.comments.build
 Query(Comment)
 .where("story_id = ?")
-# Q 510 : # story.comments.build
+# Q 567 : # story.comments.build
 Query(Comment)
 .where("story_id = ?")
-# Q 511 : # story.comments
+# Q 568 : # story.comments
 Query(Comment)
 .where("story_id = ?")
-# Q 512 : # story.comments.build
+# Q 569 : # story.comments.build
 Query(Comment)
 .where("story_id = ?")
-# Q 513 : # story.comments
+# Q 570 : # story.comments
 Query(Comment)
 .where("story_id = ?")
-# Q 514 : # User.make!(:username => "blahblah")
-Query(User)
-
-# Q 515 : # User.make!
-Query(User)
-
-# Q 516 : # User.make!(:username => "blahblah")
-Query(User)
-
-# Q 517 : # User.make!(:username => "blahblah")
-Query(User)
-
-# Q 518 : # User.make!
-Query(User)
-
-# Q 519 : # comment.score
+# Q 571 : # comment.score_for_user
 Query(Comment)
 
-# Q 520 : # comment.markeddown_comment
+# Q 572 : # comment.markeddown_comment
 Query(Comment)
 .select('markeddown_comment')
-# Q 521 : # comment.markeddown_comment
+# Q 573 : # comment.markeddown_comment
 Query(Comment)
 .select('markeddown_comment')
-# Q 522 : # @message.author.is_admin?
+# Q 574 : # @message.author.is_admin?
 Query(User)
 .where("id = ?")
-# Q 523 : # @message.author
+# Q 575 : # @message.author
 Query(User)
 .where("id = ?")
-# Q 524 : # @user.is_moderator?
+# Q 576 : # user.is_moderator?
 Query(User)
 
-# Q 525 : # self.story.user_id
+# Q 577 : # self.story.user_id
 Query(Story)
 .where("id = ?")
 .select('user_id')
-# Q 526 : # self.story.user_id
+# Q 578 : # self.story.user_id
 Query(Story)
 .where("id = ?")
 .select('user_id')
-# Q 527 : # self.story
+# Q 579 : # self.story
 Query(Story)
 .where("id = ?")
-# Q 528 : # self.story.user_id
+# Q 580 : # self.story.user_id
 Query(Story)
 .where("id = ?")
 .select('user_id')
-# Q 529 : # self.story
+# Q 581 : # self.story
 Query(Story)
 .where("id = ?")
-# Q 530 : # Keystore.connection.adapter_name
+# Q 582 : # self.save!
+Query(Hat)
+
+# Q 583 : # self.save!
+Query(Hat)
+
+# Q 584 : # Keystore.connection.adapter_name
 Query(Keystore)
 
-# Q 531 : # Keystore.connection
+# Q 585 : # Keystore.connection
 Query(Keystore)
 
-# Q 532 : # Keystore.connection.adapter_name
+# Q 586 : # Keystore.connection.adapter_name
 Query(Keystore)
 
-# Q 533 : # Keystore.connection
+# Q 587 : # Keystore.connection
 Query(Keystore)
 
-# Q 534 : # InvitationRequest.where(:code => params[:code].to_s).first
-Query(InvitationRequest)
-.where("code = ?")
-.return_limit('1')
-# Q 535 : # InvitationRequest.where(:code => params[:code].to_s).first
-Query(InvitationRequest)
-.where("code = ?")
-.return_limit('1')
-# Q 536 : # InvitationRequest.where(:code => params[:code].to_s)
-Query(InvitationRequest)
-.where("code = ?")
-# Q 537 : # InvitationRequest.where(:code => params[:code].to_s).first
-Query(InvitationRequest)
-.where("code = ?")
-.return_limit('1')
-# Q 538 : # @users.length
+# Q 588 : # @story.save
+Query(Story)
+
+# Q 589 : # @story.save
+Query(Story)
+
+# Q 590 : # ReplyingComment.comment_replies_for(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE).limit(REPLIES_PER_PAGE)
+Query(ReplyingComment)
+.return_limit('')
+# Q 591 : # ReplyingComment.comment_replies_for(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE).limit(REPLIES_PER_PAGE)
+Query(ReplyingComment)
+.return_limit('')
+# Q 592 : # ReplyingComment.comment_replies_for(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE).limit
+Query(ReplyingComment)
+.return_limit('')
+# Q 593 : # ReplyingComment.comment_replies_for(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE)
+Query(ReplyingComment)
+
+# Q 594 : # ReplyingComment.comment_replies_for(@user.id).offset
+Query(ReplyingComment)
+
+# Q 595 : # ReplyingComment.comment_replies_for(@user.id)
+Query(ReplyingComment)
+
+# Q 596 : # ReplyingComment.comment_replies_for
+Query(ReplyingComment)
+
+# Q 597 : # ReplyingComment.comment_replies_for(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE).limit
+Query(ReplyingComment)
+.return_limit('')
+# Q 598 : # ReplyingComment.comment_replies_for(@user.id).offset
+Query(ReplyingComment)
+
+# Q 599 : # ReplyingComment.comment_replies_for
+Query(ReplyingComment)
+
+# Q 600 : # User.where(:session_token => session[:u].to_s).first
 Query(User)
-
-# Q 539 : # @users.length
+.where("session_token = ?")
+.return_limit('1')
+# Q 601 : # User.where(:session_token => session[:u].to_s).first
 Query(User)
-
-# Q 540 : # @users.length
+.where("session_token = ?")
+.return_limit('1')
+# Q 602 : # User.where(:session_token => session[:u].to_s)
 Query(User)
-
-# Q 541 : # @comment.short_id
+.where("session_token = ?")
+# Q 603 : # User.where(:session_token => session[:u].to_s).first
+Query(User)
+.where("session_token = ?")
+.return_limit('1')
+# Q 604 : # story.url
+Query(Story)
+.select('url')
+# Q 605 : # story.url
+Query(Story)
+.select('url')
+# Q 606 : # @comment.short_id
 Query(Comment)
 .select('short_id')
-# Q 542 : # @comment.short_id
+# Q 607 : # @comment.short_id
 Query(Comment)
 .select('short_id')
-# Q 543 : # @comment.short_id
+# Q 608 : # @comment.short_id
 Query(Comment)
 .select('short_id')
-# Q 544 : # @comment.short_id
+# Q 609 : # @comment.short_id
 Query(Comment)
 .select('short_id')
-# Q 545 : # @comment.short_id
+# Q 610 : # @comment.short_id
 Query(Comment)
 .select('short_id')
-# Q 546 : # story.markeddown_description
+# Q 611 : # story.markeddown_description
 Query(Story)
 .select('markeddown_description')
-# Q 547 : # story.markeddown_description
+# Q 612 : # story.markeddown_description
 Query(Story)
 .select('markeddown_description')
-# Q 548 : # @user.can_downvote?
-Query(User)
+# Q 613 : # story.already_posted_story.comments_path
+Query(Story)
 
-# Q 549 : # user.karma
-Query(User)
-.select('karma')
-# Q 550 : # user.karma
-Query(User)
-.select('karma')
-# Q 551 : # InvitationRequest.exists?(:code => self.code)
+# Q 614 : # story.already_posted_story
+Query(Story)
+
+# Q 615 : # InvitationRequest.exists?(:code => self.code)
 Query(InvitationRequest)
 .return_limit('1')
-# Q 552 : # InvitationRequest.exists?
+# Q 616 : # InvitationRequest.exists?
 Query(InvitationRequest)
 .return_limit('1')
-# Q 553 : # self.code
+# Q 617 : # self.code
 Query(InvitationRequest)
 .select('code')
-# Q 554 : # InvitationRequest.exists?(:code => self.code)
+# Q 618 : # InvitationRequest.exists?(:code => self.code)
 Query(InvitationRequest)
 .return_limit('1')
-# Q 555 : # InvitationRequest.exists?
+# Q 619 : # InvitationRequest.exists?
 Query(InvitationRequest)
 .return_limit('1')
-# Q 556 : # self.code
+# Q 620 : # self.code
 Query(InvitationRequest)
 .select('code')
-# Q 557 : # InvitationRequest.exists?
+# Q 621 : # InvitationRequest.exists?
 Query(InvitationRequest)
 .return_limit('1')
-# Q 558 : # self.code
+# Q 622 : # self.code
 Query(InvitationRequest)
 .select('code')
-# Q 559 : # Invitation.exists?(:code => self.code)
+# Q 623 : # Invitation.exists?(:code => self.code)
 Query(Invitation)
 .return_limit('1')
-# Q 560 : # Invitation.exists?
+# Q 624 : # Invitation.exists?
 Query(Invitation)
 .return_limit('1')
-# Q 561 : # self.code
+# Q 625 : # self.code
 Query(Invitation)
 .select('code')
-# Q 562 : # Invitation.exists?(:code => self.code)
+# Q 626 : # Invitation.exists?(:code => self.code)
 Query(Invitation)
 .return_limit('1')
-# Q 563 : # Invitation.exists?
+# Q 627 : # Invitation.exists?
 Query(Invitation)
 .return_limit('1')
-# Q 564 : # self.code
+# Q 628 : # self.code
 Query(Invitation)
 .select('code')
-# Q 565 : # Invitation.exists?
+# Q 629 : # Invitation.exists?
 Query(Invitation)
 .return_limit('1')
-# Q 566 : # self.code
+# Q 630 : # self.code
 Query(Invitation)
 .select('code')
-# Q 567 : # Message.new
+# Q 631 : # Message.new
 Query(Message)
 
-# Q 568 : # Message.new
+# Q 632 : # Message.new
 Query(Message)
 
-# Q 569 : # m = Message.new
+# Q 633 : # m = Message.new
 Query(Message)
 
-# Q 570 : # Message.new
+# Q 634 : # Message.new
 Query(Message)
 
-# Q 571 : # Keystore.connection.execute
+# Q 635 : # Keystore.connection.execute
 Query(Keystore)
 
-# Q 572 : # Keystore.connection
+# Q 636 : # Keystore.connection
 Query(Keystore)
 
-# Q 573 : # Keystore.table_name
+# Q 637 : # Keystore.table_name
 Query(Keystore)
 
-# Q 574 : # Keystore.connection.execute
+# Q 638 : # Keystore.connection.execute
 Query(Keystore)
 
-# Q 575 : # Keystore.connection
+# Q 639 : # Keystore.connection
 Query(Keystore)
 
-# Q 576 : # Keystore.table_name
+# Q 640 : # Keystore.table_name
 Query(Keystore)
 
-# Q 577 : # Tag.active.where(:tag => tags_param).to_a
+# Q 641 : # Tag.active.where(:tag => tags_param).to_a
 Query(Tag)
 .where("tag = ?")
-# Q 578 : # Tag.active.where(:tag => tags_param)
+# Q 642 : # Tag.active.where(:tag => tags_param)
 Query(Tag)
 .where("tag = ?")
-# Q 579 : # Tag.active.where
+# Q 643 : # Tag.active.where
 Query(Tag)
 
-# Q 580 : # Tag.active
+# Q 644 : # Tag.active
 Query(Tag)
 
-# Q 581 : # Tag.active.where(:tag => tags_param).to_a
+# Q 645 : # Tag.active.where(:tag => tags_param).to_a
 Query(Tag)
 .where("tag = ?")
-# Q 582 : # Tag.active.where
+# Q 646 : # Tag.active.where
 Query(Tag)
 
-# Q 583 : # Tag.active
+# Q 647 : # Tag.active
 Query(Tag)
 
-# Q 584 : # User.where(:email => params[:email]).first
-Query(User)
-.where("email = ?")
-.return_limit('1')
-# Q 585 : # User.where(:email => params[:email]).first
-Query(User)
-.where("email = ?")
-.return_limit('1')
-# Q 586 : # User.where(:email => params[:email])
-Query(User)
-.where("email = ?")
-# Q 587 : # User.where(:email => params[:email]).first
-Query(User)
-.where("email = ?")
-.return_limit('1')
-# Q 588 : # User.make!(:email => "user@")
-Query(User)
-
-# Q 589 : # User.make!
-Query(User)
-
-# Q 590 : # User.make!(:email => "user@")
+# Q 648 : # ReadRibbon.where(user: @user, story: @story).first_or_create
+Query(ReadRibbon)
+.where("user = ?")
+.where("story = ?")
+# Q 649 : # ReadRibbon.where(user: @user, story: @story)
+Query(ReadRibbon)
+.where("user = ?")
+.where("story = ?")
+# Q 650 : # ReadRibbon.where(user: @user, story: @story).first_or_create
+Query(ReadRibbon)
+.where("user = ?")
+.where("story = ?")
+# Q 651 : # InvitationRequest.where(:is_verified => true)
+Query(InvitationRequest)
+.where("is_verified = ?")
+# Q 652 : # InvitationRequest.where(:is_verified => true)
+Query(InvitationRequest)
+.where("is_verified = ?")
+# Q 653 : # @user.id
 Query(User)
 
-# Q 591 : # User.make!
+# Q 654 : # @user.id
 Query(User)
 
-# Q 592 : # User.make!(:email => "user@")
+# Q 655 : # user.is_active?
 Query(User)
 
-# Q 593 : # User.make!(:email => "user@")
+# Q 656 : # user.is_active?
 Query(User)
 
-# Q 594 : # User.make!
+# Q 657 : # User.make!(:email => "user@")
 Query(User)
 
-# Q 595 : # User.make!(:email => "user@")
+# Q 658 : # User.make!
 Query(User)
 
-# Q 596 : # User.make!
+# Q 659 : # User.make!(:email => "user@")
 Query(User)
 
-# Q 597 : # if story.url.present?
+# Q 660 : # User.make!
+Query(User)
+
+# Q 661 : # User.make!(:email => "user@")
+Query(User)
+
+# Q 662 : # User.make!(:email => "user@")
+Query(User)
+
+# Q 663 : # User.make!
+Query(User)
+
+# Q 664 : # User.make!(:email => "user@")
+Query(User)
+
+# Q 665 : # User.make!
+Query(User)
+
+# Q 666 : # if story.url.present?
 #   
 #   
 #   raw coder.encode("<p>" + link_to("Comments", story.comments_url) + "</p>", :decimal)
 # end
 Query(Story)
 
-# Q 598 : # story.url.present?
+# Q 667 : # story.url.present?
 Query(Story)
 .select('url')
-# Q 599 : # story.url
+# Q 668 : # story.url
 Query(Story)
 .select('url')
-# Q 600 : # @message.author.is_moderator?
+# Q 669 : # @message.author.is_moderator?
 Query(User)
 .where("id = ?")
-# Q 601 : # @message.author
+# Q 670 : # @message.author
 Query(User)
 .where("id = ?")
-# Q 602 : # if user.is_moderator?
-#   
-#   
-# end
-Query(User)
-
-# Q 603 : # user.is_moderator?
-Query(User)
-
-# Q 604 : # story.can_be_seen_by_user?
-Query(Story)
-
-# Q 605 : # self.is_from_suggestions?
+# Q 671 : # self.is_from_suggestions?
 Query(Moderation)
 
-# Q 606 : # self.is_from_suggestions?
+# Q 672 : # self.is_from_suggestions?
 Query(Moderation)
 
-# Q 607 : # user.id
+# Q 673 : # user.id
 Query(User)
 
-# Q 608 : # user.id
+# Q 674 : # user.id
 Query(User)
 
-# Q 609 : # user.id
+# Q 675 : # user.id
 Query(User)
 
-# Q 610 : # where(:merged_story_id => nil)
+# Q 676 : # where(:merged_story_id => nil)
 Query(Story)
 .where("merged_story_id = ?")
-# Q 611 : # Story.arel_table
+# Q 677 : # Story.arel_table
 Query(Story)
 
-# Q 612 : # Story.arel_table
+# Q 678 : # Story.arel_table
 Query(Story)
 
-# Q 613 : # @search.valid?
+# Q 679 : # @story.comments_path
+Query(Story)
+
+# Q 680 : # @story.comments_path
+Query(Story)
+
+# Q 681 : # @search.valid?
 Query(Search)
 
-# Q 614 : # @search.valid?
+# Q 682 : # @search.valid?
 Query(Search)
 
-# Q 615 : # user.username
-Query(User)
-.select('username')
-# Q 616 : # @search.what
-Query(Search)
-
-# Q 617 : # story.url_or_comments_path
-Query(Story)
-
-# Q 618 : # self.story.title
-Query(Story)
-.where("id = ?")
-.select('title')
-# Q 619 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 620 : # self.story.title
-Query(Story)
-.where("id = ?")
-.select('title')
-# Q 621 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 622 : # self.link.present?
-Query(Hat)
-.select('link')
-# Q 623 : # self.link
-Query(Hat)
-.select('link')
-# Q 624 : # self.link.match(/^https?:\/\//)
-Query(Hat)
-.select('link')
-# Q 625 : # self.link.match
-Query(Hat)
-.select('link')
-# Q 626 : # self.link
-Query(Hat)
-.select('link')
-# Q 627 : # self.link.present?
-Query(Hat)
-.select('link')
-# Q 628 : # self.link
-Query(Hat)
-.select('link')
-# Q 629 : # self.link.match
-Query(Hat)
-.select('link')
-# Q 630 : # self.link
-Query(Hat)
-.select('link')
-# Q 631 : # self.user_id
-Query(HatRequest)
-.select('user_id')
-# Q 632 : # self.user_id
-Query(HatRequest)
-.select('user_id')
-# Q 633 : # self.user_id
-Query(HatRequest)
-.select('user_id')
-# Q 634 : # User.where(:username => params[:email]).first
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 635 : # User.where(:username => params[:email]).first
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 636 : # User.where(:username => params[:email])
-Query(User)
-.where("username = ?")
-# Q 637 : # User.where(:username => params[:email]).first
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 638 : # @story.comments_path
-Query(Story)
-
-# Q 639 : # @story.comments_path
-Query(Story)
-
-# Q 640 : # @search.search_for_user!(@user)
-Query(Search)
-
-# Q 641 : # @search.search_for_user!
-Query(Search)
-
-# Q 642 : # @search.search_for_user!
-Query(Search)
-
-# Q 643 : # @user.hats.where(:id => params[:hat_id])
-Query(Hat)
-.where("user_id = ?")
-.where("id = ?")
-# Q 644 : # @user.hats.where
-Query(Hat)
-.where("user_id = ?")
-# Q 645 : # @user.hats
-Query(Hat)
-.where("user_id = ?")
-# Q 646 : # @user.hats.where
-Query(Hat)
-.where("user_id = ?")
-# Q 647 : # @user.hats
-Query(Hat)
-.where("user_id = ?")
-# Q 648 : # Story.make!(:title => "")
-Query(Story)
-
-# Q 649 : # Story.make!
-Query(Story)
-
-# Q 650 : # Story.make!(:title => "")
-Query(Story)
-
-# Q 651 : # Story.make!
-Query(Story)
-
-# Q 652 : # Story.make!(:title => "")
-Query(Story)
-
-# Q 653 : # Story.make!(:title => "")
-Query(Story)
-
-# Q 654 : # Story.make!
-Query(Story)
-
-# Q 655 : # Story.make!(:title => "")
-Query(Story)
-
-# Q 656 : # Story.make!
-Query(Story)
-
-# Q 657 : # story.comments_url
-Query(Story)
-
-# Q 658 : # story.comments_url
-Query(Story)
-
-# Q 659 : # user.is_active?
+# Q 683 : # User.username_regex_s
 Query(User)
 
-# Q 660 : # @invitation.user.username
+# Q 684 : # User.username_regex_s
 Query(User)
-.where("id = ?")
-.select('username')
-# Q 661 : # @invitation.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 662 : # @invitation.user
-Query(User)
-.where("id = ?")
-# Q 663 : # story.title
-Query(Story)
-.select('title')
-# Q 664 : # self.story.comments_url
-Query(Story)
-.where("id = ?")
-# Q 665 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 666 : # self.story.comments_url
-Query(Story)
-.where("id = ?")
-# Q 667 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 668 : # self.hat
-Query(HatRequest)
-.select('hat')
-# Q 669 : # self.hat
-Query(HatRequest)
-.select('hat')
-# Q 670 : # self.hat
-Query(HatRequest)
-.select('hat')
-# Q 671 : # self.hat
-Query(HatRequest)
-.select('hat')
-# Q 672 : # Invitation.where(:code => params[:invitation_code].to_s).first
-Query(Invitation)
-.where("code = ?")
-.return_limit('1')
-# Q 673 : # Invitation.where(:code => params[:invitation_code].to_s).first
-Query(Invitation)
-.where("code = ?")
-.return_limit('1')
-# Q 674 : # Invitation.where(:code => params[:invitation_code].to_s)
-Query(Invitation)
-.where("code = ?")
-# Q 675 : # Invitation.where(:code => params[:invitation_code].to_s).first
-Query(Invitation)
-.where("code = ?")
-.return_limit('1')
-# Q 676 : # User.where("is_admin = ? OR is_moderator = ?", true, true).order("id ASC").to_a
-Query(User)
-.where(" = ?")
-.order('id')
-.order('id')
-# Q 677 : # User.where("is_admin = ? OR is_moderator = ?", true, true).order("id ASC").to_a
-Query(User)
-.where(" = ?")
-.order('id')
-.order('id')
-# Q 678 : # User.where("is_admin = ? OR is_moderator = ?", true, true).order("id ASC")
-Query(User)
-.where(" = ?")
-.order('id')
-.order('id')
-# Q 679 : # User.where("is_admin = ? OR is_moderator = ?", true, true).order
-Query(User)
-.where(" = ?")
-# Q 680 : # User.where("is_admin = ? OR is_moderator = ?", true, true)
-Query(User)
-.where(" = ?")
-# Q 681 : # User.where("is_admin = ? OR is_moderator = ?", true, true).order("id ASC").to_a
-Query(User)
-.where(" = ?")
-.order('id')
-.order('id')
-# Q 682 : # User.where("is_admin = ? OR is_moderator = ?", true, true).order
-Query(User)
-.where(" = ?")
-# Q 683 : # Story.make!(:title => "hi")
-Query(Story)
 
-# Q 684 : # Story.make!
-Query(Story)
-
-# Q 685 : # Story.make!(:title => "hi")
-Query(Story)
-
-# Q 686 : # Story.make!
-Query(Story)
-
-# Q 687 : # Story.make!(:title => "hi")
-Query(Story)
-
-# Q 688 : # Story.make!(:title => "hi")
-Query(Story)
-
-# Q 689 : # Story.make!
-Query(Story)
-
-# Q 690 : # Story.make!(:title => "hi")
-Query(Story)
-
-# Q 691 : # Story.make!
-Query(Story)
-
-# Q 692 : # Story.make!
-Query(Story)
-
-# Q 693 : # s = Story.make!
-Query(Story)
-
-# Q 694 : # s = Story.make!
-Query(Story)
-
-# Q 695 : # Story.make!
-Query(Story)
-
-# Q 696 : # @invitation_requests.each
+# Q 685 : # @invitation_requests.each
 Query(InvitationRequest)
 
-# Q 697 : # @invitation.user.username
+# Q 686 : # user.karma
+Query(User)
+.select('karma')
+# Q 687 : # user.karma
+Query(User)
+.select('karma')
+# Q 688 : # @invitation.user.username
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 698 : # @invitation.user.username
+# Q 689 : # @invitation.user.username
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 699 : # @invitation.user
+# Q 690 : # @invitation.user
 Query(User)
 .where("id = ?")
-# Q 700 : # self.find_or_create_key_for_update(key, value)
-Query(Keystore)
+# Q 691 : # @search.what
+Query(Search)
 
-# Q 701 : # self.find_or_create_key_for_update(key, value)
-Query(Keystore)
+# Q 692 : # story.can_be_seen_by_user?
+Query(Story)
 
-# Q 702 : # self.find_or_create_key_for_update
-Query(Keystore)
-
-# Q 703 : # self.find_or_create_key_for_update
-Query(Keystore)
-
-# Q 704 : # HatRequest.new
+# Q 693 : # self.story.title
+Query(Story)
+.where("id = ?")
+.select('title')
+# Q 694 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 695 : # self.story.title
+Query(Story)
+.where("id = ?")
+.select('title')
+# Q 696 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 697 : # self.user_id
 Query(HatRequest)
-
-# Q 705 : # HatRequest.new
+.select('user_id')
+# Q 698 : # self.user_id
 Query(HatRequest)
-
-# Q 706 : # HatRequest.new
+.select('user_id')
+# Q 699 : # self.user_id
 Query(HatRequest)
+.select('user_id')
+# Q 700 : # @search.search_for_user!(@user)
+Query(Search)
 
-# Q 707 : # @user.undeleted_sent_messages
+# Q 701 : # @search.search_for_user!
+Query(Search)
+
+# Q 702 : # @search.search_for_user!
+Query(Search)
+
+# Q 703 : # @user.wearable_hats.where(:id => params[:hat_id])
+Query(Hat)
+.where("user_id = ?")
+.where("id = ?")
+# Q 704 : # @user.wearable_hats.where
+Query(Hat)
+.where("user_id = ?")
+# Q 705 : # @user.wearable_hats
+Query(Hat)
+.where("user_id = ?")
+# Q 706 : # @user.wearable_hats.where
+Query(Hat)
+.where("user_id = ?")
+# Q 707 : # @user.wearable_hats
+Query(Hat)
+.where("user_id = ?")
+# Q 708 : # @user.id
 Query(User)
 
-# Q 708 : # @user.undeleted_sent_messages
+# Q 709 : # @user.username
+Query(User)
+.select('username')
+# Q 710 : # @user.id
 Query(User)
 
-# Q 709 : # @user.undeleted_sent_messages
+# Q 711 : # @user.username
 Query(User)
+.select('username')
+# Q 712 : # Story.make!(:title => "")
+Query(Story)
 
-# Q 710 : # Keystore.transaction
-Query(Keystore)
+# Q 713 : # Story.make!
+Query(Story)
 
-# Q 711 : # Keystore.transaction
-Query(Keystore)
+# Q 714 : # Story.make!(:title => "")
+Query(Story)
 
-# Q 712 : # User.make!(:password => "hunter2")
-Query(User)
+# Q 715 : # Story.make!
+Query(Story)
 
-# Q 713 : # User.make!
-Query(User)
+# Q 716 : # Story.make!(:title => "")
+Query(Story)
 
-# Q 714 : # User.make!(:password => "hunter2")
-Query(User)
+# Q 717 : # Story.make!(:title => "")
+Query(Story)
 
-# Q 715 : # User.make!
-Query(User)
+# Q 718 : # Story.make!
+Query(Story)
 
-# Q 716 : # User.make!(:password => "hunter2")
-Query(User)
-
-# Q 717 : # User.make!
-Query(User)
-
-# Q 718 : # User.make!
-Query(User)
-
-# Q 719 : # Story.make!(:title => "hello")
+# Q 719 : # Story.make!(:title => "")
 Query(Story)
 
 # Q 720 : # Story.make!
 Query(Story)
 
-# Q 721 : # Story.make!(:title => "hello")
+# Q 721 : # story.comments_url
 Query(Story)
 
-# Q 722 : # Story.make!
+# Q 722 : # story.comments_url
 Query(Story)
 
-# Q 723 : # Story.make!(:title => "hello")
+# Q 723 : # user.invited_by_user_id
+Query(User)
+.select('invited_by_user_id')
+# Q 724 : # @invitation.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 725 : # @invitation.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 726 : # @invitation.user
+Query(User)
+.where("id = ?")
+# Q 727 : # story.url_or_comments_path
 Query(Story)
 
-# Q 724 : # Story.make!(:title => "hello")
+# Q 728 : # self.story.comments_url
+Query(Story)
+.where("id = ?")
+# Q 729 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 730 : # self.story.comments_url
+Query(Story)
+.where("id = ?")
+# Q 731 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 732 : # Moderation.new
+Query(Moderation)
+
+# Q 733 : # Moderation.new
+Query(Moderation)
+
+# Q 734 : # Moderation.new
+Query(Moderation)
+
+# Q 735 : # self.hat
+Query(HatRequest)
+.select('hat')
+# Q 736 : # self.hat
+Query(HatRequest)
+.select('hat')
+# Q 737 : # self.hat
+Query(HatRequest)
+.select('hat')
+# Q 738 : # self.hat
+Query(HatRequest)
+.select('hat')
+# Q 739 : # @moderations.where("is_from_suggestions = true")
+Query(Moderation)
+.where(" = ?")
+# Q 740 : # User.order("karma DESC, id ASC").to_a
+Query(User)
+.order('id')
+.order('karma')
+.order('id')
+# Q 741 : # User.order("karma DESC, id ASC").to_a
+Query(User)
+.order('id')
+.order('karma')
+.order('id')
+# Q 742 : # User.order("karma DESC, id ASC")
+Query(User)
+.order('id')
+.order('karma')
+.order('id')
+# Q 743 : # User.order
+Query(User)
+
+# Q 744 : # User.order("karma DESC, id ASC").to_a
+Query(User)
+.order('id')
+.order('karma')
+.order('id')
+# Q 745 : # User.order
+Query(User)
+
+# Q 746 : # Story.make!(:title => "hi")
 Query(Story)
 
-# Q 725 : # Story.make!
+# Q 747 : # Story.make!
 Query(Story)
 
-# Q 726 : # Story.make!(:title => "hello")
+# Q 748 : # Story.make!(:title => "hi")
 Query(Story)
 
-# Q 727 : # Story.make!
+# Q 749 : # Story.make!
 Query(Story)
 
-# Q 728 : # @message.author_username
+# Q 750 : # Story.make!(:title => "hi")
+Query(Story)
+
+# Q 751 : # Story.make!(:title => "hi")
+Query(Story)
+
+# Q 752 : # Story.make!
+Query(Story)
+
+# Q 753 : # Story.make!(:title => "hi")
+Query(Story)
+
+# Q 754 : # Story.make!
+Query(Story)
+
+# Q 755 : # Story.make!
+Query(Story)
+
+# Q 756 : # s = Story.make!
+Query(Story)
+
+# Q 757 : # s = Story.make!
+Query(Story)
+
+# Q 758 : # Story.make!
+Query(Story)
+
+# Q 759 : # user.username
+Query(User)
+.select('username')
+# Q 760 : # user.username
+Query(User)
+.select('username')
+# Q 761 : # story.title
+Query(Story)
+.select('title')
+# Q 762 : # self.user_id
+Query(Hat)
+.select('user_id')
+# Q 763 : # self.user_id
+Query(Hat)
+.select('user_id')
+# Q 764 : # self.user_id
+Query(Hat)
+.select('user_id')
+# Q 765 : # self.find_or_create_key_for_update(key, value)
+Query(Keystore)
+
+# Q 766 : # self.find_or_create_key_for_update(key, value)
+Query(Keystore)
+
+# Q 767 : # self.find_or_create_key_for_update
+Query(Keystore)
+
+# Q 768 : # self.find_or_create_key_for_update
+Query(Keystore)
+
+# Q 769 : # HatRequest.new
+Query(HatRequest)
+
+# Q 770 : # HatRequest.new
+Query(HatRequest)
+
+# Q 771 : # HatRequest.new
+Query(HatRequest)
+
+# Q 772 : # Invitation.where(:code => params[:invitation_code].to_s).first
+Query(Invitation)
+.where("code = ?")
+.return_limit('1')
+# Q 773 : # Invitation.where(:code => params[:invitation_code].to_s).first
+Query(Invitation)
+.where("code = ?")
+.return_limit('1')
+# Q 774 : # Invitation.where(:code => params[:invitation_code].to_s)
+Query(Invitation)
+.where("code = ?")
+# Q 775 : # Invitation.where(:code => params[:invitation_code].to_s).first
+Query(Invitation)
+.where("code = ?")
+.return_limit('1')
+# Q 776 : # InvitationRequest.where(:code => params[:code].to_s).first
+Query(InvitationRequest)
+.where("code = ?")
+.return_limit('1')
+# Q 777 : # InvitationRequest.where(:code => params[:code].to_s).first
+Query(InvitationRequest)
+.where("code = ?")
+.return_limit('1')
+# Q 778 : # InvitationRequest.where(:code => params[:code].to_s)
+Query(InvitationRequest)
+.where("code = ?")
+# Q 779 : # InvitationRequest.where(:code => params[:code].to_s).first
+Query(InvitationRequest)
+.where("code = ?")
+.return_limit('1')
+# Q 780 : # @users.length
+Query(User)
+
+# Q 781 : # @users.length
+Query(User)
+
+# Q 782 : # @users.length
+Query(User)
+
+# Q 783 : # User.make!(:password => "hunter2")
+Query(User)
+
+# Q 784 : # User.make!
+Query(User)
+
+# Q 785 : # User.make!(:password => "hunter2")
+Query(User)
+
+# Q 786 : # User.make!
+Query(User)
+
+# Q 787 : # User.make!(:password => "hunter2")
+Query(User)
+
+# Q 788 : # User.make!
+Query(User)
+
+# Q 789 : # User.make!
+Query(User)
+
+# Q 790 : # Story.make!(:title => "hello")
+Query(Story)
+
+# Q 791 : # Story.make!
+Query(Story)
+
+# Q 792 : # Story.make!(:title => "hello")
+Query(Story)
+
+# Q 793 : # Story.make!
+Query(Story)
+
+# Q 794 : # Story.make!(:title => "hello")
+Query(Story)
+
+# Q 795 : # Story.make!(:title => "hello")
+Query(Story)
+
+# Q 796 : # Story.make!
+Query(Story)
+
+# Q 797 : # Story.make!(:title => "hello")
+Query(Story)
+
+# Q 798 : # Story.make!
+Query(Story)
+
+# Q 799 : # @message.author_username
 Query(Message)
 
-# Q 729 : # user.is_new?
+# Q 800 : # @moderations.each
+Query(Moderation)
+
+# Q 801 : # user.is_active?
 Query(User)
 
-# Q 730 : # @story.story_cache
+# Q 802 : # @story.story_cache
 Query(Story)
 .select('story_cache')
-# Q 731 : # story.is_gone?
-Query(Story)
-
-# Q 732 : # Tagging.group(:tag_id).count
+# Q 803 : # Tagging.group(:tag_id).count
 Query(Tagging)
 .group('tag_id')
-# Q 733 : # Tagging.group(:tag_id).count
+# Q 804 : # Tagging.group(:tag_id).count
 Query(Tagging)
 .group('tag_id')
-# Q 734 : # Tagging.group(:tag_id)
+# Q 805 : # Tagging.group(:tag_id)
 Query(Tagging)
 .group('tag_id')
-# Q 735 : # Tagging.group
+# Q 806 : # Tagging.group
 Query(Tagging)
 .group('')
-# Q 736 : # Tagging.group(:tag_id).count
+# Q 807 : # Tagging.group(:tag_id).count
 Query(Tagging)
 .group('tag_id')
-# Q 737 : # Tagging.group
+# Q 808 : # Tagging.group
 Query(Tagging)
 .group('')
-# Q 738 : # self.hat.gsub(/[^A-Za-z0-9]/, "_").downcase
-Query(Hat)
-.select('hat')
-# Q 739 : # self.hat.gsub(/[^A-Za-z0-9]/, "_")
-Query(Hat)
-.select('hat')
-# Q 740 : # self.hat.gsub
-Query(Hat)
-.select('hat')
-# Q 741 : # self.hat
-Query(Hat)
-.select('hat')
-# Q 742 : # self.hat.gsub(/[^A-Za-z0-9]/, "_").downcase
-Query(Hat)
-.select('hat')
-# Q 743 : # self.hat.gsub
-Query(Hat)
-.select('hat')
-# Q 744 : # self.hat
-Query(Hat)
-.select('hat')
-# Q 745 : # @user.id
+# Q 809 : # where(:is_deleted => false, :is_moderated => false)
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+# Q 810 : # user.id
 Query(User)
 
-# Q 746 : # @user.id
+# Q 811 : # user.id
 Query(User)
 
-# Q 747 : # @user.id
+# Q 812 : # user.id
 Query(User)
 
-# Q 748 : # @users.length
+# Q 813 : # comment.created_at
+Query(Comment)
+.select('created_at')
+# Q 814 : # comment.user_id
+Query(Comment)
+.select('user_id')
+# Q 815 : # @user.id
 Query(User)
 
-# Q 749 : # @users.length
+# Q 816 : # comment.created_at
+Query(Comment)
+.select('created_at')
+# Q 817 : # comment.user_id
+Query(Comment)
+.select('user_id')
+# Q 818 : # @user.id
 Query(User)
 
-# Q 750 : # @users.length
+# Q 819 : # @user.id
 Query(User)
 
-# Q 751 : # User.make!
+# Q 820 : # @user.id
 Query(User)
 
-# Q 752 : # u = User.make!
+# Q 821 : # @user.id
 Query(User)
 
-# Q 753 : # u = User.make!
+# Q 822 : # @moderations.joins(:moderator).where(:users => { :username => @moderator })
+Query(Moderation)
+.joins('moderator')
+.where("username = ?")
+# Q 823 : # @moderations.joins(:moderator).where
+Query(Moderation)
+.joins('moderator')
+# Q 824 : # @moderations.joins(:moderator)
+Query(Moderation)
+.joins('moderator')
+# Q 825 : # @moderations.joins
+Query(Moderation)
+
+# Q 826 : # @moderations.joins(:moderator).where
+Query(Moderation)
+.joins('moderator')
+# Q 827 : # @moderations.joins
+Query(Moderation)
+
+# Q 828 : # User.make!
 Query(User)
 
-# Q 754 : # User.make!
+# Q 829 : # u = User.make!
 Query(User)
 
-# Q 755 : # story.taggings.each do |tagging|
+# Q 830 : # u = User.make!
+Query(User)
+
+# Q 831 : # User.make!
+Query(User)
+
+# Q 832 : # story.taggings.each do |tagging|
 #   
 #   
 #   tagging.tag.tag
 # end
 Query(Tagging)
 .where("story_id = ?")
-# Q 756 : # story.taggings.each
+# Q 833 : # story.taggings.each
 Query(Tagging)
 .where("story_id = ?")
-# Q 757 : # story.taggings
+# Q 834 : # story.taggings
 Query(Tagging)
 .where("story_id = ?")
-# Q 758 : # @messages.any?
+# Q 835 : # @messages.any?
 Query(Message)
 
-# Q 759 : # story.is_moderated?
+# Q 836 : # if @user.is_moderator?
+#   
+#   
+#   ir.email
+# end
+Query(User)
+
+# Q 837 : # @user.is_moderator?
+Query(User)
+
+# Q 838 : # story.is_gone?
 Query(Story)
 
-# Q 760 : # self.action
+# Q 839 : # self.action
 Query(Moderation)
 .select('action')
-# Q 761 : # self.action
+# Q 840 : # self.action
 Query(Moderation)
 .select('action')
-# Q 762 : # ShortId.new(self.class).generate
-Query(ShortId)
-
-# Q 763 : # ShortId.new(self.class).generate
-Query(ShortId)
-
-# Q 764 : # ShortId.new(self.class)
-Query(ShortId)
-
-# Q 765 : # ShortId.new
-Query(ShortId)
-
-# Q 766 : # self.class
-Query(Message)
-
-# Q 767 : # ShortId.new(self.class).generate
-Query(ShortId)
-
-# Q 768 : # ShortId.new
-Query(ShortId)
-
-# Q 769 : # self.class
-Query(Message)
-
-# Q 770 : # self.granted_by_user.username
+# Q 841 : # self.hat
+Query(Hat)
+.select('hat')
+# Q 842 : # self.hat
+Query(Hat)
+.select('hat')
+# Q 843 : # User.where(:email => params[:email]).first
 Query(User)
-.where("id = ?")
-.select('username')
-# Q 771 : # self.granted_by_user
+.where("email = ?")
+.return_limit('1')
+# Q 844 : # User.where(:email => params[:email]).first
 Query(User)
-.where("id = ?")
-# Q 772 : # self.granted_by_user.username
+.where("email = ?")
+.return_limit('1')
+# Q 845 : # User.where(:email => params[:email])
 Query(User)
-.where("id = ?")
-.select('username')
-# Q 773 : # self.granted_by_user
+.where("email = ?")
+# Q 846 : # User.where(:email => params[:email]).first
 Query(User)
-.where("id = ?")
-# Q 774 : # Message.new
-Query(Message)
-
-# Q 775 : # Message.new
-Query(Message)
-
-# Q 776 : # Message.new
-Query(Message)
-
-# Q 777 : # Keystore.find_or_create_key_for_update
-Query(Keystore)
-
-# Q 778 : # Keystore.find_or_create_key_for_update
-Query(Keystore)
-
-# Q 779 : # Keystore.find_or_create_key_for_update
-Query(Keystore)
-
-# Q 780 : # tagging.tag.tag
+.where("email = ?")
+.return_limit('1')
+# Q 847 : # tagging.tag.tag
 Query(Tag)
 .where("id = ?")
 .select('tag')
-# Q 781 : # tagging.tag.tag
+# Q 848 : # tagging.tag.tag
 Query(Tag)
 .where("id = ?")
 .select('tag')
-# Q 782 : # tagging.tag.tag
+# Q 849 : # tagging.tag.tag
 Query(Tag)
 .where("id = ?")
 .select('tag')
-# Q 783 : # tagging.tag
+# Q 850 : # tagging.tag
 Query(Tag)
 .where("id = ?")
-# Q 784 : # @search.what
-Query(Search)
+# Q 851 : # if @user.has_2fa?
+#   
+#   
+#   submit_tag "Disable Two-Factor Authentication"
+# else
+#   
+#   
+#   submit_tag "Continue"
+# end
+Query(User)
 
-# Q 785 : # self.memo
+# Q 852 : # @user.has_2fa?
+Query(User)
+
+# Q 853 : # user.is_new?
+Query(User)
+
+# Q 854 : # story.is_moderated?
+Query(Story)
+
+# Q 855 : # self.memo
 Query(InvitationRequest)
 .select('memo')
-# Q 786 : # self.memo
+# Q 856 : # self.memo
 Query(InvitationRequest)
 .select('memo')
-# Q 787 : # Tag.active.order(:tag).select { |t|
+# Q 857 : # Tag.active.order(:tag).select { |t|
 #   
 #   t.valid_for?(user)
 # }.map
 Query(Tag)
 .order('tag')
-# Q 788 : # Tag.active.order(:tag).select
+# Q 858 : # Tag.active.order(:tag).select
 Query(Tag)
 .order('tag')
-# Q 789 : # Tag.active.order(:tag)
+# Q 859 : # Tag.active.order(:tag)
 Query(Tag)
 .order('tag')
-# Q 790 : # Tag.active.order
+# Q 860 : # Tag.active.order
 Query(Tag)
 
-# Q 791 : # Tag.active
+# Q 861 : # Tag.active
 Query(Tag)
 
-# Q 792 : # Tag.active.order(:tag).select { |t|
+# Q 862 : # Tag.active.order(:tag).select { |t|
 #   
 #   t.valid_for?(user)
 # }.map
 Query(Tag)
 .order('tag')
-# Q 793 : # Tag.active.order(:tag).select
+# Q 863 : # Tag.active.order(:tag).select
 Query(Tag)
 .order('tag')
-# Q 794 : # Tag.active.order
+# Q 864 : # Tag.active.order
 Query(Tag)
 
-# Q 795 : # Tag.active
+# Q 865 : # Tag.active
 Query(Tag)
 
-# Q 796 : # self.created_at.strftime("%Y-%m-%d")
-Query(Hat)
-.select('created_at')
-# Q 797 : # self.created_at.strftime
-Query(Hat)
-.select('created_at')
-# Q 798 : # self.created_at
-Query(Hat)
-.select('created_at')
-# Q 799 : # self.created_at.strftime
-Query(Hat)
-.select('created_at')
-# Q 800 : # self.created_at
-Query(Hat)
-.select('created_at')
-# Q 801 : # Comment.where(:story_id => story.id, :short_id => params[:parent_comment_short_id]).first
+# Q 866 : # Comment.where(:story_id => story.id, :short_id => params[:parent_comment_short_id]).first
 Query(Comment)
 .where("story_id = ?")
 .where("short_id = ?")
 .return_limit('1')
-# Q 802 : # Comment.where(:story_id => story.id, :short_id => params[:parent_comment_short_id]).first
+# Q 867 : # Comment.where(:story_id => story.id, :short_id => params[:parent_comment_short_id]).first
 Query(Comment)
 .where("story_id = ?")
 .where("short_id = ?")
 .return_limit('1')
-# Q 803 : # Comment.where(:story_id => story.id, :short_id => params[:parent_comment_short_id])
+# Q 868 : # Comment.where(:story_id => story.id, :short_id => params[:parent_comment_short_id])
 Query(Comment)
 .where("story_id = ?")
 .where("short_id = ?")
-# Q 804 : # story.id
+# Q 869 : # story.id
 Query(Story)
 
-# Q 805 : # Comment.where(:story_id => story.id, :short_id => params[:parent_comment_short_id]).first
+# Q 870 : # Comment.where(:story_id => story.id, :short_id => params[:parent_comment_short_id]).first
 Query(Comment)
 .where("story_id = ?")
 .where("short_id = ?")
 .return_limit('1')
-# Q 806 : # story.id
+# Q 871 : # story.id
 Query(Story)
 
-# Q 807 : # Keystore.find_or_create_key_for_update
-Query(Keystore)
-
-# Q 808 : # Keystore.find_or_create_key_for_update
-Query(Keystore)
-
-# Q 809 : # Keystore.find_or_create_key_for_update
-Query(Keystore)
-
-# Q 810 : # @message.recipient.username
+# Q 872 : # @message.recipient.username
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 811 : # @message.recipient
+# Q 873 : # @message.recipient
 Query(User)
 .where("id = ?")
-# Q 812 : # @tags.each do |tag|
+# Q 874 : # @tags.each do |tag|
 #   
 #   
 #   check_box_tag "tags[]", tag.tag, @filtered_tags.include?(tag)
@@ -2618,691 +2820,691 @@ Query(User)
 # end
 Query(Tag)
 
-# Q 813 : # @tags.each
+# Q 875 : # @tags.each
 Query(Tag)
 
-# Q 814 : # if @user.is_moderator?
-#   
-#   
-#   ir.email
-# end
-Query(User)
-
-# Q 815 : # @user.is_moderator?
-Query(User)
-
-# Q 816 : # user.username
-Query(User)
-.select('username')
-# Q 817 : # self.reason.present?
+# Q 876 : # self.reason.present?
 Query(Moderation)
 .select('reason')
-# Q 818 : # self.reason
+# Q 877 : # self.reason
 Query(Moderation)
 .select('reason')
-# Q 819 : # self.reason.present?
+# Q 878 : # self.reason.present?
 Query(Moderation)
 .select('reason')
-# Q 820 : # self.reason
+# Q 879 : # self.reason
 Query(Moderation)
 .select('reason')
-# Q 821 : # self.destroy
+# Q 880 : # self.destroy
 Query(HatRequest)
 
-# Q 822 : # self.destroy
+# Q 881 : # self.destroy
 Query(HatRequest)
 
-# Q 823 : # self.destroy
+# Q 882 : # self.destroy
 Query(HatRequest)
 
-# Q 824 : # Vote.where(:user_id => user, :story_id => stories, :comment_id => nil).each
+# Q 883 : # Vote.where(:user_id => user, :story_id => stories, :comment_id => nil).each
 Query(Vote)
 .where("user_id = ?")
 .where("story_id = ?")
 .where("comment_id = ?")
-# Q 825 : # Vote.where(:user_id => user, :story_id => stories, :comment_id => nil)
+# Q 884 : # Vote.where(:user_id => user, :story_id => stories, :comment_id => nil)
 Query(Vote)
 .where("user_id = ?")
 .where("story_id = ?")
 .where("comment_id = ?")
-# Q 826 : # Vote.where(:user_id => user, :story_id => stories, :comment_id => nil).each
+# Q 885 : # Vote.where(:user_id => user, :story_id => stories, :comment_id => nil).each
 Query(Vote)
 .where("user_id = ?")
 .where("story_id = ?")
 .where("comment_id = ?")
-# Q 827 : # Story.make!(:title => (
+# Q 886 : # User.where(:username => params[:email]).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 887 : # User.where(:username => params[:email]).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 888 : # User.where(:username => params[:email])
+Query(User)
+.where("username = ?")
+# Q 889 : # User.where(:username => params[:email]).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 890 : # @user.undeleted_sent_messages
+Query(User)
+
+# Q 891 : # @user.undeleted_sent_messages
+Query(User)
+
+# Q 892 : # @user.undeleted_sent_messages
+Query(User)
+
+# Q 893 : # @user.clone
+Query(User)
+
+# Q 894 : # @user.clone
+Query(User)
+
+# Q 895 : # @user.clone
+Query(User)
+
+# Q 896 : # Story.make!(:title => (
 # "hello" * 100))
 Query(Story)
 
-# Q 828 : # Story.make!
+# Q 897 : # Story.make!
 Query(Story)
 
-# Q 829 : # Story.make!(:title => (
+# Q 898 : # Story.make!(:title => (
 # "hello" * 100))
 Query(Story)
 
-# Q 830 : # Story.make!
+# Q 899 : # Story.make!
 Query(Story)
 
-# Q 831 : # Story.make!(:title => (
+# Q 900 : # Story.make!(:title => (
 # "hello" * 100))
 Query(Story)
 
-# Q 832 : # Story.make!(:title => (
+# Q 901 : # Story.make!(:title => (
 # "hello" * 100))
 Query(Story)
 
-# Q 833 : # Story.make!
+# Q 902 : # Story.make!
 Query(Story)
 
-# Q 834 : # Story.make!(:title => (
+# Q 903 : # Story.make!(:title => (
 # "hello" * 100))
 Query(Story)
 
-# Q 835 : # Story.make!
+# Q 904 : # Story.make!
 Query(Story)
 
-# Q 836 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, nil, u.id, nil)
+# Q 905 : # User.make!(:username => "blahblah")
+Query(User)
+
+# Q 906 : # User.make!
+Query(User)
+
+# Q 907 : # User.make!(:username => "blahblah")
+Query(User)
+
+# Q 908 : # User.make!(:username => "blahblah")
+Query(User)
+
+# Q 909 : # User.make!
+Query(User)
+
+# Q 910 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, nil, u.id, nil)
 Query(Vote)
 
-# Q 837 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+# Q 911 : # Vote.vote_thusly_on_story_or_comment_for_user_because
 Query(Vote)
 
-# Q 838 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, nil, u.id, nil)
+# Q 912 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, nil, u.id, nil)
 Query(Vote)
 
-# Q 839 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, nil, u.id, nil)
+# Q 913 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, nil, u.id, nil)
 Query(Vote)
 
-# Q 840 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, nil, u.id, nil)
+# Q 914 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, nil, u.id, nil)
 Query(Vote)
 
-# Q 841 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+# Q 915 : # Vote.vote_thusly_on_story_or_comment_for_user_because
 Query(Vote)
 
-# Q 842 : # comment.short_id
-Query(Comment)
-.select('short_id')
-# Q 843 : # @message.recipient.username
+# Q 916 : # @message.recipient.username
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 844 : # @message.recipient
+# Q 917 : # @message.recipient
 Query(User)
 .where("id = ?")
-# Q 845 : # user.is_admin?
-Query(User)
+# Q 918 : # @search.order
+Query(Search)
 
-# Q 846 : # @story.user_id
+# Q 919 : # @story.user_id
 Query(Story)
 .select('user_id')
-# Q 847 : # @user.id
+# Q 920 : # @user.id
 Query(User)
 
-# Q 848 : # @story.user_id
+# Q 921 : # @story.user_id
 Query(Story)
 .select('user_id')
-# Q 849 : # @user.id
+# Q 922 : # @user.id
 Query(User)
 
-# Q 850 : # self.link.present?
+# Q 923 : # self.destroy
 Query(Hat)
-.select('link')
-# Q 851 : # self.link
-Query(Hat)
-.select('link')
-# Q 852 : # self.link.present?
-Query(Hat)
-.select('link')
-# Q 853 : # self.link
-Query(Hat)
-.select('link')
-# Q 854 : # User.order("id DESC").to_a
-Query(User)
-.order('id')
-.order('id')
-# Q 855 : # User.order("id DESC").to_a
-Query(User)
-.order('id')
-.order('id')
-# Q 856 : # User.order("id DESC")
-Query(User)
-.order('id')
-.order('id')
-# Q 857 : # User.order
-Query(User)
 
-# Q 858 : # User.order("id DESC").to_a
-Query(User)
-.order('id')
-.order('id')
-# Q 859 : # User.order
-Query(User)
+# Q 924 : # self.destroy
+Query(Hat)
 
-# Q 860 : # @message.created_at
+# Q 925 : # @story.is_editable_by_user?(@user)
+Query(Story)
+
+# Q 926 : # @story.is_editable_by_user?
+Query(Story)
+
+# Q 927 : # @story.is_editable_by_user?
+Query(Story)
+
+# Q 928 : # ReplyingComment.story_replies_for(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE).limit(REPLIES_PER_PAGE)
+Query(ReplyingComment)
+.return_limit('')
+# Q 929 : # ReplyingComment.story_replies_for(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE).limit(REPLIES_PER_PAGE)
+Query(ReplyingComment)
+.return_limit('')
+# Q 930 : # ReplyingComment.story_replies_for(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE).limit
+Query(ReplyingComment)
+.return_limit('')
+# Q 931 : # ReplyingComment.story_replies_for(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE)
+Query(ReplyingComment)
+
+# Q 932 : # ReplyingComment.story_replies_for(@user.id).offset
+Query(ReplyingComment)
+
+# Q 933 : # ReplyingComment.story_replies_for(@user.id)
+Query(ReplyingComment)
+
+# Q 934 : # ReplyingComment.story_replies_for
+Query(ReplyingComment)
+
+# Q 935 : # ReplyingComment.story_replies_for(@user.id).offset((
+# @page - 1) * REPLIES_PER_PAGE).limit
+Query(ReplyingComment)
+.return_limit('')
+# Q 936 : # ReplyingComment.story_replies_for(@user.id).offset
+Query(ReplyingComment)
+
+# Q 937 : # ReplyingComment.story_replies_for
+Query(ReplyingComment)
+
+# Q 938 : # @message.created_at
 Query(Message)
 .select('created_at')
-# Q 861 : # tag.tag
+# Q 939 : # tag.tag
 Query(Tag)
 .select('tag')
-# Q 862 : # tag.tag
+# Q 940 : # tag.tag
 Query(Tag)
 .select('tag')
-# Q 863 : # tag.tag
+# Q 941 : # tag.tag
 Query(Tag)
 .select('tag')
-# Q 864 : # story.markeddown_description.present?
+# Q 942 : # @user.id
+Query(User)
+
+# Q 943 : # user.username
+Query(User)
+.select('username')
+# Q 944 : # @hat_request.save
+Query(HatRequest)
+
+# Q 945 : # @hat_request.save
+Query(HatRequest)
+
+# Q 946 : # User.where("is_admin = ? OR is_moderator = ?", true, true).order("id ASC").to_a
+Query(User)
+.where(" = ?")
+.order('id')
+.order('id')
+# Q 947 : # User.where("is_admin = ? OR is_moderator = ?", true, true).order("id ASC").to_a
+Query(User)
+.where(" = ?")
+.order('id')
+.order('id')
+# Q 948 : # User.where("is_admin = ? OR is_moderator = ?", true, true).order("id ASC")
+Query(User)
+.where(" = ?")
+.order('id')
+.order('id')
+# Q 949 : # User.where("is_admin = ? OR is_moderator = ?", true, true).order
+Query(User)
+.where(" = ?")
+# Q 950 : # User.where("is_admin = ? OR is_moderator = ?", true, true)
+Query(User)
+.where(" = ?")
+# Q 951 : # User.where("is_admin = ? OR is_moderator = ?", true, true).order("id ASC").to_a
+Query(User)
+.where(" = ?")
+.order('id')
+.order('id')
+# Q 952 : # User.where("is_admin = ? OR is_moderator = ?", true, true).order
+Query(User)
+.where(" = ?")
+# Q 953 : # @user.id
+Query(User)
+
+# Q 954 : # @user.id
+Query(User)
+
+# Q 955 : # user.is_admin?
+Query(User)
+
+# Q 956 : # User.username_regex_s
+Query(User)
+
+# Q 957 : # User.username_regex_s
+Query(User)
+
+# Q 958 : # story.markeddown_description.present?
 Query(Story)
 .select('markeddown_description')
-# Q 865 : # story.markeddown_description
+# Q 959 : # story.markeddown_description
 Query(Story)
 .select('markeddown_description')
-# Q 866 : # self.author
-Query(User)
-.where("id = ?")
-# Q 867 : # self.author
-Query(User)
-.where("id = ?")
-# Q 868 : # self.link
-Query(Hat)
-.select('link')
-# Q 869 : # self.link
-Query(Hat)
-.select('link')
-# Q 870 : # Vote.votes_by_user_for_stories_hash(@user.id, scope.map(&:id))
-Query(Vote)
-
-# Q 871 : # Vote.votes_by_user_for_stories_hash(@user.id, scope.map(&:id))
-Query(Vote)
-
-# Q 872 : # Vote.votes_by_user_for_stories_hash
-Query(Vote)
-
-# Q 873 : # @user.id
+# Q 960 : # User.new
 Query(User)
 
-# Q 874 : # Vote.votes_by_user_for_stories_hash
-Query(Vote)
-
-# Q 875 : # @user.id
+# Q 961 : # User.new
 Query(User)
 
-# Q 876 : # @hat_request.save
-Query(HatRequest)
-
-# Q 877 : # @hat_request.save
-Query(HatRequest)
-
-# Q 878 : # User.new
+# Q 962 : # User.new
 Query(User)
 
-# Q 879 : # User.new
+# Q 963 : # @moderations.where("`moderations`.`#{
+# type.to_s.singularize}_id` is null")
+Query(Moderation)
+.where("`#{
+type = ?")
+# Q 964 : # @moderations.where("`moderations`.`#{
+# type.to_s.singularize}_id` is null")
+Query(Moderation)
+.where("`#{
+type = ?")
+# Q 965 : # @moderations.where("`moderations`.`#{
+# type.to_s.singularize}_id` is null")
+Query(Moderation)
+.where("`#{
+type = ?")
+# Q 966 : # @user.authenticate(params[:current_password].to_s)
 Query(User)
 
-# Q 880 : # User.new
+# Q 967 : # @user.authenticate
 Query(User)
 
-# Q 881 : # user.try(:authenticate, params[:password].to_s)
-Query(User)
-.select('authenticate')
-# Q 882 : # user.try
+# Q 968 : # @user.authenticate
 Query(User)
 
-# Q 883 : # user.try
-Query(User)
-
-# Q 884 : # @story.is_editable_by_user?(@user)
-Query(Story)
-
-# Q 885 : # @story.is_editable_by_user?
-Query(Story)
-
-# Q 886 : # @story.is_editable_by_user?
-Query(Story)
-
-# Q 887 : # users.length
-Query(User)
-
-# Q 888 : # users.length
-Query(User)
-
-# Q 889 : # users.length
-Query(User)
-
-# Q 890 : # comment.short_id
-Query(Comment)
-.select('short_id')
-# Q 891 : # @user.id
-Query(User)
-
-# Q 892 : # self.comment.to_s.strip
-Query(Comment)
-.select('comment')
-# Q 893 : # self.comment.to_s
-Query(Comment)
-.select('comment')
-# Q 894 : # self.comment
-Query(Comment)
-.select('comment')
-# Q 895 : # self.comment.to_s.strip
-Query(Comment)
-.select('comment')
-# Q 896 : # self.comment.to_s
-Query(Comment)
-.select('comment')
-# Q 897 : # self.comment
-Query(Comment)
-.select('comment')
-# Q 898 : # self.author.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 899 : # self.author
-Query(User)
-.where("id = ?")
-# Q 900 : # self.author.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 901 : # self.author
-Query(User)
-.where("id = ?")
-# Q 902 : # @invitation.email
-Query(Invitation)
-.select('email')
-# Q 903 : # @invitation.email
-Query(Invitation)
-.select('email')
-# Q 904 : # @invitation.email
-Query(Invitation)
-.select('email')
-# Q 905 : # users.group_by(&:invited_by_user_id)
-Query(User)
-
-# Q 906 : # users.group_by(&:invited_by_user_id)
-Query(User)
-
-# Q 907 : # users.group_by
-Query(User)
-
-# Q 908 : # users.group_by
-Query(User)
-
-# Q 909 : # tag.tag
+# Q 969 : # tag.tag
 Query(Tag)
 .select('tag')
-# Q 910 : # tag.css_class
+# Q 970 : # tag.css_class
 Query(Tag)
 
-# Q 911 : # tag.tag
-Query(Tag)
-.select('tag')
-# Q 912 : # tag.css_class
-Query(Tag)
-
-# Q 913 : # tag.tag
+# Q 971 : # tag.tag
 Query(Tag)
 .select('tag')
-# Q 914 : # tag.css_class
+# Q 972 : # tag.css_class
 Query(Tag)
 
-# Q 915 : # user.karma
-Query(User)
-.select('karma')
-# Q 916 : # User.username_regex
-Query(User)
+# Q 973 : # tag.tag
+Query(Tag)
+.select('tag')
+# Q 974 : # tag.css_class
+Query(Tag)
 
-# Q 917 : # User.username_regex
-Query(User)
-
-# Q 918 : # story.comments_path
+# Q 975 : # story.description
 Query(Story)
-
-# Q 919 : # self.reason
+.select('description')
+# Q 976 : # self.reason
 Query(Moderation)
 .select('reason')
-# Q 920 : # self.reason
+# Q 977 : # self.reason
 Query(Moderation)
 .select('reason')
-# Q 921 : # HiddenStory.where(:user_id => @user.id, :story_id => scope.map(&:id)).map(&:story_id)
-Query(HiddenStory)
-.where("user_id = ?")
-.where("story_id = ?")
-# Q 922 : # HiddenStory.where(:user_id => @user.id, :story_id => scope.map(&:id)).map(&:story_id)
-Query(HiddenStory)
-.where("user_id = ?")
-.where("story_id = ?")
-# Q 923 : # HiddenStory.where(:user_id => @user.id, :story_id => scope.map(&:id)).map
-Query(HiddenStory)
-.where("user_id = ?")
-.where("story_id = ?")
-# Q 924 : # HiddenStory.where(:user_id => @user.id, :story_id => scope.map(&:id))
-Query(HiddenStory)
-.where("user_id = ?")
-.where("story_id = ?")
-# Q 925 : # @user.id
+# Q 978 : # Vote.votes_by_user_for_stories_hash(@user.id, scope.map(&:id))
+Query(Vote)
+
+# Q 979 : # Vote.votes_by_user_for_stories_hash(@user.id, scope.map(&:id))
+Query(Vote)
+
+# Q 980 : # Vote.votes_by_user_for_stories_hash
+Query(Vote)
+
+# Q 981 : # @user.id
 Query(User)
 
-# Q 926 : # HiddenStory.where(:user_id => @user.id, :story_id => scope.map(&:id)).map
-Query(HiddenStory)
-.where("user_id = ?")
-.where("story_id = ?")
-# Q 927 : # @user.id
+# Q 982 : # Vote.votes_by_user_for_stories_hash
+Query(Vote)
+
+# Q 983 : # @user.id
 Query(User)
 
-# Q 928 : # User.order("id DESC").limit(10)
-Query(User)
-.order('id')
-.order('id')
-.return_limit('')
-# Q 929 : # User.order("id DESC").limit(10)
-Query(User)
-.order('id')
-.order('id')
-.return_limit('')
-# Q 930 : # User.order("id DESC").limit
-Query(User)
-.order('id')
-.order('id')
-.return_limit('')
-# Q 931 : # User.order("id DESC")
-Query(User)
-.order('id')
-.order('id')
-# Q 932 : # User.order
+# Q 984 : # @invitation.email
+Query(Invitation)
+.select('email')
+# Q 985 : # @invitation.email
+Query(Invitation)
+.select('email')
+# Q 986 : # @invitation.email
+Query(Invitation)
+.select('email')
+# Q 987 : # @users.length
 Query(User)
 
-# Q 933 : # User.order("id DESC").limit
-Query(User)
-.order('id')
-.order('id')
-.return_limit('')
-# Q 934 : # User.order
+# Q 988 : # @users.length
 Query(User)
 
-# Q 935 : # Story.make!(:tags_a => nil)
+# Q 989 : # @users.length
+Query(User)
+
+# Q 990 : # Story.make!(:tags_a => nil)
 Query(Story)
 
-# Q 936 : # Story.make!
+# Q 991 : # Story.make!
 Query(Story)
 
-# Q 937 : # Story.make!(:tags_a => nil)
+# Q 992 : # Story.make!(:tags_a => nil)
 Query(Story)
 
-# Q 938 : # Story.make!
+# Q 993 : # Story.make!
 Query(Story)
 
-# Q 939 : # Story.make!(:tags_a => nil)
+# Q 994 : # Story.make!(:tags_a => nil)
 Query(Story)
 
-# Q 940 : # Story.make!(:tags_a => nil)
+# Q 995 : # Story.make!(:tags_a => nil)
 Query(Story)
 
-# Q 941 : # Story.make!
+# Q 996 : # Story.make!
 Query(Story)
 
-# Q 942 : # Story.make!(:tags_a => nil)
+# Q 997 : # Story.make!(:tags_a => nil)
 Query(Story)
 
-# Q 943 : # Story.make!
+# Q 998 : # Story.make!
 Query(Story)
 
-# Q 944 : # tag.description
+# Q 999 : # tag.description
 Query(Tag)
 .select('description')
-# Q 945 : # tag.description
+# Q 1000 : # tag.description
 Query(Tag)
 .select('description')
-# Q 946 : # tag.description
+# Q 1001 : # tag.description
 Query(Tag)
 .select('description')
-# Q 947 : # user.is_moderator?
+# Q 1002 : # user.is_moderator?
 Query(User)
 
-# Q 948 : # self.transaction
+# Q 1003 : # story.comments_path
+Query(Story)
+
+# Q 1004 : # self.link.present?
+Query(Hat)
+.select('link')
+# Q 1005 : # self.link
+Query(Hat)
+.select('link')
+# Q 1006 : # self.link.match(/^https?:\/\//)
+Query(Hat)
+.select('link')
+# Q 1007 : # self.link.match
+Query(Hat)
+.select('link')
+# Q 1008 : # self.link
+Query(Hat)
+.select('link')
+# Q 1009 : # self.link.present?
+Query(Hat)
+.select('link')
+# Q 1010 : # self.link
+Query(Hat)
+.select('link')
+# Q 1011 : # self.link.match
+Query(Hat)
+.select('link')
+# Q 1012 : # self.link
+Query(Hat)
+.select('link')
+# Q 1013 : # self.transaction
 Query(HatRequest)
 
-# Q 949 : # self.transaction
+# Q 1014 : # self.transaction
 Query(HatRequest)
 
-# Q 950 : # self.incremented_value_for(key, amount)
+# Q 1015 : # self.incremented_value_for(key, amount)
 Query(Keystore)
 
-# Q 951 : # self.incremented_value_for
+# Q 1016 : # self.incremented_value_for
 Query(Keystore)
 
-# Q 952 : # self.incremented_value_for
+# Q 1017 : # self.incremented_value_for
 Query(Keystore)
 
-# Q 953 : # self.send(p).to_s
+# Q 1018 : # self.send(p).to_s
 Query(Search)
 
-# Q 954 : # self.send(p)
+# Q 1019 : # self.send(p)
 Query(Search)
 
-# Q 955 : # self.send
+# Q 1020 : # self.send
 Query(Search)
 
-# Q 956 : # self.send(p).to_s
+# Q 1021 : # self.send(p).to_s
 Query(Search)
 
-# Q 957 : # self.send
+# Q 1022 : # self.send
 Query(Search)
 
-# Q 958 : # Invitation.new
-Query(Invitation)
-
-# Q 959 : # Invitation.new
-Query(Invitation)
-
-# Q 960 : # Invitation.new
-Query(Invitation)
-
-# Q 961 : # User.make!(:username => "admin")
+# Q 1023 : # User.make!(:username => "admin")
 Query(User)
 
-# Q 962 : # User.make!
+# Q 1024 : # User.make!
 Query(User)
 
-# Q 963 : # User.make!(:username => "admin")
+# Q 1025 : # User.make!(:username => "admin")
 Query(User)
 
-# Q 964 : # User.make!
+# Q 1026 : # User.make!
 Query(User)
 
-# Q 965 : # User.make!(:username => "admin")
+# Q 1027 : # User.make!(:username => "admin")
 Query(User)
 
-# Q 966 : # User.make!(:username => "admin")
+# Q 1028 : # User.make!(:username => "admin")
 Query(User)
 
-# Q 967 : # User.make!
+# Q 1029 : # User.make!
 Query(User)
 
-# Q 968 : # User.make!(:username => "admin")
+# Q 1030 : # User.make!(:username => "admin")
 Query(User)
 
-# Q 969 : # User.make!
+# Q 1031 : # User.make!
 Query(User)
 
-# Q 970 : # Story.make!(:tags_a => ["", " "])
+# Q 1032 : # Story.make!(:tags_a => ["", " "])
 Query(Story)
 
-# Q 971 : # Story.make!
+# Q 1033 : # Story.make!
 Query(Story)
 
-# Q 972 : # Story.make!(:tags_a => ["", " "])
+# Q 1034 : # Story.make!(:tags_a => ["", " "])
 Query(Story)
 
-# Q 973 : # Story.make!
+# Q 1035 : # Story.make!
 Query(Story)
 
-# Q 974 : # Story.make!(:tags_a => ["", " "])
+# Q 1036 : # Story.make!(:tags_a => ["", " "])
 Query(Story)
 
-# Q 975 : # Story.make!(:tags_a => ["", " "])
+# Q 1037 : # Story.make!(:tags_a => ["", " "])
 Query(Story)
 
-# Q 976 : # Story.make!
+# Q 1038 : # Story.make!
 Query(Story)
 
-# Q 977 : # Story.make!(:tags_a => ["", " "])
+# Q 1039 : # Story.make!(:tags_a => ["", " "])
 Query(Story)
 
-# Q 978 : # Story.make!
+# Q 1040 : # Story.make!
 Query(Story)
 
-# Q 979 : # tag.hotness_mod
+# Q 1041 : # tag.hotness_mod
 Query(Tag)
 .select('hotness_mod')
-# Q 980 : # tag.hotness_mod
+# Q 1042 : # tag.hotness_mod
 Query(Tag)
 .select('hotness_mod')
-# Q 981 : # tag.hotness_mod
+# Q 1043 : # tag.hotness_mod
 Query(Tag)
 .select('hotness_mod')
-# Q 982 : # @search.order
+# Q 1044 : # @search.order
 Query(Search)
 
-# Q 983 : # story.can_be_seen_by_user?
-Query(Story)
-
-# Q 984 : # self.tag
+# Q 1045 : # self.tag
 Query(Tag)
 .select('tag')
-# Q 985 : # self.is_media?
+# Q 1046 : # self.is_media?
 Query(Tag)
 
-# Q 986 : # self.tag
+# Q 1047 : # self.tag
 Query(Tag)
 .select('tag')
-# Q 987 : # self.is_media?
+# Q 1048 : # self.is_media?
 Query(Tag)
 
-# Q 988 : # self.user_id.blank? && errors.add(:user_id, "cannot be blank.")
-Query(Comment)
-
-# Q 989 : # self.user_id.blank?
-Query(Comment)
-.select('user_id')
-# Q 990 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 991 : # Message.new
-Query(Message)
-
-# Q 992 : # Message.new
-Query(Message)
-
-# Q 993 : # m = Message.new
-Query(Message)
-
-# Q 994 : # Message.new
-Query(Message)
-
-# Q 995 : # user.is_banned?
+# Q 1049 : # HiddenStory.where(:user_id => @user.id, :story_id => scope.map(&:id)).map(&:story_id)
+Query(HiddenStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1050 : # HiddenStory.where(:user_id => @user.id, :story_id => scope.map(&:id)).map(&:story_id)
+Query(HiddenStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1051 : # HiddenStory.where(:user_id => @user.id, :story_id => scope.map(&:id)).map
+Query(HiddenStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1052 : # HiddenStory.where(:user_id => @user.id, :story_id => scope.map(&:id))
+Query(HiddenStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1053 : # @user.id
 Query(User)
 
-# Q 996 : # user.is_banned?
+# Q 1054 : # HiddenStory.where(:user_id => @user.id, :story_id => scope.map(&:id)).map
+Query(HiddenStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1055 : # @user.id
 Query(User)
 
-# Q 997 : # @user.id
-Query(User)
-
-# Q 998 : # @user.id
-Query(User)
-
-# Q 999 : # @user.id
-Query(User)
-
-# Q 1000 : # @message.linkified_body
+# Q 1056 : # Message.new
 Query(Message)
 
-# Q 1001 : # self.comment
+# Q 1057 : # Message.new
+Query(Message)
+
+# Q 1058 : # m = Message.new
+Query(Message)
+
+# Q 1059 : # Message.new
+Query(Message)
+
+# Q 1060 : # User.where("mailing_list_mode > 0 AND mailing_list_token = ?", user_token).first
+Query(User)
+.where(" = ?")
+.return_limit('1')
+# Q 1061 : # User.where("mailing_list_mode > 0 AND mailing_list_token = ?", user_token).first
+Query(User)
+.where(" = ?")
+.return_limit('1')
+# Q 1062 : # User.where("mailing_list_mode > 0 AND mailing_list_token = ?", user_token)
+Query(User)
+.where(" = ?")
+# Q 1063 : # User.where("mailing_list_mode > 0 AND mailing_list_token = ?", user_token).first
+Query(User)
+.where(" = ?")
+.return_limit('1')
+# Q 1064 : # @message.linkified_body
+Query(Message)
+
+# Q 1065 : # story.can_be_seen_by_user?
+Query(Story)
+
+# Q 1066 : # self.comment
 Query(Comment)
 .where("id = ?")
-# Q 1002 : # self.comment
+# Q 1067 : # self.comment
 Query(Comment)
 .where("id = ?")
-# Q 1003 : # user.id
+# Q 1068 : # user.id
 Query(User)
 
-# Q 1004 : # user.id
+# Q 1069 : # user.id
 Query(User)
 
-# Q 1005 : # user.id
+# Q 1070 : # user.id
 Query(User)
 
-# Q 1006 : # user.id
+# Q 1071 : # user.id
 Query(User)
 
-# Q 1007 : # user.id
+# Q 1072 : # user.id
 Query(User)
 
-# Q 1008 : # Message.new(message_params)
-Query(Message)
+# Q 1073 : # @moderations.count
+Query(Moderation)
 
-# Q 1009 : # Message.new(message_params)
-Query(Message)
+# Q 1074 : # @moderations.count
+Query(Moderation)
 
-# Q 1010 : # Message.new
-Query(Message)
-
-# Q 1011 : # Message.new
-Query(Message)
-
-# Q 1012 : # User.where("mailing_list_mode > 0 AND mailing_list_token = ?", user_token).first
+# Q 1075 : # user.is_active?
 Query(User)
-.where(" = ?")
-.return_limit('1')
-# Q 1013 : # User.where("mailing_list_mode > 0 AND mailing_list_token = ?", user_token).first
+
+# Q 1076 : # user.is_active?
 Query(User)
-.where(" = ?")
-.return_limit('1')
-# Q 1014 : # User.where("mailing_list_mode > 0 AND mailing_list_token = ?", user_token)
-Query(User)
-.where(" = ?")
-# Q 1015 : # User.where("mailing_list_mode > 0 AND mailing_list_token = ?", user_token).first
-Query(User)
-.where(" = ?")
-.return_limit('1')
-# Q 1016 : # Story.make!(:tags_a => ["", "tag1"])
+
+# Q 1077 : # Story.make!(:tags_a => ["", "tag1"])
 Query(Story)
 
-# Q 1017 : # Story.make!
+# Q 1078 : # Story.make!
 Query(Story)
 
-# Q 1018 : # Story.make!(:tags_a => ["", "tag1"])
+# Q 1079 : # Story.make!(:tags_a => ["", "tag1"])
 Query(Story)
 
-# Q 1019 : # Story.make!
+# Q 1080 : # Story.make!
 Query(Story)
 
-# Q 1020 : # Story.make!(:tags_a => ["", "tag1"])
+# Q 1081 : # Story.make!(:tags_a => ["", "tag1"])
 Query(Story)
 
-# Q 1021 : # Story.make!(:tags_a => ["", "tag1"])
+# Q 1082 : # Story.make!(:tags_a => ["", "tag1"])
 Query(Story)
 
-# Q 1022 : # Story.make!
+# Q 1083 : # Story.make!
 Query(Story)
 
-# Q 1023 : # Story.make!(:tags_a => ["", "tag1"])
+# Q 1084 : # Story.make!(:tags_a => ["", "tag1"])
 Query(Story)
 
-# Q 1024 : # Story.make!
+# Q 1085 : # Story.make!
 Query(Story)
 
-# Q 1025 : # comment.new_record?
+# Q 1086 : # comment.new_record?
 Query(Comment)
 
-# Q 1026 : # comment.new_record? ? "Post" : "Update"
+# Q 1087 : # comment.new_record? ? "Post" : "Update"
 Query(Comment)
 
-# Q 1027 : # comment.new_record?
+# Q 1088 : # comment.new_record?
 Query(Comment)
 
-# Q 1028 : # @messages.includes(:author, :recipient).each do |message|
+# Q 1089 : # @messages.includes(:author, :recipient).each do |message|
 #   
 #   
 #   message.has_been_read? ? "" : "bold"
@@ -3333,2292 +3535,3334 @@ Query(Comment)
 Query(Message)
 .includes('author')
 .includes('recipient')
-# Q 1029 : # @messages.includes(:author, :recipient).each
+# Q 1090 : # @messages.includes(:author, :recipient).each
 Query(Message)
 .includes('author')
 .includes('recipient')
-# Q 1030 : # @messages.includes
+# Q 1091 : # @messages.includes
 Query(Message)
 
-# Q 1031 : # tag.hotness_mod
+# Q 1092 : # tag.hotness_mod
 Query(Tag)
 .select('hotness_mod')
-# Q 1032 : # tag.hotness_mod
+# Q 1093 : # tag.hotness_mod
 Query(Tag)
 .select('hotness_mod')
-# Q 1033 : # tag.hotness_mod
+# Q 1094 : # tag.hotness_mod
 Query(Tag)
 .select('hotness_mod')
-# Q 1034 : # tag.hotness_mod
+# Q 1095 : # tag.hotness_mod
 Query(Tag)
 .select('hotness_mod')
-# Q 1035 : # tag.hotness_mod
+# Q 1096 : # tag.hotness_mod
 Query(Tag)
 .select('hotness_mod')
-# Q 1036 : # story.sorted_taggings.each
+# Q 1097 : # user.karma
+Query(User)
+.select('karma')
+# Q 1098 : # @story.previewing
 Query(Story)
 
-# Q 1037 : # story.sorted_taggings
+# Q 1099 : # @story.valid?
 Query(Story)
 
-# Q 1038 : # @story.previewing
-Query(Story)
-
-# Q 1039 : # @story.valid?
-Query(Story)
-
-# Q 1040 : # self.comment.user_id
+# Q 1100 : # self.comment.user_id
 Query(Comment)
 .where("id = ?")
 .select('user_id')
-# Q 1041 : # self.comment.user_id
+# Q 1101 : # self.comment.user_id
 Query(Comment)
 .where("id = ?")
 .select('user_id')
-# Q 1042 : # self.comment
+# Q 1102 : # self.comment
 Query(Comment)
 .where("id = ?")
-# Q 1043 : # self.comment.user_id
+# Q 1103 : # self.comment.user_id
 Query(Comment)
 .where("id = ?")
 .select('user_id')
-# Q 1044 : # self.comment
-Query(Comment)
-.where("id = ?")
-# Q 1045 : # self.user_id
-Query(HatRequest)
-.select('user_id')
-# Q 1046 : # self.user_id
-Query(HatRequest)
-.select('user_id')
-# Q 1047 : # self.user_id
-Query(HatRequest)
-.select('user_id')
-# Q 1048 : # @user.id
-Query(User)
-
-# Q 1049 : # @user.id
-Query(User)
-
-# Q 1050 : # @user.id
-Query(User)
-
-# Q 1051 : # user.is_active?
-Query(User)
-
-# Q 1052 : # user.is_active?
-Query(User)
-
-# Q 1053 : # message.has_been_read? ? "" : "bold"
-Query(Message)
-
-# Q 1054 : # message.has_been_read? ? "" : "bold"
-Query(Message)
-
-# Q 1055 : # message.has_been_read?
-Query(Message)
-
-# Q 1056 : # tag.hotness_mod
-Query(Tag)
-.select('hotness_mod')
-# Q 1057 : # tag.hotness_mod
-Query(Tag)
-.select('hotness_mod')
-# Q 1058 : # tag.hotness_mod
-Query(Tag)
-.select('hotness_mod')
-# Q 1059 : # tag.hotness_mod
-Query(Tag)
-.select('hotness_mod')
-# Q 1060 : # tag.hotness_mod
-Query(Tag)
-.select('hotness_mod')
-# Q 1061 : # user.id
-Query(User)
-
-# Q 1062 : # tagging.tag.tag
-Query(Tag)
-.where("id = ?")
-.select('tag')
-# Q 1063 : # tagging.tag
-Query(Tag)
-.where("id = ?")
-# Q 1064 : # self.story_id.blank? && errors.add(:story_id, "cannot be blank.")
-Query(Comment)
-
-# Q 1065 : # self.story_id.blank?
-Query(Comment)
-.select('story_id')
-# Q 1066 : # self.story_id
-Query(Comment)
-.select('story_id')
-# Q 1067 : # self.link
-Query(Hat)
-.select('link')
-# Q 1068 : # self.link
-Query(Hat)
-.select('link')
-# Q 1069 : # self.hat
-Query(HatRequest)
-.select('hat')
-# Q 1070 : # self.hat
-Query(HatRequest)
-.select('hat')
-# Q 1071 : # self.hat
-Query(HatRequest)
-.select('hat')
-# Q 1072 : # self.hat
-Query(HatRequest)
-.select('hat')
-# Q 1073 : # Keystore.transaction
-Query(Keystore)
-
-# Q 1074 : # Keystore.transaction
-Query(Keystore)
-
-# Q 1075 : # Invitation.where(:code => params[:invitation_code].to_s).first
-Query(Invitation)
-.where("code = ?")
-.return_limit('1')
-# Q 1076 : # Invitation.where(:code => params[:invitation_code].to_s).first
-Query(Invitation)
-.where("code = ?")
-.return_limit('1')
-# Q 1077 : # Invitation.where(:code => params[:invitation_code].to_s)
-Query(Invitation)
-.where("code = ?")
-# Q 1078 : # Invitation.where(:code => params[:invitation_code].to_s).first
-Query(Invitation)
-.where("code = ?")
-.return_limit('1')
-# Q 1079 : # User.make!(:banned)
-Query(User)
-
-# Q 1080 : # User.make!
-Query(User)
-
-# Q 1081 : # User.make!(:banned)
-Query(User)
-
-# Q 1082 : # User.make!
-Query(User)
-
-# Q 1083 : # User.make!(:banned)
-Query(User)
-
-# Q 1084 : # User.make!
-Query(User)
-
-# Q 1085 : # User.make!
-Query(User)
-
-# Q 1086 : # @user.show_avatars?
-Query(User)
-
-# Q 1087 : # message.short_id
-Query(Message)
-.select('short_id')
-# Q 1088 : # message.short_id
-Query(Message)
-.select('short_id')
-# Q 1089 : # message.short_id
-Query(Message)
-.select('short_id')
-# Q 1090 : # message.short_id
-Query(Message)
-.select('short_id')
-# Q 1091 : # message.short_id
-Query(Message)
-.select('short_id')
-# Q 1092 : # if @user.is_moderator?
-#   
-#   
-#   form_tag delete_invitation_request_path do
-#     
-#     
-#     hidden_field_tag "code", ir.code
-#     submit_tag "Delete", :data => { :confirm => "Are you sure " << "you want to delete this request?" }
-#   end
-# end
-Query(User)
-
-# Q 1093 : # @user.is_moderator?
-Query(User)
-
-# Q 1094 : # tagging.tag.css_class
-Query(Tag)
-.where("id = ?")
-# Q 1095 : # tagging.tag.css_class
-Query(Tag)
-.where("id = ?")
-# Q 1096 : # tagging.tag
-Query(Tag)
-.where("id = ?")
-# Q 1097 : # self.privileged?
-Query(Tag)
-
-# Q 1098 : # self.privileged?
-Query(Tag)
-
-# Q 1099 : # self.comment.story.title
-Query(Story)
-.where("id = ?")
-.where("id = ?")
-.select('title')
-# Q 1100 : # self.comment.story
-Query(Story)
-.where("id = ?")
-.where("id = ?")
-# Q 1101 : # self.comment
-Query(Comment)
-.where("id = ?")
-# Q 1102 : # self.comment.story.title
-Query(Story)
-.where("id = ?")
-.where("id = ?")
-.select('title')
-# Q 1103 : # self.comment.story
-Query(Story)
-.where("id = ?")
-.where("id = ?")
 # Q 1104 : # self.comment
 Query(Comment)
 .where("id = ?")
-# Q 1105 : # self.deleted_by_author?
-Query(Message)
-
-# Q 1106 : # self.deleted_by_recipient?
-Query(Message)
-
-# Q 1107 : # self.deleted_by_author?
-Query(Message)
-
-# Q 1108 : # self.deleted_by_recipient?
-Query(Message)
-
-# Q 1109 : # Keystore.connection.adapter_name
-Query(Keystore)
-
-# Q 1110 : # Keystore.connection
-Query(Keystore)
-
-# Q 1111 : # Keystore.connection.adapter_name
-Query(Keystore)
-
-# Q 1112 : # Keystore.connection
-Query(Keystore)
-
-# Q 1113 : # Keystore.connection.adapter_name
-Query(Keystore)
-
-# Q 1114 : # Keystore.connection
-Query(Keystore)
-
-# Q 1115 : # self.total_results.to_i
-Query(Search)
-
-# Q 1116 : # self.total_results.to_i
-Query(Search)
-
-# Q 1117 : # self.total_results
-Query(Search)
-
-# Q 1118 : # self.total_results.to_i
-Query(Search)
-
-# Q 1119 : # self.total_results
-Query(Search)
-
-# Q 1120 : # user.is_active?
-Query(User)
-
-# Q 1121 : # user.is_active?
-Query(User)
-
-# Q 1122 : # @story.user_id
-Query(Story)
-.select('user_id')
-# Q 1123 : # @user.id
-Query(User)
-
-# Q 1124 : # @story.user_id
-Query(Story)
-.select('user_id')
-# Q 1125 : # @user.id
-Query(User)
-
-# Q 1126 : # Comment.where(:story_id => story.id, :user_id => @user.id, :parent_comment_id => comment.parent_comment_id).first
-Query(Comment)
-.where("story_id = ?")
-.where("user_id = ?")
-.where("parent_comment_id = ?")
-.return_limit('1')
-# Q 1127 : # Comment.where(:story_id => story.id, :user_id => @user.id, :parent_comment_id => comment.parent_comment_id).first
-Query(Comment)
-.where("story_id = ?")
-.where("user_id = ?")
-.where("parent_comment_id = ?")
-.return_limit('1')
-# Q 1128 : # Comment.where(:story_id => story.id, :user_id => @user.id, :parent_comment_id => comment.parent_comment_id)
-Query(Comment)
-.where("story_id = ?")
-.where("user_id = ?")
-.where("parent_comment_id = ?")
-# Q 1129 : # story.id
-Query(Story)
-
-# Q 1130 : # @user.id
-Query(User)
-
-# Q 1131 : # Comment.where(:story_id => story.id, :user_id => @user.id, :parent_comment_id => comment.parent_comment_id).first
-Query(Comment)
-.where("story_id = ?")
-.where("user_id = ?")
-.where("parent_comment_id = ?")
-.return_limit('1')
-# Q 1132 : # story.id
-Query(Story)
-
-# Q 1133 : # @user.id
-Query(User)
-
-# Q 1134 : # User.make!
-Query(User)
-
-# Q 1135 : # user = User.make!
-Query(User)
-
-# Q 1136 : # user = User.make!
-Query(User)
-
-# Q 1137 : # User.make!
-Query(User)
-
-# Q 1138 : # comment.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1139 : # comment.user
-Query(User)
-.where("id = ?")
-# Q 1140 : # @search.order
-Query(Search)
-
-# Q 1141 : # tagging.tag.tag
-Query(Tag)
-.where("id = ?")
-.select('tag')
-# Q 1142 : # tagging.tag.description
-Query(Tag)
-.where("id = ?")
-.select('description')
-# Q 1143 : # tagging.tag.description
-Query(Tag)
-.where("id = ?")
-.select('description')
-# Q 1144 : # tagging.tag
-Query(Tag)
-.where("id = ?")
-# Q 1145 : # tagging.tag.tag
-Query(Tag)
-.where("id = ?")
-.select('tag')
-# Q 1146 : # tagging.tag
-Query(Tag)
-.where("id = ?")
-# Q 1147 : # user.try(:is_moderator?)
-Query(User)
-.select('is_moderator?')
-# Q 1148 : # user.try
-Query(User)
-
-# Q 1149 : # user.try
-Query(User)
-
-# Q 1150 : # self.comment.story.comments_url
-Query(Story)
-.where("id = ?")
-.where("id = ?")
-# Q 1151 : # self.comment.story
-Query(Story)
-.where("id = ?")
-.where("id = ?")
-# Q 1152 : # self.comment
-Query(Comment)
-.where("id = ?")
-# Q 1153 : # self.comment.story.comments_url
-Query(Story)
-.where("id = ?")
-.where("id = ?")
-# Q 1154 : # self.comment.story
-Query(Story)
-.where("id = ?")
-.where("id = ?")
-# Q 1155 : # self.comment
-Query(Comment)
-.where("id = ?")
-# Q 1156 : # self.destroy
-Query(Message)
-
-# Q 1157 : # self.destroy
-Query(Message)
-
-# Q 1158 : # Vote.where(:user_id => user_id, :story_id => story_id).where("comment_id IS NOT NULL").each
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where(" = ?")
-# Q 1159 : # Vote.where(:user_id => user_id, :story_id => story_id).where("comment_id IS NOT NULL")
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where(" = ?")
-# Q 1160 : # Vote.where(:user_id => user_id, :story_id => story_id).where
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-# Q 1161 : # Vote.where(:user_id => user_id, :story_id => story_id)
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-# Q 1162 : # Vote.where(:user_id => user_id, :story_id => story_id).where("comment_id IS NOT NULL").each
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where(" = ?")
-# Q 1163 : # Vote.where(:user_id => user_id, :story_id => story_id).where
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-# Q 1164 : # Keystore.connection.execute
-Query(Keystore)
-
-# Q 1165 : # Keystore.connection
-Query(Keystore)
-
-# Q 1166 : # Keystore.connection.execute
-Query(Keystore)
-
-# Q 1167 : # Keystore.connection
-Query(Keystore)
-
-# Q 1168 : # Keystore.connection.execute
-Query(Keystore)
-
-# Q 1169 : # Keystore.connection
-Query(Keystore)
-
-# Q 1170 : # user.undelete!
-Query(User)
-
-# Q 1171 : # user.undelete!
-Query(User)
-
-# Q 1172 : # @user.undeleted_received_messages
-Query(User)
-
-# Q 1173 : # @user.undeleted_received_messages
-Query(User)
-
-# Q 1174 : # @user.undeleted_received_messages
-Query(User)
-
-# Q 1175 : # comment.parent_comment_id
-Query(Comment)
-.select('parent_comment_id')
-# Q 1176 : # comment.parent_comment_id
-Query(Comment)
-.select('parent_comment_id')
-# Q 1177 : # Story.make!(:title => "test", :url => "http://gooses.com/")
-Query(Story)
-
-# Q 1178 : # Story.make!
-Query(Story)
-
-# Q 1179 : # Story.make!(:title => "test", :url => "http://gooses.com/")
-Query(Story)
-
-# Q 1180 : # Story.make!
-Query(Story)
-
-# Q 1181 : # Story.make!(:title => "test", :url => "http://gooses.com/")
-Query(Story)
-
-# Q 1182 : # Story.make!(:title => "test", :url => "http://gooses.com/")
-Query(Story)
-
-# Q 1183 : # Story.make!
-Query(Story)
-
-# Q 1184 : # Story.make!(:title => "test", :url => "http://gooses.com/")
-Query(Story)
-
-# Q 1185 : # Story.make!
-Query(Story)
-
-# Q 1186 : # Story.make!
-Query(Story)
-
-# Q 1187 : # s = Story.make!
-Query(Story)
-
-# Q 1188 : # s = Story.make!
-Query(Story)
-
-# Q 1189 : # Story.make!
-Query(Story)
-
-# Q 1190 : # comment.user.avatar_url
-Query(User)
-.where("id = ?")
-# Q 1191 : # comment.user
-Query(User)
-.where("id = ?")
-# Q 1192 : # message.author
-Query(User)
-.where("id = ?")
-# Q 1193 : # if message.author
-#   
-#   
-#   message.author.username
-#   message.author.username
-# else
-#   
-#   
-#   message.author_username
-# end
-Query(Message)
-
-# Q 1194 : # message.author
-Query(User)
-.where("id = ?")
-# Q 1195 : # if message.author
-#   
-#   
-#   message.author.username
-#   message.author.username
-# else
-#   
-#   
-#   message.author_username
-# end
-Query(Message)
-
-# Q 1196 : # message.author
-Query(User)
-.where("id = ?")
-# Q 1197 : # tag.stories_count
-Query(Tag)
-
-# Q 1198 : # tag.stories_count
-Query(Tag)
-
-# Q 1199 : # tag.stories_count
-Query(Tag)
-
-# Q 1200 : # @story.previewing
-Query(Story)
-
-# Q 1201 : # self.comment.to_s.strip.match(/\A(t)his([\.!])?$\z/i)
-Query(Comment)
-.select('comment')
-# Q 1202 : # self.comment.to_s.strip.match
-Query(Comment)
-.select('comment')
-# Q 1203 : # self.comment.to_s.strip
-Query(Comment)
-.select('comment')
-# Q 1204 : # self.comment.to_s
-Query(Comment)
-.select('comment')
-# Q 1205 : # self.comment
-Query(Comment)
-.select('comment')
-# Q 1206 : # self.comment.to_s.strip.match(/\A(t)his([\.!])?$\z/i)
-Query(Comment)
-.select('comment')
-# Q 1207 : # self.comment.to_s.strip.match
-Query(Comment)
-.select('comment')
-# Q 1208 : # self.comment.to_s.strip
-Query(Comment)
-.select('comment')
-# Q 1209 : # self.comment.to_s
-Query(Comment)
-.select('comment')
-# Q 1210 : # self.comment
-Query(Comment)
-.select('comment')
-# Q 1211 : # self.comment.to_s.strip.match
-Query(Comment)
-.select('comment')
-# Q 1212 : # self.comment.to_s.strip
-Query(Comment)
-.select('comment')
-# Q 1213 : # self.comment.to_s
-Query(Comment)
-.select('comment')
-# Q 1214 : # self.comment
-Query(Comment)
-.select('comment')
-# Q 1215 : # self.hat
+# Q 1105 : # self.hat.gsub(/[^A-Za-z0-9]/, "_").downcase
 Query(Hat)
 .select('hat')
-# Q 1216 : # self.hat
+# Q 1106 : # self.hat.gsub(/[^A-Za-z0-9]/, "_")
 Query(Hat)
 .select('hat')
-# Q 1217 : # Keystore.table_name
+# Q 1107 : # self.hat.gsub
+Query(Hat)
+.select('hat')
+# Q 1108 : # self.hat
+Query(Hat)
+.select('hat')
+# Q 1109 : # self.hat.gsub(/[^A-Za-z0-9]/, "_").downcase
+Query(Hat)
+.select('hat')
+# Q 1110 : # self.hat.gsub
+Query(Hat)
+.select('hat')
+# Q 1111 : # self.hat
+Query(Hat)
+.select('hat')
+# Q 1112 : # SavedStory.where(:user_id => @user.id, :story_id => scope.map(&:id)).map(&:story_id)
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1113 : # SavedStory.where(:user_id => @user.id, :story_id => scope.map(&:id)).map(&:story_id)
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1114 : # SavedStory.where(:user_id => @user.id, :story_id => scope.map(&:id)).map
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1115 : # SavedStory.where(:user_id => @user.id, :story_id => scope.map(&:id))
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1116 : # @user.id
+Query(User)
+
+# Q 1117 : # SavedStory.where(:user_id => @user.id, :story_id => scope.map(&:id)).map
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1118 : # @user.id
+Query(User)
+
+# Q 1119 : # self.user_id
+Query(HatRequest)
+.select('user_id')
+# Q 1120 : # self.user_id
+Query(HatRequest)
+.select('user_id')
+# Q 1121 : # self.user_id
+Query(HatRequest)
+.select('user_id')
+# Q 1122 : # message.has_been_read? ? "" : "bold"
+Query(Message)
+
+# Q 1123 : # message.has_been_read? ? "" : "bold"
+Query(Message)
+
+# Q 1124 : # message.has_been_read?
+Query(Message)
+
+# Q 1125 : # tag.hotness_mod
+Query(Tag)
+.select('hotness_mod')
+# Q 1126 : # tag.hotness_mod
+Query(Tag)
+.select('hotness_mod')
+# Q 1127 : # tag.hotness_mod
+Query(Tag)
+.select('hotness_mod')
+# Q 1128 : # tag.hotness_mod
+Query(Tag)
+.select('hotness_mod')
+# Q 1129 : # tag.hotness_mod
+Query(Tag)
+.select('hotness_mod')
+# Q 1130 : # story.sorted_taggings.each
+Query(Story)
+
+# Q 1131 : # story.sorted_taggings
+Query(Story)
+
+# Q 1132 : # self.granted_by_user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1133 : # self.granted_by_user
+Query(User)
+.where("id = ?")
+# Q 1134 : # self.granted_by_user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1135 : # self.granted_by_user
+Query(User)
+.where("id = ?")
+# Q 1136 : # self.hat
+Query(HatRequest)
+.select('hat')
+# Q 1137 : # self.hat
+Query(HatRequest)
+.select('hat')
+# Q 1138 : # self.hat
+Query(HatRequest)
+.select('hat')
+# Q 1139 : # self.hat
+Query(HatRequest)
+.select('hat')
+# Q 1140 : # Keystore.transaction
 Query(Keystore)
 
-# Q 1218 : # Keystore.table_name
+# Q 1141 : # Keystore.transaction
 Query(Keystore)
 
-# Q 1219 : # Keystore.table_name
-Query(Keystore)
-
-# Q 1220 : # Keystore.table_name
-Query(Keystore)
-
-# Q 1221 : # self.max_matches
+# Q 1142 : # self.total_results.to_i
 Query(Search)
 
-# Q 1222 : # self.max_matches
+# Q 1143 : # self.total_results.to_i
 Query(Search)
 
-# Q 1223 : # user.is_banned?.should
-Query(User)
-
-# Q 1224 : # user.is_banned?
-Query(User)
-
-# Q 1225 : # user.is_banned?.should == false
-Query(User)
-
-# Q 1226 : # user.is_banned?.should == false
-Query(User)
-
-# Q 1227 : # user.is_banned?.should
-Query(User)
-
-# Q 1228 : # user.is_banned?
-Query(User)
-
-# Q 1229 : # message.author.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1230 : # message.author
-Query(User)
-.where("id = ?")
-# Q 1231 : # message.author.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1232 : # message.author.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1233 : # message.author
-Query(User)
-.where("id = ?")
-# Q 1234 : # message.author.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1235 : # message.author.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1236 : # message.author
-Query(User)
-.where("id = ?")
-# Q 1237 : # self.comment.comment
-Query(Comment)
-.where("id = ?")
-.select('comment')
-# Q 1238 : # self.comment
-Query(Comment)
-.where("id = ?")
-# Q 1239 : # self.comment.comment
-Query(Comment)
-.where("id = ?")
-.select('comment')
-# Q 1240 : # self.comment
-Query(Comment)
-.where("id = ?")
-# Q 1241 : # self.destroy
-Query(HatRequest)
-
-# Q 1242 : # self.destroy
-Query(HatRequest)
-
-# Q 1243 : # self.destroy
-Query(HatRequest)
-
-# Q 1244 : # self.max_matches
+# Q 1144 : # self.total_results
 Query(Search)
 
-# Q 1245 : # self.max_matches
+# Q 1145 : # self.total_results.to_i
 Query(Search)
 
-# Q 1246 : # self.max_matches
+# Q 1146 : # self.total_results
 Query(Search)
 
-# Q 1247 : # HatRequest.all.includes(:user)
-Query(HatRequest)
-.includes('user')
-# Q 1248 : # HatRequest.all.includes(:user)
-Query(HatRequest)
-.includes('user')
-# Q 1249 : # HatRequest.all.includes
-Query(HatRequest)
-
-# Q 1250 : # HatRequest.all
-Query(HatRequest)
-
-# Q 1251 : # HatRequest.all.includes
-Query(HatRequest)
-
-# Q 1252 : # HatRequest.all
-Query(HatRequest)
-
-# Q 1253 : # User.where(:username => params[:username]).first
+# Q 1147 : # @story.user_id
+Query(Story)
+.select('user_id')
+# Q 1148 : # @user.id
 Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 1254 : # User.where(:username => params[:username]).first
+
+# Q 1149 : # @story.user_id
+Query(Story)
+.select('user_id')
+# Q 1150 : # @user.id
 Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 1255 : # User.where(:username => params[:username])
-Query(User)
-.where("username = ?")
-# Q 1256 : # User.where(:username => params[:username]).first
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 1257 : # comment.errors.add(:comment, "^You have already posted a comment " << "here recently.")
+
+# Q 1151 : # Message.new
+Query(Message)
+
+# Q 1152 : # Message.new
+Query(Message)
+
+# Q 1153 : # @new_message = Message.new
+Query(Message)
+
+# Q 1154 : # Message.new
+Query(Message)
+
+# Q 1155 : # Comment.where(:story_id => story.id, :user_id => @user.id, :parent_comment_id => comment.parent_comment_id).first
 Query(Comment)
+.where("story_id = ?")
+.where("user_id = ?")
+.where("parent_comment_id = ?")
+.return_limit('1')
+# Q 1156 : # Comment.where(:story_id => story.id, :user_id => @user.id, :parent_comment_id => comment.parent_comment_id).first
+Query(Comment)
+.where("story_id = ?")
+.where("user_id = ?")
+.where("parent_comment_id = ?")
+.return_limit('1')
+# Q 1157 : # Comment.where(:story_id => story.id, :user_id => @user.id, :parent_comment_id => comment.parent_comment_id)
+Query(Comment)
+.where("story_id = ?")
+.where("user_id = ?")
+.where("parent_comment_id = ?")
+# Q 1158 : # story.id
+Query(Story)
 
-# Q 1258 : # comment.errors.add
+# Q 1159 : # Comment.where(:story_id => story.id, :user_id => @user.id, :parent_comment_id => comment.parent_comment_id).first
 Query(Comment)
+.where("story_id = ?")
+.where("user_id = ?")
+.where("parent_comment_id = ?")
+.return_limit('1')
+# Q 1160 : # story.id
+Query(Story)
 
-# Q 1259 : # comment.errors
-Query(Comment)
-
-# Q 1260 : # comment.errors.add
-Query(Comment)
-
-# Q 1261 : # comment.errors
-Query(Comment)
-
-# Q 1262 : # User.exists?(:username => u[1..-1])
-Query(User)
-.return_limit('1')
-# Q 1263 : # User.exists?
-Query(User)
-.return_limit('1')
-# Q 1264 : # User.exists?(:username => u[1..-1])
-Query(User)
-.return_limit('1')
-# Q 1265 : # User.exists?
-Query(User)
-.return_limit('1')
-# Q 1266 : # User.exists?(:username => u[1..-1])
-Query(User)
-.return_limit('1')
-# Q 1267 : # User.exists?
-Query(User)
-.return_limit('1')
-# Q 1268 : # User.exists?(:username => u[1..-1])
-Query(User)
-.return_limit('1')
-# Q 1269 : # User.exists?
-Query(User)
-.return_limit('1')
-# Q 1270 : # User.exists?
-Query(User)
-.return_limit('1')
-# Q 1271 : # comment.persisted?
-Query(Comment)
-
-# Q 1272 : # comment.parent_comment_id
-Query(Comment)
-.select('parent_comment_id')
-# Q 1273 : # comment.persisted?
-Query(Comment)
-
-# Q 1274 : # comment.parent_comment_id
-Query(Comment)
-.select('parent_comment_id')
-# Q 1275 : # @message.short_id
+# Q 1161 : # message.short_id
 Query(Message)
 .select('short_id')
-# Q 1276 : # message.author.username
+# Q 1162 : # message.short_id
+Query(Message)
+.select('short_id')
+# Q 1163 : # message.short_id
+Query(Message)
+.select('short_id')
+# Q 1164 : # message.short_id
+Query(Message)
+.select('short_id')
+# Q 1165 : # message.short_id
+Query(Message)
+.select('short_id')
+# Q 1166 : # user.id
+Query(User)
+
+# Q 1167 : # tagging.tag.tag
+Query(Tag)
+.where("id = ?")
+.select('tag')
+# Q 1168 : # tagging.tag
+Query(Tag)
+.where("id = ?")
+# Q 1169 : # self.privileged?
+Query(Tag)
+
+# Q 1170 : # self.privileged?
+Query(Tag)
+
+# Q 1171 : # self.comment.story.title
+Query(Story)
+.where("id = ?")
+.where("id = ?")
+.select('title')
+# Q 1172 : # self.comment.story
+Query(Story)
+.where("id = ?")
+.where("id = ?")
+# Q 1173 : # self.comment
+Query(Comment)
+.where("id = ?")
+# Q 1174 : # self.comment.story.title
+Query(Story)
+.where("id = ?")
+.where("id = ?")
+.select('title')
+# Q 1175 : # self.comment.story
+Query(Story)
+.where("id = ?")
+.where("id = ?")
+# Q 1176 : # self.comment
+Query(Comment)
+.where("id = ?")
+# Q 1177 : # self.author.try(:username)
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 1277 : # message.author
-Query(User)
-.where("id = ?")
-# Q 1278 : # message.author.username
+# Q 1178 : # self.author.try(:username)
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 1279 : # message.author.username
+# Q 1179 : # self.author.try
+Query(User)
+.where("id = ?")
+# Q 1180 : # self.author
+Query(User)
+.where("id = ?")
+# Q 1181 : # self.author.try
+Query(User)
+.where("id = ?")
+# Q 1182 : # self.author
+Query(User)
+.where("id = ?")
+# Q 1183 : # self.created_at.strftime("%Y-%m-%d")
+Query(Hat)
+.select('created_at')
+# Q 1184 : # self.created_at.strftime
+Query(Hat)
+.select('created_at')
+# Q 1185 : # self.created_at
+Query(Hat)
+.select('created_at')
+# Q 1186 : # self.created_at.strftime
+Query(Hat)
+.select('created_at')
+# Q 1187 : # self.created_at
+Query(Hat)
+.select('created_at')
+# Q 1188 : # Keystore.connection.adapter_name
+Query(Keystore)
+
+# Q 1189 : # Keystore.connection
+Query(Keystore)
+
+# Q 1190 : # Keystore.connection.adapter_name
+Query(Keystore)
+
+# Q 1191 : # Keystore.connection
+Query(Keystore)
+
+# Q 1192 : # Keystore.connection.adapter_name
+Query(Keystore)
+
+# Q 1193 : # Keystore.connection
+Query(Keystore)
+
+# Q 1194 : # Invitation.where(:code => params[:invitation_code].to_s).first
+Query(Invitation)
+.where("code = ?")
+.return_limit('1')
+# Q 1195 : # Invitation.where(:code => params[:invitation_code].to_s).first
+Query(Invitation)
+.where("code = ?")
+.return_limit('1')
+# Q 1196 : # Invitation.where(:code => params[:invitation_code].to_s)
+Query(Invitation)
+.where("code = ?")
+# Q 1197 : # Invitation.where(:code => params[:invitation_code].to_s).first
+Query(Invitation)
+.where("code = ?")
+.return_limit('1')
+# Q 1198 : # user.authenticate(params[:password].to_s)
+Query(User)
+
+# Q 1199 : # user.authenticate
+Query(User)
+
+# Q 1200 : # user.authenticate
+Query(User)
+
+# Q 1201 : # @user.can_invite?
+Query(User)
+
+# Q 1202 : # @user.can_invite?
+Query(User)
+
+# Q 1203 : # User.order("id DESC").to_a
+Query(User)
+.order('id')
+.order('id')
+# Q 1204 : # User.order("id DESC").to_a
+Query(User)
+.order('id')
+.order('id')
+# Q 1205 : # User.order("id DESC")
+Query(User)
+.order('id')
+.order('id')
+# Q 1206 : # User.order
+Query(User)
+
+# Q 1207 : # User.order("id DESC").to_a
+Query(User)
+.order('id')
+.order('id')
+# Q 1208 : # User.order
+Query(User)
+
+# Q 1209 : # @user.id
+Query(User)
+
+# Q 1210 : # @user.id
+Query(User)
+
+# Q 1211 : # User.make!(:banned)
+Query(User)
+
+# Q 1212 : # User.make!
+Query(User)
+
+# Q 1213 : # User.make!(:banned)
+Query(User)
+
+# Q 1214 : # User.make!
+Query(User)
+
+# Q 1215 : # User.make!(:banned)
+Query(User)
+
+# Q 1216 : # User.make!
+Query(User)
+
+# Q 1217 : # User.make!
+Query(User)
+
+# Q 1218 : # @search.order
+Query(Search)
+
+# Q 1219 : # tagging.tag.css_class
+Query(Tag)
+.where("id = ?")
+# Q 1220 : # tagging.tag.css_class
+Query(Tag)
+.where("id = ?")
+# Q 1221 : # tagging.tag
+Query(Tag)
+.where("id = ?")
+# Q 1222 : # user.try(:is_moderator?)
+Query(User)
+.select('is_moderator?')
+# Q 1223 : # user.try
+Query(User)
+
+# Q 1224 : # user.try
+Query(User)
+
+# Q 1225 : # self.comment.story.comments_url
+Query(Story)
+.where("id = ?")
+.where("id = ?")
+# Q 1226 : # self.comment.story
+Query(Story)
+.where("id = ?")
+.where("id = ?")
+# Q 1227 : # self.comment
+Query(Comment)
+.where("id = ?")
+# Q 1228 : # self.comment.story.comments_url
+Query(Story)
+.where("id = ?")
+.where("id = ?")
+# Q 1229 : # self.comment.story
+Query(Story)
+.where("id = ?")
+.where("id = ?")
+# Q 1230 : # self.comment
+Query(Comment)
+.where("id = ?")
+# Q 1231 : # self.recipient.try(:username)
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 1280 : # message.author
-Query(User)
-.where("id = ?")
-# Q 1281 : # message.author.username
+# Q 1232 : # self.recipient.try(:username)
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 1282 : # message.author.username
+# Q 1233 : # self.recipient.try
 Query(User)
 .where("id = ?")
-.select('username')
+# Q 1234 : # self.recipient
+Query(User)
+.where("id = ?")
+# Q 1235 : # self.recipient.try
+Query(User)
+.where("id = ?")
+# Q 1236 : # self.recipient
+Query(User)
+.where("id = ?")
+# Q 1237 : # Vote.where(:user_id => user_id, :story_id => story_id).where("comment_id IS NOT NULL").each
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where(" = ?")
+# Q 1238 : # Vote.where(:user_id => user_id, :story_id => story_id).where("comment_id IS NOT NULL")
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where(" = ?")
+# Q 1239 : # Vote.where(:user_id => user_id, :story_id => story_id).where
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1240 : # Vote.where(:user_id => user_id, :story_id => story_id)
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1241 : # Vote.where(:user_id => user_id, :story_id => story_id).where("comment_id IS NOT NULL").each
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where(" = ?")
+# Q 1242 : # Vote.where(:user_id => user_id, :story_id => story_id).where
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1243 : # Keystore.connection.execute
+Query(Keystore)
+
+# Q 1244 : # Keystore.connection
+Query(Keystore)
+
+# Q 1245 : # Keystore.connection.execute
+Query(Keystore)
+
+# Q 1246 : # Keystore.connection
+Query(Keystore)
+
+# Q 1247 : # Keystore.connection.execute
+Query(Keystore)
+
+# Q 1248 : # Keystore.connection
+Query(Keystore)
+
+# Q 1249 : # self.max_matches
+Query(Search)
+
+# Q 1250 : # self.max_matches
+Query(Search)
+
+# Q 1251 : # users.length
+Query(User)
+
+# Q 1252 : # users.length
+Query(User)
+
+# Q 1253 : # users.length
+Query(User)
+
+# Q 1254 : # ReplyingComment.unread_replies_for(@user.id)
+Query(ReplyingComment)
+
+# Q 1255 : # ReplyingComment.unread_replies_for(@user.id)
+Query(ReplyingComment)
+
+# Q 1256 : # ReplyingComment.unread_replies_for
+Query(ReplyingComment)
+
+# Q 1257 : # @user.id
+Query(User)
+
+# Q 1258 : # ReplyingComment.unread_replies_for
+Query(ReplyingComment)
+
+# Q 1259 : # @user.id
+Query(User)
+
+# Q 1260 : # comment.parent_comment_id
+Query(Comment)
+.select('parent_comment_id')
+# Q 1261 : # comment.parent_comment_id
+Query(Comment)
+.select('parent_comment_id')
+# Q 1262 : # User.make!
+Query(User)
+
+# Q 1263 : # user = User.make!
+Query(User)
+
+# Q 1264 : # user = User.make!
+Query(User)
+
+# Q 1265 : # User.make!
+Query(User)
+
+# Q 1266 : # Story.make!(:title => "test", :url => "http://gooses.com/")
+Query(Story)
+
+# Q 1267 : # Story.make!
+Query(Story)
+
+# Q 1268 : # Story.make!(:title => "test", :url => "http://gooses.com/")
+Query(Story)
+
+# Q 1269 : # Story.make!
+Query(Story)
+
+# Q 1270 : # Story.make!(:title => "test", :url => "http://gooses.com/")
+Query(Story)
+
+# Q 1271 : # Story.make!(:title => "test", :url => "http://gooses.com/")
+Query(Story)
+
+# Q 1272 : # Story.make!
+Query(Story)
+
+# Q 1273 : # Story.make!(:title => "test", :url => "http://gooses.com/")
+Query(Story)
+
+# Q 1274 : # Story.make!
+Query(Story)
+
+# Q 1275 : # Story.make!
+Query(Story)
+
+# Q 1276 : # s = Story.make!
+Query(Story)
+
+# Q 1277 : # s = Story.make!
+Query(Story)
+
+# Q 1278 : # Story.make!
+Query(Story)
+
+# Q 1279 : # message.author
+Query(User)
+.where("id = ?")
+# Q 1280 : # if message.author
+#   
+#   
+#   message.author.username
+#   message.author.username
+# else
+#   
+#   
+#   message.author_username
+# end
+Query(Message)
+
+# Q 1281 : # message.author
+Query(User)
+.where("id = ?")
+# Q 1282 : # if message.author
+#   
+#   
+#   message.author.username
+#   message.author.username
+# else
+#   
+#   
+#   message.author_username
+# end
+Query(Message)
+
 # Q 1283 : # message.author
 Query(User)
 .where("id = ?")
-# Q 1284 : # @story.is_gone?
+# Q 1284 : # tag.stories_count
+Query(Tag)
+
+# Q 1285 : # tag.stories_count
+Query(Tag)
+
+# Q 1286 : # tag.stories_count
+Query(Tag)
+
+# Q 1287 : # @story.previewing
 Query(Story)
 
-# Q 1285 : # @story.previewing
-Query(Story)
-
-# Q 1286 : # story.domain.present?
-Query(Story)
-
-# Q 1287 : # story.domain
-Query(Story)
-
-# Q 1288 : # Keystore.connection.execute
+# Q 1288 : # tagging.tag.tag
+Query(Tag)
+.where("id = ?")
+.select('tag')
+# Q 1289 : # tagging.tag.description
+Query(Tag)
+.where("id = ?")
+.select('description')
+# Q 1290 : # tagging.tag.description
+Query(Tag)
+.where("id = ?")
+.select('description')
+# Q 1291 : # tagging.tag
+Query(Tag)
+.where("id = ?")
+# Q 1292 : # tagging.tag.tag
+Query(Tag)
+.where("id = ?")
+.select('tag')
+# Q 1293 : # tagging.tag
+Query(Tag)
+.where("id = ?")
+# Q 1294 : # self.link.present?
+Query(Hat)
+.select('link')
+# Q 1295 : # self.link
+Query(Hat)
+.select('link')
+# Q 1296 : # self.link.present?
+Query(Hat)
+.select('link')
+# Q 1297 : # self.link
+Query(Hat)
+.select('link')
+# Q 1298 : # Keystore.table_name
 Query(Keystore)
 
-# Q 1289 : # Keystore.connection
+# Q 1299 : # Keystore.table_name
 Query(Keystore)
 
-# Q 1290 : # Keystore.table_name
+# Q 1300 : # Keystore.table_name
 Query(Keystore)
 
-# Q 1291 : # Keystore.connection.execute
+# Q 1301 : # Keystore.table_name
 Query(Keystore)
 
-# Q 1292 : # Keystore.connection
-Query(Keystore)
+# Q 1302 : # self.max_matches
+Query(Search)
 
-# Q 1293 : # Keystore.table_name
-Query(Keystore)
+# Q 1303 : # self.max_matches
+Query(Search)
 
-# Q 1294 : # Keystore.table_name
-Query(Keystore)
+# Q 1304 : # self.max_matches
+Query(Search)
 
-# Q 1295 : # Keystore.connection.execute
-Query(Keystore)
-
-# Q 1296 : # Keystore.connection
-Query(Keystore)
-
-# Q 1297 : # Keystore.table_name
-Query(Keystore)
-
-# Q 1298 : # @story.save(:validate => false)
-Query(Story)
-
-# Q 1299 : # @story.save
-Query(Story)
-
-# Q 1300 : # @story.save
-Query(Story)
-
-# Q 1301 : # stories.hidden
-Query(Story)
-
-# Q 1302 : # stories.hidden
-Query(Story)
-
-# Q 1303 : # Story.make!(:title => "test", url => "ftp://gooses/")
-Query(Story)
-
-# Q 1304 : # Story.make!
-Query(Story)
-
-# Q 1305 : # Story.make!(:title => "test", url => "ftp://gooses/")
-Query(Story)
-
-# Q 1306 : # Story.make!
-Query(Story)
-
-# Q 1307 : # Story.make!(:title => "test", url => "ftp://gooses/")
-Query(Story)
-
-# Q 1308 : # Story.make!(:title => "test", url => "ftp://gooses/")
-Query(Story)
-
-# Q 1309 : # Story.make!
-Query(Story)
-
-# Q 1310 : # Story.make!(:title => "test", url => "ftp://gooses/")
-Query(Story)
-
-# Q 1311 : # Story.make!
-Query(Story)
-
-# Q 1312 : # User.make!
+# Q 1305 : # users.group_by(&:invited_by_user_id)
 Query(User)
 
-# Q 1313 : # u = User.make!
+# Q 1306 : # users.group_by(&:invited_by_user_id)
 Query(User)
 
-# Q 1314 : # u = User.make!
+# Q 1307 : # users.group_by
 Query(User)
 
-# Q 1315 : # User.make!
+# Q 1308 : # users.group_by
 Query(User)
 
-# Q 1316 : # comment.user.username
+# Q 1309 : # User.where(:username => username).first!
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 1310 : # User.where(:username => username).first!
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 1311 : # User.where(:username => username)
+Query(User)
+.where("username = ?")
+# Q 1312 : # User.where(:username => username).first!
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 1313 : # @user.is_moderator?
+Query(User)
+
+# Q 1314 : # @user.is_moderator?
+Query(User)
+
+# Q 1315 : # comment.short_id
+Query(Comment)
+.select('short_id')
+# Q 1316 : # message.author.username
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 1317 : # comment.user
+# Q 1317 : # message.author
 Query(User)
 .where("id = ?")
-# Q 1318 : # story.domain_search_url
-Query(Story)
-
-# Q 1319 : # @story.previewing
-Query(Story)
-
-# Q 1320 : # self.comment.to_s.strip.match(/\Atl;?dr.?$\z/i)
-Query(Comment)
-.select('comment')
-# Q 1321 : # self.comment.to_s.strip.match
-Query(Comment)
-.select('comment')
-# Q 1322 : # self.comment.to_s.strip
-Query(Comment)
-.select('comment')
-# Q 1323 : # self.comment.to_s
-Query(Comment)
-.select('comment')
-# Q 1324 : # self.comment
-Query(Comment)
-.select('comment')
-# Q 1325 : # self.comment.to_s.strip.match
-Query(Comment)
-.select('comment')
-# Q 1326 : # self.comment.to_s.strip
-Query(Comment)
-.select('comment')
-# Q 1327 : # self.comment.to_s
-Query(Comment)
-.select('comment')
-# Q 1328 : # self.comment
-Query(Comment)
-.select('comment')
-# Q 1329 : # self.reason.present?
-Query(Moderation)
-.select('reason')
-# Q 1330 : # self.reason
-Query(Moderation)
-.select('reason')
-# Q 1331 : # self.reason.present?
-Query(Moderation)
-.select('reason')
-# Q 1332 : # self.reason
-Query(Moderation)
-.select('reason')
-# Q 1333 : # comment.html_class_for_user
-Query(Comment)
-
-# Q 1334 : # message.author_username
-Query(Message)
-
-# Q 1335 : # message.author_username
-Query(Message)
-
-# Q 1336 : # message.author_username
-Query(Message)
-
-# Q 1337 : # message.author_username
-Query(Message)
-
-# Q 1338 : # message.author_username
-Query(Message)
-
-# Q 1339 : # @search.order
-Query(Search)
-
-# Q 1340 : # story.domain
-Query(Story)
-
-# Q 1341 : # self.recipient.update_unread_message_count!
-Query(User)
-.where("id = ?")
-# Q 1342 : # self.recipient
-Query(User)
-.where("id = ?")
-# Q 1343 : # self.recipient.update_unread_message_count!
-Query(User)
-.where("id = ?")
-# Q 1344 : # self.recipient
-Query(User)
-.where("id = ?")
-# Q 1345 : # Keystore.connection.adapter_name
-Query(Keystore)
-
-# Q 1346 : # Keystore.connection
-Query(Keystore)
-
-# Q 1347 : # Keystore.connection.adapter_name
-Query(Keystore)
-
-# Q 1348 : # Keystore.connection
-Query(Keystore)
-
-# Q 1349 : # Keystore.connection.adapter_name
-Query(Keystore)
-
-# Q 1350 : # Keystore.connection
-Query(Keystore)
-
-# Q 1351 : # self.per_page.to_i
-Query(Search)
-
-# Q 1352 : # self.per_page
-Query(Search)
-
-# Q 1353 : # self.per_page.to_i
-Query(Search)
-
-# Q 1354 : # self.per_page
-Query(Search)
-
-# Q 1355 : # User.new(user_params)
-Query(User)
-
-# Q 1356 : # User.new(user_params)
-Query(User)
-
-# Q 1357 : # User.new
-Query(User)
-
-# Q 1358 : # User.new
-Query(User)
-
-# Q 1359 : # user.session_token
-Query(User)
-.select('session_token')
-# Q 1360 : # user.session_token
-Query(User)
-.select('session_token')
-# Q 1361 : # user.session_token
-Query(User)
-.select('session_token')
-# Q 1362 : # @story.comments_path
-Query(Story)
-
-# Q 1363 : # @story.comments_path
-Query(Story)
-
-# Q 1364 : # User.make!(:banned)
-Query(User)
-
-# Q 1365 : # User.make!
-Query(User)
-
-# Q 1366 : # User.make!(:banned)
-Query(User)
-
-# Q 1367 : # User.make!
-Query(User)
-
-# Q 1368 : # User.make!(:banned)
-Query(User)
-
-# Q 1369 : # User.make!
-Query(User)
-
-# Q 1370 : # User.make!
-Query(User)
-
-# Q 1371 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, s.id, nil, u.id, "H")
-Query(Vote)
-
-# Q 1372 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 1373 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, s.id, nil, u.id, "H")
-Query(Vote)
-
-# Q 1374 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, s.id, nil, u.id, "H")
-Query(Vote)
-
-# Q 1375 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 1376 : # comment.user.username
+# Q 1318 : # message.author.username
 Query(User)
 .where("id = ?")
 .select('username')
-# Q 1377 : # comment.user
+# Q 1319 : # message.author.username
 Query(User)
 .where("id = ?")
-# Q 1378 : # Keystore.connection.execute
+.select('username')
+# Q 1320 : # message.author
+Query(User)
+.where("id = ?")
+# Q 1321 : # message.author.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1322 : # message.author.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1323 : # message.author
+Query(User)
+.where("id = ?")
+# Q 1324 : # self.comment.to_s.strip
+Query(Comment)
+.select('comment')
+# Q 1325 : # self.comment.to_s
+Query(Comment)
+.select('comment')
+# Q 1326 : # self.comment
+Query(Comment)
+.select('comment')
+# Q 1327 : # self.comment.to_s.strip
+Query(Comment)
+.select('comment')
+# Q 1328 : # self.comment.to_s
+Query(Comment)
+.select('comment')
+# Q 1329 : # self.comment
+Query(Comment)
+.select('comment')
+# Q 1330 : # self.comment.comment
+Query(Comment)
+.where("id = ?")
+.select('comment')
+# Q 1331 : # self.comment
+Query(Comment)
+.where("id = ?")
+# Q 1332 : # self.comment.comment
+Query(Comment)
+.where("id = ?")
+.select('comment')
+# Q 1333 : # self.comment
+Query(Comment)
+.where("id = ?")
+# Q 1334 : # self.link
+Query(Hat)
+.select('link')
+# Q 1335 : # self.link
+Query(Hat)
+.select('link')
+# Q 1336 : # self.destroy
+Query(HatRequest)
+
+# Q 1337 : # self.destroy
+Query(HatRequest)
+
+# Q 1338 : # self.destroy
+Query(HatRequest)
+
+# Q 1339 : # HatRequest.all.includes(:user)
+Query(HatRequest)
+.includes('user')
+# Q 1340 : # HatRequest.all.includes(:user)
+Query(HatRequest)
+.includes('user')
+# Q 1341 : # HatRequest.all.includes
+Query(HatRequest)
+
+# Q 1342 : # HatRequest.all
+Query(HatRequest)
+
+# Q 1343 : # HatRequest.all.includes
+Query(HatRequest)
+
+# Q 1344 : # HatRequest.all
+Query(HatRequest)
+
+# Q 1345 : # @story.save(:validate => false)
+Query(Story)
+
+# Q 1346 : # @story.save
+Query(Story)
+
+# Q 1347 : # @story.save
+Query(Story)
+
+# Q 1348 : # User.order("id DESC").limit(10)
+Query(User)
+.order('id')
+.order('id')
+.return_limit('')
+# Q 1349 : # User.order("id DESC").limit(10)
+Query(User)
+.order('id')
+.order('id')
+.return_limit('')
+# Q 1350 : # User.order("id DESC").limit
+Query(User)
+.order('id')
+.order('id')
+.return_limit('')
+# Q 1351 : # User.order("id DESC")
+Query(User)
+.order('id')
+.order('id')
+# Q 1352 : # User.order
+Query(User)
+
+# Q 1353 : # User.order("id DESC").limit
+Query(User)
+.order('id')
+.order('id')
+.return_limit('')
+# Q 1354 : # User.order
+Query(User)
+
+# Q 1355 : # comment.errors.add(:comment, "^You have already posted a comment " << "here recently.")
+Query(Comment)
+
+# Q 1356 : # comment.errors.add
+Query(Comment)
+
+# Q 1357 : # comment.errors
+Query(Comment)
+
+# Q 1358 : # comment.errors.add
+Query(Comment)
+
+# Q 1359 : # comment.errors
+Query(Comment)
+
+# Q 1360 : # user.is_banned?
+Query(User)
+
+# Q 1361 : # user.is_banned?
+Query(User)
+
+# Q 1362 : # user.is_banned?
+Query(User)
+
+# Q 1363 : # user.is_banned?
+Query(User)
+
+# Q 1364 : # comment.persisted?
+Query(Comment)
+
+# Q 1365 : # comment.parent_comment_id
+Query(Comment)
+.select('parent_comment_id')
+# Q 1366 : # comment.persisted?
+Query(Comment)
+
+# Q 1367 : # comment.parent_comment_id
+Query(Comment)
+.select('parent_comment_id')
+# Q 1368 : # @message.short_id
+Query(Message)
+.select('short_id')
+# Q 1369 : # message.author.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1370 : # message.author
+Query(User)
+.where("id = ?")
+# Q 1371 : # message.author.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1372 : # message.author.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1373 : # message.author
+Query(User)
+.where("id = ?")
+# Q 1374 : # message.author.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1375 : # message.author.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1376 : # message.author
+Query(User)
+.where("id = ?")
+# Q 1377 : # @story.is_gone?
+Query(Story)
+
+# Q 1378 : # @story.previewing
+Query(Story)
+
+# Q 1379 : # Keystore.connection.execute
 Query(Keystore)
 
-# Q 1379 : # Keystore.connection
+# Q 1380 : # Keystore.connection
 Query(Keystore)
 
-# Q 1380 : # Keystore.table_name
+# Q 1381 : # Keystore.table_name
 Query(Keystore)
 
-# Q 1381 : # Keystore.connection.execute
+# Q 1382 : # Keystore.connection.execute
 Query(Keystore)
 
-# Q 1382 : # Keystore.connection
-Query(Keystore)
-
-# Q 1383 : # Keystore.table_name
+# Q 1383 : # Keystore.connection
 Query(Keystore)
 
 # Q 1384 : # Keystore.table_name
 Query(Keystore)
 
-# Q 1385 : # Keystore.connection.execute
+# Q 1385 : # Keystore.table_name
 Query(Keystore)
 
-# Q 1386 : # Keystore.connection
+# Q 1386 : # Keystore.connection.execute
 Query(Keystore)
 
-# Q 1387 : # Keystore.table_name
+# Q 1387 : # Keystore.connection
 Query(Keystore)
 
-# Q 1388 : # HatRequest.find(params[:id])
-Query(HatRequest)
-.where("id = ?")
-# Q 1389 : # HatRequest.find(params[:id])
-Query(HatRequest)
-.where("id = ?")
-# Q 1390 : # HatRequest.find
-Query(HatRequest)
-.where("id = ?")
-# Q 1391 : # HatRequest.find
-Query(HatRequest)
-.where("id = ?")
-# Q 1392 : # @invitation.user_id
-Query(Invitation)
-.select('user_id')
-# Q 1393 : # @invitation.user_id
-Query(Invitation)
-.select('user_id')
-# Q 1394 : # @invitation.user_id
-Query(Invitation)
-.select('user_id')
-# Q 1395 : # User.make!
+# Q 1388 : # Keystore.table_name
+Query(Keystore)
+
+# Q 1389 : # user.is_banned?
 Query(User)
 
-# Q 1396 : # user = User.make!
+# Q 1390 : # user.is_banned?
 Query(User)
 
-# Q 1397 : # user = User.make!
+# Q 1391 : # Story.make!(:title => "test", url => "ftp://gooses/")
+Query(Story)
+
+# Q 1392 : # Story.make!
+Query(Story)
+
+# Q 1393 : # Story.make!(:title => "test", url => "ftp://gooses/")
+Query(Story)
+
+# Q 1394 : # Story.make!
+Query(Story)
+
+# Q 1395 : # Story.make!(:title => "test", url => "ftp://gooses/")
+Query(Story)
+
+# Q 1396 : # Story.make!(:title => "test", url => "ftp://gooses/")
+Query(Story)
+
+# Q 1397 : # Story.make!
+Query(Story)
+
+# Q 1398 : # Story.make!(:title => "test", url => "ftp://gooses/")
+Query(Story)
+
+# Q 1399 : # Story.make!
+Query(Story)
+
+# Q 1400 : # User.make!
 Query(User)
 
-# Q 1398 : # User.make!
+# Q 1401 : # u = User.make!
 Query(User)
 
-# Q 1399 : # @comments.group_by
+# Q 1402 : # u = User.make!
+Query(User)
+
+# Q 1403 : # User.make!
+Query(User)
+
+# Q 1404 : # story.domain.present?
+Query(Story)
+
+# Q 1405 : # story.domain
+Query(Story)
+
+# Q 1406 : # @story.previewing
+Query(Story)
+
+# Q 1407 : # self.reason.present?
+Query(Moderation)
+.select('reason')
+# Q 1408 : # self.reason
+Query(Moderation)
+.select('reason')
+# Q 1409 : # self.reason.present?
+Query(Moderation)
+.select('reason')
+# Q 1410 : # self.reason
+Query(Moderation)
+.select('reason')
+# Q 1411 : # self.per_page.to_i
+Query(Search)
+
+# Q 1412 : # self.per_page
+Query(Search)
+
+# Q 1413 : # self.per_page.to_i
+Query(Search)
+
+# Q 1414 : # self.per_page
+Query(Search)
+
+# Q 1415 : # @story.comments_path
+Query(Story)
+
+# Q 1416 : # @story.comments_path
+Query(Story)
+
+# Q 1417 : # @moderations.offset((
+# @page - 1) * ENTRIES_PER_PAGE).order("moderations.created_at desc").limit(ENTRIES_PER_PAGE)
+Query(Moderation)
+.order('id')
+.order('created_at')
+.return_limit('')
+# Q 1418 : # @moderations.offset((
+# @page - 1) * ENTRIES_PER_PAGE).order("moderations.created_at desc").limit(ENTRIES_PER_PAGE)
+Query(Moderation)
+.order('id')
+.order('created_at')
+.return_limit('')
+# Q 1419 : # @moderations.offset((
+# @page - 1) * ENTRIES_PER_PAGE).order("moderations.created_at desc").limit
+Query(Moderation)
+.order('id')
+.order('created_at')
+.return_limit('')
+# Q 1420 : # @moderations.offset((
+# @page - 1) * ENTRIES_PER_PAGE).order("moderations.created_at desc")
+Query(Moderation)
+.order('id')
+.order('created_at')
+# Q 1421 : # @moderations.offset((
+# @page - 1) * ENTRIES_PER_PAGE).order
+Query(Moderation)
+
+# Q 1422 : # @moderations.offset((
+# @page - 1) * ENTRIES_PER_PAGE)
+Query(Moderation)
+
+# Q 1423 : # @moderations.offset
+Query(Moderation)
+
+# Q 1424 : # @moderations.offset((
+# @page - 1) * ENTRIES_PER_PAGE).order("moderations.created_at desc").limit
+Query(Moderation)
+.order('id')
+.order('created_at')
+.return_limit('')
+# Q 1425 : # @moderations.offset((
+# @page - 1) * ENTRIES_PER_PAGE).order
+Query(Moderation)
+
+# Q 1426 : # @moderations.offset
+Query(Moderation)
+
+# Q 1427 : # comment.short_id
+Query(Comment)
+.select('short_id')
+# Q 1428 : # message.author_username
+Query(Message)
+
+# Q 1429 : # message.author_username
+Query(Message)
+
+# Q 1430 : # message.author_username
+Query(Message)
+
+# Q 1431 : # message.author_username
+Query(Message)
+
+# Q 1432 : # message.author_username
+Query(Message)
+
+# Q 1433 : # @invitation_requests.count
+Query(InvitationRequest)
+
+# Q 1434 : # story.domain_search_url
+Query(Story)
+
+# Q 1435 : # self.user_id.blank? && errors.add(:user_id, "cannot be blank.")
 Query(Comment)
 
-# Q 1400 : # TagFilter.where(:tag_id => self.id).count
+# Q 1436 : # self.user_id.blank?
+Query(Comment)
+.select('user_id')
+# Q 1437 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 1438 : # Keystore.connection.adapter_name
+Query(Keystore)
+
+# Q 1439 : # Keystore.connection
+Query(Keystore)
+
+# Q 1440 : # Keystore.connection.adapter_name
+Query(Keystore)
+
+# Q 1441 : # Keystore.connection
+Query(Keystore)
+
+# Q 1442 : # Keystore.connection.adapter_name
+Query(Keystore)
+
+# Q 1443 : # Keystore.connection
+Query(Keystore)
+
+# Q 1444 : # Invitation.new
+Query(Invitation)
+
+# Q 1445 : # Invitation.new
+Query(Invitation)
+
+# Q 1446 : # Invitation.new
+Query(Invitation)
+
+# Q 1447 : # Keystore.transaction
+Query(Keystore)
+
+# Q 1448 : # Keystore.transaction
+Query(Keystore)
+
+# Q 1449 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, s.id, nil, u.id, "H")
+Query(Vote)
+
+# Q 1450 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 1451 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, s.id, nil, u.id, "H")
+Query(Vote)
+
+# Q 1452 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, s.id, nil, u.id, "H")
+Query(Vote)
+
+# Q 1453 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 1454 : # story.domain
+Query(Story)
+
+# Q 1455 : # ShortId.new(self.class).generate
+Query(ShortId)
+
+# Q 1456 : # ShortId.new(self.class).generate
+Query(ShortId)
+
+# Q 1457 : # ShortId.new(self.class)
+Query(ShortId)
+
+# Q 1458 : # ShortId.new
+Query(ShortId)
+
+# Q 1459 : # self.class
+Query(Message)
+
+# Q 1460 : # ShortId.new(self.class).generate
+Query(ShortId)
+
+# Q 1461 : # ShortId.new
+Query(ShortId)
+
+# Q 1462 : # self.class
+Query(Message)
+
+# Q 1463 : # Keystore.connection.execute
+Query(Keystore)
+
+# Q 1464 : # Keystore.connection
+Query(Keystore)
+
+# Q 1465 : # Keystore.table_name
+Query(Keystore)
+
+# Q 1466 : # Keystore.connection.execute
+Query(Keystore)
+
+# Q 1467 : # Keystore.connection
+Query(Keystore)
+
+# Q 1468 : # Keystore.table_name
+Query(Keystore)
+
+# Q 1469 : # Keystore.table_name
+Query(Keystore)
+
+# Q 1470 : # Keystore.connection.execute
+Query(Keystore)
+
+# Q 1471 : # Keystore.connection
+Query(Keystore)
+
+# Q 1472 : # Keystore.table_name
+Query(Keystore)
+
+# Q 1473 : # HatRequest.find(params[:id])
+Query(HatRequest)
+.where("id = ?")
+# Q 1474 : # HatRequest.find(params[:id])
+Query(HatRequest)
+.where("id = ?")
+# Q 1475 : # HatRequest.find
+Query(HatRequest)
+.where("id = ?")
+# Q 1476 : # HatRequest.find
+Query(HatRequest)
+.where("id = ?")
+# Q 1477 : # User.new(user_params)
+Query(User)
+
+# Q 1478 : # User.new(user_params)
+Query(User)
+
+# Q 1479 : # User.new
+Query(User)
+
+# Q 1480 : # User.new
+Query(User)
+
+# Q 1481 : # @user.id
+Query(User)
+
+# Q 1482 : # @user.id
+Query(User)
+
+# Q 1483 : # @user.id
+Query(User)
+
+# Q 1484 : # User.make!(:banned)
+Query(User)
+
+# Q 1485 : # User.make!
+Query(User)
+
+# Q 1486 : # User.make!(:banned)
+Query(User)
+
+# Q 1487 : # User.make!
+Query(User)
+
+# Q 1488 : # User.make!(:banned)
+Query(User)
+
+# Q 1489 : # User.make!
+Query(User)
+
+# Q 1490 : # User.make!
+Query(User)
+
+# Q 1491 : # @user.is_moderator?
+Query(User)
+
+# Q 1492 : # TagFilter.where(:tag_id => self.id).count
 Query(TagFilter)
 .where("tag_id = ?")
-# Q 1401 : # TagFilter.where(:tag_id => self.id)
+# Q 1493 : # TagFilter.where(:tag_id => self.id)
 Query(TagFilter)
 .where("tag_id = ?")
-# Q 1402 : # self.id
+# Q 1494 : # self.id
 Query(Tag)
 
-# Q 1403 : # TagFilter.where(:tag_id => self.id).count
+# Q 1495 : # TagFilter.where(:tag_id => self.id).count
 Query(TagFilter)
 .where("tag_id = ?")
-# Q 1404 : # self.id
+# Q 1496 : # self.id
 Query(Tag)
 
-# Q 1405 : # @hat_request.update_attributes!(params.require(:hat_request).permit(:hat, :link))
+# Q 1497 : # @hat_request.update_attributes!(params.require(:hat_request).permit(:hat, :link))
 Query(HatRequest)
 
-# Q 1406 : # @hat_request.update_attributes!
+# Q 1498 : # @hat_request.update_attributes!
 Query(HatRequest)
 
-# Q 1407 : # @hat_request.update_attributes!
+# Q 1499 : # @hat_request.update_attributes!
 Query(HatRequest)
 
-# Q 1408 : # user.password_digest.to_s.match(/^\$2a\$#{
+# Q 1500 : # @invitation.user_id
+Query(Invitation)
+.select('user_id')
+# Q 1501 : # @invitation.user_id
+Query(Invitation)
+.select('user_id')
+# Q 1502 : # @invitation.user_id
+Query(Invitation)
+.select('user_id')
+# Q 1503 : # user.is_active?
+Query(User)
+
+# Q 1504 : # user.is_active?
+Query(User)
+
+# Q 1505 : # Keystore.find_or_create_key_for_update
+Query(Keystore)
+
+# Q 1506 : # Keystore.find_or_create_key_for_update
+Query(Keystore)
+
+# Q 1507 : # Keystore.find_or_create_key_for_update
+Query(Keystore)
+
+# Q 1508 : # story.archive_url
+Query(Story)
+
+# Q 1509 : # story.archive_url
+Query(Story)
+
+# Q 1510 : # User.make!
+Query(User)
+
+# Q 1511 : # user = User.make!
+Query(User)
+
+# Q 1512 : # user = User.make!
+Query(User)
+
+# Q 1513 : # User.make!
+Query(User)
+
+# Q 1514 : # comment.short_id
+Query(Comment)
+.select('short_id')
+# Q 1515 : # message.recipient.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1516 : # message.recipient
+Query(User)
+.where("id = ?")
+# Q 1517 : # message.recipient.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1518 : # message.recipient.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1519 : # message.recipient
+Query(User)
+.where("id = ?")
+# Q 1520 : # message.recipient.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1521 : # message.recipient.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1522 : # message.recipient
+Query(User)
+.where("id = ?")
+# Q 1523 : # @comments.group_by
+Query(Comment)
+
+# Q 1524 : # self.story_id.blank? && errors.add(:story_id, "cannot be blank.")
+Query(Comment)
+
+# Q 1525 : # self.story_id.blank?
+Query(Comment)
+.select('story_id')
+# Q 1526 : # self.story_id
+Query(Comment)
+.select('story_id')
+# Q 1527 : # self.reason
+Query(Moderation)
+.select('reason')
+# Q 1528 : # self.reason
+Query(Moderation)
+.select('reason')
+# Q 1529 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
+# RECENT_DAYS_OLD + x).days.ago)).order("stories.created_at DESC").reject
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+.order('id')
+.order('created_at')
+# Q 1530 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
+# RECENT_DAYS_OLD + x).days.ago)).order("stories.created_at DESC")
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+.order('id')
+.order('created_at')
+# Q 1531 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
+# RECENT_DAYS_OLD + x).days.ago)).order
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+# Q 1532 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
+# RECENT_DAYS_OLD + x).days.ago))
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+# Q 1533 : # stories.select(:id, :upvotes, :downvotes, :user_id).where
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+# Q 1534 : # stories.select(:id, :upvotes, :downvotes, :user_id)
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+# Q 1535 : # stories.select
+Query(Story)
+
+# Q 1536 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
+# RECENT_DAYS_OLD + x).days.ago)).order("stories.created_at DESC").reject
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+.order('id')
+.order('created_at')
+# Q 1537 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
+# RECENT_DAYS_OLD + x).days.ago)).order("stories.created_at DESC")
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+.order('id')
+.order('created_at')
+# Q 1538 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
+# RECENT_DAYS_OLD + x).days.ago)).order
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+# Q 1539 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
+# RECENT_DAYS_OLD + x).days.ago))
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+# Q 1540 : # stories.select(:id, :upvotes, :downvotes, :user_id).where
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+# Q 1541 : # stories.select(:id, :upvotes, :downvotes, :user_id)
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+# Q 1542 : # stories.select
+Query(Story)
+
+# Q 1543 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
+# RECENT_DAYS_OLD + x).days.ago)).order("stories.created_at DESC").reject
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+.order('id')
+.order('created_at')
+# Q 1544 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
+# RECENT_DAYS_OLD + x).days.ago)).order
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+# Q 1545 : # stories.select(:id, :upvotes, :downvotes, :user_id).where
+Query(Story)
+.select('id')
+.select('upvotes')
+.select('downvotes')
+.select('user_id')
+# Q 1546 : # stories.select
+Query(Story)
+
+# Q 1547 : # @story.is_editable_by_user?(@user)
+Query(Story)
+
+# Q 1548 : # @story.is_editable_by_user?
+Query(Story)
+
+# Q 1549 : # @story.is_editable_by_user?
+Query(Story)
+
+# Q 1550 : # Keystore.find_or_create_key_for_update
+Query(Keystore)
+
+# Q 1551 : # Keystore.find_or_create_key_for_update
+Query(Keystore)
+
+# Q 1552 : # Keystore.find_or_create_key_for_update
+Query(Keystore)
+
+# Q 1553 : # Comment.where(:short_id => m[1]).first
+Query(Comment)
+.where("short_id = ?")
+.return_limit('1')
+# Q 1554 : # Comment.where(:short_id => m[1]).first
+Query(Comment)
+.where("short_id = ?")
+.return_limit('1')
+# Q 1555 : # Comment.where(:short_id => m[1])
+Query(Comment)
+.where("short_id = ?")
+# Q 1556 : # Comment.where(:short_id => m[1]).first
+Query(Comment)
+.where("short_id = ?")
+.return_limit('1')
+# Q 1557 : # Story.count
+Query(Story)
+
+# Q 1558 : # Story.count
+Query(Story)
+
+# Q 1559 : # Story.count
+Query(Story)
+
+# Q 1560 : # Story.count
+Query(Story)
+
+# Q 1561 : # @user.wearable_hats.any?
+Query(Hat)
+.where("user_id = ?")
+# Q 1562 : # @user.wearable_hats
+Query(Hat)
+.where("user_id = ?")
+# Q 1563 : # @user.wearable_hats.any?
+Query(Hat)
+.where("user_id = ?")
+# Q 1564 : # @user.wearable_hats
+Query(Hat)
+.where("user_id = ?")
+# Q 1565 : # @message.short_id
+Query(Message)
+.select('short_id')
+# Q 1566 : # message.recipient.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1567 : # message.recipient
+Query(User)
+.where("id = ?")
+# Q 1568 : # message.recipient.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1569 : # message.recipient.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1570 : # message.recipient
+Query(User)
+.where("id = ?")
+# Q 1571 : # message.recipient.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1572 : # message.recipient.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1573 : # message.recipient
+Query(User)
+.where("id = ?")
+# Q 1574 : # self.link
+Query(Hat)
+.select('link')
+# Q 1575 : # self.link
+Query(Hat)
+.select('link')
+# Q 1576 : # Story.arel_table
+Query(Story)
+
+# Q 1577 : # Story.arel_table
+Query(Story)
+
+# Q 1578 : # Story.arel_table
+Query(Story)
+
+# Q 1579 : # @hat_request.approve_by_user!(@user)
+Query(HatRequest)
+
+# Q 1580 : # @hat_request.approve_by_user!
+Query(HatRequest)
+
+# Q 1581 : # @hat_request.approve_by_user!
+Query(HatRequest)
+
+# Q 1582 : # @user.authenticate(params[:user][:password].to_s)
+Query(User)
+
+# Q 1583 : # @user.authenticate
+Query(User)
+
+# Q 1584 : # @user.authenticate
+Query(User)
+
+# Q 1585 : # user.is_active?
+Query(User)
+
+# Q 1586 : # user.is_active?
+Query(User)
+
+# Q 1587 : # user.is_active?
+Query(User)
+
+# Q 1588 : # user.is_active?
+Query(User)
+
+# Q 1589 : # Tag.all_with_filtered_counts_for(@user).map
+Query(Tag)
+
+# Q 1590 : # Tag.all_with_filtered_counts_for
+Query(Tag)
+
+# Q 1591 : # story.merged_stories.each
+Query(Story)
+.where("story_id = ?")
+# Q 1592 : # story.merged_stories
+Query(Story)
+.where("story_id = ?")
+# Q 1593 : # @story.is_gone?
+Query(Story)
+
+# Q 1594 : # @story.is_undeletable_by_user?(@user)
+Query(Story)
+
+# Q 1595 : # @story.is_undeletable_by_user?
+Query(Story)
+
+# Q 1596 : # @story.is_gone?
+Query(Story)
+
+# Q 1597 : # @story.is_undeletable_by_user?
+Query(Story)
+
+# Q 1598 : # self.author
+Query(User)
+.where("id = ?")
+# Q 1599 : # self.author
+Query(User)
+.where("id = ?")
+# Q 1600 : # self.find_or_create_key_for_update(key, 0)
+Query(Keystore)
+
+# Q 1601 : # self.find_or_create_key_for_update(key, 0)
+Query(Keystore)
+
+# Q 1602 : # self.find_or_create_key_for_update
+Query(Keystore)
+
+# Q 1603 : # self.find_or_create_key_for_update(key, 0)
+Query(Keystore)
+
+# Q 1604 : # self.find_or_create_key_for_update
+Query(Keystore)
+
+# Q 1605 : # self.find_or_create_key_for_update(key, 0)
+Query(Keystore)
+
+# Q 1606 : # self.find_or_create_key_for_update
+Query(Keystore)
+
+# Q 1607 : # self.find_or_create_key_for_update
+Query(Keystore)
+
+# Q 1608 : # @invitation.destroy
+Query(Invitation)
+
+# Q 1609 : # @invitation.destroy
+Query(Invitation)
+
+# Q 1610 : # comment.valid?
+Query(Comment)
+
+# Q 1611 : # comment.save
+Query(Comment)
+
+# Q 1612 : # comment.valid?
+Query(Comment)
+
+# Q 1613 : # comment.save
+Query(Comment)
+
+# Q 1614 : # Story.where(:short_id => m[1]).first
+Query(Story)
+.where("short_id = ?")
+.return_limit('1')
+# Q 1615 : # Story.where(:short_id => m[1]).first
+Query(Story)
+.where("short_id = ?")
+.return_limit('1')
+# Q 1616 : # Story.where(:short_id => m[1])
+Query(Story)
+.where("short_id = ?")
+# Q 1617 : # Story.where(:short_id => m[1]).first
+Query(Story)
+.where("short_id = ?")
+.return_limit('1')
+# Q 1618 : # Story.make!(:title => "flim flam", :url => "http://example.com/")
+Query(Story)
+
+# Q 1619 : # Story.make!
+Query(Story)
+
+# Q 1620 : # Story.make!(:title => "flim flam", :url => "http://example.com/")
+Query(Story)
+
+# Q 1621 : # Story.make!(:title => "flim flam", :url => "http://example.com/")
+Query(Story)
+
+# Q 1622 : # Story.make!
+Query(Story)
+
+# Q 1623 : # message.created_at
+Query(Message)
+.select('created_at')
+# Q 1624 : # self.comment.to_s.strip.match(/\A(t)his([\.!])?$\z/i)
+Query(Comment)
+.select('comment')
+# Q 1625 : # self.comment.to_s.strip.match
+Query(Comment)
+.select('comment')
+# Q 1626 : # self.comment.to_s.strip
+Query(Comment)
+.select('comment')
+# Q 1627 : # self.comment.to_s
+Query(Comment)
+.select('comment')
+# Q 1628 : # self.comment
+Query(Comment)
+.select('comment')
+# Q 1629 : # self.comment.to_s.strip.match(/\A(t)his([\.!])?$\z/i)
+Query(Comment)
+.select('comment')
+# Q 1630 : # self.comment.to_s.strip.match
+Query(Comment)
+.select('comment')
+# Q 1631 : # self.comment.to_s.strip
+Query(Comment)
+.select('comment')
+# Q 1632 : # self.comment.to_s
+Query(Comment)
+.select('comment')
+# Q 1633 : # self.comment
+Query(Comment)
+.select('comment')
+# Q 1634 : # self.comment.to_s.strip.match
+Query(Comment)
+.select('comment')
+# Q 1635 : # self.comment.to_s.strip
+Query(Comment)
+.select('comment')
+# Q 1636 : # self.comment.to_s
+Query(Comment)
+.select('comment')
+# Q 1637 : # self.comment
+Query(Comment)
+.select('comment')
+# Q 1638 : # self.author.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1639 : # self.author
+Query(User)
+.where("id = ?")
+# Q 1640 : # self.author.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1641 : # self.author
+Query(User)
+.where("id = ?")
+# Q 1642 : # @user.can_submit_stories?
+Query(User)
+
+# Q 1643 : # @user.can_submit_stories?
+Query(User)
+
+# Q 1644 : # user.password_digest.to_s.match(/^\$2a\$#{
 # BCrypt::Engine::DEFAULT_COST}\$/)
 Query(User)
 .select('password_digest')
-# Q 1409 : # user.password_digest.to_s.match
+# Q 1645 : # user.password_digest.to_s.match
 Query(User)
 .select('password_digest')
-# Q 1410 : # user.password_digest.to_s
+# Q 1646 : # user.password_digest.to_s
 Query(User)
 .select('password_digest')
-# Q 1411 : # user.password_digest
+# Q 1647 : # user.password_digest
 Query(User)
 .select('password_digest')
-# Q 1412 : # user.password_digest.to_s.match
+# Q 1648 : # user.password_digest.to_s.match
 Query(User)
 .select('password_digest')
-# Q 1413 : # user.password_digest.to_s
+# Q 1649 : # user.password_digest.to_s
 Query(User)
 .select('password_digest')
-# Q 1414 : # user.password_digest
+# Q 1650 : # user.password_digest
 Query(User)
 .select('password_digest')
-# Q 1415 : # comment.hat
-Query(Hat)
-.where("id = ?")
-# Q 1416 : # message.recipient.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1417 : # message.recipient
-Query(User)
-.where("id = ?")
-# Q 1418 : # message.recipient.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1419 : # message.recipient.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1420 : # message.recipient
-Query(User)
-.where("id = ?")
-# Q 1421 : # message.recipient.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1422 : # message.recipient.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1423 : # message.recipient
-Query(User)
-.where("id = ?")
-# Q 1424 : # self.reason
-Query(Moderation)
-.select('reason')
-# Q 1425 : # self.reason
-Query(Moderation)
-.select('reason')
-# Q 1426 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
-# RECENT_DAYS_OLD + x).days.ago)).order("stories.created_at DESC").reject
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-.order('id')
-.order('created_at')
-# Q 1427 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
-# RECENT_DAYS_OLD + x).days.ago)).order("stories.created_at DESC")
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-.order('id')
-.order('created_at')
-# Q 1428 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
-# RECENT_DAYS_OLD + x).days.ago)).order
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-# Q 1429 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
-# RECENT_DAYS_OLD + x).days.ago))
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-# Q 1430 : # stories.select(:id, :upvotes, :downvotes, :user_id).where
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-# Q 1431 : # stories.select(:id, :upvotes, :downvotes, :user_id)
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-# Q 1432 : # stories.select
+# Q 1651 : # Story.count
 Query(Story)
 
-# Q 1433 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
-# RECENT_DAYS_OLD + x).days.ago)).order("stories.created_at DESC").reject
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-.order('id')
-.order('created_at')
-# Q 1434 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
-# RECENT_DAYS_OLD + x).days.ago)).order("stories.created_at DESC")
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-.order('id')
-.order('created_at')
-# Q 1435 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
-# RECENT_DAYS_OLD + x).days.ago)).order
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-# Q 1436 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
-# RECENT_DAYS_OLD + x).days.ago))
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-# Q 1437 : # stories.select(:id, :upvotes, :downvotes, :user_id).where
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-# Q 1438 : # stories.select(:id, :upvotes, :downvotes, :user_id)
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-# Q 1439 : # stories.select
+# Q 1652 : # Story.count
 Query(Story)
 
-# Q 1440 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
-# RECENT_DAYS_OLD + x).days.ago)).order("stories.created_at DESC").reject
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-.order('id')
-.order('created_at')
-# Q 1441 : # stories.select(:id, :upvotes, :downvotes, :user_id).where(Story.arel_table[:created_at].gt((
-# RECENT_DAYS_OLD + x).days.ago)).order
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-# Q 1442 : # stories.select(:id, :upvotes, :downvotes, :user_id).where
-Query(Story)
-.select('id')
-.select('upvotes')
-.select('downvotes')
-.select('user_id')
-# Q 1443 : # stories.select
+# Q 1653 : # Story.count
 Query(Story)
 
-# Q 1444 : # user.is_active?.should
-Query(User)
-
-# Q 1445 : # user.is_active?
-Query(User)
-
-# Q 1446 : # user.is_active?.should == true
-Query(User)
-
-# Q 1447 : # user.is_active?.should == true
-Query(User)
-
-# Q 1448 : # user.is_active?.should
-Query(User)
-
-# Q 1449 : # user.is_active?
-Query(User)
-
-# Q 1450 : # Story.count.should
+# Q 1654 : # Story.count
 Query(Story)
 
-# Q 1451 : # Story.count
-Query(Story)
-
-# Q 1452 : # Story.count.should == 0
-Query(Story)
-
-# Q 1453 : # Story.count.should == 0
-Query(Story)
-
-# Q 1454 : # Story.count.should
-Query(Story)
-
-# Q 1455 : # Story.count
-Query(Story)
-
-# Q 1456 : # @user.hats.any?
-Query(Hat)
-.where("user_id = ?")
-# Q 1457 : # @user.hats
-Query(Hat)
-.where("user_id = ?")
-# Q 1458 : # @user.hats.any?
-Query(Hat)
-.where("user_id = ?")
-# Q 1459 : # @user.hats
-Query(Hat)
-.where("user_id = ?")
-# Q 1460 : # comment.hat.to_html_label
-Query(Hat)
-.where("id = ?")
-# Q 1461 : # comment.hat
-Query(Hat)
-.where("id = ?")
-# Q 1462 : # @message.short_id
+# Q 1655 : # message.subject
+Query(Message)
+.select('subject')
+# Q 1656 : # message.short_id
 Query(Message)
 .select('short_id')
-# Q 1463 : # message.recipient.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1464 : # message.recipient
-Query(User)
-.where("id = ?")
-# Q 1465 : # message.recipient.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1466 : # message.recipient.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1467 : # message.recipient
-Query(User)
-.where("id = ?")
-# Q 1468 : # message.recipient.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1469 : # message.recipient.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 1470 : # message.recipient
-Query(User)
-.where("id = ?")
-# Q 1471 : # @invitation_requests.count
-Query(InvitationRequest)
-
-# Q 1472 : # story.merged_stories.each
-Query(Story)
-.where("story_id = ?")
-# Q 1473 : # story.merged_stories
-Query(Story)
-.where("story_id = ?")
-# Q 1474 : # @story.short_id
-Query(Story)
-.select('short_id')
-# Q 1475 : # self.order("confidence DESC").group_by(&:parent_comment_id)
-Query(Comment)
-.order('id')
-.order('confidence')
-# Q 1476 : # self.order("confidence DESC").group_by(&:parent_comment_id)
-Query(Comment)
-.order('id')
-.order('confidence')
-# Q 1477 : # self.order("confidence DESC").group_by
-Query(Comment)
-.order('id')
-.order('confidence')
-# Q 1478 : # self.order("confidence DESC")
-Query(Comment)
-.order('id')
-.order('confidence')
-# Q 1479 : # self.order
-Query(Comment)
-
-# Q 1480 : # self.order("confidence DESC").group_by
-Query(Comment)
-.order('id')
-.order('confidence')
-# Q 1481 : # self.order
-Query(Comment)
-
-# Q 1482 : # Story.arel_table
-Query(Story)
-
-# Q 1483 : # Story.arel_table
-Query(Story)
-
-# Q 1484 : # Story.arel_table
-Query(Story)
-
-# Q 1485 : # @hat_request.approve_by_user!(@user)
-Query(HatRequest)
-
-# Q 1486 : # @hat_request.approve_by_user!
-Query(HatRequest)
-
-# Q 1487 : # @hat_request.approve_by_user!
-Query(HatRequest)
-
-# Q 1488 : # @invitation.destroy
-Query(Invitation)
-
-# Q 1489 : # @invitation.destroy
-Query(Invitation)
-
-# Q 1490 : # user.save!
-Query(User)
-
-# Q 1491 : # user.save!
-Query(User)
-
-# Q 1492 : # @story.is_editable_by_user?(@user)
-Query(Story)
-
-# Q 1493 : # @story.is_editable_by_user?
-Query(Story)
-
-# Q 1494 : # @story.is_editable_by_user?
-Query(Story)
-
-# Q 1495 : # Comment.where(:short_id => m[1]).first
-Query(Comment)
-.where("short_id = ?")
-.return_limit('1')
-# Q 1496 : # Comment.where(:short_id => m[1]).first
-Query(Comment)
-.where("short_id = ?")
-.return_limit('1')
-# Q 1497 : # Comment.where(:short_id => m[1])
-Query(Comment)
-.where("short_id = ?")
-# Q 1498 : # Comment.where(:short_id => m[1]).first
-Query(Comment)
-.where("short_id = ?")
-.return_limit('1')
-# Q 1499 : # self.find_or_create_key_for_update(key, 0)
-Query(Keystore)
-
-# Q 1500 : # self.find_or_create_key_for_update(key, 0)
-Query(Keystore)
-
-# Q 1501 : # self.find_or_create_key_for_update
-Query(Keystore)
-
-# Q 1502 : # self.find_or_create_key_for_update(key, 0)
-Query(Keystore)
-
-# Q 1503 : # self.find_or_create_key_for_update
-Query(Keystore)
-
-# Q 1504 : # self.find_or_create_key_for_update(key, 0)
-Query(Keystore)
-
-# Q 1505 : # self.find_or_create_key_for_update
-Query(Keystore)
-
-# Q 1506 : # self.find_or_create_key_for_update
-Query(Keystore)
-
-# Q 1507 : # comment.valid?
-Query(Comment)
-
-# Q 1508 : # comment.save
-Query(Comment)
-
-# Q 1509 : # comment.valid?
-Query(Comment)
-
-# Q 1510 : # comment.save
-Query(Comment)
-
-# Q 1511 : # Story.make!(:title => "flim flam", :url => "http://example.com/")
-Query(Story)
-
-# Q 1512 : # Story.make!
-Query(Story)
-
-# Q 1513 : # Story.make!(:title => "flim flam", :url => "http://example.com/")
-Query(Story)
-
-# Q 1514 : # Story.make!(:title => "flim flam", :url => "http://example.com/")
-Query(Story)
-
-# Q 1515 : # Story.make!
-Query(Story)
-
-# Q 1516 : # message.created_at
-Query(Message)
-.select('created_at')
-# Q 1517 : # @user.is_moderator?
-Query(User)
-
-# Q 1518 : # self.recipient.email_messages?
-Query(User)
-.where("id = ?")
-# Q 1519 : # self.recipient
-Query(User)
-.where("id = ?")
-# Q 1520 : # self.recipient.email_messages?
-Query(User)
-.where("id = ?")
-# Q 1521 : # self.recipient
-Query(User)
-.where("id = ?")
-# Q 1522 : # self.page
-Query(Search)
-
-# Q 1523 : # self.page_count
-Query(Search)
-
-# Q 1524 : # self.page
-Query(Search)
-
-# Q 1525 : # self.page_count
-Query(Search)
-
-# Q 1526 : # Story.where(:short_id => m[1]).first
-Query(Story)
-.where("short_id = ?")
-.return_limit('1')
-# Q 1527 : # Story.where(:short_id => m[1]).first
-Query(Story)
-.where("short_id = ?")
-.return_limit('1')
-# Q 1528 : # Story.where(:short_id => m[1])
-Query(Story)
-.where("short_id = ?")
-# Q 1529 : # Story.where(:short_id => m[1]).first
-Query(Story)
-.where("short_id = ?")
-.return_limit('1')
-# Q 1530 : # Story.count.should
-Query(Story)
-
-# Q 1531 : # Story.count
-Query(Story)
-
-# Q 1532 : # Story.count.should == 1
-Query(Story)
-
-# Q 1533 : # Story.count.should == 1
-Query(Story)
-
-# Q 1534 : # Story.count.should
-Query(Story)
-
-# Q 1535 : # Story.count
-Query(Story)
-
-# Q 1536 : # comment.previewing
-Query(Comment)
-
-# Q 1537 : # message.subject
+# Q 1657 : # message.subject
 Query(Message)
 .select('subject')
-# Q 1538 : # message.short_id
+# Q 1658 : # message.short_id
 Query(Message)
 .select('short_id')
-# Q 1539 : # message.subject
-Query(Message)
-.select('subject')
-# Q 1540 : # message.short_id
+# Q 1659 : # message.short_id
 Query(Message)
 .select('short_id')
-# Q 1541 : # message.short_id
+# Q 1660 : # message.subject
 Query(Message)
+.select('subject')
+# Q 1661 : # @story.short_id
+Query(Story)
 .select('short_id')
-# Q 1542 : # message.subject
-Query(Message)
-.select('subject')
-# Q 1543 : # self.create_rss_token
-Query(User)
-
-# Q 1544 : # self.create_rss_token
-Query(User)
-
-# Q 1545 : # self.per_page
-Query(Search)
-
-# Q 1546 : # self.per_page
-Query(Search)
-
-# Q 1547 : # User.make!(:created_at => Time.now)
-Query(User)
-
-# Q 1548 : # User.make!
-Query(User)
-
-# Q 1549 : # User.make!(:created_at => Time.now)
-Query(User)
-
-# Q 1550 : # User.make!
-Query(User)
-
-# Q 1551 : # User.make!(:created_at => Time.now)
-Query(User)
-
-# Q 1552 : # User.make!
-Query(User)
-
-# Q 1553 : # User.make!
-Query(User)
-
-# Q 1554 : # @user.hats
-Query(Hat)
-.where("user_id = ?")
-# Q 1555 : # @user.hats
-Query(Hat)
-.where("user_id = ?")
-# Q 1556 : # @user.hats
-Query(Hat)
-.where("user_id = ?")
-# Q 1557 : # self.recipient
-Query(User)
-.where("id = ?")
-# Q 1558 : # self.recipient
-Query(User)
-.where("id = ?")
-# Q 1559 : # Moderation.new
-Query(Moderation)
-
-# Q 1560 : # Moderation.new
-Query(Moderation)
-
-# Q 1561 : # Moderation.new
-Query(Moderation)
-
-# Q 1562 : # self.create_mailing_list_token
-Query(User)
-
-# Q 1563 : # self.create_mailing_list_token
-Query(User)
-
-# Q 1564 : # @message.subject
-Query(Message)
-.select('subject')
-# Q 1565 : # @message.subject
-Query(Message)
-.select('subject')
-# Q 1566 : # @message.subject
-Query(Message)
-.select('subject')
-# Q 1567 : # User.make!(:created_at => Time.now - 8.days)
-Query(User)
-
-# Q 1568 : # User.make!
-Query(User)
-
-# Q 1569 : # User.make!(:created_at => Time.now - 8.days)
-Query(User)
-
-# Q 1570 : # User.make!
-Query(User)
-
-# Q 1571 : # User.make!(:created_at => Time.now - 8.days)
-Query(User)
-
-# Q 1572 : # User.make!
-Query(User)
-
-# Q 1573 : # User.make!
-Query(User)
-
-# Q 1574 : # Story.make!(:title => "flim flam 2", :url => "http://example.com/")
+# Q 1662 : # @story.short_id
 Query(Story)
-
-# Q 1575 : # Story.make!
+.select('short_id')
+# Q 1663 : # @story.short_id
 Query(Story)
-
-# Q 1576 : # Story.make!(:title => "flim flam 2", :url => "http://example.com/")
-Query(Story)
-
-# Q 1577 : # Story.make!
-Query(Story)
-
-# Q 1578 : # Story.make!(:title => "flim flam 2", :url => "http://example.com/")
-Query(Story)
-
-# Q 1579 : # Story.make!(:title => "flim flam 2", :url => "http://example.com/")
-Query(Story)
-
-# Q 1580 : # Story.make!
-Query(Story)
-
-# Q 1581 : # Story.make!(:title => "flim flam 2", :url => "http://example.com/")
-Query(Story)
-
-# Q 1582 : # Story.make!
-Query(Story)
-
-# Q 1583 : # comment.hat_id
-Query(Comment)
-.select('hat_id')
-# Q 1584 : # comment.hat_id
-Query(Comment)
-.select('hat_id')
-# Q 1585 : # comment.hat_id
-Query(Comment)
-.select('hat_id')
-# Q 1586 : # self.created_at
-Query(Hat)
-.select('created_at')
-# Q 1587 : # self.created_at
-Query(Hat)
-.select('created_at')
-# Q 1588 : # self.created_at
-Query(Hat)
-.select('created_at')
-# Q 1589 : # stories.hottest
-Query(Story)
-
-# Q 1590 : # stories.hottest
-Query(Story)
-
-# Q 1591 : # user.is_new?.should
-Query(User)
-
-# Q 1592 : # user.is_new?
-Query(User)
-
-# Q 1593 : # user.is_new?.should == true
-Query(User)
-
-# Q 1594 : # user.is_new?.should == true
-Query(User)
-
-# Q 1595 : # user.is_new?.should
-Query(User)
-
-# Q 1596 : # user.is_new?
-Query(User)
-
-# Q 1597 : # Story.make!
-Query(Story)
-
-# Q 1598 : # s = Story.make!
-Query(Story)
-
-# Q 1599 : # s = Story.make!
-Query(Story)
-
-# Q 1600 : # Story.make!
-Query(Story)
-
-# Q 1601 : # comment.story_id
-Query(Comment)
-.select('story_id')
-# Q 1602 : # @story.id
-Query(Story)
-
-# Q 1603 : # self.recipient.email
-Query(User)
-.where("id = ?")
-.select('email')
-# Q 1604 : # self.recipient
-Query(User)
-.where("id = ?")
-# Q 1605 : # self.recipient.email
-Query(User)
-.where("id = ?")
-.select('email')
-# Q 1606 : # self.recipient
-Query(User)
-.where("id = ?")
-# Q 1607 : # self.user_id
-Query(Hat)
-.select('user_id')
-# Q 1608 : # self.user_id
-Query(Hat)
-.select('user_id')
-# Q 1609 : # self.user_id
-Query(Hat)
-.select('user_id')
-# Q 1610 : # self.where(:user_id => user_id, :comment_id => nil, :story_id => story_ids)
-Query(Vote)
-.where("user_id = ?")
-.where("comment_id = ?")
-.where("story_id = ?")
-# Q 1611 : # self.where(:user_id => user_id, :comment_id => nil, :story_id => story_ids)
-Query(Vote)
-.where("user_id = ?")
-.where("comment_id = ?")
-.where("story_id = ?")
-# Q 1612 : # @message.author
-Query(User)
-.where("id = ?")
-# Q 1613 : # @message.author
-Query(User)
-.where("id = ?")
-# Q 1614 : # @user.save!
-Query(User)
-
-# Q 1615 : # @user.save!
-Query(User)
-
-# Q 1616 : # Comment.make!(:story_id => s.id)
-Query(Comment)
-
-# Q 1617 : # Comment.make!
-Query(Comment)
-
-# Q 1618 : # Comment.make!(:story_id => s.id)
-Query(Comment)
-
-# Q 1619 : # Comment.make!
-Query(Comment)
-
-# Q 1620 : # Comment.make!(:story_id => s.id)
-Query(Comment)
-
-# Q 1621 : # Comment.make!
-Query(Comment)
-
-# Q 1622 : # Comment.make!
-Query(Comment)
-
-# Q 1623 : # comment.has_been_edited?
-Query(Comment)
-
-# Q 1624 : # comment.story_id
-Query(Comment)
-.select('story_id')
-# Q 1625 : # @story.id
-Query(Story)
-
-# Q 1626 : # self.granted_by_user_id
-Query(Hat)
-.select('granted_by_user_id')
-# Q 1627 : # self.granted_by_user_id
-Query(Hat)
-.select('granted_by_user_id')
-# Q 1628 : # self.granted_by_user_id
-Query(Hat)
-.select('granted_by_user_id')
-# Q 1629 : # self.value_for(key)
-Query(Keystore)
-
-# Q 1630 : # self.value_for
-Query(Keystore)
-
-# Q 1631 : # self.value_for(key)
-Query(Keystore)
-
-# Q 1632 : # self.value_for
-Query(Keystore)
-
-# Q 1633 : # @story.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 1634 : # @story.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 1635 : # Message.new
-Query(Message)
-
-# Q 1636 : # Message.new
-Query(Message)
-
-# Q 1637 : # Message.new
-Query(Message)
-
-# Q 1638 : # Story.count.should
-Query(Story)
-
-# Q 1639 : # Story.count
-Query(Story)
-
-# Q 1640 : # Story.count.should == 1
-Query(Story)
-
-# Q 1641 : # Story.count.should == 1
-Query(Story)
-
-# Q 1642 : # Story.count.should
-Query(Story)
-
-# Q 1643 : # Story.count
-Query(Story)
-
-# Q 1644 : # self.hat
+.select('short_id')
+# Q 1664 : # self.hat
 Query(Hat)
 .select('hat')
-# Q 1645 : # self.link.present?
-Query(Hat)
-.select('link')
-# Q 1646 : # self.link
-Query(Hat)
-.select('link')
-# Q 1647 : # self.hat
+# Q 1665 : # self.hat
 Query(Hat)
 .select('hat')
-# Q 1648 : # self.link.present?
-Query(Hat)
-.select('link')
-# Q 1649 : # self.link
-Query(Hat)
-.select('link')
-# Q 1650 : # HatRequest.find(params[:id])
-Query(HatRequest)
-.where("id = ?")
-# Q 1651 : # HatRequest.find(params[:id])
-Query(HatRequest)
-.where("id = ?")
-# Q 1652 : # HatRequest.find
-Query(HatRequest)
-.where("id = ?")
-# Q 1653 : # HatRequest.find
-Query(HatRequest)
-.where("id = ?")
-# Q 1654 : # @story.merged_into_story.short_id
-Query(Story)
-.where("id = ?")
-.select('short_id')
-# Q 1655 : # @story.merged_into_story.short_id
-Query(Story)
-.where("id = ?")
-.select('short_id')
-# Q 1656 : # @story.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 1657 : # @story.merged_into_story.short_id
-Query(Story)
-.where("id = ?")
-.select('short_id')
-# Q 1658 : # @story.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 1659 : # @message.author_user_id
+# Q 1666 : # Message.new(message_params)
 Query(Message)
-.select('author_user_id')
-# Q 1660 : # @user.id
-Query(User)
 
-# Q 1661 : # @message.author_user_id
+# Q 1667 : # Message.new(message_params)
 Query(Message)
-.select('author_user_id')
-# Q 1662 : # @user.id
-Query(User)
 
-# Q 1663 : # @user.pushover_user_key.present?
-Query(User)
-.select('pushover_user_key')
-# Q 1664 : # @user.pushover_user_key
-Query(User)
-.select('pushover_user_key')
-# Q 1665 : # @user.pushover_user_key.present?
-Query(User)
-.select('pushover_user_key')
-# Q 1666 : # @user.pushover_user_key
-Query(User)
-.select('pushover_user_key')
-# Q 1667 : # comment.is_from_email?
-Query(Comment)
+# Q 1668 : # Message.new
+Query(Message)
 
-# Q 1668 : # comment.id
-Query(Comment)
+# Q 1669 : # Message.new
+Query(Message)
 
-# Q 1669 : # tagging.tag.tag
-Query(Tag)
-.where("id = ?")
-.select('tag')
-# Q 1670 : # tagging.tag
-Query(Tag)
-.where("id = ?")
-# Q 1671 : # self.link
+# Q 1670 : # @user.hats
 Query(Hat)
-.select('link')
-# Q 1672 : # self.link
+.where("user_id = ?")
+# Q 1671 : # @user.hats
 Query(Hat)
-.select('link')
-# Q 1673 : # @hat_request.reject_by_user_for_reason!(@user, params[:hat_request][:rejection_comment])
-Query(HatRequest)
+.where("user_id = ?")
+# Q 1672 : # @user.hats
+Query(Hat)
+.where("user_id = ?")
+# Q 1673 : # user.save
+Query(User)
 
-# Q 1674 : # @hat_request.reject_by_user_for_reason!
-Query(HatRequest)
+# Q 1674 : # user.save
+Query(User)
 
-# Q 1675 : # @hat_request.reject_by_user_for_reason!
-Query(HatRequest)
+# Q 1675 : # @user.id
+Query(User)
 
-# Q 1676 : # InvitationRequest.new(params.require(:invitation_request).permit(:name, :email, :memo))
-Query(InvitationRequest)
+# Q 1676 : # @user.id
+Query(User)
 
-# Q 1677 : # InvitationRequest.new(params.require(:invitation_request).permit(:name, :email, :memo))
-Query(InvitationRequest)
+# Q 1677 : # @user.id
+Query(User)
 
-# Q 1678 : # InvitationRequest.new
-Query(InvitationRequest)
+# Q 1678 : # @user.has_2fa?
+Query(User)
 
-# Q 1679 : # InvitationRequest.new
-Query(InvitationRequest)
+# Q 1679 : # @user.has_2fa?
+Query(User)
 
-# Q 1680 : # @message.recipient.username
+# Q 1680 : # User.make!(:created_at => Time.now)
 Query(User)
-.where("id = ?")
-.select('username')
-# Q 1681 : # @message.recipient
+
+# Q 1681 : # User.make!
 Query(User)
-.where("id = ?")
-# Q 1682 : # @message.author.username
+
+# Q 1682 : # User.make!(:created_at => Time.now)
 Query(User)
-.where("id = ?")
-.select('username')
-# Q 1683 : # @message.author
+
+# Q 1683 : # User.make!
 Query(User)
-.where("id = ?")
-# Q 1684 : # @message.recipient.username
+
+# Q 1684 : # User.make!(:created_at => Time.now)
 Query(User)
-.where("id = ?")
-.select('username')
-# Q 1685 : # @message.recipient
+
+# Q 1685 : # User.make!
 Query(User)
-.where("id = ?")
-# Q 1686 : # @message.author.username
+
+# Q 1686 : # User.make!
 Query(User)
-.where("id = ?")
-.select('username')
-# Q 1687 : # @message.author
-Query(User)
-.where("id = ?")
-# Q 1688 : # @user.rss_token
-Query(User)
-.select('rss_token')
-# Q 1689 : # @user.rss_token
-Query(User)
-.select('rss_token')
-# Q 1690 : # Story.make!(:title => "flim flam 2", :url => "http://www.example.com/")
+
+# Q 1687 : # Story.make!(:title => "flim flam 2", :url => "http://example.com/")
 Query(Story)
 
-# Q 1691 : # Story.make!
+# Q 1688 : # Story.make!
 Query(Story)
 
-# Q 1692 : # Story.make!(:title => "flim flam 2", :url => "http://www.example.com/")
+# Q 1689 : # Story.make!(:title => "flim flam 2", :url => "http://example.com/")
+Query(Story)
+
+# Q 1690 : # Story.make!
+Query(Story)
+
+# Q 1691 : # Story.make!(:title => "flim flam 2", :url => "http://example.com/")
+Query(Story)
+
+# Q 1692 : # Story.make!(:title => "flim flam 2", :url => "http://example.com/")
 Query(Story)
 
 # Q 1693 : # Story.make!
 Query(Story)
 
-# Q 1694 : # Story.make!(:title => "flim flam 2", :url => "http://www.example.com/")
+# Q 1694 : # Story.make!(:title => "flim flam 2", :url => "http://example.com/")
 Query(Story)
 
-# Q 1695 : # Story.make!(:title => "flim flam 2", :url => "http://www.example.com/")
+# Q 1695 : # Story.make!
 Query(Story)
 
-# Q 1696 : # Story.make!
+# Q 1696 : # comment.hat_id
+Query(Comment)
+.select('hat_id')
+# Q 1697 : # comment.hat_id
+Query(Comment)
+.select('hat_id')
+# Q 1698 : # comment.hat_id
+Query(Comment)
+.select('hat_id')
+# Q 1699 : # self.comment.to_s.strip.match(/\Atl;?dr.?$\z/i)
+Query(Comment)
+.select('comment')
+# Q 1700 : # self.comment.to_s.strip.match
+Query(Comment)
+.select('comment')
+# Q 1701 : # self.comment.to_s.strip
+Query(Comment)
+.select('comment')
+# Q 1702 : # self.comment.to_s
+Query(Comment)
+.select('comment')
+# Q 1703 : # self.comment
+Query(Comment)
+.select('comment')
+# Q 1704 : # self.comment.to_s.strip.match
+Query(Comment)
+.select('comment')
+# Q 1705 : # self.comment.to_s.strip
+Query(Comment)
+.select('comment')
+# Q 1706 : # self.comment.to_s
+Query(Comment)
+.select('comment')
+# Q 1707 : # self.comment
+Query(Comment)
+.select('comment')
+# Q 1708 : # User.where(:username => params[:username]).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 1709 : # User.where(:username => params[:username]).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 1710 : # User.where(:username => params[:username])
+Query(User)
+.where("username = ?")
+# Q 1711 : # User.where(:username => params[:username]).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 1712 : # @user.disable_2fa!
+Query(User)
+
+# Q 1713 : # @user.disable_2fa!
+Query(User)
+
+# Q 1714 : # User.exists?(:username => user[1..-1])
+Query(User)
+.return_limit('1')
+# Q 1715 : # User.exists?
+Query(User)
+.return_limit('1')
+# Q 1716 : # User.exists?
+Query(User)
+.return_limit('1')
+# Q 1717 : # User.make!(:created_at => Time.now - 8.days)
+Query(User)
+
+# Q 1718 : # User.make!
+Query(User)
+
+# Q 1719 : # User.make!(:created_at => Time.now - 8.days)
+Query(User)
+
+# Q 1720 : # User.make!
+Query(User)
+
+# Q 1721 : # User.make!(:created_at => Time.now - 8.days)
+Query(User)
+
+# Q 1722 : # User.make!
+Query(User)
+
+# Q 1723 : # User.make!
+Query(User)
+
+# Q 1724 : # Story.make!
 Query(Story)
 
-# Q 1697 : # Story.make!(:title => "flim flam 2", :url => "http://www.example.com/")
+# Q 1725 : # s = Story.make!
 Query(Story)
 
-# Q 1698 : # Story.make!
+# Q 1726 : # s = Story.make!
 Query(Story)
 
-# Q 1699 : # User.make!
-Query(User)
+# Q 1727 : # Story.make!
+Query(Story)
 
-# Q 1700 : # u = User.make!
-Query(User)
-
-# Q 1701 : # u = User.make!
-Query(User)
-
-# Q 1702 : # User.make!
-Query(User)
-
-# Q 1703 : # tagging.tag.css_class
-Query(Tag)
+# Q 1728 : # self.where(:user_id => user_id, :comment_id => nil, :story_id => story_ids)
+Query(Vote)
+.where("user_id = ?")
+.where("comment_id = ?")
+.where("story_id = ?")
+# Q 1729 : # self.where(:user_id => user_id, :comment_id => nil, :story_id => story_ids)
+Query(Vote)
+.where("user_id = ?")
+.where("comment_id = ?")
+.where("story_id = ?")
+# Q 1730 : # @story.merged_into_story
+Query(Story)
 .where("id = ?")
-# Q 1704 : # tagging.tag.css_class
-Query(Tag)
+# Q 1731 : # @story.merged_into_story
+Query(Story)
 .where("id = ?")
-# Q 1705 : # tagging.tag.css_class
-Query(Tag)
-.where("id = ?")
-# Q 1706 : # tagging.tag
-Query(Tag)
-.where("id = ?")
-# Q 1707 : # self.recipient.pushover_messages?
-Query(User)
-.where("id = ?")
-# Q 1708 : # self.recipient
-Query(User)
-.where("id = ?")
-# Q 1709 : # self.recipient.pushover_messages?
-Query(User)
-.where("id = ?")
-# Q 1710 : # self.recipient
-Query(User)
-.where("id = ?")
-# Q 1711 : # User.make!(:banned)
+# Q 1732 : # user.is_new?
 Query(User)
 
-# Q 1712 : # User.make!
+# Q 1733 : # user.is_new?
 Query(User)
 
-# Q 1713 : # User.make!(:banned)
+# Q 1734 : # user.is_new?
 Query(User)
 
-# Q 1714 : # User.make!
+# Q 1735 : # user.is_new?
 Query(User)
 
-# Q 1715 : # User.make!(:banned)
+# Q 1736 : # Comment.make!(:story_id => s.id)
+Query(Comment)
+
+# Q 1737 : # Comment.make!
+Query(Comment)
+
+# Q 1738 : # Comment.make!(:story_id => s.id)
+Query(Comment)
+
+# Q 1739 : # Comment.make!
+Query(Comment)
+
+# Q 1740 : # Comment.make!(:story_id => s.id)
+Query(Comment)
+
+# Q 1741 : # Comment.make!
+Query(Comment)
+
+# Q 1742 : # Comment.make!
+Query(Comment)
+
+# Q 1743 : # @user.show_avatars?
 Query(User)
 
-# Q 1716 : # User.make!
+# Q 1744 : # comment.id
+Query(Comment)
+
+# Q 1745 : # @story.is_gone?
+Query(Story)
+
+# Q 1746 : # @story.is_gone?
+Query(Story)
+
+# Q 1747 : # self.value_for(key)
+Query(Keystore)
+
+# Q 1748 : # self.value_for
+Query(Keystore)
+
+# Q 1749 : # self.value_for(key)
+Query(Keystore)
+
+# Q 1750 : # self.value_for
+Query(Keystore)
+
+# Q 1751 : # user.has_2fa?
 Query(User)
 
-# Q 1717 : # User.make!
+# Q 1752 : # user.has_2fa?
 Query(User)
 
-# Q 1718 : # tagging.tag.tag
+# Q 1753 : # @story.merged_into_story.short_id
+Query(Story)
+.where("id = ?")
+.select('short_id')
+# Q 1754 : # @story.merged_into_story.short_id
+Query(Story)
+.where("id = ?")
+.select('short_id')
+# Q 1755 : # @story.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 1756 : # @story.merged_into_story.short_id
+Query(Story)
+.where("id = ?")
+.select('short_id')
+# Q 1757 : # @story.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 1758 : # @user.undeleted_received_messages
+Query(User)
+
+# Q 1759 : # @user.undeleted_received_messages
+Query(User)
+
+# Q 1760 : # @user.undeleted_received_messages
+Query(User)
+
+# Q 1761 : # stories.hidden
+Query(Story)
+
+# Q 1762 : # stories.hidden
+Query(Story)
+
+# Q 1763 : # Story.count
+Query(Story)
+
+# Q 1764 : # Story.count
+Query(Story)
+
+# Q 1765 : # Story.count
+Query(Story)
+
+# Q 1766 : # Story.count
+Query(Story)
+
+# Q 1767 : # comment.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1768 : # comment.user
+Query(User)
+.where("id = ?")
+# Q 1769 : # self.comment.to_s.strip.match(/\Ame too.?\z/i)
+Query(Comment)
+.select('comment')
+# Q 1770 : # self.comment.to_s.strip.match
+Query(Comment)
+.select('comment')
+# Q 1771 : # self.comment.to_s.strip
+Query(Comment)
+.select('comment')
+# Q 1772 : # self.comment.to_s
+Query(Comment)
+.select('comment')
+# Q 1773 : # self.comment
+Query(Comment)
+.select('comment')
+# Q 1774 : # self.comment.to_s.strip.match
+Query(Comment)
+.select('comment')
+# Q 1775 : # self.comment.to_s.strip
+Query(Comment)
+.select('comment')
+# Q 1776 : # self.comment.to_s
+Query(Comment)
+.select('comment')
+# Q 1777 : # self.comment
+Query(Comment)
+.select('comment')
+# Q 1778 : # HatRequest.find(params[:id])
+Query(HatRequest)
+.where("id = ?")
+# Q 1779 : # HatRequest.find(params[:id])
+Query(HatRequest)
+.where("id = ?")
+# Q 1780 : # HatRequest.find
+Query(HatRequest)
+.where("id = ?")
+# Q 1781 : # HatRequest.find
+Query(HatRequest)
+.where("id = ?")
+# Q 1782 : # user.session_token
+Query(User)
+.select('session_token')
+# Q 1783 : # user.session_token
+Query(User)
+.select('session_token')
+# Q 1784 : # user.session_token
+Query(User)
+.select('session_token')
+# Q 1785 : # comment.user
+Query(User)
+.where("id = ?")
+# Q 1786 : # comment.story_id
+Query(Comment)
+.select('story_id')
+# Q 1787 : # @story.id
+Query(Story)
+
+# Q 1788 : # @story.user_id
+Query(Story)
+.select('user_id')
+# Q 1789 : # @user.id
+Query(User)
+
+# Q 1790 : # @user.is_moderator?
+Query(User)
+
+# Q 1791 : # @story.user_id
+Query(Story)
+.select('user_id')
+# Q 1792 : # @user.id
+Query(User)
+
+# Q 1793 : # @user.is_moderator?
+Query(User)
+
+# Q 1794 : # @story.user_id
+Query(Story)
+.select('user_id')
+# Q 1795 : # @user.id
+Query(User)
+
+# Q 1796 : # @user.is_moderator?
+Query(User)
+
+# Q 1797 : # self.deleted_by_author?
+Query(Message)
+
+# Q 1798 : # self.deleted_by_recipient?
+Query(Message)
+
+# Q 1799 : # self.deleted_by_author?
+Query(Message)
+
+# Q 1800 : # self.deleted_by_recipient?
+Query(Message)
+
+# Q 1801 : # @hat_request.reject_by_user_for_reason!(@user, params[:hat_request][:rejection_comment])
+Query(HatRequest)
+
+# Q 1802 : # @hat_request.reject_by_user_for_reason!
+Query(HatRequest)
+
+# Q 1803 : # @hat_request.reject_by_user_for_reason!
+Query(HatRequest)
+
+# Q 1804 : # Story.make!(:title => "flim flam 2", :url => "http://www.example.com/")
+Query(Story)
+
+# Q 1805 : # Story.make!
+Query(Story)
+
+# Q 1806 : # Story.make!(:title => "flim flam 2", :url => "http://www.example.com/")
+Query(Story)
+
+# Q 1807 : # Story.make!
+Query(Story)
+
+# Q 1808 : # Story.make!(:title => "flim flam 2", :url => "http://www.example.com/")
+Query(Story)
+
+# Q 1809 : # Story.make!(:title => "flim flam 2", :url => "http://www.example.com/")
+Query(Story)
+
+# Q 1810 : # Story.make!
+Query(Story)
+
+# Q 1811 : # Story.make!(:title => "flim flam 2", :url => "http://www.example.com/")
+Query(Story)
+
+# Q 1812 : # Story.make!
+Query(Story)
+
+# Q 1813 : # User.make!
+Query(User)
+
+# Q 1814 : # u = User.make!
+Query(User)
+
+# Q 1815 : # u = User.make!
+Query(User)
+
+# Q 1816 : # User.make!
+Query(User)
+
+# Q 1817 : # tagging.tag.tag
 Query(Tag)
 .where("id = ?")
 .select('tag')
-# Q 1719 : # tagging.tag.description
+# Q 1818 : # tagging.tag
 Query(Tag)
 .where("id = ?")
-.select('description')
-# Q 1720 : # tagging.tag.tag
+# Q 1819 : # @story.short_id
+Query(Story)
+.select('short_id')
+# Q 1820 : # @story.short_id
+Query(Story)
+.select('short_id')
+# Q 1821 : # @story.short_id
+Query(Story)
+.select('short_id')
+# Q 1822 : # @story.short_id
+Query(Story)
+.select('short_id')
+# Q 1823 : # self.destroy
+Query(Message)
+
+# Q 1824 : # self.destroy
+Query(Message)
+
+# Q 1825 : # comment.story_id
+Query(Comment)
+.select('story_id')
+# Q 1826 : # @story.id
+Query(Story)
+
+# Q 1827 : # tagging.tag.css_class
+Query(Tag)
+.where("id = ?")
+# Q 1828 : # tagging.tag.css_class
+Query(Tag)
+.where("id = ?")
+# Q 1829 : # tagging.tag.css_class
+Query(Tag)
+.where("id = ?")
+# Q 1830 : # tagging.tag
+Query(Tag)
+.where("id = ?")
+# Q 1831 : # votes.inject({ })
+Query(Vote)
+
+# Q 1832 : # votes.inject
+Query(Vote)
+
+# Q 1833 : # votes.inject
+Query(Vote)
+
+# Q 1834 : # User.make!(:banned)
+Query(User)
+
+# Q 1835 : # User.make!
+Query(User)
+
+# Q 1836 : # User.make!(:banned)
+Query(User)
+
+# Q 1837 : # User.make!
+Query(User)
+
+# Q 1838 : # User.make!(:banned)
+Query(User)
+
+# Q 1839 : # User.make!
+Query(User)
+
+# Q 1840 : # User.make!
+Query(User)
+
+# Q 1841 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, c.id, u.id, nil)
+Query(Vote)
+
+# Q 1842 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 1843 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, c.id, u.id, nil)
+Query(Vote)
+
+# Q 1844 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, c.id, u.id, nil)
+Query(Vote)
+
+# Q 1845 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 1846 : # comment.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1847 : # comment.user
+Query(User)
+.where("id = ?")
+# Q 1848 : # tagging.tag.tag
 Query(Tag)
 .where("id = ?")
 .select('tag')
-# Q 1721 : # tagging.tag.description
+# Q 1849 : # tagging.tag.description
 Query(Tag)
 .where("id = ?")
 .select('description')
-# Q 1722 : # tagging.tag.description
-Query(Tag)
-.where("id = ?")
-.select('description')
-# Q 1723 : # tagging.tag
-Query(Tag)
-.where("id = ?")
-# Q 1724 : # tagging.tag.tag
+# Q 1850 : # tagging.tag.tag
 Query(Tag)
 .where("id = ?")
 .select('tag')
-# Q 1725 : # tagging.tag
+# Q 1851 : # tagging.tag.description
 Query(Tag)
 .where("id = ?")
-# Q 1726 : # self.recipient.pushover!({ :title => "#{
+.select('description')
+# Q 1852 : # tagging.tag.description
+Query(Tag)
+.where("id = ?")
+.select('description')
+# Q 1853 : # tagging.tag
+Query(Tag)
+.where("id = ?")
+# Q 1854 : # tagging.tag.tag
+Query(Tag)
+.where("id = ?")
+.select('tag')
+# Q 1855 : # tagging.tag
+Query(Tag)
+.where("id = ?")
+# Q 1856 : # user.session_token
+Query(User)
+.select('session_token')
+# Q 1857 : # user.session_token
+Query(User)
+.select('session_token')
+# Q 1858 : # user.session_token
+Query(User)
+.select('session_token')
+# Q 1859 : # Story.new
+Query(Story)
+
+# Q 1860 : # Story.new
+Query(Story)
+
+# Q 1861 : # Story.new
+Query(Story)
+
+# Q 1862 : # User.first
+Query(User)
+.return_limit('1')
+# Q 1863 : # User.first
+Query(User)
+.return_limit('1')
+# Q 1864 : # User.first
+Query(User)
+.return_limit('1')
+# Q 1865 : # User.first
+Query(User)
+.return_limit('1')
+# Q 1866 : # Story.count
+Query(Story)
+
+# Q 1867 : # Story.count
+Query(Story)
+
+# Q 1868 : # Story.count
+Query(Story)
+
+# Q 1869 : # Story.count
+Query(Story)
+
+# Q 1870 : # comment.html_class_for_user
+Query(Comment)
+
+# Q 1871 : # @story.short_id
+Query(Story)
+.select('short_id')
+# Q 1872 : # @story.short_id
+Query(Story)
+.select('short_id')
+# Q 1873 : # @story.short_id
+Query(Story)
+.select('short_id')
+# Q 1874 : # @story.short_id
+Query(Story)
+.select('short_id')
+# Q 1875 : # self.order("(upvotes - downvotes) < 0 ASC, confidence DESC").group_by(&:parent_comment_id)
+Query(Comment)
+.order('id')
+.order('confidence')
+.order('upvotes')
+.order('downvotes')
+# Q 1876 : # self.order("(upvotes - downvotes) < 0 ASC, confidence DESC").group_by(&:parent_comment_id)
+Query(Comment)
+.order('id')
+.order('confidence')
+.order('upvotes')
+.order('downvotes')
+# Q 1877 : # self.order("(upvotes - downvotes) < 0 ASC, confidence DESC").group_by
+Query(Comment)
+.order('id')
+.order('confidence')
+.order('upvotes')
+.order('downvotes')
+# Q 1878 : # self.order("(upvotes - downvotes) < 0 ASC, confidence DESC")
+Query(Comment)
+.order('id')
+.order('confidence')
+.order('upvotes')
+.order('downvotes')
+# Q 1879 : # self.order
+Query(Comment)
+
+# Q 1880 : # self.order("(upvotes - downvotes) < 0 ASC, confidence DESC").group_by
+Query(Comment)
+.order('id')
+.order('confidence')
+.order('upvotes')
+.order('downvotes')
+# Q 1881 : # self.order
+Query(Comment)
+
+# Q 1882 : # self.lock(true).where(:key => key).first
+Query(Keystore)
+.where("key = ?")
+.return_limit('1')
+# Q 1883 : # self.lock(true).where(:key => key).first
+Query(Keystore)
+.where("key = ?")
+.return_limit('1')
+# Q 1884 : # self.lock(true).where(:key => key)
+Query(Keystore)
+.where("key = ?")
+# Q 1885 : # self.lock(true)
+Query(Keystore)
+
+# Q 1886 : # self.lock
+Query(Keystore)
+
+# Q 1887 : # kv = self.lock(true).where(:key => key).first
+Query(Keystore)
+.where("key = ?")
+.return_limit('1')
+# Q 1888 : # self.lock(true).where(:key => key).first
+Query(Keystore)
+.where("key = ?")
+.return_limit('1')
+# Q 1889 : # self.lock
+Query(Keystore)
+
+# Q 1890 : # self.q.to_s.split(" ").reject { |w|
+#   
+#   if (
+#   m = w.match(/^domain:(.+)$/))
+#     
+#     domain = m[1]
+#   end
+# }.join(" ")
+Query(Search)
+
+# Q 1891 : # self.q.to_s.split(" ").reject { |w|
+#   
+#   if (
+#   m = w.match(/^domain:(.+)$/))
+#     
+#     domain = m[1]
+#   end
+# }.join(" ")
+Query(Search)
+
+# Q 1892 : # self.q.to_s.split(" ").reject { |w|
+#   
+#   if (
+#   m = w.match(/^domain:(.+)$/))
+#     
+#     domain = m[1]
+#   end
+# }.join
+Query(Search)
+
+# Q 1893 : # self.q.to_s.split(" ").reject
+Query(Search)
+
+# Q 1894 : # self.q.to_s.split(" ")
+Query(Search)
+
+# Q 1895 : # self.q.to_s.split
+Query(Search)
+
+# Q 1896 : # self.q.to_s
+Query(Search)
+
+# Q 1897 : # self.q
+Query(Search)
+
+# Q 1898 : # self.q.to_s.split(" ").reject { |w|
+#   
+#   if (
+#   m = w.match(/^domain:(.+)$/))
+#     
+#     domain = m[1]
+#   end
+# }.join
+Query(Search)
+
+# Q 1899 : # self.q.to_s.split(" ").reject
+Query(Search)
+
+# Q 1900 : # self.q.to_s.split
+Query(Search)
+
+# Q 1901 : # self.q.to_s
+Query(Search)
+
+# Q 1902 : # self.q
+Query(Search)
+
+# Q 1903 : # comment.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 1904 : # comment.user
+Query(User)
+.where("id = ?")
+# Q 1905 : # self.recipient.update_unread_message_count!
+Query(User)
+.where("id = ?")
+# Q 1906 : # self.recipient
+Query(User)
+.where("id = ?")
+# Q 1907 : # self.recipient.update_unread_message_count!
+Query(User)
+.where("id = ?")
+# Q 1908 : # self.recipient
+Query(User)
+.where("id = ?")
+# Q 1909 : # Moderation.new
+Query(Moderation)
+
+# Q 1910 : # Moderation.new
+Query(Moderation)
+
+# Q 1911 : # Moderation.new
+Query(Moderation)
+
+# Q 1912 : # comment.is_editable_by_user?(@user)
+Query(Comment)
+
+# Q 1913 : # comment.is_editable_by_user?
+Query(Comment)
+
+# Q 1914 : # comment.is_editable_by_user?
+Query(Comment)
+
+# Q 1915 : # comment.hat
+Query(Hat)
+.where("id = ?")
+# Q 1916 : # self.created_at
+Query(Hat)
+.select('created_at')
+# Q 1917 : # self.created_at
+Query(Hat)
+.select('created_at')
+# Q 1918 : # self.created_at
+Query(Hat)
+.select('created_at')
+# Q 1919 : # Story.where(:id => keep_ids)
+Query(Story)
+.where("id = ?")
+# Q 1920 : # Story.where(:id => keep_ids)
+Query(Story)
+.where("id = ?")
+# Q 1921 : # Story.where(:id => keep_ids)
+Query(Story)
+.where("id = ?")
+# Q 1922 : # Story.where(:id => keep_ids)
+Query(Story)
+.where("id = ?")
+# Q 1923 : # User.make!
+Query(User)
+
+# Q 1924 : # u = User.make!
+Query(User)
+
+# Q 1925 : # u = User.make!
+Query(User)
+
+# Q 1926 : # User.make!
+Query(User)
+
+# Q 1927 : # Story.make!(:url => "http://example.com")
+Query(Story)
+
+# Q 1928 : # Story.make!
+Query(Story)
+
+# Q 1929 : # Story.make!(:url => "http://example.com")
+Query(Story)
+
+# Q 1930 : # Story.make!
+Query(Story)
+
+# Q 1931 : # Story.make!(:url => "http://example.com")
+Query(Story)
+
+# Q 1932 : # Story.make!
+Query(Story)
+
+# Q 1933 : # Story.make!
+Query(Story)
+
+# Q 1934 : # comment.hat.to_html_label
+Query(Hat)
+.where("id = ?")
+# Q 1935 : # comment.hat
+Query(Hat)
+.where("id = ?")
+# Q 1936 : # self.user_id
+Query(Hat)
+.select('user_id')
+# Q 1937 : # self.user_id
+Query(Hat)
+.select('user_id')
+# Q 1938 : # self.user_id
+Query(Hat)
+.select('user_id')
+# Q 1939 : # self.create!
+Query(Keystore)
+
+# Q 1940 : # self.create!
+Query(Keystore)
+
+# Q 1941 : # self.create! do |kv|
+#   
+#   kv.key = key
+#   kv.value = init
+#   kv.save!
+# end
+Query(Keystore)
+
+# Q 1942 : # self.create!
+Query(Keystore)
+
+# Q 1943 : # self.granted_by_user_id
+Query(Hat)
+.select('granted_by_user_id')
+# Q 1944 : # self.granted_by_user_id
+Query(Hat)
+.select('granted_by_user_id')
+# Q 1945 : # self.granted_by_user_id
+Query(Hat)
+.select('granted_by_user_id')
+# Q 1946 : # User.where(:username => params[:username]).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 1947 : # User.where(:username => params[:username]).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 1948 : # User.where(:username => params[:username])
+Query(User)
+.where("username = ?")
+# Q 1949 : # User.where(:username => params[:username]).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 1950 : # stories.hottest
+Query(Story)
+
+# Q 1951 : # stories.hottest
+Query(Story)
+
+# Q 1952 : # self.hat
+Query(Hat)
+.select('hat')
+# Q 1953 : # self.link.present?
+Query(Hat)
+.select('link')
+# Q 1954 : # self.link
+Query(Hat)
+.select('link')
+# Q 1955 : # self.hat
+Query(Hat)
+.select('hat')
+# Q 1956 : # self.link.present?
+Query(Hat)
+.select('link')
+# Q 1957 : # self.link
+Query(Hat)
+.select('link')
+# Q 1958 : # Story.make!(:url => "http://www3.example.com/goose")
+Query(Story)
+
+# Q 1959 : # Story.make!
+Query(Story)
+
+# Q 1960 : # Story.make!(:url => "http://www3.example.com/goose")
+Query(Story)
+
+# Q 1961 : # Story.make!
+Query(Story)
+
+# Q 1962 : # Story.make!(:url => "http://www3.example.com/goose")
+Query(Story)
+
+# Q 1963 : # Story.make!
+Query(Story)
+
+# Q 1964 : # Story.make!
+Query(Story)
+
+# Q 1965 : # comment.previewing
+Query(Comment)
+
+# Q 1966 : # @user.show_avatars?
+Query(User)
+
+# Q 1967 : # @user && @user.show_avatars?
+Query(User)
+
+# Q 1968 : # @user.show_avatars?
+Query(User)
+
+# Q 1969 : # self.link
+Query(Hat)
+.select('link')
+# Q 1970 : # self.link
+Query(Hat)
+.select('link')
+# Q 1971 : # InvitationRequest.new(params.require(:invitation_request).permit(:name, :email, :memo))
+Query(InvitationRequest)
+
+# Q 1972 : # InvitationRequest.new(params.require(:invitation_request).permit(:name, :email, :memo))
+Query(InvitationRequest)
+
+# Q 1973 : # InvitationRequest.new
+Query(InvitationRequest)
+
+# Q 1974 : # InvitationRequest.new
+Query(InvitationRequest)
+
+# Q 1975 : # @message.subject
+Query(Message)
+.select('subject')
+# Q 1976 : # @message.subject
+Query(Message)
+.select('subject')
+# Q 1977 : # @message.subject
+Query(Message)
+.select('subject')
+# Q 1978 : # Story.make!(:title => "ti1", :url => "https://a.com/1", :user_id => u.id, :user_is_author => true)
+Query(Story)
+
+# Q 1979 : # Story.make!
+Query(Story)
+
+# Q 1980 : # Story.make!(:title => "ti1", :url => "https://a.com/1", :user_id => u.id, :user_is_author => true)
+Query(Story)
+
+# Q 1981 : # Story.make!(:title => "ti1", :url => "https://a.com/1", :user_id => u.id, :user_is_author => true)
+Query(Story)
+
+# Q 1982 : # Story.make!
+Query(Story)
+
+# Q 1983 : # Vote.vote_thusly_on_story_or_comment_for_user_because(-1, s.id, c.id, u.id, Vote::COMMENT_REASONS.keys.first)
+Query(Vote)
+
+# Q 1984 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 1985 : # Vote.vote_thusly_on_story_or_comment_for_user_because(-1, s.id, c.id, u.id, Vote::COMMENT_REASONS.keys.first)
+Query(Vote)
+
+# Q 1986 : # Vote.vote_thusly_on_story_or_comment_for_user_because(-1, s.id, c.id, u.id, Vote::COMMENT_REASONS.keys.first)
+Query(Vote)
+
+# Q 1987 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 1988 : # self.recipient.email_messages?
+Query(User)
+.where("id = ?")
+# Q 1989 : # self.recipient
+Query(User)
+.where("id = ?")
+# Q 1990 : # self.recipient.email_messages?
+Query(User)
+.where("id = ?")
+# Q 1991 : # self.recipient
+Query(User)
+.where("id = ?")
+# Q 1992 : # stories.order("stories.created_at DESC")
+Query(Story)
+.order('id')
+.order('created_at')
+# Q 1993 : # stories.order
+Query(Story)
+
+# Q 1994 : # stories.order
+Query(Story)
+
+# Q 1995 : # ReadRibbon.where(user_id: @user.id, story_id: story_ids).update_all(updated_at: Time.now)
+Query(ReadRibbon)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1996 : # ReadRibbon.where(user_id: @user.id, story_id: story_ids).update_all
+Query(ReadRibbon)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1997 : # ReadRibbon.where(user_id: @user.id, story_id: story_ids)
+Query(ReadRibbon)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1998 : # ReadRibbon.where(user_id: @user.id, story_id: story_ids).update_all
+Query(ReadRibbon)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 1999 : # self.where(:user_id => user_id, :comment_id => comment_ids)
+Query(Vote)
+.where("user_id = ?")
+.where("comment_id = ?")
+# Q 2000 : # self.where(:user_id => user_id, :comment_id => comment_ids)
+Query(Vote)
+.where("user_id = ?")
+.where("comment_id = ?")
+# Q 2001 : # @message.author
+Query(User)
+.where("id = ?")
+# Q 2002 : # @message.author
+Query(User)
+.where("id = ?")
+# Q 2003 : # @user.id
+Query(User)
+
+# Q 2004 : # @user.id
+Query(User)
+
+# Q 2005 : # Story.make!(:url => "http://flub.example.com")
+Query(Story)
+
+# Q 2006 : # Story.make!
+Query(Story)
+
+# Q 2007 : # Story.make!(:url => "http://flub.example.com")
+Query(Story)
+
+# Q 2008 : # Story.make!
+Query(Story)
+
+# Q 2009 : # Story.make!(:url => "http://flub.example.com")
+Query(Story)
+
+# Q 2010 : # Story.make!
+Query(Story)
+
+# Q 2011 : # Story.make!
+Query(Story)
+
+# Q 2012 : # self.recipient
+Query(User)
+.where("id = ?")
+# Q 2013 : # self.recipient
+Query(User)
+.where("id = ?")
+# Q 2014 : # self.what
+Query(Search)
+
+# Q 2015 : # self.what
+Query(Search)
+
+# Q 2016 : # Story.new
+Query(Story)
+
+# Q 2017 : # Story.new
+Query(Story)
+
+# Q 2018 : # Story.new
+Query(Story)
+
+# Q 2019 : # Message.new
+Query(Message)
+
+# Q 2020 : # Message.new
+Query(Message)
+
+# Q 2021 : # Message.new
+Query(Message)
+
+# Q 2022 : # @user.rss_token
+Query(User)
+.select('rss_token')
+# Q 2023 : # @user.rss_token
+Query(User)
+.select('rss_token')
+# Q 2024 : # comment.has_been_edited?
+Query(Comment)
+
+# Q 2025 : # if story.user_is_author?
+#   
+#   
+# else
+#   
+#   
+# end
+Query(Story)
+
+# Q 2026 : # story.user_is_author?
+Query(Story)
+
+# Q 2027 : # @message.author_user_id
+Query(Message)
+.select('author_user_id')
+# Q 2028 : # @user.id
+Query(User)
+
+# Q 2029 : # @message.author_user_id
+Query(Message)
+.select('author_user_id')
+# Q 2030 : # @user.id
+Query(User)
+
+# Q 2031 : # self.recipient.email
+Query(User)
+.where("id = ?")
+.select('email')
+# Q 2032 : # self.recipient
+Query(User)
+.where("id = ?")
+# Q 2033 : # self.recipient.email
+Query(User)
+.where("id = ?")
+.select('email')
+# Q 2034 : # self.recipient
+Query(User)
+.where("id = ?")
+# Q 2035 : # where(:banned_at => nil, :deleted_at => nil)
+Query(User)
+.where("banned_at = ?")
+.where("deleted_at = ?")
+# Q 2036 : # Story.unmerged.where(:is_expired => false).includes({ :taggings => :tag }, :user)
+Query(Story)
+.where("is_expired = ?")
+.includes('user')
+# Q 2037 : # Story.unmerged.where(:is_expired => false).includes({ :taggings => :tag }, :user)
+Query(Story)
+.where("is_expired = ?")
+.includes('user')
+# Q 2038 : # Story.unmerged.where(:is_expired => false).includes
+Query(Story)
+.where("is_expired = ?")
+# Q 2039 : # Story.unmerged.where(:is_expired => false)
+Query(Story)
+.where("is_expired = ?")
+# Q 2040 : # Story.unmerged.where
+Query(Story)
+
+# Q 2041 : # Story.unmerged
+Query(Story)
+
+# Q 2042 : # Story.unmerged.where(:is_expired => false).includes
+Query(Story)
+.where("is_expired = ?")
+# Q 2043 : # Story.unmerged.where
+Query(Story)
+
+# Q 2044 : # Story.unmerged
+Query(Story)
+
+# Q 2045 : # @invitation_request.save
+Query(InvitationRequest)
+
+# Q 2046 : # @invitation_request.save
+Query(InvitationRequest)
+
+# Q 2047 : # @message.recipient.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 2048 : # @message.recipient
+Query(User)
+.where("id = ?")
+# Q 2049 : # @message.author.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 2050 : # @message.author
+Query(User)
+.where("id = ?")
+# Q 2051 : # @message.recipient.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 2052 : # @message.recipient
+Query(User)
+.where("id = ?")
+# Q 2053 : # @message.author.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 2054 : # @message.author
+Query(User)
+.where("id = ?")
+# Q 2055 : # Story.make!(:title => "ti2", :url => "https://a.com/2", :user_id => u.id, :user_is_author => true)
+Query(Story)
+
+# Q 2056 : # Story.make!
+Query(Story)
+
+# Q 2057 : # Story.make!(:title => "ti2", :url => "https://a.com/2", :user_id => u.id, :user_is_author => true)
+Query(Story)
+
+# Q 2058 : # Story.make!(:title => "ti2", :url => "https://a.com/2", :user_id => u.id, :user_is_author => true)
+Query(Story)
+
+# Q 2059 : # Story.make!
+Query(Story)
+
+# Q 2060 : # comment.is_from_email?
+Query(Comment)
+
+# Q 2061 : # where("
+#       is_moderator = True OR
+#       users.id IN (select distinct moderator_user_id from moderations)
+#   ")
+Query(User)
+.where(" = ?")
+# Q 2062 : # votes.inject({ })
+Query(Vote)
+
+# Q 2063 : # votes.inject
+Query(Vote)
+
+# Q 2064 : # votes.inject
+Query(Vote)
+
+# Q 2065 : # Story.arel_table
+Query(Story)
+
+# Q 2066 : # Story.arel_table
+Query(Story)
+
+# Q 2067 : # @message.subject.match(/^re:/i)
+Query(Message)
+.select('subject')
+# Q 2068 : # @message.subject.match
+Query(Message)
+.select('subject')
+# Q 2069 : # @message.subject
+Query(Message)
+.select('subject')
+# Q 2070 : # @message.subject.match
+Query(Message)
+.select('subject')
+# Q 2071 : # @message.subject
+Query(Message)
+.select('subject')
+# Q 2072 : # @user.rss_token
+Query(User)
+.select('rss_token')
+# Q 2073 : # @user.rss_token
+Query(User)
+.select('rss_token')
+# Q 2074 : # Story.make!(:title => "Hello there, this is a title")
+Query(Story)
+
+# Q 2075 : # Story.make!
+Query(Story)
+
+# Q 2076 : # Story.make!(:title => "Hello there, this is a title")
+Query(Story)
+
+# Q 2077 : # Story.make!
+Query(Story)
+
+# Q 2078 : # Story.make!(:title => "Hello there, this is a title")
+Query(Story)
+
+# Q 2079 : # Story.make!
+Query(Story)
+
+# Q 2080 : # Story.make!
+Query(Story)
+
+# Q 2081 : # @message.subject
+Query(Message)
+.select('subject')
+# Q 2082 : # @message.subject
+Query(Message)
+.select('subject')
+# Q 2083 : # @message.subject
+Query(Message)
+.select('subject')
+# Q 2084 : # comment.as_json
+Query(Comment)
+
+# Q 2085 : # comment.as_json
+Query(Comment)
+
+# Q 2086 : # self.recipient.pushover_messages?
+Query(User)
+.where("id = ?")
+# Q 2087 : # self.recipient
+Query(User)
+.where("id = ?")
+# Q 2088 : # self.recipient.pushover_messages?
+Query(User)
+.where("id = ?")
+# Q 2089 : # self.recipient
+Query(User)
+.where("id = ?")
+# Q 2090 : # self.increment_value_for(key, amount)
+Query(Keystore)
+
+# Q 2091 : # self.increment_value_for
+Query(Keystore)
+
+# Q 2092 : # self.increment_value_for
+Query(Keystore)
+
+# Q 2093 : # @user.unread_replies_count
+Query(User)
+
+# Q 2094 : # @user.unread_replies_count
+Query(User)
+
+# Q 2095 : # @user.unread_replies_count
+Query(User)
+
+# Q 2096 : # @story.fetched_attributes
+Query(Story)
+
+# Q 2097 : # @story.fetched_attributes
+Query(Story)
+
+# Q 2098 : # @story.fetched_attributes
+Query(Story)
+
+# Q 2099 : # self.recipient.pushover!({ :title => "#{
 # Rails.application.name} message from " << "#{
 # self.author_username}: #{
 # self.subject}", :message => self.plaintext_body, :url => self.url, :url_title => (
@@ -5626,295 +6870,23 @@ Query(Tag)
 # self.author_username}" : "View message") })
 Query(User)
 .where("id = ?")
-# Q 1727 : # self.recipient.pushover!
+# Q 2100 : # self.recipient.pushover!
 Query(User)
 .where("id = ?")
-# Q 1728 : # self.recipient
+# Q 2101 : # self.recipient
 Query(User)
 .where("id = ?")
-# Q 1729 : # self.recipient.pushover!
+# Q 2102 : # self.recipient.pushover!
 Query(User)
 .where("id = ?")
-# Q 1730 : # self.recipient
+# Q 2103 : # self.recipient
 Query(User)
 .where("id = ?")
-# Q 1731 : # votes.inject({ })
-Query(Vote)
-
-# Q 1732 : # votes.inject
-Query(Vote)
-
-# Q 1733 : # votes.inject
-Query(Vote)
-
-# Q 1734 : # @message.subject.match(/^re:/i)
-Query(Message)
-.select('subject')
-# Q 1735 : # @message.subject.match
-Query(Message)
-.select('subject')
-# Q 1736 : # @message.subject
-Query(Message)
-.select('subject')
-# Q 1737 : # @message.subject.match
-Query(Message)
-.select('subject')
-# Q 1738 : # @message.subject
-Query(Message)
-.select('subject')
-# Q 1739 : # User.where(:username => params[:username]).first
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 1740 : # User.where(:username => params[:username]).first
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 1741 : # User.where(:username => params[:username])
-Query(User)
-.where("username = ?")
-# Q 1742 : # User.where(:username => params[:username]).first
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 1743 : # @user.rss_token
-Query(User)
-.select('rss_token')
-# Q 1744 : # @user.rss_token
-Query(User)
-.select('rss_token')
-# Q 1745 : # User.first
-Query(User)
-.return_limit('1')
-# Q 1746 : # User.first
-Query(User)
-.return_limit('1')
-# Q 1747 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, c.id, u.id, nil)
-Query(Vote)
-
-# Q 1748 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 1749 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, c.id, u.id, nil)
-Query(Vote)
-
-# Q 1750 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, c.id, u.id, nil)
-Query(Vote)
-
-# Q 1751 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 1752 : # comment.has_been_edited?
-Query(Comment)
-
-# Q 1753 : # @message.subject
-Query(Message)
-.select('subject')
-# Q 1754 : # @message.subject
-Query(Message)
-.select('subject')
-# Q 1755 : # @message.subject
-Query(Message)
-.select('subject')
-# Q 1756 : # Story.count.should
-Query(Story)
-
-# Q 1757 : # Story.count
-Query(Story)
-
-# Q 1758 : # Story.count.should == 1
-Query(Story)
-
-# Q 1759 : # Story.count.should == 1
-Query(Story)
-
-# Q 1760 : # Story.count.should
-Query(Story)
-
-# Q 1761 : # Story.count
-Query(Story)
-
-# Q 1762 : # comment.updated_at
-Query(Comment)
-.select('updated_at')
-# Q 1763 : # comment.created_at
-Query(Comment)
-.select('created_at')
-# Q 1764 : # self.author_username
-Query(Message)
-
-# Q 1765 : # self.subject
-Query(Message)
-.select('subject')
-# Q 1766 : # self.author_username
-Query(Message)
-
-# Q 1767 : # self.subject
-Query(Message)
-.select('subject')
-# Q 1768 : # self.lock(true).where(:key => key).first
-Query(Keystore)
-.where("key = ?")
-.return_limit('1')
-# Q 1769 : # self.lock(true).where(:key => key).first
-Query(Keystore)
-.where("key = ?")
-.return_limit('1')
-# Q 1770 : # self.lock(true).where(:key => key)
-Query(Keystore)
-.where("key = ?")
-# Q 1771 : # self.lock(true)
-Query(Keystore)
-
-# Q 1772 : # self.lock
-Query(Keystore)
-
-# Q 1773 : # kv = self.lock(true).where(:key => key).first
-Query(Keystore)
-.where("key = ?")
-.return_limit('1')
-# Q 1774 : # self.lock(true).where(:key => key).first
-Query(Keystore)
-.where("key = ?")
-.return_limit('1')
-# Q 1775 : # self.lock
-Query(Keystore)
-
-# Q 1776 : # Story.new
-Query(Story)
-
-# Q 1777 : # Story.new
-Query(Story)
-
-# Q 1778 : # Story.new
-Query(Story)
-
-# Q 1779 : # self.plaintext_body
-Query(Message)
-
-# Q 1780 : # self.plaintext_body
-Query(Message)
-
-# Q 1781 : # @invitation_request.save
-Query(InvitationRequest)
-
-# Q 1782 : # @invitation_request.save
-Query(InvitationRequest)
-
-# Q 1783 : # @message.subject
-Query(Message)
-.select('subject')
-# Q 1784 : # @message.subject
-Query(Message)
-.select('subject')
-# Q 1785 : # self.url
-Query(Message)
-
-# Q 1786 : # self.url
-Query(Message)
-
-# Q 1787 : # self.q.to_s.split(" ").reject { |w|
+# Q 2104 : # if self.url.present?
 #   
-#   if m = w.match(/^domain:(.+)$/)
-#     
-#     domain = m[1]
-#   end
-# }.join(" ")
-Query(Search)
-
-# Q 1788 : # self.q.to_s.split(" ").reject { |w|
-#   
-#   if m = w.match(/^domain:(.+)$/)
-#     
-#     domain = m[1]
-#   end
-# }.join(" ")
-Query(Search)
-
-# Q 1789 : # self.q.to_s.split(" ").reject { |w|
-#   
-#   if m = w.match(/^domain:(.+)$/)
-#     
-#     domain = m[1]
-#   end
-# }.join
-Query(Search)
-
-# Q 1790 : # self.q.to_s.split(" ").reject
-Query(Search)
-
-# Q 1791 : # self.q.to_s.split(" ")
-Query(Search)
-
-# Q 1792 : # self.q.to_s.split
-Query(Search)
-
-# Q 1793 : # self.q.to_s
-Query(Search)
-
-# Q 1794 : # self.q
-Query(Search)
-
-# Q 1795 : # self.q.to_s.split(" ").reject { |w|
-#   
-#   if m = w.match(/^domain:(.+)$/)
-#     
-#     domain = m[1]
-#   end
-# }.join
-Query(Search)
-
-# Q 1796 : # self.q.to_s.split(" ").reject
-Query(Search)
-
-# Q 1797 : # self.q.to_s.split
-Query(Search)
-
-# Q 1798 : # self.q.to_s
-Query(Search)
-
-# Q 1799 : # self.q
-Query(Search)
-
-# Q 1800 : # comment.is_editable_by_user?(@user)
-Query(Comment)
-
-# Q 1801 : # comment.is_editable_by_user?
-Query(Comment)
-
-# Q 1802 : # comment.is_editable_by_user?
-Query(Comment)
-
-# Q 1803 : # comment.previewing
-Query(Comment)
-
-# Q 1804 : # self.author
-Query(User)
-.where("id = ?")
-# Q 1805 : # self.author_username
-Query(Message)
-
-# Q 1806 : # self.author
-Query(User)
-.where("id = ?")
-# Q 1807 : # self.author_username
-Query(Message)
-
-# Q 1808 : # if self.url.present?
-#   
-#   if self.url.match(/\Ahttps?:\/\/([^\.]+\.)+[a-z]+(\/|\z)/i)
-#     
-#     if self.new_record? && (
-#     s = Story.find_similar_by_url(self.url))
-#       
-#       self.already_posted_story = s
-#       if s.is_recent?
-#         
-#         errors.add(:url, "has already been submitted within the past " << "#{
-#         RECENT_DAYS} days")
-#       end
-#     end
-#   else
+#   check_already_posted
+#   check_not_tracking_domain
+#   unless self.url.match(/\Ahttps?:\/\/([^\.]+\.)+[a-z]+(\/|\z)/i)
 #     
 #     errors.add(:url, "is not valid")
 #   end
@@ -5924,6258 +6896,5580 @@ Query(Message)
 # end
 Query(Story)
 
-# Q 1809 : # self.url.present?
+# Q 2105 : # self.url.present?
 Query(Story)
 .select('url')
-# Q 1810 : # self.url
+# Q 2106 : # self.url
 Query(Story)
 .select('url')
-# Q 1811 : # Story.where(:id => keep_ids)
-Query(Story)
-.where("id = ?")
-# Q 1812 : # Story.where(:id => keep_ids)
-Query(Story)
-.where("id = ?")
-# Q 1813 : # Story.where(:id => keep_ids)
-Query(Story)
-.where("id = ?")
-# Q 1814 : # Story.where(:id => keep_ids)
-Query(Story)
-.where("id = ?")
-# Q 1815 : # Story.make!(:url => "http://example.com")
-Query(Story)
-
-# Q 1816 : # Story.make!
-Query(Story)
-
-# Q 1817 : # Story.make!(:url => "http://example.com")
-Query(Story)
-
-# Q 1818 : # Story.make!
-Query(Story)
-
-# Q 1819 : # Story.make!(:url => "http://example.com")
-Query(Story)
-
-# Q 1820 : # Story.make!
-Query(Story)
-
-# Q 1821 : # Story.make!
-Query(Story)
-
-# Q 1822 : # self.create!
-Query(Keystore)
-
-# Q 1823 : # self.create!
-Query(Keystore)
-
-# Q 1824 : # self.create! do |kv|
-#   
-#   kv.key = key
-#   kv.value = init
-#   kv.save!
-# end
-Query(Keystore)
-
-# Q 1825 : # self.create!
-Query(Keystore)
-
-# Q 1826 : # comment.short_id_url
-Query(Comment)
-
-# Q 1827 : # User.all.each
-Query(User)
-
-# Q 1828 : # User.all
-Query(User)
-
-# Q 1829 : # User.all.each
-Query(User)
-
-# Q 1830 : # User.all
-Query(User)
-
-# Q 1831 : # @message.recipient_user_id
+# Q 2107 : # @message.subject
 Query(Message)
-.select('recipient_user_id')
-# Q 1832 : # @user.id
-Query(User)
-
-# Q 1833 : # @message.recipient_user_id
+.select('subject')
+# Q 2108 : # @message.subject
 Query(Message)
-.select('recipient_user_id')
-# Q 1834 : # @user.id
+.select('subject')
+# Q 2109 : # Story.make!(:title => "ti3", :url => "https://a.com/3", :user_id => u.id, :user_is_author => false)
+Query(Story)
+
+# Q 2110 : # Story.make!
+Query(Story)
+
+# Q 2111 : # Story.make!(:title => "ti3", :url => "https://a.com/3", :user_id => u.id, :user_is_author => false)
+Query(Story)
+
+# Q 2112 : # Story.make!(:title => "ti3", :url => "https://a.com/3", :user_id => u.id, :user_is_author => false)
+Query(Story)
+
+# Q 2113 : # Story.make!
+Query(Story)
+
+# Q 2114 : # Story.make!(:title => "Hello _ underscore")
+Query(Story)
+
+# Q 2115 : # Story.make!
+Query(Story)
+
+# Q 2116 : # Story.make!(:title => "Hello _ underscore")
+Query(Story)
+
+# Q 2117 : # Story.make!
+Query(Story)
+
+# Q 2118 : # Story.make!(:title => "Hello _ underscore")
+Query(Story)
+
+# Q 2119 : # Story.make!
+Query(Story)
+
+# Q 2120 : # Story.make!
+Query(Story)
+
+# Q 2121 : # Story.make!
+Query(Story)
+
+# Q 2122 : # s = Story.make!
+Query(Story)
+
+# Q 2123 : # s = Story.make!
+Query(Story)
+
+# Q 2124 : # Story.make!
+Query(Story)
+
+# Q 2125 : # user.is_moderator?
 Query(User)
 
-# Q 1835 : # @user.show_avatars?
+# Q 2126 : # user.id
 Query(User)
 
-# Q 1836 : # @user && @user.show_avatars?
+# Q 2127 : # user.is_moderator?
 Query(User)
 
-# Q 1837 : # @user.show_avatars?
+# Q 2128 : # user.id
 Query(User)
 
-# Q 1838 : # user.is_moderator?
-Query(User)
-
-# Q 1839 : # user.id
-Query(User)
-
-# Q 1840 : # user.is_moderator?
-Query(User)
-
-# Q 1841 : # user.id
-Query(User)
-
-# Q 1842 : # self.url.match(/\Ahttps?:\/\/([^\.]+\.)+[a-z]+(\/|\z)/i)
+# Q 2129 : # @story.url
 Query(Story)
 .select('url')
-# Q 1843 : # self.url.match
+# Q 2130 : # @story.url
 Query(Story)
 .select('url')
-# Q 1844 : # self.url
-Query(Story)
-.select('url')
-# Q 1845 : # self.url.match
-Query(Story)
-.select('url')
-# Q 1846 : # self.url
-Query(Story)
-.select('url')
-# Q 1847 : # @user.clone
-Query(User)
-
-# Q 1848 : # @user.clone
-Query(User)
-
-# Q 1849 : # @user.clone
-Query(User)
-
-# Q 1850 : # Story.make!(:url => "http://www3.example.com/goose")
-Query(Story)
-
-# Q 1851 : # Story.make!
-Query(Story)
-
-# Q 1852 : # Story.make!(:url => "http://www3.example.com/goose")
-Query(Story)
-
-# Q 1853 : # Story.make!
-Query(Story)
-
-# Q 1854 : # Story.make!(:url => "http://www3.example.com/goose")
-Query(Story)
-
-# Q 1855 : # Story.make!
-Query(Story)
-
-# Q 1856 : # Story.make!
-Query(Story)
-
-# Q 1857 : # comment.is_editable_by_user?
-Query(Comment)
-
-# Q 1858 : # self.new_record?
-Query(Story)
-
-# Q 1859 : # Story.find_similar_by_url(self.url)
-Query(Story)
-
-# Q 1860 : # Story.find_similar_by_url
-Query(Story)
-
-# Q 1861 : # self.url
-Query(Story)
-.select('url')
-# Q 1862 : # self.new_record?
-Query(Story)
-
-# Q 1863 : # Story.find_similar_by_url(self.url)
-Query(Story)
-
-# Q 1864 : # Story.find_similar_by_url
-Query(Story)
-
-# Q 1865 : # self.url
-Query(Story)
-.select('url')
-# Q 1866 : # Story.find_similar_by_url(self.url)
-Query(Story)
-
-# Q 1867 : # Story.find_similar_by_url
-Query(Story)
-
-# Q 1868 : # self.url
-Query(Story)
-.select('url')
-# Q 1869 : # self.new_record?
-Query(Story)
-
-# Q 1870 : # Story.find_similar_by_url
-Query(Story)
-
-# Q 1871 : # self.url
-Query(Story)
-.select('url')
-# Q 1872 : # @message.save
-Query(Message)
-
-# Q 1873 : # @message.save
-Query(Message)
-
-# Q 1874 : # @user.username
-Query(User)
-.select('username')
-# Q 1875 : # @user.username
-Query(User)
-.select('username')
-# Q 1876 : # @user.username
-Query(User)
-.select('username')
-# Q 1877 : # @user.username
-Query(User)
-.select('username')
-# Q 1878 : # @user.username
-Query(User)
-.select('username')
-# Q 1879 : # Vote.vote_thusly_on_story_or_comment_for_user_because(-1, s.id, c.id, u.id, Vote::COMMENT_REASONS.keys.first)
-Query(Vote)
-
-# Q 1880 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 1881 : # Vote.vote_thusly_on_story_or_comment_for_user_because(-1, s.id, c.id, u.id, Vote::COMMENT_REASONS.keys.first)
-Query(Vote)
-
-# Q 1882 : # Vote.vote_thusly_on_story_or_comment_for_user_because(-1, s.id, c.id, u.id, Vote::COMMENT_REASONS.keys.first)
-Query(Vote)
-
-# Q 1883 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 1884 : # stories.order("stories.created_at DESC")
-Query(Story)
-.order('id')
-.order('created_at')
-# Q 1885 : # stories.order
-Query(Story)
-
-# Q 1886 : # stories.order
-Query(Story)
-
-# Q 1887 : # hat.to_html_label
-Query(Hat)
-
-# Q 1888 : # hat.to_html_label
-Query(Hat)
-
-# Q 1889 : # self.where(:user_id => user_id, :comment_id => comment_ids)
-Query(Vote)
-.where("user_id = ?")
-.where("comment_id = ?")
-# Q 1890 : # self.where(:user_id => user_id, :comment_id => comment_ids)
-Query(Vote)
-.where("user_id = ?")
-.where("comment_id = ?")
-# Q 1891 : # Story.make!(:url => "http://flub.example.com")
-Query(Story)
-
-# Q 1892 : # Story.make!
-Query(Story)
-
-# Q 1893 : # Story.make!(:url => "http://flub.example.com")
-Query(Story)
-
-# Q 1894 : # Story.make!
-Query(Story)
-
-# Q 1895 : # Story.make!(:url => "http://flub.example.com")
-Query(Story)
-
-# Q 1896 : # Story.make!
-Query(Story)
-
-# Q 1897 : # Story.make!
-Query(Story)
-
-# Q 1898 : # Story.select(:id).where("`url` REGEXP '//([^/]*\.)?" + ActiveRecord::Base.connection.quote_string(domain) + "/'").collect(&:id)
-Query(Story)
-.select('id')
-# Q 1899 : # Story.select(:id).where("`url` REGEXP '//([^/]*\.)?" + ActiveRecord::Base.connection.quote_string(domain) + "/'").collect(&:id)
-Query(Story)
-.select('id')
-# Q 1900 : # Story.select(:id).where("`url` REGEXP '//([^/]*\.)?" + ActiveRecord::Base.connection.quote_string(domain) + "/'").collect
-Query(Story)
-.select('id')
-# Q 1901 : # Story.select(:id).where("`url` REGEXP '//([^/]*\.)?" + ActiveRecord::Base.connection.quote_string(domain) + "/'")
-Query(Story)
-.select('id')
-# Q 1902 : # Story.select(:id).where
-Query(Story)
-.select('id')
-# Q 1903 : # Story.select(:id)
-Query(Story)
-.select('id')
-# Q 1904 : # Story.select
-Query(Story)
-
-# Q 1905 : # Story.select(:id).where("`url` REGEXP '//([^/]*\.)?" + ActiveRecord::Base.connection.quote_string(domain) + "/'").collect
-Query(Story)
-.select('id')
-# Q 1906 : # Story.select(:id).where
-Query(Story)
-.select('id')
-# Q 1907 : # Story.select
-Query(Story)
-
-# Q 1908 : # Tag.all_with_filtered_counts_for(@user).map
-Query(Tag)
-
-# Q 1909 : # Tag.all_with_filtered_counts_for
-Query(Tag)
-
-# Q 1910 : # Story.new
-Query(Story)
-
-# Q 1911 : # Story.new
-Query(Story)
-
-# Q 1912 : # Story.new
-Query(Story)
-
-# Q 1913 : # comment.is_gone?
-Query(Comment)
-
-# Q 1914 : # comment.is_undeletable_by_user?
-Query(Comment)
-
-# Q 1915 : # if story.user_is_author?
-#   
-#   
-# else
-#   
-#   
-# end
-Query(Story)
-
-# Q 1916 : # story.user_is_author?
-Query(Story)
-
-# Q 1917 : # User.where(:username => username).first
+# Q 2131 : # User.where(:username => params[:username]).first
 Query(User)
 .where("username = ?")
 .return_limit('1')
-# Q 1918 : # User.where(:username => username).first
+# Q 2132 : # User.where(:username => params[:username]).first
 Query(User)
 .where("username = ?")
 .return_limit('1')
-# Q 1919 : # User.where(:username => username)
+# Q 2133 : # User.where(:username => params[:username])
 Query(User)
 .where("username = ?")
-# Q 1920 : # User.where(:username => username).first
+# Q 2134 : # User.where(:username => params[:username]).first
 Query(User)
 .where("username = ?")
 .return_limit('1')
-# Q 1921 : # User.validators_on(:username).select { |v|
-#   
-#   v.class == ActiveModel::Validations::FormatValidator
-# }.first.options
-Query(User)
-.return_limit('1')
-# Q 1922 : # User.validators_on(:username).select { |v|
-#   
-#   v.class == ActiveModel::Validations::FormatValidator
-# }.first
-Query(User)
-.return_limit('1')
-# Q 1923 : # User.validators_on(:username).select
-Query(User)
-
-# Q 1924 : # User.validators_on(:username)
-Query(User)
-
-# Q 1925 : # User.validators_on
-Query(User)
-
-# Q 1926 : # User.validators_on(:username).select { |v|
-#   
-#   v.class == ActiveModel::Validations::FormatValidator
-# }.first.options
-Query(User)
-.return_limit('1')
-# Q 1927 : # User.validators_on(:username).select { |v|
-#   
-#   v.class == ActiveModel::Validations::FormatValidator
-# }.first
-Query(User)
-.return_limit('1')
-# Q 1928 : # User.validators_on(:username).select
-Query(User)
-
-# Q 1929 : # User.validators_on
-Query(User)
-
-# Q 1930 : # @message.author_user_id
-Query(Message)
-.select('author_user_id')
-# Q 1931 : # @user.id
-Query(User)
-
-# Q 1932 : # @message.author_user_id
-Query(Message)
-.select('author_user_id')
-# Q 1933 : # @user.id
-Query(User)
-
-# Q 1934 : # @user.is_moderator?
-Query(User)
-
-# Q 1935 : # @user.is_moderator?
-Query(User)
-
-# Q 1936 : # votes.inject({ })
-Query(Vote)
-
-# Q 1937 : # votes.inject
-Query(Vote)
-
-# Q 1938 : # votes.inject
-Query(Vote)
-
-# Q 1939 : # Story.arel_table
-Query(Story)
-
-# Q 1940 : # Story.arel_table
-Query(Story)
-
-# Q 1941 : # Tagging.arel_table
-Query(Tagging)
-
-# Q 1942 : # Tagging.arel_table
-Query(Tagging)
-
-# Q 1943 : # InvitationRequest.where(:code => params[:code].to_s).first
-Query(InvitationRequest)
-.where("code = ?")
-.return_limit('1')
-# Q 1944 : # InvitationRequest.where(:code => params[:code].to_s).first
-Query(InvitationRequest)
-.where("code = ?")
-.return_limit('1')
-# Q 1945 : # InvitationRequest.where(:code => params[:code].to_s)
-Query(InvitationRequest)
-.where("code = ?")
-# Q 1946 : # InvitationRequest.where(:code => params[:code].to_s).first
-Query(InvitationRequest)
-.where("code = ?")
-.return_limit('1')
-# Q 1947 : # Story.make!(:title => "Hello there, this is a title")
-Query(Story)
-
-# Q 1948 : # Story.make!
-Query(Story)
-
-# Q 1949 : # Story.make!(:title => "Hello there, this is a title")
-Query(Story)
-
-# Q 1950 : # Story.make!
-Query(Story)
-
-# Q 1951 : # Story.make!(:title => "Hello there, this is a title")
-Query(Story)
-
-# Q 1952 : # Story.make!
-Query(Story)
-
-# Q 1953 : # Story.make!
-Query(Story)
-
-# Q 1954 : # comment.is_gone?
-Query(Comment)
-
-# Q 1955 : # comment.is_deletable_by_user?
-Query(Comment)
-
-# Q 1956 : # Tagging.arel_table
-Query(Tagging)
-
-# Q 1957 : # tag.id
-Query(Tag)
-
-# Q 1958 : # Tagging.arel_table
-Query(Tagging)
-
-# Q 1959 : # tag.id
-Query(Tag)
-
-# Q 1960 : # comment.as_json
-Query(Comment)
-
-# Q 1961 : # comment.as_json
-Query(Comment)
-
-# Q 1962 : # self.increment_value_for(key, amount)
-Query(Keystore)
-
-# Q 1963 : # self.increment_value_for
-Query(Keystore)
-
-# Q 1964 : # self.increment_value_for
-Query(Keystore)
-
-# Q 1965 : # @message.recipient_user_id
-Query(Message)
-.select('recipient_user_id')
-# Q 1966 : # @user.id
-Query(User)
-
-# Q 1967 : # @message.recipient_user_id
-Query(Message)
-.select('recipient_user_id')
-# Q 1968 : # @user.id
-Query(User)
-
-# Q 1969 : # @user.is_moderator?
-Query(User)
-
-# Q 1970 : # @user.id
-Query(User)
-
-# Q 1971 : # comment.user_id
-Query(Comment)
-.select('user_id')
-# Q 1972 : # self.description.to_s.strip
-Query(Story)
-.select('description')
-# Q 1973 : # self.description.to_s
-Query(Story)
-.select('description')
-# Q 1974 : # self.description
-Query(Story)
-.select('description')
-# Q 1975 : # Tagging.arel_table
-Query(Tagging)
-
-# Q 1976 : # Tagging.arel_table
-Query(Tagging)
-
-# Q 1977 : # @story.fetched_attributes
-Query(Story)
-
-# Q 1978 : # @story.fetched_attributes
-Query(Story)
-
-# Q 1979 : # @story.fetched_attributes
-Query(Story)
-
-# Q 1980 : # Story.make!(:title => "Hello _ underscore")
-Query(Story)
-
-# Q 1981 : # Story.make!
-Query(Story)
-
-# Q 1982 : # Story.make!(:title => "Hello _ underscore")
-Query(Story)
-
-# Q 1983 : # Story.make!
-Query(Story)
-
-# Q 1984 : # Story.make!(:title => "Hello _ underscore")
-Query(Story)
-
-# Q 1985 : # Story.make!
-Query(Story)
-
-# Q 1986 : # Story.make!
-Query(Story)
-
-# Q 1987 : # Story.make!
-Query(Story)
-
-# Q 1988 : # s = Story.make!
-Query(Story)
-
-# Q 1989 : # s = Story.make!
-Query(Story)
-
-# Q 1990 : # Story.make!
-Query(Story)
-
-# Q 1991 : # stories.newest
-Query(Story)
-
-# Q 1992 : # stories.newest
-Query(Story)
-
-# Q 1993 : # Comment.make!(:story_id => s.id)
-Query(Comment)
-
-# Q 1994 : # Comment.make!
-Query(Comment)
-
-# Q 1995 : # Comment.make!(:story_id => s.id)
-Query(Comment)
-
-# Q 1996 : # Comment.make!
-Query(Comment)
-
-# Q 1997 : # Comment.make!(:story_id => s.id)
-Query(Comment)
-
-# Q 1998 : # Comment.make!
-Query(Comment)
-
-# Q 1999 : # Comment.make!
-Query(Comment)
-
-# Q 2000 : # User.where("email = ? OR username = ?", params[:email].to_s, params[:email].to_s).first
-Query(User)
-.where(" = ?")
-.return_limit('1')
-# Q 2001 : # User.where("email = ? OR username = ?", params[:email].to_s, params[:email].to_s).first
-Query(User)
-.where(" = ?")
-.return_limit('1')
-# Q 2002 : # User.where("email = ? OR username = ?", params[:email].to_s, params[:email].to_s)
-Query(User)
-.where(" = ?")
-# Q 2003 : # User.where("email = ? OR username = ?", params[:email].to_s, params[:email].to_s).first
-Query(User)
-.where(" = ?")
-.return_limit('1')
-# Q 2004 : # @story.url
-Query(Story)
-.select('url')
-# Q 2005 : # @story.url
-Query(Story)
-.select('url')
-# Q 2006 : # Invitation.new
-Query(Invitation)
-
-# Q 2007 : # Invitation.new
-Query(Invitation)
-
-# Q 2008 : # Invitation.new
-Query(Invitation)
-
-# Q 2009 : # self.incremented_value_for(key, amount)
-Query(Keystore)
-
-# Q 2010 : # self.incremented_value_for
-Query(Keystore)
-
-# Q 2011 : # self.incremented_value_for
-Query(Keystore)
-
-# Q 2012 : # @user.id
-Query(User)
-
-# Q 2013 : # @user.id
-Query(User)
-
-# Q 2014 : # @user.id
-Query(User)
-
-# Q 2015 : # @message.save!
-Query(Message)
-
-# Q 2016 : # @message.save!
-Query(Message)
-
-# Q 2017 : # comment.url
-Query(Comment)
-
-# Q 2018 : # comment.url
-Query(Comment)
-
-# Q 2019 : # Story.make!(:title => "Hello, underscore")
-Query(Story)
-
-# Q 2020 : # Story.make!
-Query(Story)
-
-# Q 2021 : # Story.make!(:title => "Hello, underscore")
-Query(Story)
-
-# Q 2022 : # Story.make!
-Query(Story)
-
-# Q 2023 : # Story.make!(:title => "Hello, underscore")
-Query(Story)
-
-# Q 2024 : # Story.make!
-Query(Story)
-
-# Q 2025 : # Story.make!
-Query(Story)
-
-# Q 2026 : # User.make!
-Query(User)
-
-# Q 2027 : # u = User.make!
-Query(User)
-
-# Q 2028 : # u = User.make!
-Query(User)
-
-# Q 2029 : # User.make!
-Query(User)
-
-# Q 2030 : # self.body
-Query(Message)
-.select('body')
-# Q 2031 : # self.body
-Query(Message)
-.select('body')
-# Q 2032 : # self.url.blank?
-Query(Story)
-.select('url')
-# Q 2033 : # self.url
-Query(Story)
-.select('url')
-# Q 2034 : # self.url.blank?
-Query(Story)
-.select('url')
-# Q 2035 : # self.url
-Query(Story)
-.select('url')
-# Q 2036 : # Vote.where(:user_id => user_id, :story_id => story_id, :comment_id => comment_id).first_or_initialize
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where("comment_id = ?")
-# Q 2037 : # Vote.where(:user_id => user_id, :story_id => story_id, :comment_id => comment_id).first_or_initialize
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where("comment_id = ?")
-# Q 2038 : # Vote.where(:user_id => user_id, :story_id => story_id, :comment_id => comment_id)
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where("comment_id = ?")
-# Q 2039 : # Vote.where(:user_id => user_id, :story_id => story_id, :comment_id => comment_id).first_or_initialize
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where("comment_id = ?")
-# Q 2040 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, c.id, u.id, nil)
-Query(Vote)
-
-# Q 2041 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 2042 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, c.id, u.id, nil)
-Query(Vote)
-
-# Q 2043 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, c.id, u.id, nil)
-Query(Vote)
-
-# Q 2044 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 2045 : # Story.make(:title => "The One-second War (What Time Will You Die?) ")
-Query(Story)
-
-# Q 2046 : # Story.make
-Query(Story)
-
-# Q 2047 : # Story.make(:title => "The One-second War (What Time Will You Die?) ")
-Query(Story)
-
-# Q 2048 : # Story.make
-Query(Story)
-
-# Q 2049 : # Story.make(:title => "The One-second War (What Time Will You Die?) ")
-Query(Story)
-
-# Q 2050 : # Story.make
-Query(Story)
-
-# Q 2051 : # Story.make
-Query(Story)
-
-# Q 2052 : # comment.story.is_gone?
-Query(Story)
-.where("id = ?")
-# Q 2053 : # comment.story
-Query(Story)
-.where("id = ?")
-# Q 2054 : # comment.is_gone?
-Query(Comment)
-
-# Q 2055 : # @message.author_user_id
-Query(Message)
-.select('author_user_id')
-# Q 2056 : # @user.id
-Query(User)
-
-# Q 2057 : # @message.author_user_id
-Query(Message)
-.select('author_user_id')
-# Q 2058 : # @user.id
-Query(User)
-
-# Q 2059 : # @user.unread_message_count
-Query(User)
-
-# Q 2060 : # self.is_admin?
-Query(User)
-
-# Q 2061 : # self.is_admin?
-Query(User)
-
-# Q 2062 : # Story.find_similar_by_url(@story.url)
-Query(Story)
-
-# Q 2063 : # Story.find_similar_by_url(@story.url)
-Query(Story)
-
-# Q 2064 : # Story.find_similar_by_url
-Query(Story)
-
-# Q 2065 : # @story.url
-Query(Story)
-.select('url')
-# Q 2066 : # Story.find_similar_by_url
-Query(Story)
-
-# Q 2067 : # @story.url
-Query(Story)
-.select('url')
-# Q 2068 : # @user.rss_token
-Query(User)
-.select('rss_token')
-# Q 2069 : # @user.rss_token
-Query(User)
-.select('rss_token')
-# Q 2070 : # self.body.to_s
-Query(Message)
-.select('body')
-# Q 2071 : # self.body
-Query(Message)
-.select('body')
-# Q 2072 : # self.body.to_s
-Query(Message)
-.select('body')
-# Q 2073 : # self.body
-Query(Message)
-.select('body')
-# Q 2074 : # @user.show_story_previews?
-Query(User)
-
-# Q 2075 : # Story.score_sql
-Query(Story)
-
-# Q 2076 : # Story.score_sql
-Query(Story)
-
-# Q 2077 : # comment.is_editable_by_user?(@user)
-Query(Comment)
-
-# Q 2078 : # comment.is_editable_by_user?
-Query(Comment)
-
-# Q 2079 : # comment.is_editable_by_user?
-Query(Comment)
-
-# Q 2080 : # story.description_or_story_cache
-Query(Story)
-
-# Q 2081 : # User.make!
-Query(User)
-
-# Q 2082 : # u = User.make!
-Query(User)
-
-# Q 2083 : # u = User.make!
-Query(User)
-
-# Q 2084 : # User.make!
-Query(User)
-
-# Q 2085 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, s.id, c.id, u.id, nil)
-Query(Vote)
-
-# Q 2086 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 2087 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, s.id, c.id, u.id, nil)
-Query(Vote)
-
-# Q 2088 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, s.id, c.id, u.id, nil)
-Query(Vote)
-
-# Q 2089 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 2090 : # comment.downvotes
-Query(Comment)
-.select('downvotes')
-# Q 2091 : # self.short_id
-Query(Message)
-.select('short_id')
-# Q 2092 : # self.short_id
-Query(Message)
-.select('short_id')
-# Q 2093 : # Story.make!(:user_id => u.id)
-Query(Story)
-
-# Q 2094 : # Story.make!
-Query(Story)
-
-# Q 2095 : # Story.make!(:user_id => u.id)
-Query(Story)
-
-# Q 2096 : # Story.make!
-Query(Story)
-
-# Q 2097 : # Story.make!(:user_id => u.id)
-Query(Story)
-
-# Q 2098 : # Story.make!
-Query(Story)
-
-# Q 2099 : # Story.make!
-Query(Story)
-
-# Q 2100 : # comment.score
-Query(Comment)
-
-# Q 2101 : # comment.user_id
-Query(Comment)
-.select('user_id')
-# Q 2102 : # @user.try
-Query(User)
-
-# Q 2103 : # @user.username
-Query(User)
-.select('username')
-# Q 2104 : # @user.username
-Query(User)
-.select('username')
-# Q 2105 : # @user.username
-Query(User)
-.select('username')
-# Q 2106 : # @user.username
-Query(User)
-.select('username')
-# Q 2107 : # @user.username
-Query(User)
-.select('username')
-# Q 2108 : # @user.try
-Query(User)
-
-# Q 2109 : # Vote.transaction
-Query(Vote)
-
-# Q 2110 : # Vote.transaction
-Query(Vote)
-
-# Q 2111 : # Story.unmerged.where(is_expired: false)
-Query(Story)
-.where("is_expired = ?")
-# Q 2112 : # Story.unmerged.where
-Query(Story)
-
-# Q 2113 : # Story.unmerged
-Query(Story)
-
-# Q 2114 : # Story.unmerged.where
-Query(Story)
-
-# Q 2115 : # Story.unmerged
-Query(Story)
-
-# Q 2116 : # Tag.where(:tag => cookies[TAG_FILTER_COOKIE].to_s.split(","))
-Query(Tag)
-.where("tag = ?")
-# Q 2117 : # comment.vote_summary_for_user(@user).downcase
-Query(Comment)
-
-# Q 2118 : # comment.vote_summary_for_user
-Query(Comment)
-
-# Q 2119 : # @user.is_moderator?
-Query(User)
-
-# Q 2120 : # @user.is_moderator?
-Query(User)
-
-# Q 2121 : # User.make!
-Query(User)
-
-# Q 2122 : # u = User.make!
-Query(User)
-
-# Q 2123 : # u = User.make!
-Query(User)
-
-# Q 2124 : # User.make!
-Query(User)
-
-# Q 2125 : # comment.current_vote
-Query(Comment)
-
-# Q 2126 : # comment.current_vote
-Query(Comment)
-
-# Q 2127 : # @user.username
-Query(User)
-.select('username')
-# Q 2128 : # comment.current_vote
-Query(Comment)
-
-# Q 2129 : # @user.karma
-Query(User)
-.select('karma')
-# Q 2130 : # @user.show_avatars?
-Query(User)
-
-# Q 2131 : # Message.where(:short_id => m[1]).first
-Query(Message)
-.where("short_id = ?")
-.return_limit('1')
-# Q 2132 : # Message.where(:short_id => m[1]).first
-Query(Message)
-.where("short_id = ?")
-.return_limit('1')
-# Q 2133 : # Message.where(:short_id => m[1])
-Query(Message)
-.where("short_id = ?")
-# Q 2134 : # Message.where(:short_id => m[1]).first
-Query(Message)
-.where("short_id = ?")
-.return_limit('1')
-# Q 2135 : # Message.where(:short_id => m[1])
-Query(Message)
-.where("short_id = ?")
-# Q 2136 : # Message.where(:short_id => m[1]).first
-Query(Message)
-.where("short_id = ?")
-.return_limit('1')
-# Q 2137 : # Message.where(:short_id => m[1])
-Query(Message)
-.where("short_id = ?")
-# Q 2138 : # message = Message.where(:short_id => m[1]).first
-Query(Message)
-.where("short_id = ?")
-.return_limit('1')
-# Q 2139 : # Message.where(:short_id => m[1]).first
-Query(Message)
-.where("short_id = ?")
-.return_limit('1')
-# Q 2140 : # story.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 2141 : # story.user
-Query(User)
-.where("id = ?")
-# Q 2142 : # InvitationRequest.where(:code => params[:code].to_s).first
-Query(InvitationRequest)
-.where("code = ?")
-.return_limit('1')
-# Q 2143 : # InvitationRequest.where(:code => params[:code].to_s).first
-Query(InvitationRequest)
-.where("code = ?")
-.return_limit('1')
-# Q 2144 : # InvitationRequest.where(:code => params[:code].to_s)
-Query(InvitationRequest)
-.where("code = ?")
-# Q 2145 : # InvitationRequest.where(:code => params[:code].to_s).first
-Query(InvitationRequest)
-.where("code = ?")
-.return_limit('1')
-# Q 2146 : # story.user.avatar_url
-Query(User)
-.where("id = ?")
-# Q 2147 : # story.user
-Query(User)
-.where("id = ?")
-# Q 2148 : # Comment.all.each
-Query(Comment)
-
-# Q 2149 : # Comment.all
-Query(Comment)
-
-# Q 2150 : # Comment.all.each
-Query(Comment)
-
-# Q 2151 : # Comment.all
-Query(Comment)
-
-# Q 2152 : # self.email.strip.downcase
+# Q 2135 : # @user.email
 Query(User)
 .select('email')
-# Q 2153 : # self.email.strip
+# Q 2136 : # @user.email
 Query(User)
 .select('email')
-# Q 2154 : # self.email
-Query(User)
-.select('email')
-# Q 2155 : # self.email.strip.downcase
-Query(User)
-.select('email')
-# Q 2156 : # self.email.strip
-Query(User)
-.select('email')
-# Q 2157 : # self.email
-Query(User)
-.select('email')
-# Q 2158 : # message.author_user_id
-Query(Message)
-.select('author_user_id')
-# Q 2159 : # @user.id
-Query(User)
-
-# Q 2160 : # message.author_user_id
-Query(Message)
-.select('author_user_id')
-# Q 2161 : # @user.id
-Query(User)
-
-# Q 2162 : # message.author_user_id
-Query(Message)
-.select('author_user_id')
-# Q 2163 : # @user.id
-Query(User)
-
-# Q 2164 : # message.author_user_id
-Query(Message)
-.select('author_user_id')
-# Q 2165 : # @user.id
-Query(User)
-
-# Q 2166 : # message.author_user_id
-Query(Message)
-.select('author_user_id')
-# Q 2167 : # @user.id
-Query(User)
-
-# Q 2168 : # Story.make
-Query(Story)
-
-# Q 2169 : # s = Story.make
-Query(Story)
-
-# Q 2170 : # s = Story.make
-Query(Story)
-
-# Q 2171 : # Story.make
-Query(Story)
-
-# Q 2172 : # tag.tag
-Query(Tag)
-.select('tag')
-# Q 2173 : # story.user.avatar_url
-Query(User)
-.where("id = ?")
-# Q 2174 : # story.user
-Query(User)
-.where("id = ?")
-# Q 2175 : # User.where(:password_reset_token => params[:token].to_s).first
-Query(User)
-.where("password_reset_token = ?")
-.return_limit('1')
-# Q 2176 : # User.where(:password_reset_token => params[:token].to_s).first
-Query(User)
-.where("password_reset_token = ?")
-.return_limit('1')
-# Q 2177 : # User.where(:password_reset_token => params[:token].to_s)
-Query(User)
-.where("password_reset_token = ?")
-# Q 2178 : # User.where(:password_reset_token => params[:token].to_s).first
-Query(User)
-.where("password_reset_token = ?")
-.return_limit('1')
-# Q 2179 : # @story.title.present?
-Query(Story)
-.select('title')
-# Q 2180 : # @story.title
-Query(Story)
-.select('title')
-# Q 2181 : # @story.title.present?
-Query(Story)
-.select('title')
-# Q 2182 : # @story.title
-Query(Story)
-.select('title')
-# Q 2183 : # tag.css_class
-Query(Tag)
-
-# Q 2184 : # tag.description
-Query(Tag)
-.select('description')
-# Q 2185 : # story.user.avatar_url
-Query(User)
-.where("id = ?")
-# Q 2186 : # story.user
-Query(User)
-.where("id = ?")
-# Q 2187 : # Comment.new
+# Q 2137 : # Comment.make!(:story_id => s.id)
 Query(Comment)
 
-# Q 2188 : # Comment.new
+# Q 2138 : # Comment.make!
 Query(Comment)
 
-# Q 2189 : # Comment.new
+# Q 2139 : # Comment.make!(:story_id => s.id)
 Query(Comment)
 
-# Q 2190 : # tag.tag
-Query(Tag)
-.select('tag')
-# Q 2191 : # User.where(:username => params[:user]).first!
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 2192 : # User.where(:username => params[:user]).first!
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 2193 : # User.where(:username => params[:user])
-Query(User)
-.where("username = ?")
-# Q 2194 : # User.where(:username => params[:user]).first!
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 2195 : # story.previewing
-Query(Story)
-
-# Q 2196 : # self.results.total_entries
-Query(Search)
-
-# Q 2197 : # self.results.total_entries
-Query(Search)
-
-# Q 2198 : # self.results
-Query(Search)
-
-# Q 2199 : # self.results.total_entries
-Query(Search)
-
-# Q 2200 : # self.results
-Query(Search)
-
-# Q 2201 : # message.recipient_user_id
-Query(Message)
-.select('recipient_user_id')
-# Q 2202 : # @user.id
-Query(User)
-
-# Q 2203 : # message.recipient_user_id
-Query(Message)
-.select('recipient_user_id')
-# Q 2204 : # @user.id
-Query(User)
-
-# Q 2205 : # message.recipient_user_id
-Query(Message)
-.select('recipient_user_id')
-# Q 2206 : # @user.id
-Query(User)
-
-# Q 2207 : # message.recipient_user_id
-Query(Message)
-.select('recipient_user_id')
-# Q 2208 : # @user.id
-Query(User)
-
-# Q 2209 : # message.recipient_user_id
-Query(Message)
-.select('recipient_user_id')
-# Q 2210 : # @user.id
-Query(User)
-
-# Q 2211 : # comment.story.comments_path
-Query(Story)
-.where("id = ?")
-# Q 2212 : # comment.story
-Query(Story)
-.where("id = ?")
-# Q 2213 : # comment.story.title
-Query(Story)
-.where("id = ?")
-.select('title')
-# Q 2214 : # comment.story
-Query(Story)
-.where("id = ?")
-# Q 2215 : # story.user_is_author?
-Query(Story)
-
-# Q 2216 : # self.karma
-Query(User)
-.select('karma')
-# Q 2217 : # self.karma
-Query(User)
-.select('karma')
-# Q 2218 : # self.karma
-Query(User)
-.select('karma')
-# Q 2219 : # Story.make
-Query(Story)
-
-# Q 2220 : # s = Story.make
-Query(Story)
-
-# Q 2221 : # s = Story.make
-Query(Story)
-
-# Q 2222 : # Story.make
-Query(Story)
-
-# Q 2223 : # stories.newest_by_user(by_user)
-Query(Story)
-
-# Q 2224 : # stories.newest_by_user
-Query(Story)
-
-# Q 2225 : # stories.newest_by_user
-Query(Story)
-
-# Q 2226 : # self.stories_submitted_count
-Query(User)
-
-# Q 2227 : # self.comments_posted_count
-Query(User)
-
-# Q 2228 : # self.stories_submitted_count
-Query(User)
-
-# Q 2229 : # self.comments_posted_count
-Query(User)
-
-# Q 2230 : # Story.arel_table
-Query(Story)
-
-# Q 2231 : # Story.arel_table
-Query(Story)
-
-# Q 2232 : # Story.new(story_params)
-Query(Story)
-
-# Q 2233 : # Story.new(story_params)
-Query(Story)
-
-# Q 2234 : # Story.new
-Query(Story)
-
-# Q 2235 : # Story.new
-Query(Story)
-
-# Q 2236 : # self.page
-Query(Search)
-
-# Q 2237 : # self.page_count
-Query(Search)
-
-# Q 2238 : # self.page
-Query(Search)
-
-# Q 2239 : # self.page_count
-Query(Search)
-
-# Q 2240 : # @user.id
-Query(User)
-
-# Q 2241 : # @user.id
-Query(User)
-
-# Q 2242 : # @user.id
-Query(User)
-
-# Q 2243 : # comment.is_gone?
+# Q 2140 : # Comment.make!
 Query(Comment)
 
-# Q 2244 : # story.html_class_for_user
-Query(Story)
+# Q 2141 : # Comment.make!(:story_id => s.id)
+Query(Comment)
 
-# Q 2245 : # self.page_count
-Query(Search)
+# Q 2142 : # Comment.make!
+Query(Comment)
 
-# Q 2246 : # self.page_count
-Query(Search)
+# Q 2143 : # Comment.make!
+Query(Comment)
 
-# Q 2247 : # self.page_count
-Query(Search)
+# Q 2144 : # comment.has_been_edited?
+Query(Comment)
 
-# Q 2248 : # message.save!
+# Q 2145 : # self.author_username
 Query(Message)
 
-# Q 2249 : # message.save!
+# Q 2146 : # self.subject
+Query(Message)
+.select('subject')
+# Q 2147 : # self.author_username
 Query(Message)
 
-# Q 2250 : # message.save!
+# Q 2148 : # self.subject
 Query(Message)
-
-# Q 2251 : # message.save!
-Query(Message)
-
-# Q 2252 : # message.save!
-Query(Message)
-
-# Q 2253 : # message.save!
-Query(Message)
-
-# Q 2254 : # User.where(:rss_token => params[:token].to_s).first
-Query(User)
-.where("rss_token = ?")
-.return_limit('1')
-# Q 2255 : # User.where(:rss_token => params[:token].to_s).first
-Query(User)
-.where("rss_token = ?")
-.return_limit('1')
-# Q 2256 : # User.where(:rss_token => params[:token].to_s)
-Query(User)
-.where("rss_token = ?")
-# Q 2257 : # User.where(:rss_token => params[:token].to_s).first
-Query(User)
-.where("rss_token = ?")
-.return_limit('1')
-# Q 2258 : # story.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 2259 : # story.user
-Query(User)
-.where("id = ?")
-# Q 2260 : # Story.votes_cast_type
-Query(Story)
-
-# Q 2261 : # Story.votes_cast_type
-Query(Story)
-
-# Q 2262 : # comment.is_deletable_by_user?(@user)
+.select('subject')
+# Q 2149 : # comment.updated_at
 Query(Comment)
-
-# Q 2263 : # comment.is_deletable_by_user?
+.select('updated_at')
+# Q 2150 : # comment.created_at
 Query(Comment)
-
-# Q 2264 : # comment.is_deletable_by_user?
-Query(Comment)
-
-# Q 2265 : # Story.votes_cast_type
-Query(Story)
-
-# Q 2266 : # Story.votes_cast_type
-Query(Story)
-
-# Q 2267 : # Vote.new(:vote => 1)
-Query(Vote)
-
-# Q 2268 : # Vote.new(:vote => 1)
-Query(Vote)
-
-# Q 2269 : # Vote.new
-Query(Vote)
-
-# Q 2270 : # Vote.new
-Query(Vote)
-
-# Q 2271 : # Story.make(:title => "blah")
-Query(Story)
-
-# Q 2272 : # Story.make
-Query(Story)
-
-# Q 2273 : # Story.make(:title => "blah")
-Query(Story)
-
-# Q 2274 : # Story.make
-Query(Story)
-
-# Q 2275 : # Story.make(:title => "blah")
-Query(Story)
-
-# Q 2276 : # Story.make
-Query(Story)
-
-# Q 2277 : # Story.make
-Query(Story)
-
-# Q 2278 : # comment.gone_text
-Query(Comment)
-
-# Q 2279 : # HiddenStory.arel_table
-Query(HiddenStory)
-
-# Q 2280 : # HiddenStory.arel_table
-Query(HiddenStory)
-
-# Q 2281 : # story.user_is_author?
-Query(Story)
-
-# Q 2282 : # HiddenStory.arel_table
-Query(HiddenStory)
-
-# Q 2283 : # @user.id
-Query(User)
-
-# Q 2284 : # HiddenStory.arel_table
-Query(HiddenStory)
-
-# Q 2285 : # @user.id
-Query(User)
-
-# Q 2286 : # Story.where(:url => urls, :is_expired => false).order("id DESC").first
-Query(Story)
-.where("url = ?")
-.where("is_expired = ?")
-.order('id')
-.order('id')
-.return_limit('1')
-# Q 2287 : # Story.where(:url => urls, :is_expired => false).order("id DESC").first
-Query(Story)
-.where("url = ?")
-.where("is_expired = ?")
-.order('id')
-.order('id')
-.return_limit('1')
-# Q 2288 : # Story.where(:url => urls, :is_expired => false).order("id DESC")
-Query(Story)
-.where("url = ?")
-.where("is_expired = ?")
-.order('id')
-.order('id')
-# Q 2289 : # Story.where(:url => urls, :is_expired => false).order
-Query(Story)
-.where("url = ?")
-.where("is_expired = ?")
-# Q 2290 : # Story.where(:url => urls, :is_expired => false)
-Query(Story)
-.where("url = ?")
-.where("is_expired = ?")
-# Q 2291 : # Story.where(:url => urls, :is_expired => false).order("id DESC").first
-Query(Story)
-.where("url = ?")
-.where("is_expired = ?")
-.order('id')
-.order('id')
-.return_limit('1')
-# Q 2292 : # Story.where(:url => urls, :is_expired => false).order
-Query(Story)
-.where("url = ?")
-.where("is_expired = ?")
-# Q 2293 : # @story.valid?
-Query(Story)
-
-# Q 2294 : # @story.valid?
-Query(Story)
-
-# Q 2295 : # comment.delete_for_user(@user, params[:reason])
-Query(Comment)
-
-# Q 2296 : # comment.delete_for_user
-Query(Comment)
-
-# Q 2297 : # comment.delete_for_user
-Query(Comment)
-
-# Q 2298 : # Vote.comment_votes_by_user_for_comment_ids_hash(user.id, self.results.select { |r|
-#   
-#   r.class == Comment
-# }.map { |c|
-#   
-#   c.id
-# })
-Query(Vote)
-
-# Q 2299 : # Vote.comment_votes_by_user_for_comment_ids_hash(user.id, self.results.select { |r|
-#   
-#   r.class == Comment
-# }.map { |c|
-#   
-#   c.id
-# })
-Query(Vote)
-
-# Q 2300 : # Vote.comment_votes_by_user_for_comment_ids_hash
-Query(Vote)
-
-# Q 2301 : # user.id
-Query(User)
-
-# Q 2302 : # Vote.comment_votes_by_user_for_comment_ids_hash
-Query(Vote)
-
-# Q 2303 : # user.id
-Query(User)
-
-# Q 2304 : # HiddenStory.arel_table
-Query(HiddenStory)
-
-# Q 2305 : # HiddenStory.arel_table
-Query(HiddenStory)
-
-# Q 2306 : # comment.markeddown_comment
-Query(Comment)
-.select('markeddown_comment')
-# Q 2307 : # self.delete!
-Query(User)
-
-# Q 2308 : # self.delete!
-Query(User)
-
-# Q 2309 : # self.results.select { |r|
-#   
-#   r.class == Comment
-# }.map
-Query(Search)
-
-# Q 2310 : # self.results.select
-Query(Search)
-
-# Q 2311 : # self.results
-Query(Search)
-
-# Q 2312 : # self.results.select { |r|
-#   
-#   r.class == Comment
-# }.map
-Query(Search)
-
-# Q 2313 : # self.results.select
-Query(Search)
-
-# Q 2314 : # self.results
-Query(Search)
-
-# Q 2315 : # story.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 2316 : # story.user
-Query(User)
-.where("id = ?")
-# Q 2317 : # Comment.find(v.comment_id)
-Query(Comment)
-.where("id = ?")
-# Q 2318 : # Comment.find(v.comment_id)
-Query(Comment)
-.where("id = ?")
-# Q 2319 : # Comment.find
-Query(Comment)
-.where("id = ?")
-# Q 2320 : # Comment.find(v.comment_id)
-Query(Comment)
-.where("id = ?")
-# Q 2321 : # Comment.find
-Query(Comment)
-.where("id = ?")
-# Q 2322 : # Comment.find(v.comment_id)
-Query(Comment)
-.where("id = ?")
-# Q 2323 : # Comment.find
-Query(Comment)
-.where("id = ?")
-# Q 2324 : # Comment.find
-Query(Comment)
-.where("id = ?")
-# Q 2325 : # self.results.each
-Query(Search)
-
-# Q 2326 : # self.results
-Query(Search)
-
-# Q 2327 : # self.results.each
-Query(Search)
-
-# Q 2328 : # self.results
-Query(Search)
-
-# Q 2329 : # @user.update_unread_message_count!
-Query(User)
-
-# Q 2330 : # @user.update_unread_message_count!
-Query(User)
-
-# Q 2331 : # Story.make!(:title => "blah", :tags_a => ["tag1", "tag2"])
-Query(Story)
-
-# Q 2332 : # Story.make!
-Query(Story)
-
-# Q 2333 : # Story.make!(:title => "blah", :tags_a => ["tag1", "tag2"])
-Query(Story)
-
-# Q 2334 : # Story.make!
-Query(Story)
-
-# Q 2335 : # Story.make!(:title => "blah", :tags_a => ["tag1", "tag2"])
-Query(Story)
-
-# Q 2336 : # Story.make!
-Query(Story)
-
-# Q 2337 : # Story.make!
-Query(Story)
-
-# Q 2338 : # story.html_class_for_user
-Query(Story)
-
-# Q 2339 : # story.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 2340 : # story.user
-Query(User)
-.where("id = ?")
-# Q 2341 : # Moderation.new
-Query(Moderation)
-
-# Q 2342 : # Moderation.new
-Query(Moderation)
-
-# Q 2343 : # Moderation.new
-Query(Moderation)
-
-# Q 2344 : # story.created_at
-Query(Story)
 .select('created_at')
-# Q 2345 : # Story.score_sql
-Query(Story)
+# Q 2151 : # self.plaintext_body
+Query(Message)
 
-# Q 2346 : # Story.score_sql
-Query(Story)
+# Q 2152 : # self.plaintext_body
+Query(Message)
 
-# Q 2347 : # comment.is_undeletable_by_user?(@user)
+# Q 2153 : # self.create_rss_token
+Query(User)
+
+# Q 2154 : # self.create_rss_token
+Query(User)
+
+# Q 2155 : # self.incremented_value_for(key, amount)
+Query(Keystore)
+
+# Q 2156 : # self.incremented_value_for
+Query(Keystore)
+
+# Q 2157 : # self.incremented_value_for
+Query(Keystore)
+
+# Q 2158 : # comment.url
 Query(Comment)
 
-# Q 2348 : # comment.is_undeletable_by_user?
+# Q 2159 : # comment.url
 Query(Comment)
 
-# Q 2349 : # comment.is_undeletable_by_user?
+# Q 2160 : # Story.make!(:title => "Hello, underscore")
+Query(Story)
+
+# Q 2161 : # Story.make!
+Query(Story)
+
+# Q 2162 : # Story.make!(:title => "Hello, underscore")
+Query(Story)
+
+# Q 2163 : # Story.make!
+Query(Story)
+
+# Q 2164 : # Story.make!(:title => "Hello, underscore")
+Query(Story)
+
+# Q 2165 : # Story.make!
+Query(Story)
+
+# Q 2166 : # Story.make!
+Query(Story)
+
+# Q 2167 : # User.make!
+Query(User)
+
+# Q 2168 : # u = User.make!
+Query(User)
+
+# Q 2169 : # u = User.make!
+Query(User)
+
+# Q 2170 : # User.make!
+Query(User)
+
+# Q 2171 : # self.url
+Query(Message)
+
+# Q 2172 : # self.url
+Query(Message)
+
+# Q 2173 : # self.create_mailing_list_token
+Query(User)
+
+# Q 2174 : # self.create_mailing_list_token
+Query(User)
+
+# Q 2175 : # self.url.match(/\Ahttps?:\/\/([^\.]+\.)+[a-z]+(\/|\z)/i)
+Query(Story)
+.select('url')
+# Q 2176 : # self.url.match
+Query(Story)
+.select('url')
+# Q 2177 : # self.url
+Query(Story)
+.select('url')
+# Q 2178 : # self.url.match
+Query(Story)
+.select('url')
+# Q 2179 : # self.url
+Query(Story)
+.select('url')
+# Q 2180 : # @message.recipient_user_id
+Query(Message)
+.select('recipient_user_id')
+# Q 2181 : # @user.id
+Query(User)
+
+# Q 2182 : # @message.recipient_user_id
+Query(Message)
+.select('recipient_user_id')
+# Q 2183 : # @user.id
+Query(User)
+
+# Q 2184 : # self.author
+Query(User)
+.where("id = ?")
+# Q 2185 : # self.author_username
+Query(Message)
+
+# Q 2186 : # self.author
+Query(User)
+.where("id = ?")
+# Q 2187 : # self.author_username
+Query(Message)
+
+# Q 2188 : # Vote.where(:user_id => user_id, :story_id => story_id, :comment_id => comment_id).first_or_initialize
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where("comment_id = ?")
+# Q 2189 : # Vote.where(:user_id => user_id, :story_id => story_id, :comment_id => comment_id).first_or_initialize
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where("comment_id = ?")
+# Q 2190 : # Vote.where(:user_id => user_id, :story_id => story_id, :comment_id => comment_id)
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where("comment_id = ?")
+# Q 2191 : # Vote.where(:user_id => user_id, :story_id => story_id, :comment_id => comment_id).first_or_initialize
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where("comment_id = ?")
+# Q 2192 : # Story.make!(:title => "ti4", :url => "https://a.com/4", :user_id => u.id, :user_is_author => false)
+Query(Story)
+
+# Q 2193 : # Story.make!
+Query(Story)
+
+# Q 2194 : # Story.make!(:title => "ti4", :url => "https://a.com/4", :user_id => u.id, :user_is_author => false)
+Query(Story)
+
+# Q 2195 : # Story.make!(:title => "ti4", :url => "https://a.com/4", :user_id => u.id, :user_is_author => false)
+Query(Story)
+
+# Q 2196 : # Story.make!
+Query(Story)
+
+# Q 2197 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, c.id, u.id, nil)
+Query(Vote)
+
+# Q 2198 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 2199 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, c.id, u.id, nil)
+Query(Vote)
+
+# Q 2200 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, s.id, c.id, u.id, nil)
+Query(Vote)
+
+# Q 2201 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 2202 : # comment.previewing
 Query(Comment)
 
-# Q 2350 : # @user.is_new?
+# Q 2203 : # @message.save
+Query(Message)
+
+# Q 2204 : # @message.save
+Query(Message)
+
+# Q 2205 : # Story.make(:title => "The One-second War (What Time Will You Die?) ")
+Query(Story)
+
+# Q 2206 : # Story.make
+Query(Story)
+
+# Q 2207 : # Story.make(:title => "The One-second War (What Time Will You Die?) ")
+Query(Story)
+
+# Q 2208 : # Story.make
+Query(Story)
+
+# Q 2209 : # Story.make(:title => "The One-second War (What Time Will You Die?) ")
+Query(Story)
+
+# Q 2210 : # Story.make
+Query(Story)
+
+# Q 2211 : # Story.make
+Query(Story)
+
+# Q 2212 : # self.description.to_s.strip
+Query(Story)
+.select('description')
+# Q 2213 : # self.description.to_s
+Query(Story)
+.select('description')
+# Q 2214 : # self.description
+Query(Story)
+.select('description')
+# Q 2215 : # Story.arel_table
+Query(Story)
+
+# Q 2216 : # Story.arel_table
+Query(Story)
+
+# Q 2217 : # Story.find_similar_by_url(@story.url)
+Query(Story)
+
+# Q 2218 : # Story.find_similar_by_url(@story.url)
+Query(Story)
+
+# Q 2219 : # Story.find_similar_by_url
+Query(Story)
+
+# Q 2220 : # @story.url
+Query(Story)
+.select('url')
+# Q 2221 : # Story.find_similar_by_url
+Query(Story)
+
+# Q 2222 : # @story.url
+Query(Story)
+.select('url')
+# Q 2223 : # @user.username
+Query(User)
+.select('username')
+# Q 2224 : # @user.username
+Query(User)
+.select('username')
+# Q 2225 : # @user.username
+Query(User)
+.select('username')
+# Q 2226 : # @user.username
+Query(User)
+.select('username')
+# Q 2227 : # @user.username
+Query(User)
+.select('username')
+# Q 2228 : # comment.url
+Query(Comment)
+
+# Q 2229 : # Tagging.arel_table
+Query(Tagging)
+
+# Q 2230 : # Tagging.arel_table
+Query(Tagging)
+
+# Q 2231 : # @user.unread_message_count
 Query(User)
 
-# Q 2351 : # self.id
+# Q 2232 : # @user.unread_message_count
 Query(User)
 
-# Q 2352 : # self.id
+# Q 2233 : # @user.unread_message_count
 Query(User)
 
-# Q 2353 : # self.id
+# Q 2234 : # @user.can_see_invitation_requests?
 Query(User)
 
-# Q 2354 : # Story.all.order("id DESC").each
+# Q 2235 : # @user.can_see_invitation_requests?
+Query(User)
+
+# Q 2236 : # Tagging.arel_table
+Query(Tagging)
+
+# Q 2237 : # tag.id
+Query(Tag)
+
+# Q 2238 : # Tagging.arel_table
+Query(Tagging)
+
+# Q 2239 : # tag.id
+Query(Tag)
+
+# Q 2240 : # comment.is_editable_by_user?
+Query(Comment)
+
+# Q 2241 : # comment.is_editable_by_user?(@user)
+Query(Comment)
+
+# Q 2242 : # comment.is_editable_by_user?
+Query(Comment)
+
+# Q 2243 : # comment.is_editable_by_user?
+Query(Comment)
+
+# Q 2244 : # self.url.blank?
 Query(Story)
-.order('id')
-.order('id')
-# Q 2355 : # Story.all.order("id DESC")
+.select('url')
+# Q 2245 : # self.url
 Query(Story)
-.order('id')
-.order('id')
-# Q 2356 : # Story.all.order
+.select('url')
+# Q 2246 : # self.url.blank?
+Query(Story)
+.select('url')
+# Q 2247 : # self.url
+Query(Story)
+.select('url')
+# Q 2248 : # Tagging.arel_table
+Query(Tagging)
+
+# Q 2249 : # Tagging.arel_table
+Query(Tagging)
+
+# Q 2250 : # @message.author_user_id
+Query(Message)
+.select('author_user_id')
+# Q 2251 : # @user.id
+Query(User)
+
+# Q 2252 : # @message.author_user_id
+Query(Message)
+.select('author_user_id')
+# Q 2253 : # @user.id
+Query(User)
+
+# Q 2254 : # User.make!
+Query(User)
+
+# Q 2255 : # u = User.make!
+Query(User)
+
+# Q 2256 : # u = User.make!
+Query(User)
+
+# Q 2257 : # User.make!
+Query(User)
+
+# Q 2258 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, s.id, c.id, u.id, nil)
+Query(Vote)
+
+# Q 2259 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 2260 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, s.id, c.id, u.id, nil)
+Query(Vote)
+
+# Q 2261 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, s.id, c.id, u.id, nil)
+Query(Vote)
+
+# Q 2262 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 2263 : # @user.show_story_previews?
+Query(User)
+
+# Q 2264 : # Story.make!(:user_id => u.id)
 Query(Story)
 
-# Q 2357 : # Story.all
+# Q 2265 : # Story.make!
 Query(Story)
 
-# Q 2358 : # Story.all.order("id DESC").each
-Query(Story)
-.order('id')
-.order('id')
-# Q 2359 : # Story.all.order
+# Q 2266 : # Story.make!(:user_id => u.id)
 Query(Story)
 
-# Q 2360 : # Story.all
+# Q 2267 : # Story.make!
 Query(Story)
 
-# Q 2361 : # Story.where(:short_id => params[:id]).first!
+# Q 2268 : # Story.make!(:user_id => u.id)
 Query(Story)
-.where("short_id = ?")
+
+# Q 2269 : # Story.make!
+Query(Story)
+
+# Q 2270 : # Story.make!
+Query(Story)
+
+# Q 2271 : # story.description_or_story_cache
+Query(Story)
+
+# Q 2272 : # User.where(:username => username).first
+Query(User)
+.where("username = ?")
 .return_limit('1')
-# Q 2362 : # Story.where(:short_id => params[:id]).first!
-Query(Story)
-.where("short_id = ?")
+# Q 2273 : # User.where(:username => username).first
+Query(User)
+.where("username = ?")
 .return_limit('1')
-# Q 2363 : # Story.where(:short_id => params[:id])
-Query(Story)
-.where("short_id = ?")
-# Q 2364 : # Story.where(:short_id => params[:id]).first!
-Query(Story)
-.where("short_id = ?")
+# Q 2274 : # User.where(:username => username)
+Query(User)
+.where("username = ?")
+# Q 2275 : # User.where(:username => username).first
+Query(User)
+.where("username = ?")
 .return_limit('1')
-# Q 2365 : # InvitationRequest.verified_count
+# Q 2276 : # InvitationRequest.where(:code => params[:code].to_s).first
+Query(InvitationRequest)
+.where("code = ?")
+.return_limit('1')
+# Q 2277 : # InvitationRequest.where(:code => params[:code].to_s).first
+Query(InvitationRequest)
+.where("code = ?")
+.return_limit('1')
+# Q 2278 : # InvitationRequest.where(:code => params[:code].to_s)
+Query(InvitationRequest)
+.where("code = ?")
+# Q 2279 : # InvitationRequest.where(:code => params[:code].to_s).first
+Query(InvitationRequest)
+.where("code = ?")
+.return_limit('1')
+# Q 2280 : # comment.is_gone?
+Query(Comment)
+
+# Q 2281 : # comment.is_undeletable_by_user?
+Query(Comment)
+
+# Q 2282 : # @user.can_see_invitation_requests?
+Query(User)
+
+# Q 2283 : # Vote.transaction
+Query(Vote)
+
+# Q 2284 : # Vote.transaction
+Query(Vote)
+
+# Q 2285 : # @message.recipient_user_id
+Query(Message)
+.select('recipient_user_id')
+# Q 2286 : # @user.id
+Query(User)
+
+# Q 2287 : # @message.recipient_user_id
+Query(Message)
+.select('recipient_user_id')
+# Q 2288 : # @user.id
+Query(User)
+
+# Q 2289 : # InvitationRequest.verified_count
 Query(InvitationRequest)
 
-# Q 2366 : # story.is_editable_by_user?
-Query(Story)
+# Q 2290 : # User.make!
+Query(User)
 
-# Q 2367 : # @story.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 2368 : # @story.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 2369 : # story.short_id
-Query(Story)
-.select('short_id')
-# Q 2370 : # self.is_gone?
+# Q 2291 : # u = User.make!
+Query(User)
+
+# Q 2292 : # u = User.make!
+Query(User)
+
+# Q 2293 : # User.make!
+Query(User)
+
+# Q 2294 : # tag.tag
+Query(Tag)
+.select('tag')
+# Q 2295 : # @user.username
+Query(User)
+.select('username')
+# Q 2296 : # @user.karma
+Query(User)
+.select('karma')
+# Q 2297 : # @user.username
+Query(User)
+.select('username')
+# Q 2298 : # @user.karma
+Query(User)
+.select('karma')
+# Q 2299 : # comment.is_gone?
 Query(Comment)
 
-# Q 2371 : # self.gone_text
+# Q 2300 : # comment.is_deletable_by_user?
 Query(Comment)
 
-# Q 2372 : # self.is_gone?
-Query(Comment)
+# Q 2301 : # tag.css_class
+Query(Tag)
 
-# Q 2373 : # self.gone_text
-Query(Comment)
+# Q 2302 : # tag.description
+Query(Tag)
+.select('description')
+# Q 2303 : # @user.is_moderator?
+Query(User)
 
-# Q 2374 : # @story.title
+# Q 2304 : # tag.tag
+Query(Tag)
+.select('tag')
+# Q 2305 : # self.url.present?
 Query(Story)
-.select('title')
-# Q 2375 : # @story.title
+.select('url')
+# Q 2306 : # self.url
 Query(Story)
-.select('title')
-# Q 2376 : # @message.save
+.select('url')
+# Q 2307 : # self.new_record?
+Query(Story)
+
+# Q 2308 : # self.url.present?
+Query(Story)
+.select('url')
+# Q 2309 : # self.url
+Query(Story)
+.select('url')
+# Q 2310 : # self.new_record?
+Query(Story)
+
+# Q 2311 : # Invitation.new
+Query(Invitation)
+
+# Q 2312 : # Invitation.new
+Query(Invitation)
+
+# Q 2313 : # Invitation.new
+Query(Invitation)
+
+# Q 2314 : # @message.save!
 Query(Message)
 
-# Q 2377 : # @message.save
+# Q 2315 : # @message.save!
 Query(Message)
 
-# Q 2378 : # comment.undelete_for_user(@user)
+# Q 2316 : # User.where(:username => params[:username]).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 2317 : # User.where(:username => params[:username]).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 2318 : # User.where(:username => params[:username])
+Query(User)
+.where("username = ?")
+# Q 2319 : # User.where(:username => params[:username]).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 2320 : # @user.is_moderator?
+Query(User)
+
+# Q 2321 : # @user.id
+Query(User)
+
+# Q 2322 : # comment.user_id
 Query(Comment)
-
-# Q 2379 : # comment.undelete_for_user
-Query(Comment)
-
-# Q 2380 : # comment.undelete_for_user
-Query(Comment)
-
-# Q 2381 : # User.make!(:username => "mod", :is_moderator => true)
-Query(User)
-
-# Q 2382 : # User.make!
-Query(User)
-
-# Q 2383 : # User.make!(:username => "mod", :is_moderator => true)
-Query(User)
-
-# Q 2384 : # User.make!
-Query(User)
-
-# Q 2385 : # User.make!(:username => "mod", :is_moderator => true)
-Query(User)
-
-# Q 2386 : # User.make!
-Query(User)
-
-# Q 2387 : # User.make!
-Query(User)
-
-# Q 2388 : # @user.is_moderator?
-Query(User)
-
-# Q 2389 : # @user.is_admin?
-Query(User)
-
-# Q 2390 : # Story.find(v.story_id)
-Query(Story)
-.where("id = ?")
-# Q 2391 : # Story.find(v.story_id)
-Query(Story)
-.where("id = ?")
-# Q 2392 : # Story.find
-Query(Story)
-.where("id = ?")
-# Q 2393 : # Story.find(v.story_id)
-Query(Story)
-.where("id = ?")
-# Q 2394 : # Story.find
-Query(Story)
-.where("id = ?")
-# Q 2395 : # Story.find(v.story_id)
-Query(Story)
-.where("id = ?")
-# Q 2396 : # Story.find
-Query(Story)
-.where("id = ?")
-# Q 2397 : # Story.find
-Query(Story)
-.where("id = ?")
-# Q 2398 : # Vote.story_votes_by_user_for_story_ids_hash(user.id, self.results.select { |r|
-#   
-#   r.class == Story
-# }.map { |s|
-#   
-#   s.id
-# })
-Query(Vote)
-
-# Q 2399 : # Vote.story_votes_by_user_for_story_ids_hash(user.id, self.results.select { |r|
-#   
-#   r.class == Story
-# }.map { |s|
-#   
-#   s.id
-# })
-Query(Vote)
-
-# Q 2400 : # Vote.story_votes_by_user_for_story_ids_hash
-Query(Vote)
-
-# Q 2401 : # user.id
-Query(User)
-
-# Q 2402 : # Vote.story_votes_by_user_for_story_ids_hash
-Query(Vote)
-
-# Q 2403 : # user.id
-Query(User)
-
-# Q 2404 : # Story.arel_table
-Query(Story)
-
-# Q 2405 : # Story.arel_table
-Query(Story)
-
-# Q 2406 : # @story.merged_into_story.comments_path
-Query(Story)
-.where("id = ?")
-# Q 2407 : # @story.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 2408 : # @story.merged_into_story.comments_path
-Query(Story)
-.where("id = ?")
-# Q 2409 : # @story.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 2410 : # stories.recent
-Query(Story)
-
-# Q 2411 : # stories.recent
-Query(Story)
-
-# Q 2412 : # HatRequest.count
+.select('user_id')
+# Q 2323 : # HatRequest.count
 Query(HatRequest)
 
-# Q 2413 : # story.is_gone?
+# Q 2324 : # User.where("email = ? OR username = ?", params[:email].to_s, params[:email].to_s).first
+Query(User)
+.where(" = ?")
+.return_limit('1')
+# Q 2325 : # User.where("email = ? OR username = ?", params[:email].to_s, params[:email].to_s).first
+Query(User)
+.where(" = ?")
+.return_limit('1')
+# Q 2326 : # User.where("email = ? OR username = ?", params[:email].to_s, params[:email].to_s)
+Query(User)
+.where(" = ?")
+# Q 2327 : # User.where("email = ? OR username = ?", params[:email].to_s, params[:email].to_s).first
+Query(User)
+.where(" = ?")
+.return_limit('1')
+# Q 2328 : # @user.id
+Query(User)
+
+# Q 2329 : # @user.id
+Query(User)
+
+# Q 2330 : # @user.id
+Query(User)
+
+# Q 2331 : # Story.find_similar_by_url(self.url)
 Query(Story)
 
-# Q 2414 : # story.is_undeletable_by_user?
+# Q 2332 : # Story.find_similar_by_url(self.url)
 Query(Story)
 
-# Q 2415 : # self.results.select { |r|
-#   
-#   r.class == Story
-# }.map
-Query(Search)
-
-# Q 2416 : # self.results.select
-Query(Search)
-
-# Q 2417 : # self.results
-Query(Search)
-
-# Q 2418 : # self.results.select { |r|
-#   
-#   r.class == Story
-# }.map
-Query(Search)
-
-# Q 2419 : # self.results.select
-Query(Search)
-
-# Q 2420 : # self.results
-Query(Search)
-
-# Q 2421 : # Tagging.arel_table
-Query(Tagging)
-
-# Q 2422 : # Tagging.arel_table
-Query(Tagging)
-
-# Q 2423 : # Story.make!(:title => "blah", :tags_a => ["tag1", "tag2"], :description => "desc")
+# Q 2333 : # Story.find_similar_by_url
 Query(Story)
 
-# Q 2424 : # Story.make!
+# Q 2334 : # self.url
+Query(Story)
+.select('url')
+# Q 2335 : # Story.find_similar_by_url
 Query(Story)
 
-# Q 2425 : # Story.make!(:title => "blah", :tags_a => ["tag1", "tag2"], :description => "desc")
+# Q 2336 : # self.url
+Query(Story)
+.select('url')
+# Q 2337 : # Story.score_sql
 Query(Story)
 
-# Q 2426 : # Story.make!
+# Q 2338 : # Story.score_sql
 Query(Story)
 
-# Q 2427 : # Story.make!(:title => "blah", :tags_a => ["tag1", "tag2"], :description => "desc")
-Query(Story)
-
-# Q 2428 : # Story.make!
-Query(Story)
-
-# Q 2429 : # Story.make!
-Query(Story)
-
-# Q 2430 : # Tagging.arel_table
-Query(Tagging)
-
-# Q 2431 : # Tagging.arel_table
-Query(Tagging)
-
-# Q 2432 : # stories.newest
-Query(Story)
-
-# Q 2433 : # stories.newest
-Query(Story)
-
-# Q 2434 : # story.short_id
-Query(Story)
-.select('short_id')
-# Q 2435 : # self.results.each
-Query(Search)
-
-# Q 2436 : # self.results
-Query(Search)
-
-# Q 2437 : # self.results.each
-Query(Search)
-
-# Q 2438 : # self.results
-Query(Search)
-
-# Q 2439 : # @story.can_be_seen_by_user?(@user)
-Query(Story)
-
-# Q 2440 : # @story.can_be_seen_by_user?
-Query(Story)
-
-# Q 2441 : # @story.can_be_seen_by_user?
-Query(Story)
-
-# Q 2442 : # Tagging.arel_table
-Query(Tagging)
-
-# Q 2443 : # Tagging.arel_table
-Query(Tagging)
-
-# Q 2444 : # @story.title
+# Q 2339 : # @story.title.present?
 Query(Story)
 .select('title')
-# Q 2445 : # @story.title
+# Q 2340 : # @story.title
 Query(Story)
 .select('title')
-# Q 2446 : # @story.title
+# Q 2341 : # @story.title.present?
 Query(Story)
 .select('title')
-# Q 2447 : # story.is_gone?
+# Q 2342 : # @story.title
+Query(Story)
+.select('title')
+# Q 2343 : # Story.make
 Query(Story)
 
-# Q 2448 : # comment.is_editable_by_user?(@user)
-Query(Comment)
-
-# Q 2449 : # comment.is_editable_by_user?
-Query(Comment)
-
-# Q 2450 : # comment.is_editable_by_user?
-Query(Comment)
-
-# Q 2451 : # story.user_id
+# Q 2344 : # s = Story.make
 Query(Story)
-.select('user_id')
-# Q 2452 : # @user.try
+
+# Q 2345 : # s = Story.make
+Query(Story)
+
+# Q 2346 : # Story.make
+Query(Story)
+
+# Q 2347 : # @user.show_avatars?
 Query(User)
 
-# Q 2453 : # Story.connection.adapter_name.match(/mysql/i)
+# Q 2348 : # stories.newest
 Query(Story)
 
-# Q 2454 : # Story.connection.adapter_name.match
+# Q 2349 : # stories.newest
 Query(Story)
 
-# Q 2455 : # Story.connection.adapter_name
-Query(Story)
-
-# Q 2456 : # Story.connection
-Query(Story)
-
-# Q 2457 : # Story.connection.adapter_name.match
-Query(Story)
-
-# Q 2458 : # Story.connection.adapter_name
-Query(Story)
-
-# Q 2459 : # Story.connection
-Query(Story)
-
-# Q 2460 : # @user.try
+# Q 2350 : # @user.username
 Query(User)
-
-# Q 2461 : # self.send(k)
-Query(Comment)
-
-# Q 2462 : # self.send(k)
-Query(Comment)
-
-# Q 2463 : # self.send
-Query(Comment)
-
-# Q 2464 : # self.send(k)
-Query(Comment)
-
-# Q 2465 : # self.send
-Query(Comment)
-
-# Q 2466 : # self.send(k)
-Query(Comment)
-
-# Q 2467 : # self.send
-Query(Comment)
-
-# Q 2468 : # self.send
-Query(Comment)
-
-# Q 2469 : # @story.short_id_url
-Query(Story)
-
-# Q 2470 : # @story.short_id_url
-Query(Story)
-
-# Q 2471 : # @story.short_id_url
-Query(Story)
-
-# Q 2472 : # story.short_id
-Query(Story)
-.select('short_id')
-# Q 2473 : # @story.merged_comments.includes(:user, :story, :hat).arrange_for_user(@user)
-Query(Story)
-.includes('user')
-# Q 2474 : # @story.merged_comments.includes(:user, :story, :hat).arrange_for_user(@user)
-Query(Story)
-.includes('user')
-# Q 2475 : # @story.merged_comments.includes(:user, :story, :hat).arrange_for_user
-Query(Story)
-.includes('user')
-# Q 2476 : # @story.merged_comments.includes(:user, :story, :hat)
-Query(Story)
-.includes('user')
-# Q 2477 : # @story.merged_comments.includes
-Query(Story)
-
-# Q 2478 : # @story.merged_comments
-Query(Story)
-
-# Q 2479 : # @story.merged_comments.includes(:user, :story, :hat).arrange_for_user
-Query(Story)
-.includes('user')
-# Q 2480 : # @story.merged_comments.includes
-Query(Story)
-
-# Q 2481 : # @story.merged_comments
-Query(Story)
-
-# Q 2482 : # self.send(k.values.first)
-Query(Comment)
-
-# Q 2483 : # self.send(k.values.first)
-Query(Comment)
-
-# Q 2484 : # self.send
-Query(Comment)
-
-# Q 2485 : # self.send(k.values.first)
-Query(Comment)
-
-# Q 2486 : # self.send
-Query(Comment)
-
-# Q 2487 : # self.send(k.values.first)
-Query(Comment)
-
-# Q 2488 : # self.send
-Query(Comment)
-
-# Q 2489 : # self.send(k.values.first)
-Query(Comment)
-
-# Q 2490 : # self.send
-Query(Comment)
-
-# Q 2491 : # self.send
-Query(Comment)
-
-# Q 2492 : # Message.where(:short_id => params[:message_id] || params[:id]).first
-Query(Message)
-.where("short_id = ?")
-.return_limit('1')
-# Q 2493 : # Message.where(:short_id => params[:message_id] || params[:id]).first
-Query(Message)
-.where("short_id = ?")
-.return_limit('1')
-# Q 2494 : # Message.where(:short_id => params[:message_id] || params[:id])
-Query(Message)
-.where("short_id = ?")
-# Q 2495 : # Message.where(:short_id => params[:message_id] || params[:id]).first
-Query(Message)
-.where("short_id = ?")
-.return_limit('1')
-# Q 2496 : # @user.rss_token
+.select('username')
+# Q 2351 : # @user.username
 Query(User)
-.select('rss_token')
-# Q 2497 : # @user.rss_token
+.select('username')
+# Q 2352 : # story.user.username
 Query(User)
-.select('rss_token')
-# Q 2498 : # @user.hats.where(:id => params[:hat_id])
-Query(Hat)
-.where("user_id = ?")
 .where("id = ?")
-# Q 2499 : # @user.hats.where
-Query(Hat)
-.where("user_id = ?")
-# Q 2500 : # @user.hats
-Query(Hat)
-.where("user_id = ?")
-# Q 2501 : # @user.hats.where
-Query(Hat)
-.where("user_id = ?")
-# Q 2502 : # @user.hats
-Query(Hat)
-.where("user_id = ?")
-# Q 2503 : # Moderation.last
-Query(Moderation)
-.return_limit('1')
-# Q 2504 : # mod_log = Moderation.last
-Query(Moderation)
-.return_limit('1')
-# Q 2505 : # mod_log = Moderation.last
-Query(Moderation)
-.return_limit('1')
-# Q 2506 : # Moderation.last
-Query(Moderation)
-.return_limit('1')
-# Q 2507 : # story.short_id
+.select('username')
+# Q 2353 : # story.user
+Query(User)
+.where("id = ?")
+# Q 2354 : # self.body
+Query(Message)
+.select('body')
+# Q 2355 : # self.body
+Query(Message)
+.select('body')
+# Q 2356 : # self.already_posted_story&.is_recent?
 Query(Story)
-.select('short_id')
-# Q 2508 : # @message.author_user_id
+
+# Q 2357 : # self.already_posted_story
+Query(Story)
+
+# Q 2358 : # self.already_posted_story&.is_recent?
+Query(Story)
+
+# Q 2359 : # self.already_posted_story
+Query(Story)
+
+# Q 2360 : # @message.author_user_id
 Query(Message)
 .select('author_user_id')
-# Q 2509 : # @user.id
+# Q 2361 : # @user.id
 Query(User)
 
-# Q 2510 : # @message.author_user_id
+# Q 2362 : # @message.author_user_id
 Query(Message)
 .select('author_user_id')
-# Q 2511 : # @user.id
+# Q 2363 : # @user.id
 Query(User)
 
-# Q 2512 : # @comments.each
+# Q 2364 : # Comment.new
 Query(Comment)
 
-# Q 2513 : # @comments.each
+# Q 2365 : # Comment.new
 Query(Comment)
 
-# Q 2514 : # @message.recipient_user_id
+# Q 2366 : # Comment.new
+Query(Comment)
+
+# Q 2367 : # story.user
+Query(User)
+.where("id = ?")
+# Q 2368 : # self.order
+Query(Search)
+
+# Q 2369 : # self.order
+Query(Search)
+
+# Q 2370 : # story.previewing
+Query(Story)
+
+# Q 2371 : # Story.make
+Query(Story)
+
+# Q 2372 : # s = Story.make
+Query(Story)
+
+# Q 2373 : # s = Story.make
+Query(Story)
+
+# Q 2374 : # Story.make
+Query(Story)
+
+# Q 2375 : # comment.story.is_gone?
+Query(Story)
+.where("id = ?")
+# Q 2376 : # comment.story
+Query(Story)
+.where("id = ?")
+# Q 2377 : # comment.is_gone?
+Query(Comment)
+
+# Q 2378 : # story.user_is_author?
+Query(Story)
+
+# Q 2379 : # Comment.all.each
+Query(Comment)
+
+# Q 2380 : # Comment.all
+Query(Comment)
+
+# Q 2381 : # Comment.all.each
+Query(Comment)
+
+# Q 2382 : # Comment.all
+Query(Comment)
+
+# Q 2383 : # Story.unmerged.where(is_expired: false)
+Query(Story)
+.where("is_expired = ?")
+# Q 2384 : # Story.unmerged.where
+Query(Story)
+
+# Q 2385 : # Story.unmerged
+Query(Story)
+
+# Q 2386 : # Story.unmerged.where
+Query(Story)
+
+# Q 2387 : # Story.unmerged
+Query(Story)
+
+# Q 2388 : # self.body.to_s
+Query(Message)
+.select('body')
+# Q 2389 : # self.body
+Query(Message)
+.select('body')
+# Q 2390 : # self.body.to_s
+Query(Message)
+.select('body')
+# Q 2391 : # self.body
+Query(Message)
+.select('body')
+# Q 2392 : # self.results.order!
+Query(Search)
+
+# Q 2393 : # self.results
+Query(Search)
+
+# Q 2394 : # self.results.order!
+Query(Search)
+
+# Q 2395 : # self.results
+Query(Search)
+
+# Q 2396 : # Story.new(story_params)
+Query(Story)
+
+# Q 2397 : # Story.new(story_params)
+Query(Story)
+
+# Q 2398 : # Story.new
+Query(Story)
+
+# Q 2399 : # Story.new
+Query(Story)
+
+# Q 2400 : # @user.id
+Query(User)
+
+# Q 2401 : # @user.id
+Query(User)
+
+# Q 2402 : # @user.id
+Query(User)
+
+# Q 2403 : # @user.id
+Query(User)
+
+# Q 2404 : # @user.id
+Query(User)
+
+# Q 2405 : # self.url.present?
+Query(Story)
+.select('url')
+# Q 2406 : # self.url
+Query(Story)
+.select('url')
+# Q 2407 : # self.new_record?
+Query(Story)
+
+# Q 2408 : # self.url.present?
+Query(Story)
+.select('url')
+# Q 2409 : # self.url
+Query(Story)
+.select('url')
+# Q 2410 : # self.new_record?
+Query(Story)
+
+# Q 2411 : # @user.rss_token
+Query(User)
+.select('rss_token')
+# Q 2412 : # @user.rss_token
+Query(User)
+.select('rss_token')
+# Q 2413 : # @user.authenticate_totp(params[:totp_code])
+Query(User)
+
+# Q 2414 : # @user.authenticate_totp
+Query(User)
+
+# Q 2415 : # @user.authenticate_totp
+Query(User)
+
+# Q 2416 : # story.html_class_for_user
+Query(Story)
+
+# Q 2417 : # self.short_id
+Query(Message)
+.select('short_id')
+# Q 2418 : # self.short_id
+Query(Message)
+.select('short_id')
+# Q 2419 : # self.url.match(/\Ahttps?:\/\/([^\/]+)/i)
+Query(Story)
+.select('url')
+# Q 2420 : # self.url.match(/\Ahttps?:\/\/([^\/]+)/i)
+Query(Story)
+.select('url')
+# Q 2421 : # self.url.match
+Query(Story)
+.select('url')
+# Q 2422 : # self.url
+Query(Story)
+.select('url')
+# Q 2423 : # self.url.match
+Query(Story)
+.select('url')
+# Q 2424 : # self.url
+Query(Story)
+.select('url')
+# Q 2425 : # Vote.new(:vote => 1)
+Query(Vote)
+
+# Q 2426 : # Vote.new(:vote => 1)
+Query(Vote)
+
+# Q 2427 : # Vote.new
+Query(Vote)
+
+# Q 2428 : # Vote.new
+Query(Vote)
+
+# Q 2429 : # comment.is_deletable_by_user?(@user)
+Query(Comment)
+
+# Q 2430 : # comment.is_deletable_by_user?
+Query(Comment)
+
+# Q 2431 : # comment.is_deletable_by_user?
+Query(Comment)
+
+# Q 2432 : # story.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 2433 : # story.user
+Query(User)
+.where("id = ?")
+# Q 2434 : # Story.make(:title => "blah")
+Query(Story)
+
+# Q 2435 : # Story.make
+Query(Story)
+
+# Q 2436 : # Story.make(:title => "blah")
+Query(Story)
+
+# Q 2437 : # Story.make
+Query(Story)
+
+# Q 2438 : # Story.make(:title => "blah")
+Query(Story)
+
+# Q 2439 : # Story.make
+Query(Story)
+
+# Q 2440 : # Story.make
+Query(Story)
+
+# Q 2441 : # comment.story.comments_path
+Query(Story)
+.where("id = ?")
+# Q 2442 : # comment.story
+Query(Story)
+.where("id = ?")
+# Q 2443 : # comment.story.title
+Query(Story)
+.where("id = ?")
+.select('title')
+# Q 2444 : # comment.story
+Query(Story)
+.where("id = ?")
+# Q 2445 : # User.all.each
+Query(User)
+
+# Q 2446 : # User.all
+Query(User)
+
+# Q 2447 : # User.all.each
+Query(User)
+
+# Q 2448 : # User.all
+Query(User)
+
+# Q 2449 : # self.results.order!
+Query(Search)
+
+# Q 2450 : # self.results
+Query(Search)
+
+# Q 2451 : # self.results.order!
+Query(Search)
+
+# Q 2452 : # self.results
+Query(Search)
+
+# Q 2453 : # @user.save!
+Query(User)
+
+# Q 2454 : # @user.save!
+Query(User)
+
+# Q 2455 : # hat.to_html_label
+Query(Hat)
+
+# Q 2456 : # hat.to_html_label
+Query(Hat)
+
+# Q 2457 : # @story.valid?
+Query(Story)
+
+# Q 2458 : # @story.valid?
+Query(Story)
+
+# Q 2459 : # @user.can_see_invitation_requests?
+Query(User)
+
+# Q 2460 : # @user.can_see_invitation_requests?
+Query(User)
+
+# Q 2461 : # Message.where(:short_id => m[1]).first
+Query(Message)
+.where("short_id = ?")
+.return_limit('1')
+# Q 2462 : # Message.where(:short_id => m[1]).first
+Query(Message)
+.where("short_id = ?")
+.return_limit('1')
+# Q 2463 : # Message.where(:short_id => m[1])
+Query(Message)
+.where("short_id = ?")
+# Q 2464 : # Message.where(:short_id => m[1]).first
+Query(Message)
+.where("short_id = ?")
+.return_limit('1')
+# Q 2465 : # Message.where(:short_id => m[1])
+Query(Message)
+.where("short_id = ?")
+# Q 2466 : # Message.where(:short_id => m[1]).first
+Query(Message)
+.where("short_id = ?")
+.return_limit('1')
+# Q 2467 : # Message.where(:short_id => m[1])
+Query(Message)
+.where("short_id = ?")
+# Q 2468 : # message = Message.where(:short_id => m[1]).first
+Query(Message)
+.where("short_id = ?")
+.return_limit('1')
+# Q 2469 : # Message.where(:short_id => m[1]).first
+Query(Message)
+.where("short_id = ?")
+.return_limit('1')
+# Q 2470 : # if hat.doffed_at?
+#   
+#   
+#   time_ago_in_words_label(hat.doffed_at)
+# end
+Query(Hat)
+
+# Q 2471 : # hat.doffed_at?
+Query(Hat)
+
+# Q 2472 : # story.user_is_author?
+Query(Story)
+
+# Q 2473 : # @user.session_token
+Query(User)
+.select('session_token')
+# Q 2474 : # @user.session_token
+Query(User)
+.select('session_token')
+# Q 2475 : # @user.session_token
+Query(User)
+.select('session_token')
+# Q 2476 : # comment.delete_for_user(@user, params[:reason])
+Query(Comment)
+
+# Q 2477 : # comment.delete_for_user
+Query(Comment)
+
+# Q 2478 : # comment.delete_for_user
+Query(Comment)
+
+# Q 2479 : # hat.doffed_at
+Query(Hat)
+.select('doffed_at')
+# Q 2480 : # self.results.order!
+Query(Search)
+
+# Q 2481 : # self.results
+Query(Search)
+
+# Q 2482 : # self.results.order!
+Query(Search)
+
+# Q 2483 : # self.results
+Query(Search)
+
+# Q 2484 : # message.author_user_id
+Query(Message)
+.select('author_user_id')
+# Q 2485 : # @user.id
+Query(User)
+
+# Q 2486 : # message.author_user_id
+Query(Message)
+.select('author_user_id')
+# Q 2487 : # @user.id
+Query(User)
+
+# Q 2488 : # message.author_user_id
+Query(Message)
+.select('author_user_id')
+# Q 2489 : # @user.id
+Query(User)
+
+# Q 2490 : # message.author_user_id
+Query(Message)
+.select('author_user_id')
+# Q 2491 : # @user.id
+Query(User)
+
+# Q 2492 : # message.author_user_id
+Query(Message)
+.select('author_user_id')
+# Q 2493 : # @user.id
+Query(User)
+
+# Q 2494 : # @user.username
+Query(User)
+.select('username')
+# Q 2495 : # @user.username
+Query(User)
+.select('username')
+# Q 2496 : # @user.username
+Query(User)
+.select('username')
+# Q 2497 : # @user.username
+Query(User)
+.select('username')
+# Q 2498 : # @user.username
+Query(User)
+.select('username')
+# Q 2499 : # Story.votes_cast_type
+Query(Story)
+
+# Q 2500 : # Story.votes_cast_type
+Query(Story)
+
+# Q 2501 : # comment.downvotes
+Query(Comment)
+.select('downvotes')
+# Q 2502 : # Story.votes_cast_type
+Query(Story)
+
+# Q 2503 : # Story.votes_cast_type
+Query(Story)
+
+# Q 2504 : # self.results.order!
+Query(Search)
+
+# Q 2505 : # self.results
+Query(Search)
+
+# Q 2506 : # Story.score_sql
+Query(Story)
+
+# Q 2507 : # self.results.order!
+Query(Search)
+
+# Q 2508 : # self.results
+Query(Search)
+
+# Q 2509 : # Story.score_sql
+Query(Story)
+
+# Q 2510 : # User.where(:password_reset_token => params[:token].to_s).first
+Query(User)
+.where("password_reset_token = ?")
+.return_limit('1')
+# Q 2511 : # User.where(:password_reset_token => params[:token].to_s).first
+Query(User)
+.where("password_reset_token = ?")
+.return_limit('1')
+# Q 2512 : # User.where(:password_reset_token => params[:token].to_s)
+Query(User)
+.where("password_reset_token = ?")
+# Q 2513 : # User.where(:password_reset_token => params[:token].to_s).first
+Query(User)
+.where("password_reset_token = ?")
+.return_limit('1')
+# Q 2514 : # InvitationRequest.where(:code => params[:code].to_s).first
+Query(InvitationRequest)
+.where("code = ?")
+.return_limit('1')
+# Q 2515 : # InvitationRequest.where(:code => params[:code].to_s).first
+Query(InvitationRequest)
+.where("code = ?")
+.return_limit('1')
+# Q 2516 : # InvitationRequest.where(:code => params[:code].to_s)
+Query(InvitationRequest)
+.where("code = ?")
+# Q 2517 : # InvitationRequest.where(:code => params[:code].to_s).first
+Query(InvitationRequest)
+.where("code = ?")
+.return_limit('1')
+# Q 2518 : # comment.showing_downvotes_for_user?
+Query(Comment)
+
+# Q 2519 : # Comment.find(v.comment_id)
+Query(Comment)
+.where("id = ?")
+# Q 2520 : # Comment.find(v.comment_id)
+Query(Comment)
+.where("id = ?")
+# Q 2521 : # Comment.find
+Query(Comment)
+.where("id = ?")
+# Q 2522 : # Comment.find(v.comment_id)
+Query(Comment)
+.where("id = ?")
+# Q 2523 : # Comment.find
+Query(Comment)
+.where("id = ?")
+# Q 2524 : # Comment.find(v.comment_id)
+Query(Comment)
+.where("id = ?")
+# Q 2525 : # Comment.find
+Query(Comment)
+.where("id = ?")
+# Q 2526 : # Comment.find
+Query(Comment)
+.where("id = ?")
+# Q 2527 : # Story.make!(:title => "blah", :tags_a => ["tag1", "tag2"])
+Query(Story)
+
+# Q 2528 : # Story.make!
+Query(Story)
+
+# Q 2529 : # Story.make!(:title => "blah", :tags_a => ["tag1", "tag2"])
+Query(Story)
+
+# Q 2530 : # Story.make!
+Query(Story)
+
+# Q 2531 : # Story.make!(:title => "blah", :tags_a => ["tag1", "tag2"])
+Query(Story)
+
+# Q 2532 : # Story.make!
+Query(Story)
+
+# Q 2533 : # Story.make!
+Query(Story)
+
+# Q 2534 : # comment.user_id
+Query(Comment)
+.select('user_id')
+# Q 2535 : # @user.try
+Query(User)
+
+# Q 2536 : # @user.try
+Query(User)
+
+# Q 2537 : # story.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 2538 : # story.user
+Query(User)
+.where("id = ?")
+# Q 2539 : # Story.arel_table
+Query(Story)
+
+# Q 2540 : # Story.arel_table
+Query(Story)
+
+# Q 2541 : # message.recipient_user_id
 Query(Message)
 .select('recipient_user_id')
-# Q 2515 : # @user.id
+# Q 2542 : # @user.id
 Query(User)
 
-# Q 2516 : # @message.recipient_user_id
+# Q 2543 : # message.recipient_user_id
 Query(Message)
 .select('recipient_user_id')
-# Q 2517 : # @user.id
+# Q 2544 : # @user.id
 Query(User)
 
-# Q 2518 : # comment.save
+# Q 2545 : # message.recipient_user_id
+Query(Message)
+.select('recipient_user_id')
+# Q 2546 : # @user.id
+Query(User)
+
+# Q 2547 : # message.recipient_user_id
+Query(Message)
+.select('recipient_user_id')
+# Q 2548 : # @user.id
+Query(User)
+
+# Q 2549 : # message.recipient_user_id
+Query(Message)
+.select('recipient_user_id')
+# Q 2550 : # @user.id
+Query(User)
+
+# Q 2551 : # comment.vote_summary_for_user(@user).downcase
 Query(Comment)
 
-# Q 2519 : # comment.save
+# Q 2552 : # comment.vote_summary_for_user
 Query(Comment)
 
-# Q 2520 : # Vote.comment_votes_by_user_for_comment_ids_hash(@user.id, [comment.id])
-Query(Vote)
+# Q 2553 : # story.html_class_for_user
+Query(Story)
 
-# Q 2521 : # Vote.comment_votes_by_user_for_comment_ids_hash(@user.id, [comment.id])
-Query(Vote)
-
-# Q 2522 : # Vote.comment_votes_by_user_for_comment_ids_hash
-Query(Vote)
-
-# Q 2523 : # @user.id
+# Q 2554 : # story.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 2555 : # story.user
+Query(User)
+.where("id = ?")
+# Q 2556 : # @user.is_moderator?
 Query(User)
 
-# Q 2524 : # Vote.comment_votes_by_user_for_comment_ids_hash
-Query(Vote)
-
-# Q 2525 : # @user.id
+# Q 2557 : # @user.is_moderator?
 Query(User)
 
-# Q 2526 : # Tag.where(:tag => params[:tag]).first!
-Query(Tag)
-.where("tag = ?")
+# Q 2558 : # comment.current_vote
+Query(Comment)
+
+# Q 2559 : # comment.current_vote
+Query(Comment)
+
+# Q 2560 : # Comment.active.where("MATCH(comment) AGAINST('#{
+# qwords}' IN BOOLEAN MODE)").includes(:user, :story)
+Query(Comment)
+.where("comment = ?")
+.includes('user')
+.includes('story')
+# Q 2561 : # Comment.active.where("MATCH(comment) AGAINST('#{
+# qwords}' IN BOOLEAN MODE)").includes(:user, :story)
+Query(Comment)
+.where("comment = ?")
+.includes('user')
+.includes('story')
+# Q 2562 : # Comment.active.where("MATCH(comment) AGAINST('#{
+# qwords}' IN BOOLEAN MODE)").includes
+Query(Comment)
+.where("comment = ?")
+# Q 2563 : # Comment.active.where("MATCH(comment) AGAINST('#{
+# qwords}' IN BOOLEAN MODE)")
+Query(Comment)
+.where("comment = ?")
+# Q 2564 : # Comment.active.where
+Query(Comment)
+
+# Q 2565 : # Comment.active
+Query(Comment)
+
+# Q 2566 : # Comment.active.where("MATCH(comment) AGAINST('#{
+# qwords}' IN BOOLEAN MODE)").includes
+Query(Comment)
+.where("comment = ?")
+# Q 2567 : # Comment.active.where
+Query(Comment)
+
+# Q 2568 : # Comment.active
+Query(Comment)
+
+# Q 2569 : # comment.is_undeletable_by_user?(@user)
+Query(Comment)
+
+# Q 2570 : # comment.is_undeletable_by_user?
+Query(Comment)
+
+# Q 2571 : # comment.is_undeletable_by_user?
+Query(Comment)
+
+# Q 2572 : # story.created_at
+Query(Story)
+.select('created_at')
+# Q 2573 : # Story.where(short_id: params[:id]).first!
+Query(Story)
+.where("short_id = ?")
 .return_limit('1')
-# Q 2527 : # Tag.where(:tag => params[:tag]).first!
-Query(Tag)
-.where("tag = ?")
+# Q 2574 : # Story.where(short_id: params[:id])
+Query(Story)
+.where("short_id = ?")
+# Q 2575 : # Story.where(short_id: params[:id]).first!
+Query(Story)
+.where("short_id = ?")
 .return_limit('1')
-# Q 2528 : # Tag.where(:tag => params[:tag])
-Query(Tag)
-.where("tag = ?")
-# Q 2529 : # Tag.where(:tag => params[:tag]).first!
-Query(Tag)
-.where("tag = ?")
-.return_limit('1')
-# Q 2530 : # comment.id
+# Q 2576 : # comment.current_vote
 Query(Comment)
 
-# Q 2531 : # comment.id
-Query(Comment)
-
-# Q 2532 : # story.can_have_suggestions_from_user?
+# Q 2577 : # @story.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 2578 : # @story.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 2579 : # story.is_editable_by_user?
 Query(Story)
 
-# Q 2533 : # comment.id
-Query(Comment)
+# Q 2580 : # HiddenStory.arel_table
+Query(HiddenStory)
 
-# Q 2534 : # comment.id
-Query(Comment)
+# Q 2581 : # HiddenStory.arel_table
+Query(HiddenStory)
 
-# Q 2535 : # story.short_id
-Query(Story)
-.select('short_id')
-# Q 2536 : # stories.tagged(@tag)
-Query(Story)
-
-# Q 2537 : # stories.tagged
-Query(Story)
-
-# Q 2538 : # stories.tagged
-Query(Story)
-
-# Q 2539 : # story.is_gone?
-Query(Story)
-
-# Q 2540 : # self.calculated_confidence
-Query(Comment)
-
-# Q 2541 : # self.calculated_confidence
-Query(Comment)
-
-# Q 2542 : # self.calculated_confidence
-Query(Comment)
-
-# Q 2543 : # story.vote
-Query(Story)
-
-# Q 2544 : # story.vote
-Query(Story)
-
-# Q 2545 : # @tag.description.blank?
-Query(Tag)
-.select('description')
-# Q 2546 : # @tag.description
-Query(Tag)
-.select('description')
-# Q 2547 : # @tag.tag
-Query(Tag)
-.select('tag')
-# Q 2548 : # @tag.description
-Query(Tag)
-.select('description')
-# Q 2549 : # @tag.description.blank?
-Query(Tag)
-.select('description')
-# Q 2550 : # @tag.description
-Query(Tag)
-.select('description')
-# Q 2551 : # @tag.tag
-Query(Tag)
-.select('tag')
-# Q 2552 : # @tag.description
-Query(Tag)
-.select('description')
-# Q 2553 : # self.tags.map { |t|
-#   
-#   t.tag
-# }.sort
-Query(Tag)
-.where("story_id = ?")
-# Q 2554 : # self.tags.map
-Query(Tag)
-.where("story_id = ?")
-# Q 2555 : # self.tags
-Query(Tag)
-.where("story_id = ?")
-# Q 2556 : # self.tags.map { |t|
-#   
-#   t.tag
-# }.sort
-Query(Tag)
-.where("story_id = ?")
-# Q 2557 : # self.tags.map
-Query(Tag)
-.where("story_id = ?")
-# Q 2558 : # self.tags
-Query(Tag)
-.where("story_id = ?")
-# Q 2559 : # @story.comments.build
-Query(Comment)
-.where("story_id = ?")
-# Q 2560 : # @story.comments.build
-Query(Comment)
-.where("story_id = ?")
-# Q 2561 : # @story.comments
-Query(Comment)
-.where("story_id = ?")
-# Q 2562 : # @comment = @story.comments.build
-Query(Comment)
-.where("story_id = ?")
-# Q 2563 : # @story.comments.build
-Query(Comment)
-.where("story_id = ?")
-# Q 2564 : # @story.comments
-Query(Comment)
-.where("story_id = ?")
-# Q 2565 : # @tag.tag
-Query(Tag)
-.select('tag')
-# Q 2566 : # @tag.tag
-Query(Tag)
-.select('tag')
-# Q 2567 : # story.vote
-Query(Story)
-
-# Q 2568 : # @user.can_downvote?
-Query(User)
-
-# Q 2569 : # ShortId.new(self.class).generate
-Query(ShortId)
-
-# Q 2570 : # ShortId.new(self.class).generate
-Query(ShortId)
-
-# Q 2571 : # ShortId.new(self.class)
-Query(ShortId)
-
-# Q 2572 : # ShortId.new
-Query(ShortId)
-
-# Q 2573 : # self.class
-Query(Comment)
-
-# Q 2574 : # ShortId.new(self.class).generate
-Query(ShortId)
-
-# Q 2575 : # ShortId.new
-Query(ShortId)
-
-# Q 2576 : # self.class
-Query(Comment)
-
-# Q 2577 : # self.is_new?
-Query(User)
-
-# Q 2578 : # self.karma
-Query(User)
-.select('karma')
-# Q 2579 : # self.is_new?
-Query(User)
-
-# Q 2580 : # self.karma
-Query(User)
-.select('karma')
-# Q 2581 : # @tag.tag
-Query(Tag)
-.select('tag')
-# Q 2582 : # @tag.description
-Query(Tag)
-.select('description')
-# Q 2583 : # @tag.tag
-Query(Tag)
-.select('tag')
-# Q 2584 : # @tag.description
-Query(Tag)
-.select('description')
-# Q 2585 : # @tag.tag
-Query(Tag)
-.select('tag')
-# Q 2586 : # @tag.tag
-Query(Tag)
-.select('tag')
-# Q 2587 : # story.is_hidden_by_cur_user
-Query(Story)
-
-# Q 2588 : # @story.title
+# Q 2582 : # @story.title
 Query(Story)
 .select('title')
-# Q 2589 : # @story.title
+# Q 2583 : # @story.title
 Query(Story)
 .select('title')
-# Q 2590 : # @story.title
+# Q 2584 : # HiddenStory.arel_table
+Query(HiddenStory)
+
+# Q 2585 : # @user.id
+Query(User)
+
+# Q 2586 : # HiddenStory.arel_table
+Query(HiddenStory)
+
+# Q 2587 : # @user.id
+Query(User)
+
+# Q 2588 : # @story.merged_into_story.comments_path
+Query(Story)
+.where("id = ?")
+# Q 2589 : # @story.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 2590 : # @story.merged_into_story.comments_path
+Query(Story)
+.where("id = ?")
+# Q 2591 : # @story.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 2592 : # message.save!
+Query(Message)
+
+# Q 2593 : # message.save!
+Query(Message)
+
+# Q 2594 : # message.save!
+Query(Message)
+
+# Q 2595 : # message.save!
+Query(Message)
+
+# Q 2596 : # message.save!
+Query(Message)
+
+# Q 2597 : # message.save!
+Query(Message)
+
+# Q 2598 : # User.where(:username => params[:user]).first!
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 2599 : # User.where(:username => params[:user]).first!
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 2600 : # User.where(:username => params[:user])
+Query(User)
+.where("username = ?")
+# Q 2601 : # User.where(:username => params[:user]).first!
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 2602 : # comment.undelete_for_user(@user)
+Query(Comment)
+
+# Q 2603 : # comment.undelete_for_user
+Query(Comment)
+
+# Q 2604 : # comment.undelete_for_user
+Query(Comment)
+
+# Q 2605 : # User.make!(:username => "mod", :is_moderator => true)
+Query(User)
+
+# Q 2606 : # User.make!
+Query(User)
+
+# Q 2607 : # User.make!(:username => "mod", :is_moderator => true)
+Query(User)
+
+# Q 2608 : # User.make!
+Query(User)
+
+# Q 2609 : # User.make!(:username => "mod", :is_moderator => true)
+Query(User)
+
+# Q 2610 : # User.make!
+Query(User)
+
+# Q 2611 : # User.make!
+Query(User)
+
+# Q 2612 : # story.short_id
+Query(Story)
+.select('short_id')
+# Q 2613 : # Story.find(v.story_id)
+Query(Story)
+.where("id = ?")
+# Q 2614 : # Story.find(v.story_id)
+Query(Story)
+.where("id = ?")
+# Q 2615 : # Story.find
+Query(Story)
+.where("id = ?")
+# Q 2616 : # Story.find(v.story_id)
+Query(Story)
+.where("id = ?")
+# Q 2617 : # Story.find
+Query(Story)
+.where("id = ?")
+# Q 2618 : # Story.find(v.story_id)
+Query(Story)
+.where("id = ?")
+# Q 2619 : # Story.find
+Query(Story)
+.where("id = ?")
+# Q 2620 : # Story.find
+Query(Story)
+.where("id = ?")
+# Q 2621 : # @user.id
+Query(User)
+
+# Q 2622 : # @user.id
+Query(User)
+
+# Q 2623 : # story.has_suggestions?
+Query(Story)
+
+# Q 2624 : # HiddenStory.arel_table
+Query(HiddenStory)
+
+# Q 2625 : # HiddenStory.arel_table
+Query(HiddenStory)
+
+# Q 2626 : # Story.make!(:title => "blah", :tags_a => ["tag1", "tag2"], :description => "desc")
+Query(Story)
+
+# Q 2627 : # Story.make!
+Query(Story)
+
+# Q 2628 : # Story.make!(:title => "blah", :tags_a => ["tag1", "tag2"], :description => "desc")
+Query(Story)
+
+# Q 2629 : # Story.make!
+Query(Story)
+
+# Q 2630 : # Story.make!(:title => "blah", :tags_a => ["tag1", "tag2"], :description => "desc")
+Query(Story)
+
+# Q 2631 : # Story.make!
+Query(Story)
+
+# Q 2632 : # Story.make!
+Query(Story)
+
+# Q 2633 : # @story.can_be_seen_by_user?(@user)
+Query(Story)
+
+# Q 2634 : # @story.can_be_seen_by_user?
+Query(Story)
+
+# Q 2635 : # @story.can_be_seen_by_user?
+Query(Story)
+
+# Q 2636 : # stories.newest_by_user(by_user)
+Query(Story)
+
+# Q 2637 : # stories.newest_by_user
+Query(Story)
+
+# Q 2638 : # stories.newest_by_user
+Query(Story)
+
+# Q 2639 : # comment.is_gone?
+Query(Comment)
+
+# Q 2640 : # story.can_have_suggestions_from_user?
+Query(Story)
+
+# Q 2641 : # story.short_id
+Query(Story)
+.select('short_id')
+# Q 2642 : # self.is_admin?
+Query(User)
+
+# Q 2643 : # self.is_admin?
+Query(User)
+
+# Q 2644 : # self.order
+Query(Search)
+
+# Q 2645 : # self.order
+Query(Search)
+
+# Q 2646 : # self.is_gone?
+Query(Comment)
+
+# Q 2647 : # self.gone_text
+Query(Comment)
+
+# Q 2648 : # self.is_gone?
+Query(Comment)
+
+# Q 2649 : # self.gone_text
+Query(Comment)
+
+# Q 2650 : # comment.gone_text
+Query(Comment)
+
+# Q 2651 : # @user.is_moderator?
+Query(User)
+
+# Q 2652 : # self.results.order!
+Query(Search)
+
+# Q 2653 : # self.results
+Query(Search)
+
+# Q 2654 : # self.results.order!
+Query(Search)
+
+# Q 2655 : # self.results
+Query(Search)
+
+# Q 2656 : # @story.title
 Query(Story)
 .select('title')
-# Q 2591 : # story.short_id
+# Q 2657 : # @story.title
+Query(Story)
+.select('title')
+# Q 2658 : # @story.title
+Query(Story)
+.select('title')
+# Q 2659 : # comment.is_editable_by_user?(@user)
+Query(Comment)
+
+# Q 2660 : # comment.is_editable_by_user?
+Query(Comment)
+
+# Q 2661 : # comment.is_editable_by_user?
+Query(Comment)
+
+# Q 2662 : # story.is_gone?
+Query(Story)
+
+# Q 2663 : # Story.score_sql
+Query(Story)
+
+# Q 2664 : # Story.score_sql
+Query(Story)
+
+# Q 2665 : # @story.short_id_url
+Query(Story)
+
+# Q 2666 : # @story.short_id_url
+Query(Story)
+
+# Q 2667 : # @story.short_id_url
+Query(Story)
+
+# Q 2668 : # story.vote
+Query(Story)
+
+# Q 2669 : # story.vote
+Query(Story)
+
+# Q 2670 : # self.results.order!
+Query(Search)
+
+# Q 2671 : # self.results
+Query(Search)
+
+# Q 2672 : # self.results.order!
+Query(Search)
+
+# Q 2673 : # self.results
+Query(Search)
+
+# Q 2674 : # @user.update_unread_message_count!
+Query(User)
+
+# Q 2675 : # @user.update_unread_message_count!
+Query(User)
+
+# Q 2676 : # @user.is_moderator?
+Query(User)
+
+# Q 2677 : # @story.merged_comments.includes(:user, :story, :hat, :votes => :user).arrange_for_user(@user)
+Query(Vote)
+.includes('user')
+.includes('votes')
+.includes('user')
+# Q 2678 : # @story.merged_comments.includes(:user, :story, :hat, :votes => :user).arrange_for_user(@user)
+Query(Vote)
+.includes('user')
+.includes('votes')
+.includes('user')
+# Q 2679 : # @story.merged_comments.includes(:user, :story, :hat, :votes => :user).arrange_for_user
+Query(Vote)
+.includes('user')
+.includes('votes')
+.includes('user')
+# Q 2680 : # @story.merged_comments.includes(:user, :story, :hat, :votes => :user)
+Query(Vote)
+.includes('user')
+.includes('votes')
+.includes('user')
+# Q 2681 : # @story.merged_comments.includes
+Query(Story)
+
+# Q 2682 : # @story.merged_comments
+Query(Story)
+
+# Q 2683 : # @story.merged_comments.includes(:user, :story, :hat, :votes => :user).arrange_for_user
+Query(Vote)
+.includes('user')
+.includes('votes')
+.includes('user')
+# Q 2684 : # @story.merged_comments.includes
+Query(Story)
+
+# Q 2685 : # @story.merged_comments
+Query(Story)
+
+# Q 2686 : # comment.markeddown_comment
+Query(Comment)
+.select('markeddown_comment')
+# Q 2687 : # story.vote
+Query(Story)
+
+# Q 2688 : # self.results.order!
+Query(Search)
+
+# Q 2689 : # self.results
+Query(Search)
+
+# Q 2690 : # Comment.score_sql
+Query(Comment)
+
+# Q 2691 : # self.results.order!
+Query(Search)
+
+# Q 2692 : # self.results
+Query(Search)
+
+# Q 2693 : # Comment.score_sql
+Query(Comment)
+
+# Q 2694 : # @user.can_downvote?
+Query(User)
+
+# Q 2695 : # self.avatar_url
+Query(User)
+
+# Q 2696 : # self.avatar_url
+Query(User)
+
+# Q 2697 : # self.avatar_url
+Query(User)
+
+# Q 2698 : # SavedStory.arel_table
+Query(SavedStory)
+
+# Q 2699 : # SavedStory.arel_table
+Query(SavedStory)
+
+# Q 2700 : # @user.wearable_hats.where(:id => params[:hat_id])
+Query(Hat)
+.where("user_id = ?")
+.where("id = ?")
+# Q 2701 : # @user.wearable_hats.where
+Query(Hat)
+.where("user_id = ?")
+# Q 2702 : # @user.wearable_hats
+Query(Hat)
+.where("user_id = ?")
+# Q 2703 : # @user.wearable_hats.where
+Query(Hat)
+.where("user_id = ?")
+# Q 2704 : # @user.wearable_hats
+Query(Hat)
+.where("user_id = ?")
+# Q 2705 : # Moderation.last
+Query(Moderation)
+.return_limit('1')
+# Q 2706 : # mod_log = Moderation.last
+Query(Moderation)
+.return_limit('1')
+# Q 2707 : # mod_log = Moderation.last
+Query(Moderation)
+.return_limit('1')
+# Q 2708 : # Moderation.last
+Query(Moderation)
+.return_limit('1')
+# Q 2709 : # comment.markeddown_comment
+Query(Comment)
+.select('markeddown_comment')
+# Q 2710 : # SavedStory.arel_table
+Query(SavedStory)
+
+# Q 2711 : # @user.id
+Query(User)
+
+# Q 2712 : # SavedStory.arel_table
+Query(SavedStory)
+
+# Q 2713 : # @user.id
+Query(User)
+
+# Q 2714 : # story.is_hidden_by_cur_user
+Query(Story)
+
+# Q 2715 : # self.send(k)
+Query(Comment)
+
+# Q 2716 : # self.send(k)
+Query(Comment)
+
+# Q 2717 : # self.send
+Query(Comment)
+
+# Q 2718 : # self.send(k)
+Query(Comment)
+
+# Q 2719 : # self.send
+Query(Comment)
+
+# Q 2720 : # self.send(k)
+Query(Comment)
+
+# Q 2721 : # self.send
+Query(Comment)
+
+# Q 2722 : # self.send
+Query(Comment)
+
+# Q 2723 : # self.github_username.present?
+Query(User)
+
+# Q 2724 : # self.github_username
+Query(User)
+
+# Q 2725 : # self.github_username.present?
+Query(User)
+
+# Q 2726 : # self.github_username
+Query(User)
+
+# Q 2727 : # @story.comments.build
+Query(Comment)
+.where("story_id = ?")
+# Q 2728 : # @story.comments.build
+Query(Comment)
+.where("story_id = ?")
+# Q 2729 : # @story.comments
+Query(Comment)
+.where("story_id = ?")
+# Q 2730 : # @comment = @story.comments.build
+Query(Comment)
+.where("story_id = ?")
+# Q 2731 : # @story.comments.build
+Query(Comment)
+.where("story_id = ?")
+# Q 2732 : # @story.comments
+Query(Comment)
+.where("story_id = ?")
+# Q 2733 : # Tag.where(:tag => cookies[TAG_FILTER_COOKIE].to_s.split(","))
+Query(Tag)
+.where("tag = ?")
+# Q 2734 : # story.short_id
 Query(Story)
 .select('short_id')
-# Q 2592 : # self.session_token.blank?
+# Q 2735 : # self.github_username
 Query(User)
-.select('session_token')
-# Q 2593 : # self.session_token
+
+# Q 2736 : # self.github_username
 Query(User)
-.select('session_token')
-# Q 2594 : # self.session_token.blank?
+
+# Q 2737 : # self.github_username
 Query(User)
-.select('session_token')
-# Q 2595 : # self.session_token
+
+# Q 2738 : # SavedStory.arel_table
+Query(SavedStory)
+
+# Q 2739 : # SavedStory.arel_table
+Query(SavedStory)
+
+# Q 2740 : # @message.save
+Query(Message)
+
+# Q 2741 : # @message.save
+Query(Message)
+
+# Q 2742 : # self.page
+Query(Search)
+
+# Q 2743 : # self.page_count
+Query(Search)
+
+# Q 2744 : # self.page
+Query(Search)
+
+# Q 2745 : # self.page_count
+Query(Search)
+
+# Q 2746 : # comment.save
+Query(Comment)
+
+# Q 2747 : # comment.save
+Query(Comment)
+
+# Q 2748 : # self.send(k.values.first)
+Query(Comment)
+
+# Q 2749 : # self.send(k.values.first)
+Query(Comment)
+
+# Q 2750 : # self.send
+Query(Comment)
+
+# Q 2751 : # self.send(k.values.first)
+Query(Comment)
+
+# Q 2752 : # self.send
+Query(Comment)
+
+# Q 2753 : # self.send(k.values.first)
+Query(Comment)
+
+# Q 2754 : # self.send
+Query(Comment)
+
+# Q 2755 : # self.send(k.values.first)
+Query(Comment)
+
+# Q 2756 : # self.send
+Query(Comment)
+
+# Q 2757 : # self.send
+Query(Comment)
+
+# Q 2758 : # self.page_count
+Query(Search)
+
+# Q 2759 : # self.page_count
+Query(Search)
+
+# Q 2760 : # self.page_count
+Query(Search)
+
+# Q 2761 : # Vote.comment_votes_by_user_for_comment_ids_hash(@user.id, [comment.id])
+Query(Vote)
+
+# Q 2762 : # Vote.comment_votes_by_user_for_comment_ids_hash(@user.id, [comment.id])
+Query(Vote)
+
+# Q 2763 : # Vote.comment_votes_by_user_for_comment_ids_hash
+Query(Vote)
+
+# Q 2764 : # @user.id
 Query(User)
-.select('session_token')
-# Q 2596 : # @story.comments_count
-Query(Story)
-.select('comments_count')
-# Q 2597 : # @story.comments_count
-Query(Story)
-.select('comments_count')
-# Q 2598 : # @story.comments_count
-Query(Story)
-.select('comments_count')
-# Q 2599 : # @story.comments_count
-Query(Story)
-.select('comments_count')
-# Q 2600 : # self.parent_comment_id.present?
-Query(Comment)
-.select('parent_comment_id')
-# Q 2601 : # self.parent_comment_id
-Query(Comment)
-.select('parent_comment_id')
-# Q 2602 : # self.parent_comment_id.present?
-Query(Comment)
-.select('parent_comment_id')
-# Q 2603 : # self.parent_comment_id
-Query(Comment)
-.select('parent_comment_id')
-# Q 2604 : # @story.comments_count
-Query(Story)
-.select('comments_count')
-# Q 2605 : # @story.comments_count
-Query(Story)
-.select('comments_count')
-# Q 2606 : # @story.comments_count
-Query(Story)
-.select('comments_count')
-# Q 2607 : # @story.comments_count
-Query(Story)
-.select('comments_count')
-# Q 2608 : # self.parent_comment.thread_id
-Query(Comment)
-.where("id = ?")
-.select('thread_id')
-# Q 2609 : # self.parent_comment.thread_id
-Query(Comment)
-.where("id = ?")
-.select('thread_id')
-# Q 2610 : # self.parent_comment
-Query(Comment)
-.where("id = ?")
-# Q 2611 : # self.parent_comment.thread_id
-Query(Comment)
-.where("id = ?")
-.select('thread_id')
-# Q 2612 : # self.parent_comment
-Query(Comment)
-.where("id = ?")
-# Q 2613 : # story.short_id
+
+# Q 2765 : # Vote.comment_votes_by_user_for_comment_ids_hash
+Query(Vote)
+
+# Q 2766 : # @user.id
+Query(User)
+
+# Q 2767 : # story.short_id
 Query(Story)
 .select('short_id')
-# Q 2614 : # Keystore.incremented_value_for("thread_id")
-Query(Keystore)
-
-# Q 2615 : # Keystore.incremented_value_for("thread_id")
-Query(Keystore)
-
-# Q 2616 : # Keystore.incremented_value_for
-Query(Keystore)
-
-# Q 2617 : # Keystore.incremented_value_for
-Query(Keystore)
-
-# Q 2618 : # self.send(k)
-Query(Story)
-
-# Q 2619 : # self.send(k)
-Query(Story)
-
-# Q 2620 : # self.send
-Query(Story)
-
-# Q 2621 : # self.send(k)
-Query(Story)
-
-# Q 2622 : # self.send
-Query(Story)
-
-# Q 2623 : # self.send(k)
-Query(Story)
-
-# Q 2624 : # self.send
-Query(Story)
-
-# Q 2625 : # self.send
-Query(Story)
-
-# Q 2626 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, comment.story_id, comment.id, @user.id, nil)
-Query(Vote)
-
-# Q 2627 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 2628 : # comment.story_id
-Query(Comment)
-.select('story_id')
-# Q 2629 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 2630 : # comment.story_id
-Query(Comment)
-.select('story_id')
-# Q 2631 : # comment.id
-Query(Comment)
-
-# Q 2632 : # @user.id
+# Q 2768 : # self.twitter_username.present?
 Query(User)
 
-# Q 2633 : # comment.id
-Query(Comment)
-
-# Q 2634 : # @user.id
+# Q 2769 : # self.twitter_username
 Query(User)
 
-# Q 2635 : # story.hider_count
-Query(Story)
-
-# Q 2636 : # self.mailing_list_token.blank?
-Query(User)
-.select('mailing_list_token')
-# Q 2637 : # self.mailing_list_token
-Query(User)
-.select('mailing_list_token')
-# Q 2638 : # self.mailing_list_token.blank?
-Query(User)
-.select('mailing_list_token')
-# Q 2639 : # self.mailing_list_token
-Query(User)
-.select('mailing_list_token')
-# Q 2640 : # story.hider_count
-Query(Story)
-
-# Q 2641 : # self.send(k.values.first)
-Query(Story)
-
-# Q 2642 : # self.send(k.values.first)
-Query(Story)
-
-# Q 2643 : # self.send
-Query(Story)
-
-# Q 2644 : # self.send(k.values.first)
-Query(Story)
-
-# Q 2645 : # self.send
-Query(Story)
-
-# Q 2646 : # self.send(k.values.first)
-Query(Story)
-
-# Q 2647 : # self.send
-Query(Story)
-
-# Q 2648 : # self.send(k.values.first)
-Query(Story)
-
-# Q 2649 : # self.send
-Query(Story)
-
-# Q 2650 : # self.send
-Query(Story)
-
-# Q 2651 : # story.url.present?
-Query(Story)
-.select('url')
-# Q 2652 : # story.url
-Query(Story)
-.select('url')
-# Q 2653 : # @story.as_json(:with_comments => @comments)
-Query(Story)
-
-# Q 2654 : # @story.as_json
-Query(Story)
-
-# Q 2655 : # @story.as_json(:with_comments => @comments)
-Query(Story)
-
-# Q 2656 : # @story.as_json
-Query(Story)
-
-# Q 2657 : # @story.as_json
-Query(Story)
-
-# Q 2658 : # story.url
-Query(Story)
-.select('url')
-# Q 2659 : # self.rss_token.blank?
-Query(User)
-.select('rss_token')
-# Q 2660 : # self.rss_token
-Query(User)
-.select('rss_token')
-# Q 2661 : # self.rss_token.blank?
-Query(User)
-.select('rss_token')
-# Q 2662 : # self.rss_token
-Query(User)
-.select('rss_token')
-# Q 2663 : # @user.id
+# Q 2770 : # self.twitter_username.present?
 Query(User)
 
-# Q 2664 : # story.is_gone?
-Query(Story)
-
-# Q 2665 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, comment.story_id, comment.id, @user.id, params[:reason])
-Query(Vote)
-
-# Q 2666 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 2667 : # comment.story_id
-Query(Comment)
-.select('story_id')
-# Q 2668 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 2669 : # comment.story_id
-Query(Comment)
-.select('story_id')
-# Q 2670 : # comment.id
-Query(Comment)
-
-# Q 2671 : # @user.id
+# Q 2771 : # self.twitter_username
 Query(User)
 
-# Q 2672 : # comment.id
-Query(Comment)
-
-# Q 2673 : # @user.id
-Query(User)
-
-# Q 2674 : # @story.can_have_suggestions_from_user?(@user)
+# Q 2772 : # Story.where(:url => urls).where("is_expired = ? OR is_moderated = ?", false, true).order("id DESC").first
 Query(Story)
-
-# Q 2675 : # @story.can_have_suggestions_from_user?
-Query(Story)
-
-# Q 2676 : # @story.can_have_suggestions_from_user?
-Query(Story)
-
-# Q 2677 : # story.comments_path
-Query(Story)
-
-# Q 2678 : # Keystore.value_for
-Query(Keystore)
-
-# Q 2679 : # self.id
-Query(User)
-
-# Q 2680 : # Keystore.value_for
-Query(Keystore)
-
-# Q 2681 : # self.id
-Query(User)
-
-# Q 2682 : # self.calculated_hotness
-Query(Story)
-
-# Q 2683 : # self.calculated_hotness
-Query(Story)
-
-# Q 2684 : # self.calculated_hotness
-Query(Story)
-
-# Q 2685 : # story.comments_count
-Query(Story)
-.select('comments_count')
-# Q 2686 : # @story.comments_path
-Query(Story)
-
-# Q 2687 : # @story.comments_path
-Query(Story)
-
-# Q 2688 : # stories.top(length)
-Query(Story)
-
-# Q 2689 : # stories.top
-Query(Story)
-
-# Q 2690 : # stories.top
-Query(Story)
-
-# Q 2691 : # story.comments_count
-Query(Story)
-.select('comments_count')
-# Q 2692 : # User.transaction
-Query(User)
-
-# Q 2693 : # User.transaction
-Query(User)
-
-# Q 2694 : # ShortId.new(self.class).generate
-Query(ShortId)
-
-# Q 2695 : # ShortId.new(self.class).generate
-Query(ShortId)
-
-# Q 2696 : # ShortId.new(self.class)
-Query(ShortId)
-
-# Q 2697 : # ShortId.new
-Query(ShortId)
-
-# Q 2698 : # self.class
-Query(Story)
-
-# Q 2699 : # ShortId.new(self.class).generate
-Query(ShortId)
-
-# Q 2700 : # ShortId.new
-Query(ShortId)
-
-# Q 2701 : # self.class
-Query(Story)
-
-# Q 2702 : # @story.suggested_taggings.where(:user_id => @user.id)
-Query(SuggestedTagging)
-.where("story_id = ?")
-.where("user_id = ?")
-# Q 2703 : # @story.suggested_taggings.where(:user_id => @user.id)
-Query(SuggestedTagging)
-.where("story_id = ?")
-.where("user_id = ?")
-# Q 2704 : # @story.suggested_taggings.where
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 2705 : # @story.suggested_taggings
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 2706 : # @user.id
-Query(User)
-
-# Q 2707 : # @story.suggested_taggings.where
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 2708 : # @story.suggested_taggings
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 2709 : # @user.id
-Query(User)
-
-# Q 2710 : # story.comments_count
-Query(Story)
-.select('comments_count')
-# Q 2711 : # self.comments.each
-Query(Comment)
-.where("user_id = ?")
-# Q 2712 : # self.comments
-Query(Comment)
-.where("user_id = ?")
-# Q 2713 : # self.comments.each { |c|
-#   
-#   c.delete_for_user(self)
-# }
-Query(Comment)
-.where("user_id = ?")
-# Q 2714 : # self.comments.each
-Query(Comment)
-.where("user_id = ?")
-# Q 2715 : # self.comments
-Query(Comment)
-.where("user_id = ?")
-# Q 2716 : # self.sent_messages.each
-Query(Message)
-.where("user_id = ?")
-# Q 2717 : # self.sent_messages
-Query(Message)
-.where("user_id = ?")
-# Q 2718 : # self.sent_messages.each do |m|
-#   
-#   m.deleted_by_author = true
-#   m.save
-# end
-Query(Message)
-.where("user_id = ?")
-# Q 2719 : # self.sent_messages.each
-Query(Message)
-.where("user_id = ?")
-# Q 2720 : # self.sent_messages
-Query(Message)
-.where("user_id = ?")
-# Q 2721 : # @story.suggested_titles.where(:user_id => @user.id).first
-Query(SuggestedTitle)
-.where("story_id = ?")
-.where("user_id = ?")
-.return_limit('1')
-# Q 2722 : # @story.suggested_titles.where(:user_id => @user.id).first
-Query(SuggestedTitle)
-.where("story_id = ?")
-.where("user_id = ?")
-.return_limit('1')
-# Q 2723 : # @story.suggested_titles.where(:user_id => @user.id)
-Query(SuggestedTitle)
-.where("story_id = ?")
-.where("user_id = ?")
-# Q 2724 : # @story.suggested_titles.where
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 2725 : # @story.suggested_titles
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 2726 : # @user.id
-Query(User)
-
-# Q 2727 : # @story.suggested_titles.where(:user_id => @user.id).first
-Query(SuggestedTitle)
-.where("story_id = ?")
-.where("user_id = ?")
-.return_limit('1')
-# Q 2728 : # @story.suggested_titles.where
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 2729 : # @story.suggested_titles
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 2730 : # @user.id
-Query(User)
-
-# Q 2731 : # self.tags.map { |t|
-#   
-#   t.hotness_mod
-# }.sum
-Query(Tag)
-.where("story_id = ?")
-# Q 2732 : # self.tags.map { |t|
-#   
-#   t.hotness_mod
-# }.sum
-Query(Tag)
-.where("story_id = ?")
-# Q 2733 : # self.tags.map
-Query(Tag)
-.where("story_id = ?")
-# Q 2734 : # self.tags
-Query(Tag)
-.where("story_id = ?")
-# Q 2735 : # self.tags.map { |t|
-#   
-#   t.hotness_mod
-# }.sum
-Query(Tag)
-.where("story_id = ?")
-# Q 2736 : # self.tags.map
-Query(Tag)
-.where("story_id = ?")
-# Q 2737 : # self.tags
-Query(Tag)
-.where("story_id = ?")
-# Q 2738 : # self.generated_markeddown_comment
-Query(Comment)
-
-# Q 2739 : # self.generated_markeddown_comment
-Query(Comment)
-
-# Q 2740 : # self.generated_markeddown_comment
-Query(Comment)
-
-# Q 2741 : # self.received_messages.each
-Query(Message)
-.where("user_id = ?")
-# Q 2742 : # self.received_messages
-Query(Message)
-.where("user_id = ?")
-# Q 2743 : # self.received_messages.each do |m|
-#   
-#   m.deleted_by_recipient = true
-#   m.save
-# end
-Query(Message)
-.where("user_id = ?")
-# Q 2744 : # self.received_messages.each
-Query(Message)
-.where("user_id = ?")
-# Q 2745 : # self.received_messages
-Query(Message)
-.where("user_id = ?")
-# Q 2746 : # story.downvotes
-Query(Story)
-.select('downvotes')
-# Q 2747 : # @user.is_moderator?
-Query(User)
-
-# Q 2748 : # @user.can_downvote?(comment)
-Query(User)
-
-# Q 2749 : # @user.can_downvote?
-Query(User)
-
-# Q 2750 : # @user.can_downvote?
-Query(User)
-
-# Q 2751 : # story.downvotes
-Query(Story)
-.select('downvotes')
-# Q 2752 : # story.score
-Query(Story)
-
-# Q 2753 : # @story.can_have_suggestions_from_user?(@user)
-Query(Story)
-
-# Q 2754 : # @story.can_have_suggestions_from_user?
-Query(Story)
-
-# Q 2755 : # @story.can_have_suggestions_from_user?
-Query(Story)
-
-# Q 2756 : # story.vote_summary_for(@user).downcase
-Query(Story)
-
-# Q 2757 : # story.vote_summary_for
-Query(Story)
-
-# Q 2758 : # @story.comments_path
-Query(Story)
-
-# Q 2759 : # @story.comments_path
-Query(Story)
-
-# Q 2760 : # self.invitations.destroy_all
-Query(Invitation)
-.where("user_id = ?")
-# Q 2761 : # self.invitations
-Query(Invitation)
-.where("user_id = ?")
-# Q 2762 : # self.invitations.destroy_all
-Query(Invitation)
-.where("user_id = ?")
-# Q 2763 : # self.invitations.destroy_all
-Query(Invitation)
-.where("user_id = ?")
-# Q 2764 : # self.invitations
-Query(Invitation)
-.where("user_id = ?")
-# Q 2765 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes).map { |c|
-#   
-#   c.upvotes + 1 - c.downvotes
-# }.inject(&:+).to_f
-Query(Comment)
-.where("story_id = ?")
+.where("url = ?")
 .where(" = ?")
-.select('upvotes')
-.select('downvotes')
-# Q 2766 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes).map { |c|
-#   
-#   c.upvotes + 1 - c.downvotes
-# }.inject(&:+)
-Query(Comment)
-.where("story_id = ?")
-.where(" = ?")
-.select('upvotes')
-.select('downvotes')
-# Q 2767 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes).map { |c|
-#   
-#   c.upvotes + 1 - c.downvotes
-# }.inject
-Query(Comment)
-.where("story_id = ?")
-.where(" = ?")
-.select('upvotes')
-.select('downvotes')
-# Q 2768 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes).map
-Query(Comment)
-.where("story_id = ?")
-.where(" = ?")
-.select('upvotes')
-.select('downvotes')
-# Q 2769 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes)
-Query(Comment)
-.where("story_id = ?")
-.where(" = ?")
-.select('upvotes')
-.select('downvotes')
-# Q 2770 : # self.comments.where("user_id <> ?", self.user_id).select
-Query(Comment)
-.where("story_id = ?")
-.where(" = ?")
-# Q 2771 : # self.comments.where("user_id <> ?", self.user_id)
-Query(Comment)
-.where("story_id = ?")
-.where(" = ?")
-# Q 2772 : # self.comments.where
-Query(Comment)
-.where("story_id = ?")
-# Q 2773 : # self.comments
-Query(Comment)
-.where("story_id = ?")
-# Q 2774 : # self.user_id
-Query(Story)
-.select('user_id')
-# Q 2775 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes).map { |c|
-#   
-#   c.upvotes + 1 - c.downvotes
-# }.inject(&:+).to_f
-Query(Comment)
-.where("story_id = ?")
-.where(" = ?")
-.select('upvotes')
-.select('downvotes')
-# Q 2776 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes).map { |c|
-#   
-#   c.upvotes + 1 - c.downvotes
-# }.inject
-Query(Comment)
-.where("story_id = ?")
-.where(" = ?")
-.select('upvotes')
-.select('downvotes')
-# Q 2777 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes).map
-Query(Comment)
-.where("story_id = ?")
-.where(" = ?")
-.select('upvotes')
-.select('downvotes')
-# Q 2778 : # self.comments.where("user_id <> ?", self.user_id).select
-Query(Comment)
-.where("story_id = ?")
-.where(" = ?")
-# Q 2779 : # self.comments.where
-Query(Comment)
-.where("story_id = ?")
-# Q 2780 : # self.comments
-Query(Comment)
-.where("story_id = ?")
-# Q 2781 : # self.user_id
-Query(Story)
-.select('user_id')
-# Q 2782 : # @user.upvoted_stories.order("votes.id DESC")
-Query(User)
-.where("user_id = ?")
 .order('id')
 .order('id')
-# Q 2783 : # @user.upvoted_stories.order
-Query(User)
-.where("user_id = ?")
-# Q 2784 : # @user.upvoted_stories
-Query(User)
-.where("user_id = ?")
-# Q 2785 : # @user.upvoted_stories.order
-Query(User)
-.where("user_id = ?")
-# Q 2786 : # @user.upvoted_stories
-Query(User)
-.where("user_id = ?")
-# Q 2787 : # Vote.vote_thusly_on_story_or_comment_for_user_because(-1, comment.story_id, comment.id, @user.id, params[:reason])
-Query(Vote)
-
-# Q 2788 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 2789 : # comment.story_id
+.return_limit('1')
+# Q 2773 : # Story.where(:url => urls).where("is_expired = ? OR is_moderated = ?", false, true).order("id DESC")
+Query(Story)
+.where("url = ?")
+.where(" = ?")
+.order('id')
+.order('id')
+# Q 2774 : # Story.where(:url => urls).where("is_expired = ? OR is_moderated = ?", false, true).order
+Query(Story)
+.where("url = ?")
+.where(" = ?")
+# Q 2775 : # Story.where(:url => urls).where("is_expired = ? OR is_moderated = ?", false, true)
+Query(Story)
+.where("url = ?")
+.where(" = ?")
+# Q 2776 : # Story.where(:url => urls).where
+Query(Story)
+.where("url = ?")
+# Q 2777 : # Story.where(:url => urls)
+Query(Story)
+.where("url = ?")
+# Q 2778 : # Story.where(:url => urls).where("is_expired = ? OR is_moderated = ?", false, true).order("id DESC").first
+Query(Story)
+.where("url = ?")
+.where(" = ?")
+.order('id')
+.order('id')
+.return_limit('1')
+# Q 2779 : # Story.where(:url => urls).where("is_expired = ? OR is_moderated = ?", false, true).order
+Query(Story)
+.where("url = ?")
+.where(" = ?")
+# Q 2780 : # Story.where(:url => urls).where
+Query(Story)
+.where("url = ?")
+# Q 2781 : # comment.id
 Query(Comment)
-.select('story_id')
-# Q 2790 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
 
-# Q 2791 : # comment.story_id
+# Q 2782 : # comment.id
 Query(Comment)
-.select('story_id')
+
+# Q 2783 : # self.twitter_username
+Query(User)
+
+# Q 2784 : # self.twitter_username
+Query(User)
+
+# Q 2785 : # self.twitter_username
+Query(User)
+
+# Q 2786 : # self.page
+Query(Search)
+
+# Q 2787 : # self.page
+Query(Search)
+
+# Q 2788 : # @story.title
+Query(Story)
+.select('title')
+# Q 2789 : # @story.title
+Query(Story)
+.select('title')
+# Q 2790 : # @story.title
+Query(Story)
+.select('title')
+# Q 2791 : # comment.id
+Query(Comment)
+
 # Q 2792 : # comment.id
 Query(Comment)
 
 # Q 2793 : # @user.id
 Query(User)
 
-# Q 2794 : # comment.id
-Query(Comment)
-
-# Q 2795 : # @user.id
-Query(User)
-
-# Q 2796 : # user.is_moderator?
-Query(User)
-
-# Q 2797 : # user.id
-Query(User)
-
-# Q 2798 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 2799 : # user.is_moderator?
-Query(User)
-
-# Q 2800 : # user.id
-Query(User)
-
-# Q 2801 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 2802 : # @story.dup
-Query(Story)
-
-# Q 2803 : # @story.dup
-Query(Story)
-
-# Q 2804 : # @story.dup
-Query(Story)
-
-# Q 2805 : # self.check_session_token
-Query(User)
-
-# Q 2806 : # self.check_session_token
-Query(User)
-
-# Q 2807 : # self.check_session_token
-Query(User)
-
-# Q 2808 : # story.comments_count
+# Q 2794 : # @story.comments_count
 Query(Story)
 .select('comments_count')
-# Q 2809 : # Moderation.new
-Query(Moderation)
-
-# Q 2810 : # Moderation.new
-Query(Moderation)
-
-# Q 2811 : # Moderation.new
-Query(Moderation)
-
-# Q 2812 : # @story.valid?
-Query(Story)
-
-# Q 2813 : # @story.valid?
-Query(Story)
-
-# Q 2814 : # story.comments_path
-Query(Story)
-
-# Q 2815 : # story.comments_count
+# Q 2795 : # @story.comments_count
 Query(Story)
 .select('comments_count')
-# Q 2816 : # self.id
-Query(Comment)
+# Q 2796 : # @story.comments_count
+Query(Story)
+.select('comments_count')
+# Q 2797 : # @story.comments_count
+Query(Story)
+.select('comments_count')
+# Q 2798 : # story.hider_count
+Query(Story)
 
-# Q 2817 : # self.id
-Query(Comment)
+# Q 2799 : # @story.comments_count
+Query(Story)
+.select('comments_count')
+# Q 2800 : # @story.comments_count
+Query(Story)
+.select('comments_count')
+# Q 2801 : # @story.comments_count
+Query(Story)
+.select('comments_count')
+# Q 2802 : # @story.comments_count
+Query(Story)
+.select('comments_count')
+# Q 2803 : # story.hider_count
+Query(Story)
 
-# Q 2818 : # self.id
-Query(Comment)
+# Q 2804 : # Story.arel_table
+Query(Story)
 
-# Q 2819 : # self.save!
+# Q 2805 : # Story.arel_table
+Query(Story)
+
+# Q 2806 : # self.results.limit(self.per_page).offset((
+# self.page - 1) * self.per_page)
+Query(Search)
+.return_limit('')
+# Q 2807 : # self.results.limit(self.per_page).offset((
+# self.page - 1) * self.per_page)
+Query(Search)
+.return_limit('')
+# Q 2808 : # self.results.limit(self.per_page).offset
+Query(Search)
+.return_limit('')
+# Q 2809 : # self.results.limit(self.per_page)
+Query(Search)
+.return_limit('')
+# Q 2810 : # self.results.limit
+Query(Search)
+.return_limit('')
+# Q 2811 : # self.results
+Query(Search)
+
+# Q 2812 : # self.results.limit(self.per_page).offset
+Query(Search)
+.return_limit('')
+# Q 2813 : # self.results.limit
+Query(Search)
+.return_limit('')
+# Q 2814 : # self.results
+Query(Search)
+
+# Q 2815 : # Tagging.arel_table
+Query(Tagging)
+
+# Q 2816 : # Tagging.arel_table
+Query(Tagging)
+
+# Q 2817 : # stories.recent
+Query(Story)
+
+# Q 2818 : # stories.recent
+Query(Story)
+
+# Q 2819 : # story.is_saved_by_cur_user
+Query(Story)
+
+# Q 2820 : # self.per_page
+Query(Search)
+
+# Q 2821 : # self.per_page
+Query(Search)
+
+# Q 2822 : # Tagging.arel_table
+Query(Tagging)
+
+# Q 2823 : # Tagging.arel_table
+Query(Tagging)
+
+# Q 2824 : # story.short_id
+Query(Story)
+.select('short_id')
+# Q 2825 : # self.page
+Query(Search)
+
+# Q 2826 : # self.per_page
+Query(Search)
+
+# Q 2827 : # self.page
+Query(Search)
+
+# Q 2828 : # self.per_page
+Query(Search)
+
+# Q 2829 : # stories.newest
+Query(Story)
+
+# Q 2830 : # stories.newest
+Query(Story)
+
+# Q 2831 : # self.totp_secret
 Query(User)
 
-# Q 2820 : # self.save!
+# Q 2832 : # self.totp_secret
 Query(User)
 
-# Q 2821 : # self.save!
+# Q 2833 : # Story.order("id DESC").limit(100).each
+Query(Story)
+.order('id')
+.order('id')
+.return_limit('')
+# Q 2834 : # Story.order("id DESC").limit(100)
+Query(Story)
+.order('id')
+.order('id')
+.return_limit('')
+# Q 2835 : # Story.order("id DESC").limit
+Query(Story)
+.order('id')
+.order('id')
+.return_limit('')
+# Q 2836 : # Story.order("id DESC")
+Query(Story)
+.order('id')
+.order('id')
+# Q 2837 : # Story.order
+Query(Story)
+
+# Q 2838 : # Story.order("id DESC").limit(100).each
+Query(Story)
+.order('id')
+.order('id')
+.return_limit('')
+# Q 2839 : # Story.order("id DESC").limit
+Query(Story)
+.order('id')
+.order('id')
+.return_limit('')
+# Q 2840 : # Story.order
+Query(Story)
+
+# Q 2841 : # Tagging.arel_table
+Query(Tagging)
+
+# Q 2842 : # Tagging.arel_table
+Query(Tagging)
+
+# Q 2843 : # @story.user.twitter_username.present?
+Query(User)
+.where("id = ?")
+# Q 2844 : # @story.user.twitter_username
+Query(User)
+.where("id = ?")
+# Q 2845 : # @story.user
+Query(User)
+.where("id = ?")
+# Q 2846 : # if @story.user.twitter_username.present?
+#   
+#   @meta_tags["twitter:creator"] = "@" + @story.user.twitter_username
+# end
+Query(Story)
+
+# Q 2847 : # @story.user.twitter_username.present?
+Query(User)
+.where("id = ?")
+# Q 2848 : # @story.user.twitter_username
+Query(User)
+.where("id = ?")
+# Q 2849 : # @story.user
+Query(User)
+.where("id = ?")
+# Q 2850 : # User.where(:rss_token => params[:token].to_s).first
+Query(User)
+.where("rss_token = ?")
+.return_limit('1')
+# Q 2851 : # User.where(:rss_token => params[:token].to_s).first
+Query(User)
+.where("rss_token = ?")
+.return_limit('1')
+# Q 2852 : # User.where(:rss_token => params[:token].to_s)
+Query(User)
+.where("rss_token = ?")
+# Q 2853 : # User.where(:rss_token => params[:token].to_s).first
+Query(User)
+.where("rss_token = ?")
+.return_limit('1')
+# Q 2854 : # @story.user.twitter_username
+Query(User)
+.where("id = ?")
+# Q 2855 : # @story.user
+Query(User)
+.where("id = ?")
+# Q 2856 : # @story.user.twitter_username
+Query(User)
+.where("id = ?")
+# Q 2857 : # @story.user
+Query(User)
+.where("id = ?")
+# Q 2858 : # @story.user.twitter_username
+Query(User)
+.where("id = ?")
+# Q 2859 : # @story.user
+Query(User)
+.where("id = ?")
+# Q 2860 : # story.short_id
+Query(Story)
+.select('short_id')
+# Q 2861 : # self.calculated_confidence
+Query(Comment)
+
+# Q 2862 : # self.calculated_confidence
+Query(Comment)
+
+# Q 2863 : # self.calculated_confidence
+Query(Comment)
+
+# Q 2864 : # Story.find_each
+Query(Story)
+
+# Q 2865 : # Story.find_each
+Query(Story)
+
+# Q 2866 : # Message.where(:short_id => params[:message_id] || params[:id]).first
+Query(Message)
+.where("short_id = ?")
+.return_limit('1')
+# Q 2867 : # Message.where(:short_id => params[:message_id] || params[:id]).first
+Query(Message)
+.where("short_id = ?")
+.return_limit('1')
+# Q 2868 : # Message.where(:short_id => params[:message_id] || params[:id])
+Query(Message)
+.where("short_id = ?")
+# Q 2869 : # Message.where(:short_id => params[:message_id] || params[:id]).first
+Query(Message)
+.where("short_id = ?")
+.return_limit('1')
+# Q 2870 : # @user.is_moderator?
 Query(User)
 
-# Q 2822 : # self.merged_stories.map { |s|
+# Q 2871 : # self.username
+Query(User)
+.select('username')
+# Q 2872 : # self.username
+Query(User)
+.select('username')
+# Q 2873 : # Vote.story_votes_by_user_for_story_ids_hash(user.id, self.results.map { |s|
+#   
+#   s.id
+# })
+Query(Vote)
+
+# Q 2874 : # Vote.story_votes_by_user_for_story_ids_hash(user.id, self.results.map { |s|
+#   
+#   s.id
+# })
+Query(Vote)
+
+# Q 2875 : # Vote.story_votes_by_user_for_story_ids_hash
+Query(Vote)
+
+# Q 2876 : # user.id
+Query(User)
+
+# Q 2877 : # Vote.story_votes_by_user_for_story_ids_hash
+Query(Vote)
+
+# Q 2878 : # user.id
+Query(User)
+
+# Q 2879 : # @message.author_user_id
+Query(Message)
+.select('author_user_id')
+# Q 2880 : # @user.id
+Query(User)
+
+# Q 2881 : # @message.author_user_id
+Query(Message)
+.select('author_user_id')
+# Q 2882 : # @user.id
+Query(User)
+
+# Q 2883 : # story.url.present?
+Query(Story)
+.select('url')
+# Q 2884 : # story.url
+Query(Story)
+.select('url')
+# Q 2885 : # ShortId.new(self.class).generate
+Query(ShortId)
+
+# Q 2886 : # ShortId.new(self.class).generate
+Query(ShortId)
+
+# Q 2887 : # ShortId.new(self.class)
+Query(ShortId)
+
+# Q 2888 : # ShortId.new
+Query(ShortId)
+
+# Q 2889 : # self.class
+Query(Comment)
+
+# Q 2890 : # ShortId.new(self.class).generate
+Query(ShortId)
+
+# Q 2891 : # ShortId.new
+Query(ShortId)
+
+# Q 2892 : # self.class
+Query(Comment)
+
+# Q 2893 : # self.results.map
+Query(Search)
+
+# Q 2894 : # self.results
+Query(Search)
+
+# Q 2895 : # self.results.map
+Query(Search)
+
+# Q 2896 : # self.results
+Query(Search)
+
+# Q 2897 : # @message.recipient_user_id
+Query(Message)
+.select('recipient_user_id')
+# Q 2898 : # @user.id
+Query(User)
+
+# Q 2899 : # @message.recipient_user_id
+Query(Message)
+.select('recipient_user_id')
+# Q 2900 : # @user.id
+Query(User)
+
+# Q 2901 : # @user.save!
+Query(User)
+
+# Q 2902 : # @user.save!
+Query(User)
+
+# Q 2903 : # story.archive_url
+Query(Story)
+
+# Q 2904 : # self.results.each
+Query(Search)
+
+# Q 2905 : # self.results
+Query(Search)
+
+# Q 2906 : # self.results.each
+Query(Search)
+
+# Q 2907 : # self.results
+Query(Search)
+
+# Q 2908 : # self.karma
+Query(User)
+.select('karma')
+# Q 2909 : # self.karma
+Query(User)
+.select('karma')
+# Q 2910 : # self.karma
+Query(User)
+.select('karma')
+# Q 2911 : # @story.as_json(:with_comments => @comments)
+Query(Story)
+
+# Q 2912 : # @story.as_json
+Query(Story)
+
+# Q 2913 : # @story.as_json(:with_comments => @comments)
+Query(Story)
+
+# Q 2914 : # @story.as_json
+Query(Story)
+
+# Q 2915 : # @story.as_json
+Query(Story)
+
+# Q 2916 : # @user.pushover_user_key.present?
+Query(User)
+
+# Q 2917 : # @user.pushover_user_key
+Query(User)
+
+# Q 2918 : # @user.pushover_user_key.present?
+Query(User)
+
+# Q 2919 : # @user.pushover_user_key
+Query(User)
+
+# Q 2920 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, comment.story_id, comment.id, @user.id, nil)
+Query(Vote)
+
+# Q 2921 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 2922 : # comment.story_id
+Query(Comment)
+.select('story_id')
+# Q 2923 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 2924 : # comment.story_id
+Query(Comment)
+.select('story_id')
+# Q 2925 : # @user.rss_token
+Query(User)
+.select('rss_token')
+# Q 2926 : # @user.rss_token
+Query(User)
+.select('rss_token')
+# Q 2927 : # comment.id
+Query(Comment)
+
+# Q 2928 : # @user.id
+Query(User)
+
+# Q 2929 : # comment.id
+Query(Comment)
+
+# Q 2930 : # @user.id
+Query(User)
+
+# Q 2931 : # story.is_gone?
+Query(Story)
+
+# Q 2932 : # self.parent_comment_id.present?
+Query(Comment)
+.select('parent_comment_id')
+# Q 2933 : # self.parent_comment_id
+Query(Comment)
+.select('parent_comment_id')
+# Q 2934 : # self.parent_comment_id.present?
+Query(Comment)
+.select('parent_comment_id')
+# Q 2935 : # self.parent_comment_id
+Query(Comment)
+.select('parent_comment_id')
+# Q 2936 : # self.parent_comment.thread_id
+Query(Comment)
+.where("id = ?")
+.select('thread_id')
+# Q 2937 : # self.parent_comment.thread_id
+Query(Comment)
+.where("id = ?")
+.select('thread_id')
+# Q 2938 : # self.parent_comment
+Query(Comment)
+.where("id = ?")
+# Q 2939 : # self.parent_comment.thread_id
+Query(Comment)
+.where("id = ?")
+.select('thread_id')
+# Q 2940 : # self.parent_comment
+Query(Comment)
+.where("id = ?")
+# Q 2941 : # self.stories_submitted_count
+Query(User)
+
+# Q 2942 : # self.comments_posted_count
+Query(User)
+
+# Q 2943 : # self.stories_submitted_count
+Query(User)
+
+# Q 2944 : # self.comments_posted_count
+Query(User)
+
+# Q 2945 : # story.comments_path
+Query(Story)
+
+# Q 2946 : # Keystore.incremented_value_for("thread_id")
+Query(Keystore)
+
+# Q 2947 : # Keystore.incremented_value_for("thread_id")
+Query(Keystore)
+
+# Q 2948 : # Keystore.incremented_value_for
+Query(Keystore)
+
+# Q 2949 : # Keystore.incremented_value_for
+Query(Keystore)
+
+# Q 2950 : # story.comments_count
+Query(Story)
+.select('comments_count')
+# Q 2951 : # Story.connection.adapter_name.match(/mysql/i)
+Query(Story)
+
+# Q 2952 : # Story.connection.adapter_name.match
+Query(Story)
+
+# Q 2953 : # Story.connection.adapter_name
+Query(Story)
+
+# Q 2954 : # Story.connection
+Query(Story)
+
+# Q 2955 : # Story.connection.adapter_name.match
+Query(Story)
+
+# Q 2956 : # Story.connection.adapter_name
+Query(Story)
+
+# Q 2957 : # Story.connection
+Query(Story)
+
+# Q 2958 : # Vote.comment_votes_by_user_for_comment_ids_hash(user.id, self.results.map { |c|
+#   
+#   c.id
+# })
+Query(Vote)
+
+# Q 2959 : # Vote.comment_votes_by_user_for_comment_ids_hash(user.id, self.results.map { |c|
+#   
+#   c.id
+# })
+Query(Vote)
+
+# Q 2960 : # Vote.comment_votes_by_user_for_comment_ids_hash
+Query(Vote)
+
+# Q 2961 : # user.id
+Query(User)
+
+# Q 2962 : # Vote.comment_votes_by_user_for_comment_ids_hash
+Query(Vote)
+
+# Q 2963 : # user.id
+Query(User)
+
+# Q 2964 : # @story.can_have_suggestions_from_user?(@user)
+Query(Story)
+
+# Q 2965 : # @story.can_have_suggestions_from_user?
+Query(Story)
+
+# Q 2966 : # @story.can_have_suggestions_from_user?
+Query(Story)
+
+# Q 2967 : # self.results.map
+Query(Search)
+
+# Q 2968 : # self.results
+Query(Search)
+
+# Q 2969 : # self.results.map
+Query(Search)
+
+# Q 2970 : # self.results
+Query(Search)
+
+# Q 2971 : # User.transaction
+Query(User)
+
+# Q 2972 : # User.transaction
+Query(User)
+
+# Q 2973 : # @story.comments_path
+Query(Story)
+
+# Q 2974 : # @story.comments_path
+Query(Story)
+
+# Q 2975 : # story.comments_count
+Query(Story)
+.select('comments_count')
+# Q 2976 : # self.results.each
+Query(Search)
+
+# Q 2977 : # self.results
+Query(Search)
+
+# Q 2978 : # self.results.each
+Query(Search)
+
+# Q 2979 : # self.results
+Query(Search)
+
+# Q 2980 : # stories.saved
+Query(Story)
+
+# Q 2981 : # stories.saved
+Query(Story)
+
+# Q 2982 : # story.comments_count
+Query(Story)
+.select('comments_count')
+# Q 2983 : # self.url
+Query(Story)
+.select('url')
+# Q 2984 : # self.url
+Query(Story)
+.select('url')
+# Q 2985 : # @story.suggested_taggings.where(:user_id => @user.id)
+Query(SuggestedTagging)
+.where("story_id = ?")
+.where("user_id = ?")
+# Q 2986 : # @story.suggested_taggings.where(:user_id => @user.id)
+Query(SuggestedTagging)
+.where("story_id = ?")
+.where("user_id = ?")
+# Q 2987 : # @story.suggested_taggings.where
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 2988 : # @story.suggested_taggings
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 2989 : # @user.id
+Query(User)
+
+# Q 2990 : # @story.suggested_taggings.where
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 2991 : # @story.suggested_taggings
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 2992 : # @user.id
+Query(User)
+
+# Q 2993 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, comment.story_id, comment.id, @user.id, params[:reason])
+Query(Vote)
+
+# Q 2994 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 2995 : # comment.story_id
+Query(Comment)
+.select('story_id')
+# Q 2996 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 2997 : # comment.story_id
+Query(Comment)
+.select('story_id')
+# Q 2998 : # self.save!
+Query(User)
+
+# Q 2999 : # self.save!
+Query(User)
+
+# Q 3000 : # self.save!
+Query(User)
+
+# Q 3001 : # comment.id
+Query(Comment)
+
+# Q 3002 : # @user.id
+Query(User)
+
+# Q 3003 : # comment.id
+Query(Comment)
+
+# Q 3004 : # @user.id
+Query(User)
+
+# Q 3005 : # Message.new
+Query(Message)
+
+# Q 3006 : # Message.new
+Query(Message)
+
+# Q 3007 : # msg = Message.new
+Query(Message)
+
+# Q 3008 : # Message.new
+Query(Message)
+
+# Q 3009 : # @story.suggested_titles.where(:user_id => @user.id).first
+Query(SuggestedTitle)
+.where("story_id = ?")
+.where("user_id = ?")
+.return_limit('1')
+# Q 3010 : # @story.suggested_titles.where(:user_id => @user.id).first
+Query(SuggestedTitle)
+.where("story_id = ?")
+.where("user_id = ?")
+.return_limit('1')
+# Q 3011 : # @story.suggested_titles.where(:user_id => @user.id)
+Query(SuggestedTitle)
+.where("story_id = ?")
+.where("user_id = ?")
+# Q 3012 : # @story.suggested_titles.where
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 3013 : # @story.suggested_titles
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 3014 : # @user.id
+Query(User)
+
+# Q 3015 : # @story.suggested_titles.where(:user_id => @user.id).first
+Query(SuggestedTitle)
+.where("story_id = ?")
+.where("user_id = ?")
+.return_limit('1')
+# Q 3016 : # @story.suggested_titles.where
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 3017 : # @story.suggested_titles
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 3018 : # @user.id
+Query(User)
+
+# Q 3019 : # @user.rss_token
+Query(User)
+.select('rss_token')
+# Q 3020 : # @user.rss_token
+Query(User)
+.select('rss_token')
+# Q 3021 : # @user.is_admin?
+Query(User)
+
+# Q 3022 : # User.where(:session_token => session[:twofa_u]).first
+Query(User)
+.where("session_token = ?")
+.return_limit('1')
+# Q 3023 : # User.where(:session_token => session[:twofa_u])
+Query(User)
+.where("session_token = ?")
+# Q 3024 : # User.where(:session_token => session[:twofa_u]).first
+Query(User)
+.where("session_token = ?")
+.return_limit('1')
+# Q 3025 : # story.downvotes
+Query(Story)
+.select('downvotes')
+# Q 3026 : # @user.is_moderator?
+Query(User)
+
+# Q 3027 : # self.id
+Query(User)
+
+# Q 3028 : # self.id
+Query(User)
+
+# Q 3029 : # self.id
+Query(User)
+
+# Q 3030 : # story.downvotes
+Query(Story)
+.select('downvotes')
+# Q 3031 : # story.score
+Query(Story)
+
+# Q 3032 : # story.vote_summary_for(@user).downcase
+Query(Story)
+
+# Q 3033 : # story.vote_summary_for
+Query(Story)
+
+# Q 3034 : # @story.can_have_suggestions_from_user?(@user)
+Query(Story)
+
+# Q 3035 : # @story.can_have_suggestions_from_user?
+Query(Story)
+
+# Q 3036 : # @story.can_have_suggestions_from_user?
+Query(Story)
+
+# Q 3037 : # @story.comments_path
+Query(Story)
+
+# Q 3038 : # @story.comments_path
+Query(Story)
+
+# Q 3039 : # @user.username
+Query(User)
+.select('username')
+# Q 3040 : # @user.username
+Query(User)
+.select('username')
+# Q 3041 : # @user.username
+Query(User)
+.select('username')
+# Q 3042 : # @user.username
+Query(User)
+.select('username')
+# Q 3043 : # @user.username
+Query(User)
+.select('username')
+# Q 3044 : # story.comments_count
+Query(Story)
+.select('comments_count')
+# Q 3045 : # @story.dup
+Query(Story)
+
+# Q 3046 : # @story.dup
+Query(Story)
+
+# Q 3047 : # @story.dup
+Query(Story)
+
+# Q 3048 : # Moderation.new
+Query(Moderation)
+
+# Q 3049 : # Moderation.new
+Query(Moderation)
+
+# Q 3050 : # m = Moderation.new
+Query(Moderation)
+
+# Q 3051 : # Moderation.new
+Query(Moderation)
+
+# Q 3052 : # @user.can_downvote?(comment)
+Query(User)
+
+# Q 3053 : # @user.can_downvote?
+Query(User)
+
+# Q 3054 : # @user.can_downvote?
+Query(User)
+
+# Q 3055 : # story.comments_path
+Query(Story)
+
+# Q 3056 : # story.comments_count
+Query(Story)
+.select('comments_count')
+# Q 3057 : # self.tags.map { |t|
+#   
+#   t.tag
+# }.sort
+Query(Tag)
+.where("story_id = ?")
+# Q 3058 : # self.tags.map
+Query(Tag)
+.where("story_id = ?")
+# Q 3059 : # self.tags
+Query(Tag)
+.where("story_id = ?")
+# Q 3060 : # self.tags.map { |t|
+#   
+#   t.tag
+# }.sort
+Query(Tag)
+.where("story_id = ?")
+# Q 3061 : # self.tags.map
+Query(Tag)
+.where("story_id = ?")
+# Q 3062 : # self.tags
+Query(Tag)
+.where("story_id = ?")
+# Q 3063 : # self.id
+Query(User)
+
+# Q 3064 : # self.id
+Query(User)
+
+# Q 3065 : # self.id
+Query(User)
+
+# Q 3066 : # @story.valid?
+Query(Story)
+
+# Q 3067 : # @story.valid?
+Query(Story)
+
+# Q 3068 : # @user.save!
+Query(User)
+
+# Q 3069 : # @user.save!
+Query(User)
+
+# Q 3070 : # self.generated_markeddown_comment
+Query(Comment)
+
+# Q 3071 : # self.generated_markeddown_comment
+Query(Comment)
+
+# Q 3072 : # self.generated_markeddown_comment
+Query(Comment)
+
+# Q 3073 : # @story.title
+Query(Story)
+.select('title')
+# Q 3074 : # @story.title
+Query(Story)
+.select('title')
+# Q 3075 : # Vote.vote_thusly_on_story_or_comment_for_user_because(-1, comment.story_id, comment.id, @user.id, params[:reason])
+Query(Vote)
+
+# Q 3076 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 3077 : # comment.story_id
+Query(Comment)
+.select('story_id')
+# Q 3078 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 3079 : # comment.story_id
+Query(Comment)
+.select('story_id')
+# Q 3080 : # @story.save_suggested_title_for_user!(@story.title, @user)
+Query(Story)
+
+# Q 3081 : # @story.save_suggested_title_for_user!
+Query(Story)
+
+# Q 3082 : # @story.title
+Query(Story)
+.select('title')
+# Q 3083 : # @story.save_suggested_title_for_user!
+Query(Story)
+
+# Q 3084 : # @story.title
+Query(Story)
+.select('title')
+# Q 3085 : # comment.id
+Query(Comment)
+
+# Q 3086 : # @user.id
+Query(User)
+
+# Q 3087 : # comment.id
+Query(Comment)
+
+# Q 3088 : # @user.id
+Query(User)
+
+# Q 3089 : # Tag.where(:tag => params[:tag]).first!
+Query(Tag)
+.where("tag = ?")
+.return_limit('1')
+# Q 3090 : # Tag.where(:tag => params[:tag]).first!
+Query(Tag)
+.where("tag = ?")
+.return_limit('1')
+# Q 3091 : # Tag.where(:tag => params[:tag])
+Query(Tag)
+.where("tag = ?")
+# Q 3092 : # Tag.where(:tag => params[:tag]).first!
+Query(Tag)
+.where("tag = ?")
+.return_limit('1')
+# Q 3093 : # @story.tags_a.sort
+Query(Story)
+
+# Q 3094 : # @story.tags_a
+Query(Story)
+
+# Q 3095 : # @story.tags_a.sort
+Query(Story)
+
+# Q 3096 : # @story.tags_a
+Query(Story)
+
+# Q 3097 : # user.is_moderator?
+Query(User)
+
+# Q 3098 : # user.id
+Query(User)
+
+# Q 3099 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 3100 : # user.is_moderator?
+Query(User)
+
+# Q 3101 : # user.id
+Query(User)
+
+# Q 3102 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 3103 : # self.send(k)
+Query(Story)
+
+# Q 3104 : # self.send(k)
+Query(Story)
+
+# Q 3105 : # self.send
+Query(Story)
+
+# Q 3106 : # self.send(k)
+Query(Story)
+
+# Q 3107 : # self.send
+Query(Story)
+
+# Q 3108 : # self.send(k)
+Query(Story)
+
+# Q 3109 : # self.send
+Query(Story)
+
+# Q 3110 : # self.send
+Query(Story)
+
+# Q 3111 : # @story.save_suggested_tags_a_for_user!(sugtags, @user)
+Query(Story)
+
+# Q 3112 : # @story.save_suggested_tags_a_for_user!
+Query(Story)
+
+# Q 3113 : # @story.save_suggested_tags_a_for_user!
+Query(Story)
+
+# Q 3114 : # User.transaction
+Query(User)
+
+# Q 3115 : # User.transaction
+Query(User)
+
+# Q 3116 : # stories.tagged(@tag)
+Query(Story)
+
+# Q 3117 : # stories.tagged
+Query(Story)
+
+# Q 3118 : # stories.tagged
+Query(Story)
+
+# Q 3119 : # @user.rss_token
+Query(User)
+.select('rss_token')
+# Q 3120 : # @user.rss_token
+Query(User)
+.select('rss_token')
+# Q 3121 : # Moderation.new
+Query(Moderation)
+
+# Q 3122 : # Moderation.new
+Query(Moderation)
+
+# Q 3123 : # Moderation.new
+Query(Moderation)
+
+# Q 3124 : # self.send(k.values.first)
+Query(Story)
+
+# Q 3125 : # self.send(k.values.first)
+Query(Story)
+
+# Q 3126 : # self.send
+Query(Story)
+
+# Q 3127 : # self.send(k.values.first)
+Query(Story)
+
+# Q 3128 : # self.send
+Query(Story)
+
+# Q 3129 : # self.send(k.values.first)
+Query(Story)
+
+# Q 3130 : # self.send
+Query(Story)
+
+# Q 3131 : # self.send(k.values.first)
+Query(Story)
+
+# Q 3132 : # self.send
+Query(Story)
+
+# Q 3133 : # self.send
+Query(Story)
+
+# Q 3134 : # @user.save!
+Query(User)
+
+# Q 3135 : # @user.save!
+Query(User)
+
+# Q 3136 : # self.id
+Query(Comment)
+
+# Q 3137 : # self.id
+Query(Comment)
+
+# Q 3138 : # self.id
+Query(Comment)
+
+# Q 3139 : # @tag.description.blank?
+Query(Tag)
+.select('description')
+# Q 3140 : # @tag.description
+Query(Tag)
+.select('description')
+# Q 3141 : # @tag.tag
+Query(Tag)
+.select('tag')
+# Q 3142 : # @tag.description
+Query(Tag)
+.select('description')
+# Q 3143 : # @tag.description.blank?
+Query(Tag)
+.select('description')
+# Q 3144 : # @tag.description
+Query(Tag)
+.select('description')
+# Q 3145 : # @tag.tag
+Query(Tag)
+.select('tag')
+# Q 3146 : # @tag.description
+Query(Tag)
+.select('description')
+# Q 3147 : # user.id
+Query(User)
+
+# Q 3148 : # user.id
+Query(User)
+
+# Q 3149 : # user.id
+Query(User)
+
+# Q 3150 : # @story.reload
+Query(Story)
+
+# Q 3151 : # @story.reload
+Query(Story)
+
+# Q 3152 : # @story.reload
+Query(Story)
+
+# Q 3153 : # @tag.tag
+Query(Tag)
+.select('tag')
+# Q 3154 : # @tag.tag
+Query(Tag)
+.select('tag')
+# Q 3155 : # self.delete!
+Query(User)
+
+# Q 3156 : # self.delete!
+Query(User)
+
+# Q 3157 : # self.delete!
+Query(User)
+
+# Q 3158 : # @tag.tag
+Query(Tag)
+.select('tag')
+# Q 3159 : # @tag.description
+Query(Tag)
+.select('description')
+# Q 3160 : # @tag.tag
+Query(Tag)
+.select('tag')
+# Q 3161 : # @tag.description
+Query(Tag)
+.select('description')
+# Q 3162 : # @tag.tag
+Query(Tag)
+.select('tag')
+# Q 3163 : # @tag.tag
+Query(Tag)
+.select('tag')
+# Q 3164 : # Moderation.new
+Query(Moderation)
+
+# Q 3165 : # Moderation.new
+Query(Moderation)
+
+# Q 3166 : # m = Moderation.new
+Query(Moderation)
+
+# Q 3167 : # Moderation.new
+Query(Moderation)
+
+# Q 3168 : # self.id
+Query(User)
+
+# Q 3169 : # self.id
+Query(User)
+
+# Q 3170 : # self.id
+Query(User)
+
+# Q 3171 : # self.calculated_hotness
+Query(Story)
+
+# Q 3172 : # self.calculated_hotness
+Query(Story)
+
+# Q 3173 : # self.calculated_hotness
+Query(Story)
+
+# Q 3174 : # self.save(:validate => false)
+Query(Comment)
+
+# Q 3175 : # self.save
+Query(Comment)
+
+# Q 3176 : # self.save
+Query(Comment)
+
+# Q 3177 : # @story.is_editable_by_user?(@user)
+Query(Story)
+
+# Q 3178 : # @story.is_editable_by_user?
+Query(Story)
+
+# Q 3179 : # @story.is_editable_by_user?
+Query(Story)
+
+# Q 3180 : # Comment.where(:is_deleted => false, :is_moderated => false).order("id DESC").offset((
+# @page - 1) * COMMENTS_PER_PAGE).limit(COMMENTS_PER_PAGE).includes(:user, :story)
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+.order('id')
+.order('id')
+.return_limit('')
+.includes('user')
+.includes('story')
+# Q 3181 : # Comment.where(:is_deleted => false, :is_moderated => false).order("id DESC").offset((
+# @page - 1) * COMMENTS_PER_PAGE).limit(COMMENTS_PER_PAGE).includes(:user, :story)
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+.order('id')
+.order('id')
+.return_limit('')
+.includes('user')
+.includes('story')
+# Q 3182 : # Comment.where(:is_deleted => false, :is_moderated => false).order("id DESC").offset((
+# @page - 1) * COMMENTS_PER_PAGE).limit(COMMENTS_PER_PAGE).includes
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+.order('id')
+.order('id')
+.return_limit('')
+# Q 3183 : # Comment.where(:is_deleted => false, :is_moderated => false).order("id DESC").offset((
+# @page - 1) * COMMENTS_PER_PAGE).limit(COMMENTS_PER_PAGE)
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+.order('id')
+.order('id')
+.return_limit('')
+# Q 3184 : # Comment.where(:is_deleted => false, :is_moderated => false).order("id DESC").offset((
+# @page - 1) * COMMENTS_PER_PAGE).limit
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+.order('id')
+.order('id')
+.return_limit('')
+# Q 3185 : # Comment.where(:is_deleted => false, :is_moderated => false).order("id DESC").offset((
+# @page - 1) * COMMENTS_PER_PAGE)
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+.order('id')
+.order('id')
+# Q 3186 : # Comment.where(:is_deleted => false, :is_moderated => false).order("id DESC").offset
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+.order('id')
+.order('id')
+# Q 3187 : # Comment.where(:is_deleted => false, :is_moderated => false).order("id DESC")
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+.order('id')
+.order('id')
+# Q 3188 : # Comment.where(:is_deleted => false, :is_moderated => false).order
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+# Q 3189 : # Comment.where(:is_deleted => false, :is_moderated => false)
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+# Q 3190 : # Comment.where(:is_deleted => false, :is_moderated => false).order("id DESC").offset((
+# @page - 1) * COMMENTS_PER_PAGE).limit(COMMENTS_PER_PAGE).includes
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+.order('id')
+.order('id')
+.return_limit('')
+# Q 3191 : # Comment.where(:is_deleted => false, :is_moderated => false).order("id DESC").offset((
+# @page - 1) * COMMENTS_PER_PAGE).limit
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+.order('id')
+.order('id')
+.return_limit('')
+# Q 3192 : # Comment.where(:is_deleted => false, :is_moderated => false).order("id DESC").offset
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+.order('id')
+.order('id')
+# Q 3193 : # Comment.where(:is_deleted => false, :is_moderated => false).order
+Query(Comment)
+.where("is_deleted = ?")
+.where("is_moderated = ?")
+# Q 3194 : # @story.is_undeletable_by_user?(@user)
+Query(Story)
+
+# Q 3195 : # @story.is_undeletable_by_user?
+Query(Story)
+
+# Q 3196 : # @story.is_undeletable_by_user?
+Query(Story)
+
+# Q 3197 : # self.story.update_comments_count!
+Query(Story)
+.where("id = ?")
+# Q 3198 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3199 : # self.story.update_comments_count!
+Query(Story)
+.where("id = ?")
+# Q 3200 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3201 : # ShortId.new(self.class).generate
+Query(ShortId)
+
+# Q 3202 : # ShortId.new(self.class).generate
+Query(ShortId)
+
+# Q 3203 : # ShortId.new(self.class)
+Query(ShortId)
+
+# Q 3204 : # ShortId.new
+Query(ShortId)
+
+# Q 3205 : # self.class
+Query(Story)
+
+# Q 3206 : # ShortId.new(self.class).generate
+Query(ShortId)
+
+# Q 3207 : # ShortId.new
+Query(ShortId)
+
+# Q 3208 : # self.class
+Query(Story)
+
+# Q 3209 : # self.user.update_comments_posted_count!
+Query(User)
+.where("id = ?")
+# Q 3210 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3211 : # self.user.update_comments_posted_count!
+Query(User)
+.where("id = ?")
+# Q 3212 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3213 : # self.plaintext_comment.scan(/\B\@([\w\-]+)/).flatten.uniq.each
+Query(Comment)
+.distinct('')
+# Q 3214 : # self.plaintext_comment.scan(/\B\@([\w\-]+)/).flatten.uniq
+Query(Comment)
+.distinct('')
+# Q 3215 : # self.plaintext_comment.scan(/\B\@([\w\-]+)/).flatten
+Query(Comment)
+
+# Q 3216 : # self.plaintext_comment.scan(/\B\@([\w\-]+)/)
+Query(Comment)
+
+# Q 3217 : # self.plaintext_comment.scan
+Query(Comment)
+
+# Q 3218 : # self.plaintext_comment
+Query(Comment)
+
+# Q 3219 : # self.plaintext_comment.scan(/\B\@([\w\-]+)/).flatten.uniq.each
+Query(Comment)
+.distinct('')
+# Q 3220 : # self.plaintext_comment.scan(/\B\@([\w\-]+)/).flatten.uniq
+Query(Comment)
+.distinct('')
+# Q 3221 : # self.plaintext_comment.scan(/\B\@([\w\-]+)/).flatten
+Query(Comment)
+
+# Q 3222 : # self.plaintext_comment.scan
+Query(Comment)
+
+# Q 3223 : # self.plaintext_comment
+Query(Comment)
+
+# Q 3224 : # @story.save(:validate => false)
+Query(Story)
+
+# Q 3225 : # @story.save
+Query(Story)
+
+# Q 3226 : # @story.save
+Query(Story)
+
+# Q 3227 : # User.where(:username => mention).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 3228 : # User.where(:username => mention).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 3229 : # User.where(:username => mention)
+Query(User)
+.where("username = ?")
+# Q 3230 : # User.where(:username => mention).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 3231 : # User.where(:username => mention)
+Query(User)
+.where("username = ?")
+# Q 3232 : # User.where(:username => mention).first
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 3233 : # self.user.id
+Query(User)
+.where("id = ?")
+# Q 3234 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3235 : # self.user.id
+Query(User)
+.where("id = ?")
+# Q 3236 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3237 : # self.user.id
+Query(User)
+.where("id = ?")
+# Q 3238 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3239 : # self.user.id
+Query(User)
+.where("id = ?")
+# Q 3240 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3241 : # self.tags.map { |t|
+#   
+#   t.hotness_mod
+# }.sum
+Query(Tag)
+.where("story_id = ?")
+# Q 3242 : # self.tags.map
+Query(Tag)
+.where("story_id = ?")
+# Q 3243 : # self.tags
+Query(Tag)
+.where("story_id = ?")
+# Q 3244 : # self.user_is_author
+Query(Story)
+.select('user_is_author')
+# Q 3245 : # self.tags.map { |t|
+#   
+#   t.hotness_mod
+# }.sum
+Query(Tag)
+.where("story_id = ?")
+# Q 3246 : # self.tags.map
+Query(Tag)
+.where("story_id = ?")
+# Q 3247 : # self.tags
+Query(Tag)
+.where("story_id = ?")
+# Q 3248 : # self.user_is_author
+Query(Story)
+.select('user_is_author')
+# Q 3249 : # @story.comments_path
+Query(Story)
+
+# Q 3250 : # @story.comments_path
+Query(Story)
+
+# Q 3251 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes).map { |c|
+#   
+#   if base < 0
+#     
+#     c.downvotes * -0.5
+#   else
+#     
+#     c.upvotes + 1 - c.downvotes
+#   end
+# }.inject(&:+).to_f
+Query(Comment)
+.where("story_id = ?")
+.where(" = ?")
+.select('upvotes')
+.select('downvotes')
+# Q 3252 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes).map { |c|
+#   
+#   if base < 0
+#     
+#     c.downvotes * -0.5
+#   else
+#     
+#     c.upvotes + 1 - c.downvotes
+#   end
+# }.inject(&:+)
+Query(Comment)
+.where("story_id = ?")
+.where(" = ?")
+.select('upvotes')
+.select('downvotes')
+# Q 3253 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes).map { |c|
+#   
+#   if base < 0
+#     
+#     c.downvotes * -0.5
+#   else
+#     
+#     c.upvotes + 1 - c.downvotes
+#   end
+# }.inject
+Query(Comment)
+.where("story_id = ?")
+.where(" = ?")
+.select('upvotes')
+.select('downvotes')
+# Q 3254 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes).map
+Query(Comment)
+.where("story_id = ?")
+.where(" = ?")
+.select('upvotes')
+.select('downvotes')
+# Q 3255 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes)
+Query(Comment)
+.where("story_id = ?")
+.where(" = ?")
+.select('upvotes')
+.select('downvotes')
+# Q 3256 : # self.comments.where("user_id <> ?", self.user_id).select
+Query(Comment)
+.where("story_id = ?")
+.where(" = ?")
+# Q 3257 : # self.comments.where("user_id <> ?", self.user_id)
+Query(Comment)
+.where("story_id = ?")
+.where(" = ?")
+# Q 3258 : # self.comments.where
+Query(Comment)
+.where("story_id = ?")
+# Q 3259 : # self.comments
+Query(Comment)
+.where("story_id = ?")
+# Q 3260 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes).map { |c|
+#   
+#   if base < 0
+#     
+#     c.downvotes * -0.5
+#   else
+#     
+#     c.upvotes + 1 - c.downvotes
+#   end
+# }.inject(&:+).to_f
+Query(Comment)
+.where("story_id = ?")
+.where(" = ?")
+.select('upvotes')
+.select('downvotes')
+# Q 3261 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes).map { |c|
+#   
+#   if base < 0
+#     
+#     c.downvotes * -0.5
+#   else
+#     
+#     c.upvotes + 1 - c.downvotes
+#   end
+# }.inject
+Query(Comment)
+.where("story_id = ?")
+.where(" = ?")
+.select('upvotes')
+.select('downvotes')
+# Q 3262 : # self.comments.where("user_id <> ?", self.user_id).select(:upvotes, :downvotes).map
+Query(Comment)
+.where("story_id = ?")
+.where(" = ?")
+.select('upvotes')
+.select('downvotes')
+# Q 3263 : # self.comments.where("user_id <> ?", self.user_id).select
+Query(Comment)
+.where("story_id = ?")
+.where(" = ?")
+# Q 3264 : # self.comments.where
+Query(Comment)
+.where("story_id = ?")
+# Q 3265 : # self.comments
+Query(Comment)
+.where("story_id = ?")
+# Q 3266 : # @user.save!
+Query(User)
+
+# Q 3267 : # @user.save!
+Query(User)
+
+# Q 3268 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 3269 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 3270 : # @story.is_editable_by_user?(@user)
+Query(Story)
+
+# Q 3271 : # @story.is_editable_by_user?
+Query(Story)
+
+# Q 3272 : # @story.is_editable_by_user?
+Query(Story)
+
+# Q 3273 : # @user.id
+Query(User)
+
+# Q 3274 : # @user.id
+Query(User)
+
+# Q 3275 : # stories.top(length)
+Query(Story)
+
+# Q 3276 : # stories.top
+Query(Story)
+
+# Q 3277 : # stories.top
+Query(Story)
+
+# Q 3278 : # Vote.comment_votes_by_user_for_comment_ids_hash(@user.id, @comments.map { |c|
+#   
+#   c.id
+# })
+Query(Vote)
+
+# Q 3279 : # Vote.comment_votes_by_user_for_comment_ids_hash(@user.id, @comments.map { |c|
+#   
+#   c.id
+# })
+Query(Vote)
+
+# Q 3280 : # Vote.comment_votes_by_user_for_comment_ids_hash
+Query(Vote)
+
+# Q 3281 : # @user.id
+Query(User)
+
+# Q 3282 : # @comments.map
+Query(Comment)
+
+# Q 3283 : # Vote.comment_votes_by_user_for_comment_ids_hash
+Query(Vote)
+
+# Q 3284 : # @user.id
+Query(User)
+
+# Q 3285 : # @comments.map
+Query(Comment)
+
+# Q 3286 : # @comments.each
+Query(Comment)
+
+# Q 3287 : # @comments.each
+Query(Comment)
+
+# Q 3288 : # self.is_new?
+Query(User)
+
+# Q 3289 : # self.karma
+Query(User)
+.select('karma')
+# Q 3290 : # self.is_new?
+Query(User)
+
+# Q 3291 : # self.karma
+Query(User)
+.select('karma')
+# Q 3292 : # @story.url_is_editable_by_user?(@user)
+Query(Story)
+
+# Q 3293 : # @story.url_is_editable_by_user?
+Query(Story)
+
+# Q 3294 : # @story.url_is_editable_by_user?
+Query(Story)
+
+# Q 3295 : # self.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 3296 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3297 : # self.story.title
+Query(Story)
+.where("id = ?")
+.select('title')
+# Q 3298 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3299 : # self.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 3300 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3301 : # self.story.title
+Query(Story)
+.where("id = ?")
+.select('title')
+# Q 3302 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3303 : # self.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 3304 : # self.story.title
+Query(Story)
+.where("id = ?")
+.select('title')
+# Q 3305 : # self.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 3306 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3307 : # self.story.title
+Query(Story)
+.where("id = ?")
+.select('title')
+# Q 3308 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3309 : # self.plaintext_comment
+Query(Comment)
+
+# Q 3310 : # self.plaintext_comment
+Query(Comment)
+
+# Q 3311 : # self.plaintext_comment
+Query(Comment)
+
+# Q 3312 : # @user.save!
+Query(User)
+
+# Q 3313 : # @user.save!
+Query(User)
+
+# Q 3314 : # self.url
+Query(Comment)
+
+# Q 3315 : # self.url
+Query(Comment)
+
+# Q 3316 : # self.url
+Query(Comment)
+
+# Q 3317 : # self.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 3318 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3319 : # self.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 3320 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3321 : # self.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 3322 : # self.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 3323 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3324 : # self.can_submit_stories?
+Query(User)
+
+# Q 3325 : # self.can_submit_stories?
+Query(User)
+
+# Q 3326 : # self.merged_stories.map { |s|
 #   
 #   s.score
 # }.inject(&:+).to_f
 Query(Story)
 .where("story_id = ?")
-# Q 2823 : # self.merged_stories.map { |s|
+# Q 3327 : # self.merged_stories.map { |s|
 #   
 #   s.score
 # }.inject(&:+)
 Query(Story)
 .where("story_id = ?")
-# Q 2824 : # self.merged_stories.map { |s|
+# Q 3328 : # self.merged_stories.map { |s|
 #   
 #   s.score
 # }.inject
 Query(Story)
 .where("story_id = ?")
-# Q 2825 : # self.merged_stories.map
+# Q 3329 : # self.merged_stories.map
 Query(Story)
 .where("story_id = ?")
-# Q 2826 : # self.merged_stories
+# Q 3330 : # self.merged_stories
 Query(Story)
 .where("story_id = ?")
-# Q 2827 : # self.merged_stories.map { |s|
+# Q 3331 : # self.merged_stories.map { |s|
 #   
 #   s.score
 # }.inject(&:+).to_f
 Query(Story)
 .where("story_id = ?")
-# Q 2828 : # self.merged_stories.map { |s|
+# Q 3332 : # self.merged_stories.map { |s|
 #   
 #   s.score
 # }.inject
 Query(Story)
 .where("story_id = ?")
-# Q 2829 : # self.merged_stories.map
+# Q 3333 : # self.merged_stories.map
 Query(Story)
 .where("story_id = ?")
-# Q 2830 : # self.merged_stories
+# Q 3334 : # self.merged_stories
 Query(Story)
 .where("story_id = ?")
-# Q 2831 : # user.id
-Query(User)
-
-# Q 2832 : # user.id
-Query(User)
-
-# Q 2833 : # user.id
-Query(User)
-
-# Q 2834 : # @story.title
-Query(Story)
-.select('title')
-# Q 2835 : # @story.title
-Query(Story)
-.select('title')
-# Q 2836 : # @user.rss_token
-Query(User)
-.select('rss_token')
-# Q 2837 : # @user.rss_token
-Query(User)
-.select('rss_token')
-# Q 2838 : # @story.save_suggested_title_for_user!(@story.title, @user)
+# Q 3335 : # @story.save
 Query(Story)
 
-# Q 2839 : # @story.save_suggested_title_for_user!
+# Q 3336 : # @story.save
 Query(Story)
 
-# Q 2840 : # @story.title
-Query(Story)
-.select('title')
-# Q 2841 : # @story.save_suggested_title_for_user!
+# Q 3337 : # @story.comments_path
 Query(Story)
 
-# Q 2842 : # @story.title
+# Q 3338 : # @story.comments_path
 Query(Story)
-.select('title')
-# Q 2843 : # @user.rss_token
+
+# Q 3339 : # @user.username
 Query(User)
-.select('rss_token')
-# Q 2844 : # @user.rss_token
+.select('username')
+# Q 3340 : # @user.username
 Query(User)
-.select('rss_token')
-# Q 2845 : # User.transaction
+.select('username')
+# Q 3341 : # @user.username
+Query(User)
+.select('username')
+# Q 3342 : # @user.username
+Query(User)
+.select('username')
+# Q 3343 : # @user.username
+Query(User)
+.select('username')
+# Q 3344 : # self.is_new?
 Query(User)
 
-# Q 2846 : # User.transaction
+# Q 3345 : # self.karma
+Query(User)
+.select('karma')
+# Q 3346 : # self.is_new?
 Query(User)
 
-# Q 2847 : # self.comments.each
-Query(Comment)
+# Q 3347 : # self.karma
+Query(User)
+.select('karma')
+# Q 3348 : # self.upvotes
+Query(Story)
+.select('upvotes')
+# Q 3349 : # self.upvotes
+Query(Story)
+.select('upvotes')
+# Q 3350 : # @user.upvoted_stories.order("votes.id DESC")
+Query(User)
 .where("user_id = ?")
-# Q 2848 : # self.comments
-Query(Comment)
+.order('id')
+.order('id')
+# Q 3351 : # @user.upvoted_stories.order
+Query(User)
 .where("user_id = ?")
-# Q 2849 : # self.comments.each { |c|
+# Q 3352 : # @user.upvoted_stories
+Query(User)
+.where("user_id = ?")
+# Q 3353 : # @user.upvoted_stories.order
+Query(User)
+.where("user_id = ?")
+# Q 3354 : # @user.upvoted_stories
+Query(User)
+.where("user_id = ?")
+# Q 3355 : # self.upvotes
+Query(Story)
+.select('upvotes')
+# Q 3356 : # self.upvotes
+Query(Story)
+.select('upvotes')
+# Q 3357 : # self.upvotes
+Query(Story)
+.select('upvotes')
+# Q 3358 : # self.parent_comment_id
+Query(Comment)
+.select('parent_comment_id')
+# Q 3359 : # self.parent_comment_id
+Query(Comment)
+.select('parent_comment_id')
+# Q 3360 : # self.is_moderator?
+Query(User)
+
+# Q 3361 : # self.is_moderator?
+Query(User)
+
+# Q 3362 : # self.parent_comment.try(:user)
+Query(Comment)
+.where("id = ?")
+.select('user')
+# Q 3363 : # self.parent_comment.try(:user)
+Query(Comment)
+.where("id = ?")
+.select('user')
+# Q 3364 : # self.parent_comment.try
+Query(Comment)
+.where("id = ?")
+# Q 3365 : # self.parent_comment
+Query(Comment)
+.where("id = ?")
+# Q 3366 : # self.parent_comment.try
+Query(Comment)
+.where("id = ?")
+# Q 3367 : # self.parent_comment
+Query(Comment)
+.where("id = ?")
+# Q 3368 : # self.karma
+Query(User)
+.select('karma')
+# Q 3369 : # self.karma
+Query(User)
+.select('karma')
+# Q 3370 : # self.user.id
+Query(User)
+.where("id = ?")
+# Q 3371 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3372 : # self.user.id
+Query(User)
+.where("id = ?")
+# Q 3373 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3374 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, story.id, nil, @user.id, nil)
+Query(Vote)
+
+# Q 3375 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 3376 : # story.id
+Query(Story)
+
+# Q 3377 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 3378 : # story.id
+Query(Story)
+
+# Q 3379 : # @user.rss_token
+Query(User)
+.select('rss_token')
+# Q 3380 : # @user.rss_token
+Query(User)
+.select('rss_token')
+# Q 3381 : # User.where(:username => params[:user]).first!
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 3382 : # User.where(:username => params[:user]).first!
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 3383 : # User.where(:username => params[:user])
+Query(User)
+.where("username = ?")
+# Q 3384 : # User.where(:username => params[:user]).first!
+Query(User)
+.where("username = ?")
+.return_limit('1')
+# Q 3385 : # self.karma
+Query(User)
+.select('karma')
+# Q 3386 : # self.karma
+Query(User)
+.select('karma')
+# Q 3387 : # @user.id
+Query(User)
+
+# Q 3388 : # @user.id
+Query(User)
+
+# Q 3389 : # self.session_token.blank?
+Query(User)
+.select('session_token')
+# Q 3390 : # self.session_token
+Query(User)
+.select('session_token')
+# Q 3391 : # self.session_token.blank?
+Query(User)
+.select('session_token')
+# Q 3392 : # self.session_token
+Query(User)
+.select('session_token')
+# Q 3393 : # self.created_at
+Query(Story)
+.select('created_at')
+# Q 3394 : # self.created_at
+Query(Story)
+.select('created_at')
+# Q 3395 : # @user.username
+Query(User)
+.select('username')
+# Q 3396 : # @user.username
+Query(User)
+.select('username')
+# Q 3397 : # @user.username
+Query(User)
+.select('username')
+# Q 3398 : # @user.username
+Query(User)
+.select('username')
+# Q 3399 : # @user.username
+Query(User)
+.select('username')
+# Q 3400 : # self.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 3401 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3402 : # self.story.title
+Query(Story)
+.where("id = ?")
+.select('title')
+# Q 3403 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3404 : # self.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 3405 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3406 : # self.story.title
+Query(Story)
+.where("id = ?")
+.select('title')
+# Q 3407 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3408 : # self.plaintext_comment
+Query(Comment)
+
+# Q 3409 : # self.plaintext_comment
+Query(Comment)
+
+# Q 3410 : # self.mailing_list_token.blank?
+Query(User)
+.select('mailing_list_token')
+# Q 3411 : # self.mailing_list_token
+Query(User)
+.select('mailing_list_token')
+# Q 3412 : # self.mailing_list_token.blank?
+Query(User)
+.select('mailing_list_token')
+# Q 3413 : # self.mailing_list_token
+Query(User)
+.select('mailing_list_token')
+# Q 3414 : # user.is_moderator?
+Query(User)
+
+# Q 3415 : # user.id
+Query(User)
+
+# Q 3416 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 3417 : # user.is_moderator?
+Query(User)
+
+# Q 3418 : # user.id
+Query(User)
+
+# Q 3419 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 3420 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, story.id, nil, @user.id, nil)
+Query(Vote)
+
+# Q 3421 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 3422 : # story.id
+Query(Story)
+
+# Q 3423 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 3424 : # story.id
+Query(Story)
+
+# Q 3425 : # self.url
+Query(Comment)
+
+# Q 3426 : # self.url
+Query(Comment)
+
+# Q 3427 : # @user.id
+Query(User)
+
+# Q 3428 : # @user.id
+Query(User)
+
+# Q 3429 : # self.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 3430 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3431 : # self.user.username
+Query(User)
+.where("id = ?")
+.select('username')
+# Q 3432 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3433 : # @user.id
+Query(User)
+
+# Q 3434 : # @user.id
+Query(User)
+
+# Q 3435 : # Comment.where(:thread_id => thread_ids).includes(:user, :story, :hat, :votes => :user).arrange_for_user(@user)
+Query(Vote)
+.where("thread_id = ?")
+.includes('user')
+.includes('story')
+.includes('hat')
+.includes('votes')
+.includes('user')
+# Q 3436 : # Comment.where(:thread_id => thread_ids).includes(:user, :story, :hat, :votes => :user).arrange_for_user(@user)
+Query(Vote)
+.where("thread_id = ?")
+.includes('user')
+.includes('story')
+.includes('hat')
+.includes('votes')
+.includes('user')
+# Q 3437 : # Comment.where(:thread_id => thread_ids).includes(:user, :story, :hat, :votes => :user).arrange_for_user
+Query(Vote)
+.where("thread_id = ?")
+.includes('user')
+.includes('story')
+.includes('hat')
+.includes('votes')
+.includes('user')
+# Q 3438 : # Comment.where(:thread_id => thread_ids).includes(:user, :story, :hat, :votes => :user)
+Query(Vote)
+.where("thread_id = ?")
+.includes('user')
+.includes('story')
+.includes('hat')
+.includes('votes')
+.includes('user')
+# Q 3439 : # Comment.where(:thread_id => thread_ids).includes
+Query(Comment)
+.where("thread_id = ?")
+# Q 3440 : # Comment.where(:thread_id => thread_ids)
+Query(Comment)
+.where("thread_id = ?")
+# Q 3441 : # Comment.where(:thread_id => thread_ids).includes(:user, :story, :hat, :votes => :user).arrange_for_user
+Query(Vote)
+.where("thread_id = ?")
+.includes('user')
+.includes('story')
+.includes('hat')
+.includes('votes')
+.includes('user')
+# Q 3442 : # Comment.where(:thread_id => thread_ids).includes
+Query(Comment)
+.where("thread_id = ?")
+# Q 3443 : # self.rss_token.blank?
+Query(User)
+.select('rss_token')
+# Q 3444 : # self.rss_token
+Query(User)
+.select('rss_token')
+# Q 3445 : # self.rss_token.blank?
+Query(User)
+.select('rss_token')
+# Q 3446 : # self.rss_token
+Query(User)
+.select('rss_token')
+# Q 3447 : # user.id
+Query(User)
+
+# Q 3448 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 3449 : # user.can_offer_suggestions?
+Query(User)
+
+# Q 3450 : # user.id
+Query(User)
+
+# Q 3451 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 3452 : # user.can_offer_suggestions?
+Query(User)
+
+# Q 3453 : # self.comment
+Query(Comment)
+.select('comment')
+# Q 3454 : # self.comment
+Query(Comment)
+.select('comment')
+# Q 3455 : # @user.tag_filters.map
+Query(TagFilter)
+.where("user_id = ?")
+# Q 3456 : # @user.tag_filters
+Query(TagFilter)
+.where("user_id = ?")
+# Q 3457 : # @user.tag_filters.map
+Query(TagFilter)
+.where("user_id = ?")
+# Q 3458 : # @user.tag_filters
+Query(TagFilter)
+.where("user_id = ?")
+# Q 3459 : # Keystore.value_for
+Query(Keystore)
+
+# Q 3460 : # self.id
+Query(User)
+
+# Q 3461 : # Keystore.value_for
+Query(Keystore)
+
+# Q 3462 : # self.id
+Query(User)
+
+# Q 3463 : # self.taggings.select { |t|
 #   
-#   c.undelete_for_user(self)
+#   t.tag && t.tag.privileged?
+# }.any?
+Query(Tagging)
+.where("story_id = ?")
+# Q 3464 : # self.taggings.select
+Query(Tagging)
+.where("story_id = ?")
+# Q 3465 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 3466 : # self.taggings.select { |t|
+#   
+#   t.tag && t.tag.privileged?
+# }.any?
+Query(Tagging)
+.where("story_id = ?")
+# Q 3467 : # self.taggings.select
+Query(Tagging)
+.where("story_id = ?")
+# Q 3468 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 3469 : # comments.group_by(&:thread_id)
+Query(Comment)
+
+# Q 3470 : # comments.group_by(&:thread_id)
+Query(Comment)
+
+# Q 3471 : # comments.group_by
+Query(Comment)
+
+# Q 3472 : # comments.group_by
+Query(Comment)
+
+# Q 3473 : # @user.can_downvote?(story)
+Query(User)
+
+# Q 3474 : # @user.can_downvote?
+Query(User)
+
+# Q 3475 : # @user.can_downvote?
+Query(User)
+
+# Q 3476 : # Comment.connection.execute
+Query(Comment)
+
+# Q 3477 : # Comment.connection
+Query(Comment)
+
+# Q 3478 : # Comment.table_name
+Query(Comment)
+
+# Q 3479 : # Comment.connection.execute
+Query(Comment)
+
+# Q 3480 : # Comment.connection
+Query(Comment)
+
+# Q 3481 : # Comment.table_name
+Query(Comment)
+
+# Q 3482 : # StoryRepository.new(@user, exclude_tags: filtered_tag_ids)
+Query(StoryRepository)
+
+# Q 3483 : # StoryRepository.new
+Query(StoryRepository)
+
+# Q 3484 : # StoryRepository.new
+Query(StoryRepository)
+
+# Q 3485 : # Vote.comment_votes_by_user_for_story_hash(@user.id, comments.map(&:story_id).uniq)
+Query(Vote)
+
+# Q 3486 : # Vote.comment_votes_by_user_for_story_hash(@user.id, comments.map(&:story_id).uniq)
+Query(Vote)
+
+# Q 3487 : # Vote.comment_votes_by_user_for_story_hash
+Query(Vote)
+
+# Q 3488 : # @user.id
+Query(User)
+
+# Q 3489 : # Vote.comment_votes_by_user_for_story_hash
+Query(Vote)
+
+# Q 3490 : # @user.id
+Query(User)
+
+# Q 3491 : # self.email.strip.downcase
+Query(User)
+.select('email')
+# Q 3492 : # self.email.strip
+Query(User)
+.select('email')
+# Q 3493 : # self.email
+Query(User)
+.select('email')
+# Q 3494 : # self.email.strip.downcase
+Query(User)
+.select('email')
+# Q 3495 : # self.email.strip
+Query(User)
+.select('email')
+# Q 3496 : # self.email
+Query(User)
+.select('email')
+# Q 3497 : # comments.map(&:story_id).uniq
+Query(Comment)
+.distinct('')
+# Q 3498 : # comments.map(&:story_id)
+Query(Comment)
+
+# Q 3499 : # comments.map
+Query(Comment)
+
+# Q 3500 : # comments.map(&:story_id).uniq
+Query(Comment)
+.distinct('')
+# Q 3501 : # comments.map
+Query(Comment)
+
+# Q 3502 : # self.calculated_confidence
+Query(Comment)
+
+# Q 3503 : # self.calculated_confidence
+Query(Comment)
+
+# Q 3504 : # Vote.vote_thusly_on_story_or_comment_for_user_because(-1, story.id, nil, @user.id, params[:reason])
+Query(Vote)
+
+# Q 3505 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 3506 : # story.id
+Query(Story)
+
+# Q 3507 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 3508 : # story.id
+Query(Story)
+
+# Q 3509 : # comments.each
+Query(Comment)
+
+# Q 3510 : # comments.each
+Query(Comment)
+
+# Q 3511 : # self.id.to_i
+Query(Comment)
+
+# Q 3512 : # self.id
+Query(Comment)
+
+# Q 3513 : # self.id.to_i
+Query(Comment)
+
+# Q 3514 : # self.id
+Query(Comment)
+
+# Q 3515 : # @user.id
+Query(User)
+
+# Q 3516 : # @user.id
+Query(User)
+
+# Q 3517 : # self.story.recalculate_hotness!
+Query(Story)
+.where("id = ?")
+# Q 3518 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3519 : # self.story.recalculate_hotness!
+Query(Story)
+.where("id = ?")
+# Q 3520 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3521 : # self.editor
+Query(Story)
+
+# Q 3522 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3523 : # self.editor
+Query(Story)
+
+# Q 3524 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3525 : # self.taggings.each
+Query(Tagging)
+.where("story_id = ?")
+# Q 3526 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 3527 : # self.taggings.each
+Query(Tagging)
+.where("story_id = ?")
+# Q 3528 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 3529 : # self.is_moderated?
+Query(Comment)
+
+# Q 3530 : # self.is_moderated?
+Query(Comment)
+
+# Q 3531 : # self.moderation.try(:moderator).try(:username).to_s
+Query(Moderation)
+.where("id = ?")
+.select('moderator')
+.select('username')
+# Q 3532 : # self.moderation.try(:moderator).try(:username)
+Query(Moderation)
+.where("id = ?")
+.select('moderator')
+.select('username')
+# Q 3533 : # self.moderation.try(:moderator).try
+Query(Moderation)
+.where("id = ?")
+.select('moderator')
+# Q 3534 : # self.moderation.try(:moderator)
+Query(Moderation)
+.where("id = ?")
+.select('moderator')
+# Q 3535 : # self.moderation.try
+Query(Moderation)
+.where("id = ?")
+# Q 3536 : # self.moderation
+Query(Moderation)
+.where("id = ?")
+# Q 3537 : # self.moderation.try(:moderator).try(:username).to_s
+Query(Moderation)
+.where("id = ?")
+.select('moderator')
+.select('username')
+# Q 3538 : # self.moderation.try(:moderator).try
+Query(Moderation)
+.where("id = ?")
+.select('moderator')
+# Q 3539 : # self.moderation.try
+Query(Moderation)
+.where("id = ?")
+# Q 3540 : # self.moderation
+Query(Moderation)
+.where("id = ?")
+# Q 3541 : # self.moderation.try(:reason)
+Query(Moderation)
+.where("id = ?")
+.select('reason')
+# Q 3542 : # self.moderation.try
+Query(Moderation)
+.where("id = ?")
+# Q 3543 : # self.moderation
+Query(Moderation)
+.where("id = ?")
+# Q 3544 : # self.moderation.try
+Query(Moderation)
+.where("id = ?")
+# Q 3545 : # self.moderation
+Query(Moderation)
+.where("id = ?")
+# Q 3546 : # self.user.is_banned?
+Query(User)
+.where("id = ?")
+# Q 3547 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3548 : # self.user.is_banned?
+Query(User)
+.where("id = ?")
+# Q 3549 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3550 : # HiddenStory.hide_story_for_user(story.id, @user.id)
+Query(HiddenStory)
+
+# Q 3551 : # HiddenStory.hide_story_for_user
+Query(HiddenStory)
+
+# Q 3552 : # story.id
+Query(Story)
+
+# Q 3553 : # @user.id
+Query(User)
+
+# Q 3554 : # HiddenStory.hide_story_for_user
+Query(HiddenStory)
+
+# Q 3555 : # story.id
+Query(Story)
+
+# Q 3556 : # @user.id
+Query(User)
+
+# Q 3557 : # StoriesPaginator.new(scope, page, @user).get
+Query(StoriesPaginator)
+
+# Q 3558 : # StoriesPaginator.new(scope, page, @user)
+Query(StoriesPaginator)
+
+# Q 3559 : # StoriesPaginator.new
+Query(StoriesPaginator)
+
+# Q 3560 : # StoriesPaginator.new(scope, page, @user).get
+Query(StoriesPaginator)
+
+# Q 3561 : # StoriesPaginator.new
+Query(StoriesPaginator)
+
+# Q 3562 : # @user.can_invite?
+Query(User)
+
+# Q 3563 : # ReadRibbon.hide_replies_for(story.id, @user.id)
+Query(ReadRibbon)
+
+# Q 3564 : # ReadRibbon.hide_replies_for
+Query(ReadRibbon)
+
+# Q 3565 : # story.id
+Query(Story)
+
+# Q 3566 : # @user.id
+Query(User)
+
+# Q 3567 : # ReadRibbon.hide_replies_for
+Query(ReadRibbon)
+
+# Q 3568 : # story.id
+Query(Story)
+
+# Q 3569 : # @user.id
+Query(User)
+
+# Q 3570 : # self.taggings.reject { |t|
+#   
+#   t.marked_for_destruction? || t.tag.is_media?
+# }.any?
+Query(Tagging)
+.where("story_id = ?")
+# Q 3571 : # self.taggings.reject
+Query(Tagging)
+.where("story_id = ?")
+# Q 3572 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 3573 : # self.taggings.reject { |t|
+#   
+#   t.marked_for_destruction? || t.tag.is_media?
+# }.any?
+Query(Tagging)
+.where("story_id = ?")
+# Q 3574 : # self.taggings.reject
+Query(Tagging)
+.where("story_id = ?")
+# Q 3575 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 3576 : # @user.disabled_invite_reason
+Query(User)
+.select('disabled_invite_reason')
+# Q 3577 : # Keystore.put
+Query(Keystore)
+
+# Q 3578 : # self.id
+Query(User)
+
+# Q 3579 : # self.comments.active.count
+Query(Comment)
+.where("user_id = ?")
+# Q 3580 : # self.comments.active
+Query(Comment)
+.where("user_id = ?")
+# Q 3581 : # self.comments
+Query(Comment)
+.where("user_id = ?")
+# Q 3582 : # Keystore.put
+Query(Keystore)
+
+# Q 3583 : # self.id
+Query(User)
+
+# Q 3584 : # self.comments.active.count
+Query(Comment)
+.where("user_id = ?")
+# Q 3585 : # self.comments.active
+Query(Comment)
+.where("user_id = ?")
+# Q 3586 : # self.comments
+Query(Comment)
+.where("user_id = ?")
+# Q 3587 : # self.updated_at
+Query(Comment)
+.select('updated_at')
+# Q 3588 : # self.updated_at
+Query(Comment)
+.select('updated_at')
+# Q 3589 : # self.created_at
+Query(Comment)
+.select('created_at')
+# Q 3590 : # self.updated_at
+Query(Comment)
+.select('updated_at')
+# Q 3591 : # self.updated_at
+Query(Comment)
+.select('updated_at')
+# Q 3592 : # self.created_at
+Query(Comment)
+.select('created_at')
+# Q 3593 : # User.transaction
+Query(User)
+
+# Q 3594 : # User.transaction
+Query(User)
+
+# Q 3595 : # self.comments.where("upvotes - downvotes < 0").each
+Query(Comment)
+.where("user_id = ?")
+.where(" = ?")
+# Q 3596 : # self.comments.where("upvotes - downvotes < 0")
+Query(Comment)
+.where("user_id = ?")
+.where(" = ?")
+# Q 3597 : # self.comments.where
+Query(Comment)
+.where("user_id = ?")
+# Q 3598 : # self.comments
+Query(Comment)
+.where("user_id = ?")
+# Q 3599 : # self.comments.where("upvotes - downvotes < 0").each { |c|
+#   
+#   c.delete_for_user(self)
 # }
 Query(Comment)
 .where("user_id = ?")
-# Q 2850 : # self.comments.each
+.where(" = ?")
+# Q 3600 : # self.comments.where("upvotes - downvotes < 0").each
 Query(Comment)
 .where("user_id = ?")
-# Q 2851 : # self.comments
+.where(" = ?")
+# Q 3601 : # self.comments.where
 Query(Comment)
 .where("user_id = ?")
-# Q 2852 : # @story.tags_a.sort
+# Q 3602 : # self.comments
+Query(Comment)
+.where("user_id = ?")
+# Q 3603 : # HiddenStory.where(:user_id => @user.id, :story_id => story.id).delete_all
+Query(HiddenStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 3604 : # HiddenStory.where(:user_id => @user.id, :story_id => story.id)
+Query(HiddenStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 3605 : # @user.id
+Query(User)
+
+# Q 3606 : # story.id
 Query(Story)
 
-# Q 2853 : # @story.tags_a
+# Q 3607 : # HiddenStory.where(:user_id => @user.id, :story_id => story.id).delete_all
+Query(HiddenStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 3608 : # @user.id
+Query(User)
+
+# Q 3609 : # story.id
 Query(Story)
 
-# Q 2854 : # @story.tags_a.sort
+# Q 3610 : # self.title_as_url
 Query(Story)
 
-# Q 2855 : # @story.tags_a
+# Q 3611 : # self.title_as_url
 Query(Story)
 
-# Q 2856 : # @user.username
+# Q 3612 : # self.user.is_active?
 Query(User)
-.select('username')
-# Q 2857 : # @user.username
+.where("id = ?")
+# Q 3613 : # self.user
 Query(User)
-.select('username')
-# Q 2858 : # @user.username
+.where("id = ?")
+# Q 3614 : # self.user.is_active?
 Query(User)
-.select('username')
-# Q 2859 : # @user.username
+.where("id = ?")
+# Q 3615 : # self.user
 Query(User)
-.select('username')
-# Q 2860 : # @user.username
-Query(User)
-.select('username')
-# Q 2861 : # self.sent_messages.each
+.where("id = ?")
+# Q 3616 : # self.sent_messages.each
 Query(Message)
 .where("user_id = ?")
-# Q 2862 : # self.sent_messages
+# Q 3617 : # self.sent_messages
 Query(Message)
 .where("user_id = ?")
-# Q 2863 : # self.sent_messages.each do |m|
+# Q 3618 : # self.sent_messages.each do |m|
+#   
+#   m.deleted_by_author = true
+#   m.save
+# end
+Query(Message)
+.where("user_id = ?")
+# Q 3619 : # self.sent_messages.each
+Query(Message)
+.where("user_id = ?")
+# Q 3620 : # self.sent_messages
+Query(Message)
+.where("user_id = ?")
+# Q 3621 : # self.user.is_new?
+Query(User)
+.where("id = ?")
+# Q 3622 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3623 : # self.user.is_new?
+Query(User)
+.where("id = ?")
+# Q 3624 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3625 : # self.title_as_url
+Query(Story)
+
+# Q 3626 : # self.title_as_url
+Query(Story)
+
+# Q 3627 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3628 : # self.story.user_is_author?
+Query(Story)
+.where("id = ?")
+# Q 3629 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3630 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3631 : # self.story.user_is_author?
+Query(Story)
+.where("id = ?")
+# Q 3632 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3633 : # self.story.user_id
+Query(Story)
+.where("id = ?")
+.select('user_id')
+# Q 3634 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3635 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 3636 : # self.story.user_id
+Query(Story)
+.where("id = ?")
+.select('user_id')
+# Q 3637 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3638 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 3639 : # self.received_messages.each
+Query(Message)
+.where("user_id = ?")
+# Q 3640 : # self.received_messages
+Query(Message)
+.where("user_id = ?")
+# Q 3641 : # self.received_messages.each do |m|
+#   
+#   m.deleted_by_recipient = true
+#   m.save
+# end
+Query(Message)
+.where("user_id = ?")
+# Q 3642 : # self.received_messages.each
+Query(Message)
+.where("user_id = ?")
+# Q 3643 : # self.received_messages
+Query(Message)
+.where("user_id = ?")
+# Q 3644 : # self.generated_markeddown_description
+Query(Story)
+
+# Q 3645 : # self.generated_markeddown_description
+Query(Story)
+
+# Q 3646 : # self.generated_markeddown_description
+Query(Story)
+
+# Q 3647 : # SavedStory.save_story_for_user(story.id, @user.id)
+Query(SavedStory)
+
+# Q 3648 : # SavedStory.save_story_for_user
+Query(SavedStory)
+
+# Q 3649 : # story.id
+Query(Story)
+
+# Q 3650 : # @user.id
+Query(User)
+
+# Q 3651 : # SavedStory.save_story_for_user
+Query(SavedStory)
+
+# Q 3652 : # story.id
+Query(Story)
+
+# Q 3653 : # @user.id
+Query(User)
+
+# Q 3654 : # self.invitations.destroy_all
+Query(Invitation)
+.where("user_id = ?")
+# Q 3655 : # self.invitations
+Query(Invitation)
+.where("user_id = ?")
+# Q 3656 : # self.invitations.destroy_all
+Query(Invitation)
+.where("user_id = ?")
+# Q 3657 : # self.invitations.destroy_all
+Query(Invitation)
+.where("user_id = ?")
+# Q 3658 : # self.invitations
+Query(Invitation)
+.where("user_id = ?")
+# Q 3659 : # self.description.present?
+Query(Story)
+.select('description')
+# Q 3660 : # self.description
+Query(Story)
+.select('description')
+# Q 3661 : # self.description.present?
+Query(Story)
+.select('description')
+# Q 3662 : # self.description
+Query(Story)
+.select('description')
+# Q 3663 : # Comment.where(:short_id => params[:id]).first
+Query(Comment)
+.where("short_id = ?")
+.return_limit('1')
+# Q 3664 : # Comment.where(:short_id => params[:id]).first
+Query(Comment)
+.where("short_id = ?")
+.return_limit('1')
+# Q 3665 : # Comment.where(:short_id => params[:id])
+Query(Comment)
+.where("short_id = ?")
+# Q 3666 : # Comment.where(:short_id => params[:id]).first
+Query(Comment)
+.where("short_id = ?")
+.return_limit('1')
+# Q 3667 : # user.is_moderator?
+Query(User)
+
+# Q 3668 : # user.is_moderator?
+Query(User)
+
+# Q 3669 : # self.check_session_token
+Query(User)
+
+# Q 3670 : # self.check_session_token
+Query(User)
+
+# Q 3671 : # self.check_session_token
+Query(User)
+
+# Q 3672 : # self.markeddown_description.gsub(/<[^>]*>/, "")
+Query(Story)
+.select('markeddown_description')
+# Q 3673 : # self.markeddown_description.gsub
+Query(Story)
+.select('markeddown_description')
+# Q 3674 : # self.markeddown_description
+Query(Story)
+.select('markeddown_description')
+# Q 3675 : # self.markeddown_description.gsub
+Query(Story)
+.select('markeddown_description')
+# Q 3676 : # self.markeddown_description
+Query(Story)
+.select('markeddown_description')
+# Q 3677 : # Vote.where(:user_id => @user.id, :story_id => comment.story_id, :comment_id => comment.id).first
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where("comment_id = ?")
+.return_limit('1')
+# Q 3678 : # Vote.where(:user_id => @user.id, :story_id => comment.story_id, :comment_id => comment.id).first
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where("comment_id = ?")
+.return_limit('1')
+# Q 3679 : # Vote.where(:user_id => @user.id, :story_id => comment.story_id, :comment_id => comment.id)
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where("comment_id = ?")
+# Q 3680 : # @user.id
+Query(User)
+
+# Q 3681 : # Vote.where(:user_id => @user.id, :story_id => comment.story_id, :comment_id => comment.id).first
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where("comment_id = ?")
+.return_limit('1')
+# Q 3682 : # @user.id
+Query(User)
+
+# Q 3683 : # user.id
+Query(User)
+
+# Q 3684 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 3685 : # user.id
+Query(User)
+
+# Q 3686 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 3687 : # self.story_cache
+Query(Story)
+.select('story_cache')
+# Q 3688 : # self.story_cache
+Query(Story)
+.select('story_cache')
+# Q 3689 : # comment.story_id
+Query(Comment)
+.select('story_id')
+# Q 3690 : # comment.id
+Query(Comment)
+
+# Q 3691 : # comment.story_id
+Query(Comment)
+.select('story_id')
+# Q 3692 : # comment.id
+Query(Comment)
+
+# Q 3693 : # self.save!
+Query(User)
+
+# Q 3694 : # self.save!
+Query(User)
+
+# Q 3695 : # self.save!
+Query(User)
+
+# Q 3696 : # SavedStory.where(:user_id => @user.id, :story_id => story.id).delete_all
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 3697 : # SavedStory.where(:user_id => @user.id, :story_id => story.id)
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 3698 : # @user.id
+Query(User)
+
+# Q 3699 : # story.id
+Query(Story)
+
+# Q 3700 : # SavedStory.where(:user_id => @user.id, :story_id => story.id).delete_all
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 3701 : # @user.id
+Query(User)
+
+# Q 3702 : # story.id
+Query(Story)
+
+# Q 3703 : # User.transaction
+Query(User)
+
+# Q 3704 : # User.transaction
+Query(User)
+
+# Q 3705 : # self.sent_messages.each
+Query(Message)
+.where("user_id = ?")
+# Q 3706 : # self.sent_messages
+Query(Message)
+.where("user_id = ?")
+# Q 3707 : # self.sent_messages.each do |m|
 #   
 #   m.deleted_by_author = false
 #   m.save
 # end
 Query(Message)
 .where("user_id = ?")
-# Q 2864 : # self.sent_messages.each
+# Q 3708 : # self.sent_messages.each
 Query(Message)
 .where("user_id = ?")
-# Q 2865 : # self.sent_messages
+# Q 3709 : # self.sent_messages
 Query(Message)
 .where("user_id = ?")
-# Q 2866 : # @story.save_suggested_tags_a_for_user!(sugtags, @user)
-Query(Story)
-
-# Q 2867 : # @story.save_suggested_tags_a_for_user!
-Query(Story)
-
-# Q 2868 : # @story.save_suggested_tags_a_for_user!
-Query(Story)
-
-# Q 2869 : # self.save(:validate => false)
+# Q 3710 : # self.created_at
+Query(Comment)
+.select('created_at')
+# Q 3711 : # self.score
 Query(Comment)
 
-# Q 2870 : # self.save
+# Q 3712 : # self.created_at
+Query(Comment)
+.select('created_at')
+# Q 3713 : # self.score
 Query(Comment)
 
-# Q 2871 : # self.save
+# Q 3714 : # self.created_at
 Query(Comment)
+.select('created_at')
+# Q 3715 : # self.created_at
+Query(Comment)
+.select('created_at')
+# Q 3716 : # Story.new(story_params)
+Query(Story)
 
-# Q 2872 : # self.received_messages.each
+# Q 3717 : # Story.new(story_params)
+Query(Story)
+
+# Q 3718 : # Story.new
+Query(Story)
+
+# Q 3719 : # Story.new
+Query(Story)
+
+# Q 3720 : # @story.check_already_posted
+Query(Story)
+
+# Q 3721 : # @story.check_already_posted
+Query(Story)
+
+# Q 3722 : # self.received_messages.each
 Query(Message)
 .where("user_id = ?")
-# Q 2873 : # self.received_messages
+# Q 3723 : # self.received_messages
 Query(Message)
 .where("user_id = ?")
-# Q 2874 : # self.received_messages.each do |m|
+# Q 3724 : # self.received_messages.each do |m|
 #   
 #   m.deleted_by_recipient = false
 #   m.save
 # end
 Query(Message)
 .where("user_id = ?")
-# Q 2875 : # self.received_messages.each
+# Q 3725 : # self.received_messages.each
 Query(Message)
 .where("user_id = ?")
-# Q 2876 : # self.received_messages
+# Q 3726 : # self.received_messages
 Query(Message)
 .where("user_id = ?")
-# Q 2877 : # Comment.where(:is_deleted => false, :is_moderated => false).order("created_at DESC").offset((
-# @page - 1) * COMMENTS_PER_PAGE).limit(COMMENTS_PER_PAGE).includes(:user, :story)
-Query(Comment)
-.where("is_deleted = ?")
-.where("is_moderated = ?")
-.order('id')
-.order('created_at')
-.return_limit('')
-.includes('user')
-.includes('story')
-# Q 2878 : # Comment.where(:is_deleted => false, :is_moderated => false).order("created_at DESC").offset((
-# @page - 1) * COMMENTS_PER_PAGE).limit(COMMENTS_PER_PAGE).includes(:user, :story)
-Query(Comment)
-.where("is_deleted = ?")
-.where("is_moderated = ?")
-.order('id')
-.order('created_at')
-.return_limit('')
-.includes('user')
-.includes('story')
-# Q 2879 : # Comment.where(:is_deleted => false, :is_moderated => false).order("created_at DESC").offset((
-# @page - 1) * COMMENTS_PER_PAGE).limit(COMMENTS_PER_PAGE).includes
-Query(Comment)
-.where("is_deleted = ?")
-.where("is_moderated = ?")
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 2880 : # Comment.where(:is_deleted => false, :is_moderated => false).order("created_at DESC").offset((
-# @page - 1) * COMMENTS_PER_PAGE).limit(COMMENTS_PER_PAGE)
-Query(Comment)
-.where("is_deleted = ?")
-.where("is_moderated = ?")
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 2881 : # Comment.where(:is_deleted => false, :is_moderated => false).order("created_at DESC").offset((
-# @page - 1) * COMMENTS_PER_PAGE).limit
-Query(Comment)
-.where("is_deleted = ?")
-.where("is_moderated = ?")
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 2882 : # Comment.where(:is_deleted => false, :is_moderated => false).order("created_at DESC").offset((
-# @page - 1) * COMMENTS_PER_PAGE)
-Query(Comment)
-.where("is_deleted = ?")
-.where("is_moderated = ?")
-.order('id')
-.order('created_at')
-# Q 2883 : # Comment.where(:is_deleted => false, :is_moderated => false).order("created_at DESC").offset
-Query(Comment)
-.where("is_deleted = ?")
-.where("is_moderated = ?")
-.order('id')
-.order('created_at')
-# Q 2884 : # Comment.where(:is_deleted => false, :is_moderated => false).order("created_at DESC")
-Query(Comment)
-.where("is_deleted = ?")
-.where("is_moderated = ?")
-.order('id')
-.order('created_at')
-# Q 2885 : # Comment.where(:is_deleted => false, :is_moderated => false).order
-Query(Comment)
-.where("is_deleted = ?")
-.where("is_moderated = ?")
-# Q 2886 : # Comment.where(:is_deleted => false, :is_moderated => false)
-Query(Comment)
-.where("is_deleted = ?")
-.where("is_moderated = ?")
-# Q 2887 : # Comment.where(:is_deleted => false, :is_moderated => false).order("created_at DESC").offset((
-# @page - 1) * COMMENTS_PER_PAGE).limit(COMMENTS_PER_PAGE).includes
-Query(Comment)
-.where("is_deleted = ?")
-.where("is_moderated = ?")
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 2888 : # Comment.where(:is_deleted => false, :is_moderated => false).order("created_at DESC").offset((
-# @page - 1) * COMMENTS_PER_PAGE).limit
-Query(Comment)
-.where("is_deleted = ?")
-.where("is_moderated = ?")
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 2889 : # Comment.where(:is_deleted => false, :is_moderated => false).order("created_at DESC").offset
-Query(Comment)
-.where("is_deleted = ?")
-.where("is_moderated = ?")
-.order('id')
-.order('created_at')
-# Q 2890 : # Comment.where(:is_deleted => false, :is_moderated => false).order
-Query(Comment)
-.where("is_deleted = ?")
-.where("is_moderated = ?")
-# Q 2891 : # self.created_at
+# Q 3727 : # self.url.blank?
 Query(Story)
-.select('created_at')
-# Q 2892 : # self.created_at
+.select('url')
+# Q 3728 : # self.url
 Query(Story)
-.select('created_at')
-# Q 2893 : # @story.reload
+.select('url')
+# Q 3729 : # self.url.blank?
 Query(Story)
-
-# Q 2894 : # @story.reload
+.select('url')
+# Q 3730 : # self.url
 Query(Story)
-
-# Q 2895 : # @story.reload
-Query(Story)
-
-# Q 2896 : # self.story.update_comments_count!
-Query(Story)
-.where("id = ?")
-# Q 2897 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 2898 : # self.story.update_comments_count!
-Query(Story)
-.where("id = ?")
-# Q 2899 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 2900 : # user.is_moderator?
+.select('url')
+# Q 3731 : # user.id
 Query(User)
 
-# Q 2901 : # user.id
-Query(User)
-
-# Q 2902 : # self.user_id
-Query(Story)
+# Q 3732 : # self.user_id
+Query(Comment)
 .select('user_id')
-# Q 2903 : # user.is_moderator?
+# Q 3733 : # user.id
 Query(User)
 
-# Q 2904 : # user.id
-Query(User)
-
-# Q 2905 : # self.user_id
-Query(Story)
+# Q 3734 : # self.user_id
+Query(Comment)
 .select('user_id')
-# Q 2906 : # self.plaintext_comment.scan(/\B\@([\w\-]+)/).flatten.uniq.each
-Query(Comment)
-.distinct('')
-# Q 2907 : # self.plaintext_comment.scan(/\B\@([\w\-]+)/).flatten.uniq
-Query(Comment)
-.distinct('')
-# Q 2908 : # self.plaintext_comment.scan(/\B\@([\w\-]+)/).flatten
-Query(Comment)
-
-# Q 2909 : # self.plaintext_comment.scan(/\B\@([\w\-]+)/)
-Query(Comment)
-
-# Q 2910 : # self.plaintext_comment.scan
-Query(Comment)
-
-# Q 2911 : # self.plaintext_comment
-Query(Comment)
-
-# Q 2912 : # self.plaintext_comment.scan(/\B\@([\w\-]+)/).flatten.uniq.each
-Query(Comment)
-.distinct('')
-# Q 2913 : # self.plaintext_comment.scan(/\B\@([\w\-]+)/).flatten.uniq
-Query(Comment)
-.distinct('')
-# Q 2914 : # self.plaintext_comment.scan(/\B\@([\w\-]+)/).flatten
-Query(Comment)
-
-# Q 2915 : # self.plaintext_comment.scan
-Query(Comment)
-
-# Q 2916 : # self.plaintext_comment
-Query(Comment)
-
-# Q 2917 : # self.save!
-Query(User)
-
-# Q 2918 : # self.save!
-Query(User)
-
-# Q 2919 : # self.save!
-Query(User)
-
-# Q 2920 : # User.where(:username => mention).first
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 2921 : # User.where(:username => mention).first
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 2922 : # User.where(:username => mention)
-Query(User)
-.where("username = ?")
-# Q 2923 : # User.where(:username => mention).first
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 2924 : # User.where(:username => mention)
-Query(User)
-.where("username = ?")
-# Q 2925 : # User.where(:username => mention).first
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 2926 : # @user.tag_filters.map
-Query(TagFilter)
-.where("user_id = ?")
-# Q 2927 : # @user.tag_filters
-Query(TagFilter)
-.where("user_id = ?")
-# Q 2928 : # @user.tag_filters.map
-Query(TagFilter)
-.where("user_id = ?")
-# Q 2929 : # @user.tag_filters
-Query(TagFilter)
-.where("user_id = ?")
-# Q 2930 : # self.user.id
-Query(User)
-.where("id = ?")
-# Q 2931 : # self.user
-Query(User)
-.where("id = ?")
-# Q 2932 : # self.user.id
-Query(User)
-.where("id = ?")
-# Q 2933 : # self.user
-Query(User)
-.where("id = ?")
-# Q 2934 : # self.user.id
-Query(User)
-.where("id = ?")
-# Q 2935 : # self.user
-Query(User)
-.where("id = ?")
-# Q 2936 : # self.user.id
-Query(User)
-.where("id = ?")
-# Q 2937 : # self.user
-Query(User)
-.where("id = ?")
-# Q 2938 : # User.transaction
-Query(User)
-
-# Q 2939 : # User.transaction
-Query(User)
-
-# Q 2940 : # @story.is_editable_by_user?(@user)
-Query(Story)
-
-# Q 2941 : # @story.is_editable_by_user?
-Query(Story)
-
-# Q 2942 : # @story.is_editable_by_user?
-Query(Story)
-
-# Q 2943 : # @story.is_undeletable_by_user?(@user)
-Query(Story)
-
-# Q 2944 : # @story.is_undeletable_by_user?
-Query(Story)
-
-# Q 2945 : # @story.is_undeletable_by_user?
-Query(Story)
-
-# Q 2946 : # self.save!
-Query(User)
-
-# Q 2947 : # self.save!
-Query(User)
-
-# Q 2948 : # self.save!
-Query(User)
-
-# Q 2949 : # user.id
-Query(User)
-
-# Q 2950 : # self.user_id
-Query(Story)
-.select('user_id')
-# Q 2951 : # user.can_offer_suggestions?
-Query(User)
-
-# Q 2952 : # user.id
-Query(User)
-
-# Q 2953 : # self.user_id
-Query(Story)
-.select('user_id')
-# Q 2954 : # user.can_offer_suggestions?
-Query(User)
-
-# Q 2955 : # StoryRepository.new(@user, exclude_tags: filtered_tag_ids)
-Query(StoryRepository)
-
-# Q 2956 : # StoryRepository.new
-Query(StoryRepository)
-
-# Q 2957 : # StoryRepository.new
-Query(StoryRepository)
-
-# Q 2958 : # @user.id
-Query(User)
-
-# Q 2959 : # @user.id
-Query(User)
-
-# Q 2960 : # Moderation.new
-Query(Moderation)
-
-# Q 2961 : # Moderation.new
-Query(Moderation)
-
-# Q 2962 : # m = Moderation.new
-Query(Moderation)
-
-# Q 2963 : # Moderation.new
-Query(Moderation)
-
-# Q 2964 : # user.id
-Query(User)
-
-# Q 2965 : # user.id
-Query(User)
-
-# Q 2966 : # user.id
-Query(User)
-
-# Q 2967 : # Vote.comment_votes_by_user_for_comment_ids_hash(@user.id, @comments.map { |c|
-#   
-#   c.id
-# })
-Query(Vote)
-
-# Q 2968 : # Vote.comment_votes_by_user_for_comment_ids_hash(@user.id, @comments.map { |c|
-#   
-#   c.id
-# })
-Query(Vote)
-
-# Q 2969 : # Vote.comment_votes_by_user_for_comment_ids_hash
-Query(Vote)
-
-# Q 2970 : # @user.id
-Query(User)
-
-# Q 2971 : # Vote.comment_votes_by_user_for_comment_ids_hash
-Query(Vote)
-
-# Q 2972 : # @user.id
-Query(User)
-
-# Q 2973 : # self.id
-Query(User)
-
-# Q 2974 : # self.id
-Query(User)
-
-# Q 2975 : # self.id
-Query(User)
-
-# Q 2976 : # self.tags.select { |t|
-#   
-#   t.privileged?
-# }.any?
-Query(Tag)
-.where("story_id = ?")
-# Q 2977 : # self.tags.select
-Query(Tag)
-.where("story_id = ?")
-# Q 2978 : # self.tags
-Query(Tag)
-.where("story_id = ?")
-# Q 2979 : # self.tags.select { |t|
-#   
-#   t.privileged?
-# }.any?
-Query(Tag)
-.where("story_id = ?")
-# Q 2980 : # self.tags.select
-Query(Tag)
-.where("story_id = ?")
-# Q 2981 : # self.tags
-Query(Tag)
-.where("story_id = ?")
-# Q 2982 : # @comments.map
-Query(Comment)
-
-# Q 2983 : # @comments.map
-Query(Comment)
-
-# Q 2984 : # @story.save(:validate => false)
-Query(Story)
-
-# Q 2985 : # @story.save
-Query(Story)
-
-# Q 2986 : # @story.save
-Query(Story)
-
-# Q 2987 : # @comments.each
-Query(Comment)
-
-# Q 2988 : # @comments.each
-Query(Comment)
-
-# Q 2989 : # Hat.new
-Query(Hat)
-
-# Q 2990 : # Hat.new
-Query(Hat)
-
-# Q 2991 : # h = Hat.new
-Query(Hat)
-
-# Q 2992 : # Hat.new
-Query(Hat)
-
-# Q 2993 : # @story.comments_path
-Query(Story)
-
-# Q 2994 : # @story.comments_path
-Query(Story)
-
-# Q 2995 : # self.id
-Query(User)
-
-# Q 2996 : # self.id
-Query(User)
-
-# Q 2997 : # self.id
-Query(User)
-
-# Q 2998 : # StoriesPaginator.new(scope, page, @user).get
-Query(StoriesPaginator)
-
-# Q 2999 : # StoriesPaginator.new(scope, page, @user)
-Query(StoriesPaginator)
-
-# Q 3000 : # StoriesPaginator.new
-Query(StoriesPaginator)
-
-# Q 3001 : # StoriesPaginator.new(scope, page, @user).get
-Query(StoriesPaginator)
-
-# Q 3002 : # StoriesPaginator.new
-Query(StoriesPaginator)
-
-# Q 3003 : # self.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 3004 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3005 : # self.story.title
-Query(Story)
-.where("id = ?")
-.select('title')
-# Q 3006 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3007 : # self.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 3008 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3009 : # self.story.title
-Query(Story)
-.where("id = ?")
-.select('title')
-# Q 3010 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3011 : # self.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 3012 : # self.story.title
-Query(Story)
-.where("id = ?")
-.select('title')
-# Q 3013 : # self.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 3014 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3015 : # self.story.title
-Query(Story)
-.where("id = ?")
-.select('title')
-# Q 3016 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3017 : # user.id
-Query(User)
-
-# Q 3018 : # user.id
-Query(User)
-
-# Q 3019 : # user.id
-Query(User)
-
-# Q 3020 : # self.plaintext_comment
-Query(Comment)
-
-# Q 3021 : # self.plaintext_comment
-Query(Comment)
-
-# Q 3022 : # self.plaintext_comment
-Query(Comment)
-
-# Q 3023 : # self.url
-Query(Comment)
-
-# Q 3024 : # self.url
-Query(Comment)
-
-# Q 3025 : # self.url
-Query(Comment)
-
-# Q 3026 : # @story.is_editable_by_user?(@user)
-Query(Story)
-
-# Q 3027 : # @story.is_editable_by_user?
-Query(Story)
-
-# Q 3028 : # @story.is_editable_by_user?
-Query(Story)
-
-# Q 3029 : # self.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 3030 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3031 : # self.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 3032 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3033 : # self.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 3034 : # self.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 3035 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3036 : # self.editor
-Query(Story)
-
-# Q 3037 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3038 : # self.editor
-Query(Story)
-
-# Q 3039 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3040 : # self.taggings.each
-Query(Tagging)
-.where("story_id = ?")
-# Q 3041 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3042 : # self.taggings.each
-Query(Tagging)
-.where("story_id = ?")
-# Q 3043 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3044 : # @user.username
-Query(User)
-.select('username')
-# Q 3045 : # @user.username
-Query(User)
-.select('username')
-# Q 3046 : # @user.username
-Query(User)
-.select('username')
-# Q 3047 : # @user.username
-Query(User)
-.select('username')
-# Q 3048 : # @user.username
-Query(User)
-.select('username')
-# Q 3049 : # self.save!
-Query(User)
-
-# Q 3050 : # self.save!
-Query(User)
-
-# Q 3051 : # @story.url_is_editable_by_user?(@user)
-Query(Story)
-
-# Q 3052 : # @story.url_is_editable_by_user?
-Query(Story)
-
-# Q 3053 : # @story.url_is_editable_by_user?
-Query(Story)
-
-# Q 3054 : # self.parent_comment_id
-Query(Comment)
-.select('parent_comment_id')
-# Q 3055 : # self.parent_comment.try(:user)
-Query(Comment)
-.where("id = ?")
-.select('user')
-# Q 3056 : # self.parent_comment.try(:user)
-Query(Comment)
-.where("id = ?")
-.select('user')
-# Q 3057 : # self.parent_comment.try
-Query(Comment)
-.where("id = ?")
-# Q 3058 : # self.parent_comment
-Query(Comment)
-.where("id = ?")
-# Q 3059 : # self.parent_comment_id
-Query(Comment)
-.select('parent_comment_id')
-# Q 3060 : # self.parent_comment.try
-Query(Comment)
-.where("id = ?")
-# Q 3061 : # self.parent_comment
-Query(Comment)
-.where("id = ?")
-# Q 3062 : # self.user.id
-Query(User)
-.where("id = ?")
-# Q 3063 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3064 : # self.user.id
-Query(User)
-.where("id = ?")
-# Q 3065 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3066 : # self.taggings.reject { |t|
-#   
-#   t.marked_for_destruction? || t.tag.is_media?
-# }.any?
-Query(Tagging)
-.where("story_id = ?")
-# Q 3067 : # self.taggings.reject
-Query(Tagging)
-.where("story_id = ?")
-# Q 3068 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3069 : # self.taggings.reject { |t|
-#   
-#   t.marked_for_destruction? || t.tag.is_media?
-# }.any?
-Query(Tagging)
-.where("story_id = ?")
-# Q 3070 : # self.taggings.reject
-Query(Tagging)
-.where("story_id = ?")
-# Q 3071 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3072 : # @story.save
-Query(Story)
-
-# Q 3073 : # @story.save
-Query(Story)
-
-# Q 3074 : # @story.comments_path
-Query(Story)
-
-# Q 3075 : # @story.comments_path
-Query(Story)
-
-# Q 3076 : # User.where(:username => params[:user]).first!
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 3077 : # User.where(:username => params[:user]).first!
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 3078 : # User.where(:username => params[:user])
-Query(User)
-.where("username = ?")
-# Q 3079 : # User.where(:username => params[:user]).first!
-Query(User)
-.where("username = ?")
-.return_limit('1')
-# Q 3080 : # self.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 3081 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3082 : # self.story.title
-Query(Story)
-.where("id = ?")
-.select('title')
-# Q 3083 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3084 : # self.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 3085 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3086 : # self.story.title
-Query(Story)
-.where("id = ?")
-.select('title')
-# Q 3087 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3088 : # self.created_at
-Query(User)
-.select('created_at')
-# Q 3089 : # self.created_at
-Query(User)
-.select('created_at')
-# Q 3090 : # self.plaintext_comment
-Query(Comment)
-
-# Q 3091 : # self.plaintext_comment
-Query(Comment)
-
-# Q 3092 : # self.title_as_url
-Query(Story)
-
-# Q 3093 : # self.title_as_url
-Query(Story)
-
-# Q 3094 : # self.url
-Query(Comment)
-
-# Q 3095 : # self.url
-Query(Comment)
-
-# Q 3096 : # self.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 3097 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3098 : # self.user.username
-Query(User)
-.where("id = ?")
-.select('username')
-# Q 3099 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3100 : # Vote.vote_thusly_on_story_or_comment_for_user_because(0, story.id, nil, @user.id, nil)
-Query(Vote)
-
-# Q 3101 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 3102 : # story.id
-Query(Story)
-
-# Q 3103 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 3104 : # story.id
-Query(Story)
-
-# Q 3105 : # self.title_as_url
-Query(Story)
-
-# Q 3106 : # self.title_as_url
-Query(Story)
-
-# Q 3107 : # @user.id
-Query(User)
-
-# Q 3108 : # @user.id
-Query(User)
-
-# Q 3109 : # self.about
-Query(User)
-.select('about')
-# Q 3110 : # self.about
-Query(User)
-.select('about')
-# Q 3111 : # @user.id
-Query(User)
-
-# Q 3112 : # @user.id
-Query(User)
-
-# Q 3113 : # Comment.where(:thread_id => thread_ids).includes(:user, :story).arrange_for_user(@showing_user)
-Query(Comment)
-.where("thread_id = ?")
-.includes('user')
-.includes('story')
-# Q 3114 : # Comment.where(:thread_id => thread_ids).includes(:user, :story).arrange_for_user(@showing_user)
-Query(Comment)
-.where("thread_id = ?")
-.includes('user')
-.includes('story')
-# Q 3115 : # Comment.where(:thread_id => thread_ids).includes(:user, :story).arrange_for_user
-Query(Comment)
-.where("thread_id = ?")
-.includes('user')
-.includes('story')
-# Q 3116 : # Comment.where(:thread_id => thread_ids).includes(:user, :story)
-Query(Comment)
-.where("thread_id = ?")
-.includes('user')
-.includes('story')
-# Q 3117 : # Comment.where(:thread_id => thread_ids).includes
-Query(Comment)
-.where("thread_id = ?")
-# Q 3118 : # Comment.where(:thread_id => thread_ids)
-Query(Comment)
-.where("thread_id = ?")
-# Q 3119 : # Comment.where(:thread_id => thread_ids).includes(:user, :story).arrange_for_user
-Query(Comment)
-.where("thread_id = ?")
-.includes('user')
-.includes('story')
-# Q 3120 : # Comment.where(:thread_id => thread_ids).includes
-Query(Comment)
-.where("thread_id = ?")
-# Q 3121 : # self.comment
-Query(Comment)
-.select('comment')
-# Q 3122 : # self.comment
-Query(Comment)
-.select('comment')
-# Q 3123 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group(Tag.arel_table[:id]).order("COUNT(*) desc").first
-Query(Tag)
-.joins('stories')
-.where("user_id = ?")
-.group('')
-.order('id')
-.return_limit('1')
-# Q 3124 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group(Tag.arel_table[:id]).order("COUNT(*) desc")
-Query(Tag)
-.joins('stories')
-.where("user_id = ?")
-.group('')
-.order('id')
-# Q 3125 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group(Tag.arel_table[:id]).order
-Query(Tag)
-.joins('stories')
-.where("user_id = ?")
-.group('')
-# Q 3126 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group(Tag.arel_table[:id])
-Query(Tag)
-.joins('stories')
-.where("user_id = ?")
-.group('')
-# Q 3127 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group
-Query(Tag)
-.joins('stories')
-.where("user_id = ?")
-.group('')
-# Q 3128 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id })
-Query(Tag)
-.joins('stories')
-.where("user_id = ?")
-# Q 3129 : # Tag.active.joins(:stories).where
-Query(Tag)
-.joins('stories')
-# Q 3130 : # Tag.active.joins(:stories)
-Query(Tag)
-.joins('stories')
-# Q 3131 : # Tag.active.joins
-Query(Tag)
-
-# Q 3132 : # Tag.active
-Query(Tag)
-
-# Q 3133 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group(Tag.arel_table[:id]).order("COUNT(*) desc").first
-Query(Tag)
-.joins('stories')
-.where("user_id = ?")
-.group('')
-.order('id')
-.return_limit('1')
-# Q 3134 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group(Tag.arel_table[:id]).order
-Query(Tag)
-.joins('stories')
-.where("user_id = ?")
-.group('')
-# Q 3135 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group
-Query(Tag)
-.joins('stories')
-.where("user_id = ?")
-.group('')
-# Q 3136 : # Tag.active.joins(:stories).where
-Query(Tag)
-.joins('stories')
-# Q 3137 : # Tag.active.joins
-Query(Tag)
-
-# Q 3138 : # Tag.active
-Query(Tag)
-
-# Q 3139 : # self.generated_markeddown_description
-Query(Story)
-
-# Q 3140 : # self.generated_markeddown_description
-Query(Story)
-
-# Q 3141 : # self.generated_markeddown_description
-Query(Story)
-
-# Q 3142 : # self.id
-Query(User)
-
-# Q 3143 : # self.id
-Query(User)
-
-# Q 3144 : # self.description.present?
-Query(Story)
-.select('description')
-# Q 3145 : # self.description
-Query(Story)
-.select('description')
-# Q 3146 : # self.description.present?
-Query(Story)
-.select('description')
-# Q 3147 : # self.description
-Query(Story)
-.select('description')
-# Q 3148 : # Tag.arel_table
-Query(Tag)
-
-# Q 3149 : # Tag.arel_table
-Query(Tag)
-
-# Q 3150 : # self.markeddown_description.gsub(/<[^>]*>/, "")
-Query(Story)
-.select('markeddown_description')
-# Q 3151 : # self.markeddown_description.gsub
-Query(Story)
-.select('markeddown_description')
-# Q 3152 : # self.markeddown_description
-Query(Story)
-.select('markeddown_description')
-# Q 3153 : # self.markeddown_description.gsub
-Query(Story)
-.select('markeddown_description')
-# Q 3154 : # self.markeddown_description
-Query(Story)
-.select('markeddown_description')
-# Q 3155 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, story.id, nil, @user.id, nil)
-Query(Vote)
-
-# Q 3156 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 3157 : # story.id
-Query(Story)
-
-# Q 3158 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 3159 : # story.id
-Query(Story)
-
-# Q 3160 : # @user.id
-Query(User)
-
-# Q 3161 : # @user.id
-Query(User)
-
-# Q 3162 : # comments.group_by(&:thread_id)
-Query(Comment)
-
-# Q 3163 : # comments.group_by(&:thread_id)
-Query(Comment)
-
-# Q 3164 : # comments.group_by
-Query(Comment)
-
-# Q 3165 : # comments.group_by
-Query(Comment)
-
-# Q 3166 : # Comment.connection.execute
-Query(Comment)
-
-# Q 3167 : # Comment.connection
-Query(Comment)
-
-# Q 3168 : # Comment.table_name
-Query(Comment)
-
-# Q 3169 : # Comment.connection.execute
-Query(Comment)
-
-# Q 3170 : # Comment.connection
-Query(Comment)
-
-# Q 3171 : # Comment.table_name
-Query(Comment)
-
-# Q 3172 : # self.story_cache
-Query(Story)
-.select('story_cache')
-# Q 3173 : # self.story_cache
-Query(Story)
-.select('story_cache')
-# Q 3174 : # @user.id
-Query(User)
-
-# Q 3175 : # @user.id
-Query(User)
-
-# Q 3176 : # self.calculated_confidence
-Query(Comment)
-
-# Q 3177 : # self.calculated_confidence
-Query(Comment)
-
-# Q 3178 : # Vote.comment_votes_by_user_for_story_hash(@user.id, comments.map(&:story_id).uniq)
-Query(Vote)
-
-# Q 3179 : # Vote.comment_votes_by_user_for_story_hash(@user.id, comments.map(&:story_id).uniq)
-Query(Vote)
-
-# Q 3180 : # Vote.comment_votes_by_user_for_story_hash
-Query(Vote)
-
-# Q 3181 : # @user.id
-Query(User)
-
-# Q 3182 : # Vote.comment_votes_by_user_for_story_hash
-Query(Vote)
-
-# Q 3183 : # @user.id
-Query(User)
-
-# Q 3184 : # self.id.to_i
-Query(Comment)
-
-# Q 3185 : # self.id
-Query(Comment)
-
-# Q 3186 : # self.id.to_i
-Query(Comment)
-
-# Q 3187 : # self.id
-Query(Comment)
-
-# Q 3188 : # comments.map(&:story_id).uniq
-Query(Comment)
-.distinct('')
-# Q 3189 : # comments.map(&:story_id)
-Query(Comment)
-
-# Q 3190 : # comments.map
-Query(Comment)
-
-# Q 3191 : # comments.map(&:story_id).uniq
-Query(Comment)
-.distinct('')
-# Q 3192 : # comments.map
-Query(Comment)
-
-# Q 3193 : # self.pushover_user_key.present?
-Query(User)
-.select('pushover_user_key')
-# Q 3194 : # self.pushover_user_key
-Query(User)
-.select('pushover_user_key')
-# Q 3195 : # self.pushover_user_key.present?
-Query(User)
-.select('pushover_user_key')
-# Q 3196 : # self.pushover_user_key
-Query(User)
-.select('pushover_user_key')
-# Q 3197 : # self.story.recalculate_hotness!
-Query(Story)
-.where("id = ?")
-# Q 3198 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3199 : # self.story.recalculate_hotness!
-Query(Story)
-.where("id = ?")
-# Q 3200 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3201 : # self.pushover_user_key
-Query(User)
-.select('pushover_user_key')
-# Q 3202 : # self.pushover_user_key
-Query(User)
-.select('pushover_user_key')
-# Q 3203 : # comments.each
-Query(Comment)
-
-# Q 3204 : # comments.each
-Query(Comment)
-
-# Q 3205 : # self.is_moderated?
-Query(Comment)
-
-# Q 3206 : # self.is_moderated?
-Query(Comment)
-
-# Q 3207 : # self.comments.group(:thread_id).order("MAX(created_at) DESC").limit(amount).pluck(:thread_id)
-Query(Comment)
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-.return_limit('')
-.select('thread_id')
-# Q 3208 : # self.comments.group(:thread_id).order("MAX(created_at) DESC").limit(amount).pluck(:thread_id)
-Query(Comment)
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-.return_limit('')
-.select('thread_id')
-# Q 3209 : # self.comments.group(:thread_id).order("MAX(created_at) DESC").limit(amount).pluck
-Query(Comment)
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 3210 : # self.comments.group(:thread_id).order("MAX(created_at) DESC").limit(amount)
-Query(Comment)
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 3211 : # self.comments.group(:thread_id).order("MAX(created_at) DESC").limit
-Query(Comment)
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 3212 : # self.comments.group(:thread_id).order("MAX(created_at) DESC")
-Query(Comment)
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-# Q 3213 : # self.comments.group(:thread_id).order
-Query(Comment)
-.where("user_id = ?")
-.group('thread_id')
-# Q 3214 : # self.comments.group(:thread_id)
-Query(Comment)
-.where("user_id = ?")
-.group('thread_id')
-# Q 3215 : # self.comments.group
-Query(Comment)
-.where("user_id = ?")
-.group('')
-# Q 3216 : # self.comments
-Query(Comment)
-.where("user_id = ?")
-# Q 3217 : # self.comments.group(:thread_id).order("MAX(created_at) DESC").limit(amount).pluck
-Query(Comment)
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 3218 : # self.comments.group(:thread_id).order("MAX(created_at) DESC").limit
-Query(Comment)
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 3219 : # self.comments.group(:thread_id).order
-Query(Comment)
-.where("user_id = ?")
-.group('thread_id')
-# Q 3220 : # self.comments.group
-Query(Comment)
-.where("user_id = ?")
-.group('')
-# Q 3221 : # self.comments
-Query(Comment)
-.where("user_id = ?")
-# Q 3222 : # self.moderation.try(:moderator).try(:username).to_s
-Query(Moderation)
-.where("id = ?")
-.select('moderator')
-.select('username')
-# Q 3223 : # self.moderation.try(:moderator).try(:username)
-Query(Moderation)
-.where("id = ?")
-.select('moderator')
-.select('username')
-# Q 3224 : # self.moderation.try(:moderator).try
-Query(Moderation)
-.where("id = ?")
-.select('moderator')
-# Q 3225 : # self.moderation.try(:moderator)
-Query(Moderation)
-.where("id = ?")
-.select('moderator')
-# Q 3226 : # self.moderation.try
-Query(Moderation)
-.where("id = ?")
-# Q 3227 : # self.moderation
-Query(Moderation)
-.where("id = ?")
-# Q 3228 : # self.moderation.try(:moderator).try(:username).to_s
-Query(Moderation)
-.where("id = ?")
-.select('moderator')
-.select('username')
-# Q 3229 : # self.moderation.try(:moderator).try
-Query(Moderation)
-.where("id = ?")
-.select('moderator')
-# Q 3230 : # self.moderation.try
-Query(Moderation)
-.where("id = ?")
-# Q 3231 : # self.moderation
-Query(Moderation)
-.where("id = ?")
-# Q 3232 : # self.url.blank?
+# Q 3735 : # self.url.gsub(/^[^:]+:\/\//, "").gsub(/\/.*/, "").gsub(/:\d+$/, "").gsub(/^www\d*\.(.+\..+)/, "\1")
 Query(Story)
 .select('url')
-# Q 3233 : # self.url
+# Q 3736 : # self.url.gsub(/^[^:]+:\/\//, "").gsub(/\/.*/, "").gsub(/:\d+$/, "").gsub
 Query(Story)
 .select('url')
-# Q 3234 : # self.url.blank?
+# Q 3737 : # self.url.gsub(/^[^:]+:\/\//, "").gsub(/\/.*/, "").gsub(/:\d+$/, "")
 Query(Story)
 .select('url')
-# Q 3235 : # self.url
+# Q 3738 : # self.url.gsub(/^[^:]+:\/\//, "").gsub(/\/.*/, "").gsub
 Query(Story)
 .select('url')
-# Q 3236 : # self.moderation.try(:reason)
-Query(Moderation)
-.where("id = ?")
-.select('reason')
-# Q 3237 : # self.moderation.try
-Query(Moderation)
-.where("id = ?")
-# Q 3238 : # self.moderation
-Query(Moderation)
-.where("id = ?")
-# Q 3239 : # self.moderation.try
-Query(Moderation)
-.where("id = ?")
-# Q 3240 : # self.moderation
-Query(Moderation)
-.where("id = ?")
-# Q 3241 : # @user.can_downvote?(story)
+# Q 3739 : # self.url.gsub(/^[^:]+:\/\//, "").gsub(/\/.*/, "")
+Query(Story)
+.select('url')
+# Q 3740 : # self.url.gsub(/^[^:]+:\/\//, "").gsub
+Query(Story)
+.select('url')
+# Q 3741 : # self.url.gsub(/^[^:]+:\/\//, "")
+Query(Story)
+.select('url')
+# Q 3742 : # self.url.gsub
+Query(Story)
+.select('url')
+# Q 3743 : # self.url
+Query(Story)
+.select('url')
+# Q 3744 : # self.url.gsub(/^[^:]+:\/\//, "").gsub(/\/.*/, "").gsub(/:\d+$/, "").gsub
+Query(Story)
+.select('url')
+# Q 3745 : # self.url.gsub(/^[^:]+:\/\//, "").gsub(/\/.*/, "").gsub
+Query(Story)
+.select('url')
+# Q 3746 : # self.url.gsub(/^[^:]+:\/\//, "").gsub
+Query(Story)
+.select('url')
+# Q 3747 : # self.url.gsub
+Query(Story)
+.select('url')
+# Q 3748 : # self.url
+Query(Story)
+.select('url')
+# Q 3749 : # self.is_moderated?
+Query(Comment)
+
+# Q 3750 : # self.is_moderated?
+Query(Comment)
+
+# Q 3751 : # self.save!
 Query(User)
 
-# Q 3242 : # @user.can_downvote?
+# Q 3752 : # self.save!
 Query(User)
 
-# Q 3243 : # @user.can_downvote?
+# Q 3753 : # self.save!
 Query(User)
 
-# Q 3244 : # self.user.is_banned?
-Query(User)
-.where("id = ?")
-# Q 3245 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3246 : # self.user.is_banned?
-Query(User)
-.where("id = ?")
-# Q 3247 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3248 : # self.show_submitted_story_threads
-Query(User)
-.select('show_submitted_story_threads')
-# Q 3249 : # self.show_submitted_story_threads
-Query(User)
-.select('show_submitted_story_threads')
-# Q 3250 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order("MAX(comments.created_at) DESC").limit(amount).pluck(:thread_id)
-Query(Comment)
-.joins('story')
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-.return_limit('')
-.select('thread_id')
-# Q 3251 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order("MAX(comments.created_at) DESC").limit(amount).pluck
-Query(Comment)
-.joins('story')
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 3252 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order("MAX(comments.created_at) DESC").limit(amount)
-Query(Comment)
-.joins('story')
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 3253 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order("MAX(comments.created_at) DESC").limit
-Query(Comment)
-.joins('story')
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 3254 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order("MAX(comments.created_at) DESC")
-Query(Comment)
-.joins('story')
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-# Q 3255 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order
-Query(Comment)
-.joins('story')
-.where("user_id = ?")
-.group('thread_id')
-# Q 3256 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id)
-Query(Comment)
-.joins('story')
-.where("user_id = ?")
-.group('thread_id')
-# Q 3257 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group
-Query(Comment)
-.joins('story')
-.where("user_id = ?")
-.group('')
-# Q 3258 : # Comment.joins(:story).where(:stories => { :user_id => self.id })
-Query(Comment)
-.joins('story')
-.where("user_id = ?")
-# Q 3259 : # Comment.joins(:story).where
-Query(Comment)
-.joins('story')
-# Q 3260 : # Comment.joins(:story)
-Query(Comment)
-.joins('story')
-# Q 3261 : # Comment.joins
-Query(Comment)
-
-# Q 3262 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order("MAX(comments.created_at) DESC").limit(amount).pluck
-Query(Comment)
-.joins('story')
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 3263 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order("MAX(comments.created_at) DESC").limit
-Query(Comment)
-.joins('story')
-.where("user_id = ?")
-.group('thread_id')
-.order('id')
-.order('created_at')
-.return_limit('')
-# Q 3264 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order
-Query(Comment)
-.joins('story')
-.where("user_id = ?")
-.group('thread_id')
-# Q 3265 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group
-Query(Comment)
-.joins('story')
-.where("user_id = ?")
-.group('')
-# Q 3266 : # Comment.joins(:story).where
-Query(Comment)
-.joins('story')
-# Q 3267 : # Comment.joins
-Query(Comment)
-
-# Q 3268 : # self.id
-Query(User)
-
-# Q 3269 : # self.id
-Query(User)
-
-# Q 3270 : # self.url.gsub(/^[^:]+:\/\//, "").gsub(/\/.*/, "").gsub(/:\d+$/, "").gsub(/^www\d*\.(.+\..+)/, "\1")
-Query(Story)
-.select('url')
-# Q 3271 : # self.url.gsub(/^[^:]+:\/\//, "").gsub(/\/.*/, "").gsub(/:\d+$/, "").gsub
-Query(Story)
-.select('url')
-# Q 3272 : # self.url.gsub(/^[^:]+:\/\//, "").gsub(/\/.*/, "").gsub(/:\d+$/, "")
-Query(Story)
-.select('url')
-# Q 3273 : # self.url.gsub(/^[^:]+:\/\//, "").gsub(/\/.*/, "").gsub
-Query(Story)
-.select('url')
-# Q 3274 : # self.url.gsub(/^[^:]+:\/\//, "").gsub(/\/.*/, "")
-Query(Story)
-.select('url')
-# Q 3275 : # self.url.gsub(/^[^:]+:\/\//, "").gsub
-Query(Story)
-.select('url')
-# Q 3276 : # self.url.gsub(/^[^:]+:\/\//, "")
-Query(Story)
-.select('url')
-# Q 3277 : # self.url.gsub
-Query(Story)
-.select('url')
-# Q 3278 : # self.url
-Query(Story)
-.select('url')
-# Q 3279 : # self.url.gsub(/^[^:]+:\/\//, "").gsub(/\/.*/, "").gsub(/:\d+$/, "").gsub
-Query(Story)
-.select('url')
-# Q 3280 : # self.url.gsub(/^[^:]+:\/\//, "").gsub(/\/.*/, "").gsub
-Query(Story)
-.select('url')
-# Q 3281 : # self.url.gsub(/^[^:]+:\/\//, "").gsub
-Query(Story)
-.select('url')
-# Q 3282 : # self.url.gsub
-Query(Story)
-.select('url')
-# Q 3283 : # self.url
-Query(Story)
-.select('url')
-# Q 3284 : # Vote.vote_thusly_on_story_or_comment_for_user_because(-1, story.id, nil, @user.id, params[:reason])
-Query(Vote)
-
-# Q 3285 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 3286 : # story.id
-Query(Story)
-
-# Q 3287 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 3288 : # story.id
-Query(Story)
-
-# Q 3289 : # @user.id
-Query(User)
-
-# Q 3290 : # @user.id
-Query(User)
-
-# Q 3291 : # self.updated_at
+# Q 3754 : # self.updated_at
 Query(Comment)
 .select('updated_at')
-# Q 3292 : # self.updated_at
+# Q 3755 : # self.updated_at.to_i
 Query(Comment)
 .select('updated_at')
-# Q 3293 : # self.created_at
-Query(Comment)
-.select('created_at')
-# Q 3294 : # self.updated_at
+# Q 3756 : # self.updated_at
 Query(Comment)
 .select('updated_at')
-# Q 3295 : # self.updated_at
+# Q 3757 : # self.updated_at
 Query(Comment)
 .select('updated_at')
-# Q 3296 : # self.created_at
+# Q 3758 : # self.updated_at.to_i
+Query(Comment)
+.select('updated_at')
+# Q 3759 : # self.updated_at
+Query(Comment)
+.select('updated_at')
+# Q 3760 : # self.created_at.to_i
 Query(Comment)
 .select('created_at')
-# Q 3297 : # Keystore.value_for
-Query(Keystore)
-
-# Q 3298 : # self.id
-Query(User)
-
-# Q 3299 : # Keystore.value_for
-Query(Keystore)
-
-# Q 3300 : # self.id
-Query(User)
-
-# Q 3301 : # self.domain
-Query(Story)
-
-# Q 3302 : # self.domain
-Query(Story)
-
-# Q 3303 : # self.user.is_active?
-Query(User)
-.where("id = ?")
-# Q 3304 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3305 : # self.user.is_active?
-Query(User)
-.where("id = ?")
-# Q 3306 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3307 : # HiddenStory.hide_story_for_user(story.id, @user.id)
-Query(HiddenStory)
-
-# Q 3308 : # HiddenStory.hide_story_for_user
-Query(HiddenStory)
-
-# Q 3309 : # story.id
-Query(Story)
-
-# Q 3310 : # @user.id
-Query(User)
-
-# Q 3311 : # HiddenStory.hide_story_for_user
-Query(HiddenStory)
-
-# Q 3312 : # story.id
-Query(Story)
-
-# Q 3313 : # @user.id
-Query(User)
-
-# Q 3314 : # self.user.is_new?
-Query(User)
-.where("id = ?")
-# Q 3315 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3316 : # self.user.is_new?
-Query(User)
-.where("id = ?")
-# Q 3317 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3318 : # self.url.present?
-Query(Story)
-.select('url')
-# Q 3319 : # self.url
-Query(Story)
-.select('url')
-# Q 3320 : # self.url.present?
-Query(Story)
-.select('url')
-# Q 3321 : # self.url
-Query(Story)
-.select('url')
-# Q 3322 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3323 : # self.story.user_is_author?
-Query(Story)
-.where("id = ?")
-# Q 3324 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3325 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3326 : # self.story.user_is_author?
-Query(Story)
-.where("id = ?")
-# Q 3327 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3328 : # self.url
-Query(Story)
-.select('url')
-# Q 3329 : # self.url
-Query(Story)
-.select('url')
-# Q 3330 : # self.story.user_id
-Query(Story)
-.where("id = ?")
-.select('user_id')
-# Q 3331 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3332 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 3333 : # self.story.user_id
-Query(Story)
-.where("id = ?")
-.select('user_id')
-# Q 3334 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3335 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 3336 : # self.description
-Query(Story)
-.select('description')
-# Q 3337 : # self.description
-Query(Story)
-.select('description')
-# Q 3338 : # self.save!
-Query(User)
-
-# Q 3339 : # self.save!
-Query(User)
-
-# Q 3340 : # HiddenStory.where(:user_id => @user.id, :story_id => story.id).delete_all
-Query(HiddenStory)
-.where("user_id = ?")
-.where("story_id = ?")
-# Q 3341 : # HiddenStory.where(:user_id => @user.id, :story_id => story.id)
-Query(HiddenStory)
-.where("user_id = ?")
-.where("story_id = ?")
-# Q 3342 : # @user.id
-Query(User)
-
-# Q 3343 : # story.id
-Query(Story)
-
-# Q 3344 : # HiddenStory.where(:user_id => @user.id, :story_id => story.id).delete_all
-Query(HiddenStory)
-.where("user_id = ?")
-.where("story_id = ?")
-# Q 3345 : # @user.id
-Query(User)
-
-# Q 3346 : # story.id
-Query(Story)
-
-# Q 3347 : # Comment.where(:short_id => params[:id]).first
-Query(Comment)
-.where("short_id = ?")
-.return_limit('1')
-# Q 3348 : # Comment.where(:short_id => params[:id]).first
-Query(Comment)
-.where("short_id = ?")
-.return_limit('1')
-# Q 3349 : # Comment.where(:short_id => params[:id])
-Query(Comment)
-.where("short_id = ?")
-# Q 3350 : # Comment.where(:short_id => params[:id]).first
-Query(Comment)
-.where("short_id = ?")
-.return_limit('1')
-# Q 3351 : # Moderation.new
-Query(Moderation)
-
-# Q 3352 : # Moderation.new
-Query(Moderation)
-
-# Q 3353 : # Moderation.new
-Query(Moderation)
-
-# Q 3354 : # user.is_moderator?
-Query(User)
-
-# Q 3355 : # user.is_moderator?
-Query(User)
-
-# Q 3356 : # Vote.where(:user_id => @user.id, :story_id => comment.story_id, :comment_id => comment.id).first
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where("comment_id = ?")
-.return_limit('1')
-# Q 3357 : # Vote.where(:user_id => @user.id, :story_id => comment.story_id, :comment_id => comment.id).first
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where("comment_id = ?")
-.return_limit('1')
-# Q 3358 : # Vote.where(:user_id => @user.id, :story_id => comment.story_id, :comment_id => comment.id)
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where("comment_id = ?")
-# Q 3359 : # @user.id
-Query(User)
-
-# Q 3360 : # Vote.where(:user_id => @user.id, :story_id => comment.story_id, :comment_id => comment.id).first
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where("comment_id = ?")
-.return_limit('1')
-# Q 3361 : # @user.id
-Query(User)
-
-# Q 3362 : # self.id
-Query(User)
-
-# Q 3363 : # self.id
-Query(User)
-
-# Q 3364 : # self.id
-Query(User)
-
-# Q 3365 : # comment.story_id
-Query(Comment)
-.select('story_id')
-# Q 3366 : # comment.id
-Query(Comment)
-
-# Q 3367 : # comment.story_id
-Query(Comment)
-.select('story_id')
-# Q 3368 : # comment.id
-Query(Comment)
-
-# Q 3369 : # user.id
-Query(User)
-
-# Q 3370 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 3371 : # user.id
-Query(User)
-
-# Q 3372 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 3373 : # Story.connection.execute
-Query(Story)
-
-# Q 3374 : # Story.connection
-Query(Story)
-
-# Q 3375 : # Story.table_name
-Query(Story)
-
-# Q 3376 : # Story.connection.execute
-Query(Story)
-
-# Q 3377 : # Story.connection
-Query(Story)
-
-# Q 3378 : # Story.table_name
-Query(Story)
-
-# Q 3379 : # self.calculated_hotness
-Query(Story)
-
-# Q 3380 : # self.id.to_i
-Query(Story)
-
-# Q 3381 : # self.id
-Query(Story)
-
-# Q 3382 : # self.calculated_hotness
-Query(Story)
-
-# Q 3383 : # self.id.to_i
-Query(Story)
-
-# Q 3384 : # self.id
-Query(Story)
-
-# Q 3385 : # self.created_at
+# Q 3761 : # self.created_at
 Query(Comment)
 .select('created_at')
-# Q 3386 : # self.created_at
+# Q 3762 : # self.created_at.to_i
 Query(Comment)
 .select('created_at')
-# Q 3387 : # HiddenStory.where(:story_id => self.id).count
-Query(HiddenStory)
-.where("story_id = ?")
-# Q 3388 : # HiddenStory.where(:story_id => self.id)
-Query(HiddenStory)
-.where("story_id = ?")
-# Q 3389 : # self.id
-Query(Story)
-
-# Q 3390 : # HiddenStory.where(:story_id => self.id).count
-Query(HiddenStory)
-.where("story_id = ?")
-# Q 3391 : # self.id
-Query(Story)
-
-# Q 3392 : # self.created_at
+# Q 3763 : # self.created_at
 Query(Comment)
 .select('created_at')
-# Q 3393 : # self.created_at
+# Q 3764 : # User.find_by!(:username => "inactive-user")
+Query(User)
+.where("username = ?")
+# Q 3765 : # User.find_by!(:username => "inactive-user")
+Query(User)
+.where("username = ?")
+# Q 3766 : # self.comments.update_all(:user_id => inactive_user.id)
 Query(Comment)
-.select('created_at')
-# Q 3394 : # @user.is_moderator?
-Query(User)
-
-# Q 3395 : # @user.is_moderator?
-Query(User)
-
-# Q 3396 : # self.user.is_active?
-Query(User)
-.where("id = ?")
-# Q 3397 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3398 : # self.user.is_active?
-Query(User)
-.where("id = ?")
-# Q 3399 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3400 : # Keystore.value_for
-Query(Keystore)
-
-# Q 3401 : # self.id
-Query(User)
-
-# Q 3402 : # Keystore.value_for
-Query(Keystore)
-
-# Q 3403 : # self.id
-Query(User)
-
-# Q 3404 : # self.user.is_new?
-Query(User)
-.where("id = ?")
-# Q 3405 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3406 : # self.user.is_new?
-Query(User)
-.where("id = ?")
-# Q 3407 : # self.user
-Query(User)
-.where("id = ?")
-# Q 3408 : # user.id
-Query(User)
-
-# Q 3409 : # self.user_id
+.where("user_id = ?")
+# Q 3767 : # self.comments.update_all
 Query(Comment)
-.select('user_id')
-# Q 3410 : # user.id
+.where("user_id = ?")
+# Q 3768 : # self.comments
+Query(Comment)
+.where("user_id = ?")
+# Q 3769 : # self.comments.update_all
+Query(Comment)
+.where("user_id = ?")
+# Q 3770 : # self.comments
+Query(Comment)
+.where("user_id = ?")
+# Q 3771 : # @user.is_moderator?
 Query(User)
 
-# Q 3411 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 3412 : # self.is_moderated?
-Query(Comment)
+# Q 3772 : # @user.is_moderator?
+Query(User)
 
-# Q 3413 : # self.is_moderated?
-Query(Comment)
-
-# Q 3414 : # self.user_is_author?
+# Q 3773 : # self.domain
 Query(Story)
 
-# Q 3415 : # self.user_is_author?
+# Q 3774 : # self.domain
 Query(Story)
 
-# Q 3416 : # Story.where(:short_id => params[:story_id]).first
+# Q 3775 : # self.save!
+Query(User)
+
+# Q 3776 : # self.save!
+Query(User)
+
+# Q 3777 : # self.url.present?
+Query(Story)
+.select('url')
+# Q 3778 : # self.url
+Query(Story)
+.select('url')
+# Q 3779 : # self.url.present?
+Query(Story)
+.select('url')
+# Q 3780 : # self.url
+Query(Story)
+.select('url')
+# Q 3781 : # Story.where(:short_id => params[:story_id]).first
 Query(Story)
 .where("short_id = ?")
 .return_limit('1')
-# Q 3417 : # Story.where(:short_id => params[:story_id]).first
+# Q 3782 : # Story.where(:short_id => params[:story_id]).first
 Query(Story)
 .where("short_id = ?")
 .return_limit('1')
-# Q 3418 : # Story.where(:short_id => params[:story_id])
+# Q 3783 : # Story.where(:short_id => params[:story_id])
 Query(Story)
 .where("short_id = ?")
-# Q 3419 : # Story.where(:short_id => params[:story_id]).first
+# Q 3784 : # Story.where(:short_id => params[:story_id]).first
 Query(Story)
 .where("short_id = ?")
 .return_limit('1')
-# Q 3420 : # Keystore.put
-Query(Keystore)
-
-# Q 3421 : # self.id
+# Q 3785 : # user.is_moderator?
 Query(User)
 
-# Q 3422 : # Keystore.put
-Query(Keystore)
-
-# Q 3423 : # self.id
+# Q 3786 : # user.is_moderator?
 Query(User)
 
-# Q 3424 : # Vote.where(:user_id => @user.id, :story_id => story.id, :comment_id => nil).first.try(:vote)
+# Q 3787 : # User.transaction
+Query(User)
+
+# Q 3788 : # User.transaction
+Query(User)
+
+# Q 3789 : # Vote.where(:user_id => @user.id, :story_id => story.id, :comment_id => nil).first.try(:vote)
 Query(Vote)
 .where("user_id = ?")
 .where("story_id = ?")
 .where("comment_id = ?")
 .return_limit('1')
 .select('vote')
-# Q 3425 : # Vote.where(:user_id => @user.id, :story_id => story.id, :comment_id => nil).first.try(:vote)
+# Q 3790 : # Vote.where(:user_id => @user.id, :story_id => story.id, :comment_id => nil).first.try(:vote)
 Query(Vote)
 .where("user_id = ?")
 .where("story_id = ?")
 .where("comment_id = ?")
 .return_limit('1')
 .select('vote')
-# Q 3426 : # Vote.where(:user_id => @user.id, :story_id => story.id, :comment_id => nil).first.try
+# Q 3791 : # Vote.where(:user_id => @user.id, :story_id => story.id, :comment_id => nil).first.try
 Query(Vote)
 .where("user_id = ?")
 .where("story_id = ?")
 .where("comment_id = ?")
 .return_limit('1')
-# Q 3427 : # Vote.where(:user_id => @user.id, :story_id => story.id, :comment_id => nil).first
+# Q 3792 : # Vote.where(:user_id => @user.id, :story_id => story.id, :comment_id => nil).first
 Query(Vote)
 .where("user_id = ?")
 .where("story_id = ?")
 .where("comment_id = ?")
 .return_limit('1')
-# Q 3428 : # Vote.where(:user_id => @user.id, :story_id => story.id, :comment_id => nil)
+# Q 3793 : # Vote.where(:user_id => @user.id, :story_id => story.id, :comment_id => nil)
 Query(Vote)
 .where("user_id = ?")
 .where("story_id = ?")
 .where("comment_id = ?")
-# Q 3429 : # @user.id
+# Q 3794 : # @user.id
 Query(User)
 
-# Q 3430 : # Vote.where(:user_id => @user.id, :story_id => story.id, :comment_id => nil).first.try
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where("comment_id = ?")
-.return_limit('1')
-# Q 3431 : # Vote.where(:user_id => @user.id, :story_id => story.id, :comment_id => nil).first
+# Q 3795 : # Vote.where(:user_id => @user.id, :story_id => story.id, :comment_id => nil).first.try
 Query(Vote)
 .where("user_id = ?")
 .where("story_id = ?")
 .where("comment_id = ?")
 .return_limit('1')
-# Q 3432 : # @user.id
-Query(User)
-
-# Q 3433 : # self.updated_at
-Query(Comment)
-.select('updated_at')
-# Q 3434 : # self.updated_at.to_i
-Query(Comment)
-.select('updated_at')
-# Q 3435 : # self.updated_at
-Query(Comment)
-.select('updated_at')
-# Q 3436 : # self.updated_at
-Query(Comment)
-.select('updated_at')
-# Q 3437 : # self.updated_at.to_i
-Query(Comment)
-.select('updated_at')
-# Q 3438 : # self.updated_at
-Query(Comment)
-.select('updated_at')
-# Q 3439 : # self.received_messages.unread.count
-Query(Message)
-.where("user_id = ?")
-# Q 3440 : # self.received_messages.unread
-Query(Message)
-.where("user_id = ?")
-# Q 3441 : # self.received_messages
-Query(Message)
-.where("user_id = ?")
-# Q 3442 : # self.received_messages.unread.count
-Query(Message)
-.where("user_id = ?")
-# Q 3443 : # self.received_messages.unread
-Query(Message)
-.where("user_id = ?")
-# Q 3444 : # self.received_messages
-Query(Message)
-.where("user_id = ?")
-# Q 3445 : # story.id
-Query(Story)
-
-# Q 3446 : # story.id
-Query(Story)
-
-# Q 3447 : # self.created_at.to_i
-Query(Comment)
-.select('created_at')
-# Q 3448 : # self.created_at
-Query(Comment)
-.select('created_at')
-# Q 3449 : # self.created_at.to_i
-Query(Comment)
-.select('created_at')
-# Q 3450 : # self.created_at
-Query(Comment)
-.select('created_at')
-# Q 3451 : # self.votes.joins(:story, :comment).where("comments.user_id <> votes.user_id AND " << "stories.user_id <> votes.user_id").order("id DESC")
-Query(Vote)
-.where("user_id = ?")
-.joins('story')
-.joins('comment')
-.order('id')
-.order('id')
-# Q 3452 : # self.votes.joins(:story, :comment).where("comments.user_id <> votes.user_id AND " << "stories.user_id <> votes.user_id").order
-Query(Vote)
-.where("user_id = ?")
-.joins('story')
-.joins('comment')
-# Q 3453 : # self.votes.joins(:story, :comment).where("comments.user_id <> votes.user_id AND " << "stories.user_id <> votes.user_id")
-Query(Vote)
-.where("user_id = ?")
-.joins('story')
-.joins('comment')
-# Q 3454 : # self.votes.joins(:story, :comment).where
-Query(Vote)
-.where("user_id = ?")
-.joins('story')
-.joins('comment')
-# Q 3455 : # self.votes.joins(:story, :comment)
-Query(Vote)
-.where("user_id = ?")
-.joins('story')
-.joins('comment')
-# Q 3456 : # self.votes.joins
-Query(Vote)
-.where("user_id = ?")
-# Q 3457 : # self.votes
-Query(Vote)
-.where("user_id = ?")
-# Q 3458 : # self.votes.joins(:story, :comment).where("comments.user_id <> votes.user_id AND " << "stories.user_id <> votes.user_id").order
-Query(Vote)
-.where("user_id = ?")
-.joins('story')
-.joins('comment')
-# Q 3459 : # self.votes.joins(:story, :comment).where
-Query(Vote)
-.where("user_id = ?")
-.joins('story')
-.joins('comment')
-# Q 3460 : # self.votes.joins
-Query(Vote)
-.where("user_id = ?")
-# Q 3461 : # self.votes
-Query(Vote)
-.where("user_id = ?")
-# Q 3462 : # self.created_at
-Query(Story)
-.select('created_at')
-# Q 3463 : # self.created_at
-Query(Story)
-.select('created_at')
-# Q 3464 : # self.created_at
-Query(Story)
-.select('created_at')
-# Q 3465 : # self.created_at
-Query(Story)
-.select('created_at')
-# Q 3466 : # user.is_moderator?
-Query(User)
-
-# Q 3467 : # user.is_moderator?
-Query(User)
-
-# Q 3468 : # user.is_moderator?
-Query(User)
-
-# Q 3469 : # user.is_moderator?
-Query(User)
-
-# Q 3470 : # @user.is_moderator?
-Query(User)
-
-# Q 3471 : # @user.is_moderator?
-Query(User)
-
-# Q 3472 : # user.id
-Query(User)
-
-# Q 3473 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 3474 : # self.is_moderated?
-Query(Comment)
-
-# Q 3475 : # user.id
-Query(User)
-
-# Q 3476 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 3477 : # self.is_moderated?
-Query(Comment)
-
-# Q 3478 : # Story.where(:short_id => params[:story_id] || params[:id]).first
-Query(Story)
-.where("short_id = ?")
-.return_limit('1')
-# Q 3479 : # Story.where(:short_id => params[:story_id] || params[:id]).first
-Query(Story)
-.where("short_id = ?")
-.return_limit('1')
-# Q 3480 : # Story.where(:short_id => params[:story_id] || params[:id])
-Query(Story)
-.where("short_id = ?")
-# Q 3481 : # Story.where(:short_id => params[:story_id] || params[:id]).first
-Query(Story)
-.where("short_id = ?")
-.return_limit('1')
-# Q 3482 : # user.id
-Query(User)
-
-# Q 3483 : # self.user_id
-Query(Story)
-.select('user_id')
-# Q 3484 : # user.id
-Query(User)
-
-# Q 3485 : # self.user_id
-Query(Story)
-.select('user_id')
-# Q 3486 : # self.is_moderated?
-Query(Story)
-
-# Q 3487 : # self.is_moderated?
-Query(Story)
-
-# Q 3488 : # Story.where(:user_id => @user.id, :short_id => (
-# params[:story_id] || params[:id])).first
-Query(Story)
-.where("user_id = ?")
-.where("short_id = ?")
-.return_limit('1')
-# Q 3489 : # Story.where(:user_id => @user.id, :short_id => (
-# params[:story_id] || params[:id])).first
-Query(Story)
-.where("user_id = ?")
-.where("short_id = ?")
-.return_limit('1')
-# Q 3490 : # Story.where(:user_id => @user.id, :short_id => (
-# params[:story_id] || params[:id]))
-Query(Story)
-.where("user_id = ?")
-.where("short_id = ?")
-# Q 3491 : # @user.id
-Query(User)
-
-# Q 3492 : # Story.where(:user_id => @user.id, :short_id => (
-# params[:story_id] || params[:id])).first
-Query(Story)
-.where("user_id = ?")
-.where("short_id = ?")
-.return_limit('1')
-# Q 3493 : # @user.id
-Query(User)
-
-# Q 3494 : # self.created_at.to_i
-Query(Story)
-.select('created_at')
-# Q 3495 : # self.created_at
-Query(Story)
-.select('created_at')
-# Q 3496 : # self.created_at.to_i
-Query(Story)
-.select('created_at')
-# Q 3497 : # self.created_at
-Query(Story)
-.select('created_at')
-# Q 3498 : # Keystore.increment_value_for
-Query(Keystore)
-
-# Q 3499 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 3500 : # Keystore.increment_value_for
-Query(Keystore)
-
-# Q 3501 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 3502 : # Vote.where(:user_id => @user.id, :story_id => @story.id, :comment_id => nil).first
+# Q 3796 : # Vote.where(:user_id => @user.id, :story_id => story.id, :comment_id => nil).first
 Query(Vote)
 .where("user_id = ?")
 .where("story_id = ?")
 .where("comment_id = ?")
 .return_limit('1')
-# Q 3503 : # Vote.where(:user_id => @user.id, :story_id => @story.id, :comment_id => nil).first
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where("comment_id = ?")
-.return_limit('1')
-# Q 3504 : # Vote.where(:user_id => @user.id, :story_id => @story.id, :comment_id => nil)
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where("comment_id = ?")
-# Q 3505 : # @user.id
+# Q 3797 : # @user.id
 Query(User)
 
-# Q 3506 : # @story.id
-Query(Story)
-
-# Q 3507 : # Vote.where(:user_id => @user.id, :story_id => @story.id, :comment_id => nil).first
-Query(Vote)
-.where("user_id = ?")
-.where("story_id = ?")
-.where("comment_id = ?")
-.return_limit('1')
-# Q 3508 : # @user.id
+# Q 3798 : # user.id
 Query(User)
 
-# Q 3509 : # @story.id
-Query(Story)
-
-# Q 3510 : # HiddenStory.where(:user_id => user.id, :story_id => self.id).first
-Query(HiddenStory)
-.where("user_id = ?")
-.where("story_id = ?")
-.return_limit('1')
-# Q 3511 : # HiddenStory.where(:user_id => user.id, :story_id => self.id)
-Query(HiddenStory)
-.where("user_id = ?")
-.where("story_id = ?")
-# Q 3512 : # user.id
-Query(User)
-
-# Q 3513 : # self.id
-Query(Story)
-
-# Q 3514 : # HiddenStory.where(:user_id => user.id, :story_id => self.id).first
-Query(HiddenStory)
-.where("user_id = ?")
-.where("story_id = ?")
-.return_limit('1')
-# Q 3515 : # user.id
-Query(User)
-
-# Q 3516 : # self.id
-Query(Story)
-
-# Q 3517 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3518 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3519 : # self.is_from_email
-Query(Comment)
-.select('is_from_email')
-# Q 3520 : # self.is_from_email
-Query(Comment)
-.select('is_from_email')
-# Q 3521 : # self.created_at
-Query(Story)
-.select('created_at')
-# Q 3522 : # self.created_at
-Query(Story)
-.select('created_at')
-# Q 3523 : # @story.is_hidden_by_user?(@user)
-Query(Story)
-
-# Q 3524 : # @story.is_hidden_by_user?(@user)
-Query(Story)
-
-# Q 3525 : # @story.is_hidden_by_user?
-Query(Story)
-
-# Q 3526 : # @story.is_hidden_by_user?
-Query(Story)
-
-# Q 3527 : # Vote.comment_votes_by_user_for_story_hash(@user.id, @story.id)
-Query(Vote)
-
-# Q 3528 : # Vote.comment_votes_by_user_for_story_hash(@user.id, @story.id)
-Query(Vote)
-
-# Q 3529 : # Vote.comment_votes_by_user_for_story_hash
-Query(Vote)
-
-# Q 3530 : # @user.id
-Query(User)
-
-# Q 3531 : # @story.id
-Query(Story)
-
-# Q 3532 : # Vote.comment_votes_by_user_for_story_hash
-Query(Vote)
-
-# Q 3533 : # @user.id
-Query(User)
-
-# Q 3534 : # @story.id
-Query(Story)
-
-# Q 3535 : # @comments.each
-Query(Comment)
-
-# Q 3536 : # @comments.each
-Query(Comment)
-
-# Q 3537 : # self.story.comments_path
-Query(Story)
-.where("id = ?")
-# Q 3538 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3539 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3540 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3541 : # self.story.comments_path
-Query(Story)
-.where("id = ?")
-# Q 3542 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3543 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3544 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3545 : # self.unavailable_at
-Query(Story)
-.select('unavailable_at')
-# Q 3546 : # self.unavailable_at
-Query(Story)
-.select('unavailable_at')
-# Q 3547 : # self.is_unavailable
-Query(Story)
-
-# Q 3548 : # self.is_unavailable
-Query(Story)
-
-# Q 3549 : # user.is_moderator?
-Query(User)
-
-# Q 3550 : # user.is_moderator?
-Query(User)
-
-# Q 3551 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, self.story_id, self.id, self.user_id, nil, false)
-Query(Vote)
-
-# Q 3552 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 3553 : # self.story_id
-Query(Comment)
-.select('story_id')
-# Q 3554 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 3555 : # self.story_id
-Query(Comment)
-.select('story_id')
-# Q 3556 : # self.id
-Query(Comment)
-
-# Q 3557 : # self.user_id
+# Q 3799 : # self.user_id
 Query(Comment)
 .select('user_id')
-# Q 3558 : # self.id
+# Q 3800 : # self.is_moderated?
 Query(Comment)
 
-# Q 3559 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 3560 : # user.id
+# Q 3801 : # user.id
 Query(User)
 
-# Q 3561 : # self.user_id
-Query(Story)
+# Q 3802 : # self.user_id
+Query(Comment)
 .select('user_id')
-# Q 3562 : # self.is_moderated?
-Query(Story)
+# Q 3803 : # self.is_moderated?
+Query(Comment)
 
-# Q 3563 : # user.id
+# Q 3804 : # self.save!
 Query(User)
 
-# Q 3564 : # self.user_id
-Query(Story)
-.select('user_id')
-# Q 3565 : # self.is_moderated?
+# Q 3805 : # self.save!
+Query(User)
+
+# Q 3806 : # self.save!
+Query(User)
+
+# Q 3807 : # story.id
 Query(Story)
 
-# Q 3566 : # self.story.update_comments_count!
-Query(Story)
-.where("id = ?")
-# Q 3567 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3568 : # self.story.update_comments_count!
-Query(Story)
-.where("id = ?")
-# Q 3569 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3570 : # self.upvotes
-Query(Comment)
-.select('upvotes')
-# Q 3571 : # self.downvotes
-Query(Comment)
-.select('downvotes')
-# Q 3572 : # self.upvotes
-Query(Comment)
-.select('upvotes')
-# Q 3573 : # self.downvotes
-Query(Comment)
-.select('downvotes')
-# Q 3574 : # self.new_record?
+# Q 3808 : # story.id
 Query(Story)
 
-# Q 3575 : # self.new_record?
-Query(Story)
-
-# Q 3576 : # self.editing_from_suggestions
-Query(Story)
-
-# Q 3577 : # self.editing_from_suggestions
-Query(Story)
-
-# Q 3578 : # self.story.short_id_path
-Query(Story)
-.where("id = ?")
-# Q 3579 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3580 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3581 : # self.story.short_id_path
-Query(Story)
-.where("id = ?")
-# Q 3582 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3583 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3584 : # self.editor
-Query(Story)
-
-# Q 3585 : # self.editor.id
-Query(Story)
-
-# Q 3586 : # self.editor
-Query(Story)
-
-# Q 3587 : # self.user_id
-Query(Story)
-.select('user_id')
-# Q 3588 : # self.editor
-Query(Story)
-
-# Q 3589 : # self.editor.id
-Query(Story)
-
-# Q 3590 : # self.editor
-Query(Story)
-
-# Q 3591 : # self.user_id
-Query(Story)
-.select('user_id')
-# Q 3592 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3593 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3594 : # self.changes.merge(self.tagging_changes)
-Query(Story)
-
-# Q 3595 : # self.changes.merge(self.tagging_changes)
-Query(Story)
-
-# Q 3596 : # self.changes.merge
-Query(Story)
-
-# Q 3597 : # self.changes
-Query(Story)
-
-# Q 3598 : # self.tagging_changes
-Query(Story)
-
-# Q 3599 : # self.changes.merge
-Query(Story)
-
-# Q 3600 : # self.changes
-Query(Story)
-
-# Q 3601 : # self.tagging_changes
-Query(Story)
-
-# Q 3602 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3603 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3604 : # Moderation.new
+# Q 3809 : # Moderation.new
 Query(Moderation)
 
-# Q 3605 : # Moderation.new
+# Q 3810 : # Moderation.new
 Query(Moderation)
 
-# Q 3606 : # Moderation.new
+# Q 3811 : # m = Moderation.new
 Query(Moderation)
 
-# Q 3607 : # self.story.update_comments_count!
-Query(Story)
-.where("id = ?")
-# Q 3608 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3609 : # self.story.update_comments_count!
-Query(Story)
-.where("id = ?")
-# Q 3610 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3611 : # self.editing_from_suggestions
-Query(Story)
-
-# Q 3612 : # self.editing_from_suggestions
-Query(Story)
-
-# Q 3613 : # self.editor.try(:id)
-Query(Story)
-.select('id')
-# Q 3614 : # self.editor.try(:id)
-Query(Story)
-.select('id')
-# Q 3615 : # self.editor.try
-Query(Story)
-
-# Q 3616 : # self.editor
-Query(Story)
-
-# Q 3617 : # self.editor.try
-Query(Story)
-
-# Q 3618 : # self.editor
-Query(Story)
-
-# Q 3619 : # self.story.comments_url
-Query(Story)
-.where("id = ?")
-# Q 3620 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3621 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3622 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3623 : # self.story.comments_url
-Query(Story)
-.where("id = ?")
-# Q 3624 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3625 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3626 : # self.short_id
-Query(Comment)
-.select('short_id')
-# Q 3627 : # self.id
-Query(Story)
-
-# Q 3628 : # self.id
-Query(Story)
-
-# Q 3629 : # self.id
-Query(Story)
-
-# Q 3630 : # self.is_expired?
-Query(Story)
-
-# Q 3631 : # self.is_expired?
-Query(Story)
-
-# Q 3632 : # self.is_expired?
-Query(Story)
-
-# Q 3633 : # self.is_expired?
-Query(Story)
-
-# Q 3634 : # self.votes.includes(:user).each
-Query(Vote)
-.where("comment_id = ?")
-.includes('user')
-# Q 3635 : # self.votes.includes(:user)
-Query(Vote)
-.where("comment_id = ?")
-.includes('user')
-# Q 3636 : # self.votes.includes
-Query(Vote)
-.where("comment_id = ?")
-# Q 3637 : # self.votes
-Query(Vote)
-.where("comment_id = ?")
-# Q 3638 : # self.votes.includes(:user).each
-Query(Vote)
-.where("comment_id = ?")
-.includes('user')
-# Q 3639 : # self.votes.includes
-Query(Vote)
-.where("comment_id = ?")
-# Q 3640 : # self.votes
-Query(Vote)
-.where("comment_id = ?")
-# Q 3641 : # self.merged_into_story.short_id
-Query(Story)
-.where("id = ?")
-.select('short_id')
-# Q 3642 : # self.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 3643 : # self.merged_into_story.short_id
-Query(Story)
-.where("id = ?")
-.select('short_id')
-# Q 3644 : # self.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 3645 : # self.merged_into_story.title
-Query(Story)
-.where("id = ?")
-.select('title')
-# Q 3646 : # self.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 3647 : # self.merged_into_story.title
-Query(Story)
-.where("id = ?")
-.select('title')
-# Q 3648 : # self.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 3649 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 3650 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 3651 : # self.moderation_reason
-Query(Story)
-
-# Q 3652 : # self.moderation_reason
-Query(Story)
-
-# Q 3653 : # self.moderation_reason
-Query(Story)
-
-# Q 3654 : # user.is_moderator?
-Query(User)
-
-# Q 3655 : # user.is_moderator?
-Query(User)
-
-# Q 3656 : # Keystore.increment_value_for
-Query(Keystore)
-
-# Q 3657 : # self.user_id
-Query(Story)
-.select('user_id')
-# Q 3658 : # Keystore.increment_value_for
-Query(Keystore)
-
-# Q 3659 : # self.user_id
-Query(Story)
-.select('user_id')
-# Q 3660 : # user.id
-Query(User)
-
-# Q 3661 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 3662 : # user.id
-Query(User)
-
-# Q 3663 : # self.user_id
-Query(Comment)
-.select('user_id')
-# Q 3664 : # Moderation.new
+# Q 3812 : # Moderation.new
 Query(Moderation)
 
-# Q 3665 : # Moderation.new
-Query(Moderation)
-
-# Q 3666 : # Moderation.new
-Query(Moderation)
-
-# Q 3667 : # self.id
-Query(Comment)
-
-# Q 3668 : # self.id
-Query(Comment)
-
-# Q 3669 : # self.id
-Query(Comment)
-
-# Q 3670 : # user.id
+# Q 3813 : # user.id
 Query(User)
 
-# Q 3671 : # user.id
+# Q 3814 : # user.id
 Query(User)
 
-# Q 3672 : # user.id
+# Q 3815 : # user.id
 Query(User)
 
-# Q 3673 : # Comment.where(:story_id => Story.select(:id).where(:merged_story_id => self.id) + [self.id])
-Query(Comment)
-.where("story_id = ?")
-# Q 3674 : # Story.select(:id).where(:merged_story_id => self.id)
-Query(Story)
-.select('id')
-.where("merged_story_id = ?")
-# Q 3675 : # Story.select(:id).where
-Query(Story)
-.select('id')
-# Q 3676 : # Story.select(:id)
-Query(Story)
-.select('id')
-# Q 3677 : # Story.select
-Query(Story)
-
-# Q 3678 : # Story.select(:id).where
-Query(Story)
-.select('id')
-# Q 3679 : # Story.select
-Query(Story)
-
-# Q 3680 : # self.id
-Query(Story)
-
-# Q 3681 : # self.id
-Query(Story)
-
-# Q 3682 : # self.id
-Query(Story)
-
-# Q 3683 : # self.id
-Query(Story)
-
-# Q 3684 : # self.save(:validate => false)
-Query(Comment)
-
-# Q 3685 : # self.save
-Query(Comment)
-
-# Q 3686 : # self.save
-Query(Comment)
-
-# Q 3687 : # Story.where(:short_id => sid).first.id
-Query(Story)
-.where("short_id = ?")
-.return_limit('1')
-# Q 3688 : # Story.where(:short_id => sid).first
-Query(Story)
-.where("short_id = ?")
-.return_limit('1')
-# Q 3689 : # Story.where(:short_id => sid)
-Query(Story)
-.where("short_id = ?")
-# Q 3690 : # Story.where(:short_id => sid).first.id
-Query(Story)
-.where("short_id = ?")
-.return_limit('1')
-# Q 3691 : # Story.where(:short_id => sid).first
-Query(Story)
-.where("short_id = ?")
-.return_limit('1')
-# Q 3692 : # self.story.update_comments_count!
-Query(Story)
-.where("id = ?")
-# Q 3693 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3694 : # self.story.update_comments_count!
-Query(Story)
-.where("id = ?")
-# Q 3695 : # self.story
-Query(Story)
-.where("id = ?")
-# Q 3696 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, self.id, nil, self.user_id, nil, false)
-Query(Vote)
-
-# Q 3697 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 3698 : # self.id
-Query(Story)
-
-# Q 3699 : # Vote.vote_thusly_on_story_or_comment_for_user_because
-Query(Vote)
-
-# Q 3700 : # self.id
-Query(Story)
-
-# Q 3701 : # self.user_id
-Query(Story)
-.select('user_id')
-# Q 3702 : # self.user_id
-Query(Story)
-.select('user_id')
-# Q 3703 : # self.title.to_s.split("").map { |chr|
+# Q 3816 : # self.title.to_s.split("").map { |chr|
 #   
 #   if chr.ord == 160
 #     
@@ -12187,7 +12481,7 @@ Query(Story)
 # }.join("")
 Query(Story)
 .select('title')
-# Q 3704 : # self.title.to_s.split("").map { |chr|
+# Q 3817 : # self.title.to_s.split("").map { |chr|
 #   
 #   if chr.ord == 160
 #     
@@ -12199,7 +12493,7 @@ Query(Story)
 # }.join("")
 Query(Story)
 .select('title')
-# Q 3705 : # self.title.to_s.split("").map { |chr|
+# Q 3818 : # self.title.to_s.split("").map { |chr|
 #   
 #   if chr.ord == 160
 #     
@@ -12211,22 +12505,22 @@ Query(Story)
 # }.join
 Query(Story)
 .select('title')
-# Q 3706 : # self.title.to_s.split("").map
+# Q 3819 : # self.title.to_s.split("").map
 Query(Story)
 .select('title')
-# Q 3707 : # self.title.to_s.split("")
+# Q 3820 : # self.title.to_s.split("")
 Query(Story)
 .select('title')
-# Q 3708 : # self.title.to_s.split
+# Q 3821 : # self.title.to_s.split
 Query(Story)
 .select('title')
-# Q 3709 : # self.title.to_s
+# Q 3822 : # self.title.to_s
 Query(Story)
 .select('title')
-# Q 3710 : # self.title
+# Q 3823 : # self.title
 Query(Story)
 .select('title')
-# Q 3711 : # self.title.to_s.split("").map { |chr|
+# Q 3824 : # self.title.to_s.split("").map { |chr|
 #   
 #   if chr.ord == 160
 #     
@@ -12238,509 +12532,76 @@ Query(Story)
 # }.join
 Query(Story)
 .select('title')
-# Q 3712 : # self.title.to_s.split("").map
+# Q 3825 : # self.title.to_s.split("").map
 Query(Story)
 .select('title')
-# Q 3713 : # self.title.to_s.split
+# Q 3826 : # self.title.to_s.split
 Query(Story)
 .select('title')
-# Q 3714 : # self.title.to_s
+# Q 3827 : # self.title.to_s
 Query(Story)
 .select('title')
-# Q 3715 : # self.title
+# Q 3828 : # self.title
 Query(Story)
 .select('title')
-# Q 3716 : # self.short_id
-Query(Story)
-.select('short_id')
-# Q 3717 : # self.short_id
-Query(Story)
-.select('short_id')
-# Q 3718 : # self.short_id
-Query(Story)
-.select('short_id')
-# Q 3719 : # self.short_id
-Query(Story)
-.select('short_id')
-# Q 3720 : # self.taggings.sort_by { |t|
-#   
-#   t.tag.tag
-# }.sort_by
-Query(Tagging)
-.where("story_id = ?")
-# Q 3721 : # self.taggings.sort_by
-Query(Tagging)
-.where("story_id = ?")
-# Q 3722 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3723 : # self.taggings.sort_by { |t|
-#   
-#   t.tag.tag
-# }.sort_by
-Query(Tagging)
-.where("story_id = ?")
-# Q 3724 : # self.taggings.sort_by
-Query(Tagging)
-.where("story_id = ?")
-# Q 3725 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3726 : # self.taggings.reject { |tg|
-#   
-#   tg.new_record?
-# }.map { |tg|
-#   
-#   tg.tag.tag
-# }.join(" ")
-Query(Tagging)
-.where("story_id = ?")
-# Q 3727 : # self.taggings.reject { |tg|
-#   
-#   tg.new_record?
-# }.map { |tg|
-#   
-#   tg.tag.tag
-# }.join(" ")
-Query(Tagging)
-.where("story_id = ?")
-# Q 3728 : # self.taggings.reject { |tg|
-#   
-#   tg.new_record?
-# }.map { |tg|
-#   
-#   tg.tag.tag
-# }.join
-Query(Tagging)
-.where("story_id = ?")
-# Q 3729 : # self.taggings.reject { |tg|
-#   
-#   tg.new_record?
-# }.map
-Query(Tagging)
-.where("story_id = ?")
-# Q 3730 : # self.taggings.reject
-Query(Tagging)
-.where("story_id = ?")
-# Q 3731 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3732 : # self.taggings.reject { |tg|
-#   
-#   tg.new_record?
-# }.map { |tg|
-#   
-#   tg.tag.tag
-# }.join
-Query(Tagging)
-.where("story_id = ?")
-# Q 3733 : # self.taggings.reject { |tg|
-#   
-#   tg.new_record?
-# }.map
-Query(Tagging)
-.where("story_id = ?")
-# Q 3734 : # self.taggings.reject
-Query(Tagging)
-.where("story_id = ?")
-# Q 3735 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3736 : # self.taggings.reject { |tg|
-#   
-#   tg.marked_for_destruction?
-# }.map { |tg|
-#   
-#   tg.tag.tag
-# }.join(" ")
-Query(Tagging)
-.where("story_id = ?")
-# Q 3737 : # self.taggings.reject { |tg|
-#   
-#   tg.marked_for_destruction?
-# }.map { |tg|
-#   
-#   tg.tag.tag
-# }.join(" ")
-Query(Tagging)
-.where("story_id = ?")
-# Q 3738 : # self.taggings.reject { |tg|
-#   
-#   tg.marked_for_destruction?
-# }.map { |tg|
-#   
-#   tg.tag.tag
-# }.join
-Query(Tagging)
-.where("story_id = ?")
-# Q 3739 : # self.taggings.reject { |tg|
-#   
-#   tg.marked_for_destruction?
-# }.map
-Query(Tagging)
-.where("story_id = ?")
-# Q 3740 : # self.taggings.reject
-Query(Tagging)
-.where("story_id = ?")
-# Q 3741 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3742 : # self.taggings.reject { |tg|
-#   
-#   tg.marked_for_destruction?
-# }.map { |tg|
-#   
-#   tg.tag.tag
-# }.join
-Query(Tagging)
-.where("story_id = ?")
-# Q 3743 : # self.taggings.reject { |tg|
-#   
-#   tg.marked_for_destruction?
-# }.map
-Query(Tagging)
-.where("story_id = ?")
-# Q 3744 : # self.taggings.reject
-Query(Tagging)
-.where("story_id = ?")
-# Q 3745 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3746 : # self.taggings.reject { |t|
-#   
-#   t.marked_for_destruction?
-# }.map
-Query(Tagging)
-.where("story_id = ?")
-# Q 3747 : # self.taggings.reject
-Query(Tagging)
-.where("story_id = ?")
-# Q 3748 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3749 : # self.taggings.reject { |t|
-#   
-#   t.marked_for_destruction?
-# }.map
-Query(Tagging)
-.where("story_id = ?")
-# Q 3750 : # self.taggings.reject
-Query(Tagging)
-.where("story_id = ?")
-# Q 3751 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3752 : # self.taggings.each
-Query(Tagging)
-.where("story_id = ?")
-# Q 3753 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3754 : # self.taggings.each
-Query(Tagging)
-.where("story_id = ?")
-# Q 3755 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3756 : # tagging.tag.tag
-Query(Tag)
-.where("id = ?")
-.select('tag')
-# Q 3757 : # tagging.tag
-Query(Tag)
-.where("id = ?")
-# Q 3758 : # tagging.tag.tag
-Query(Tag)
-.where("id = ?")
-.select('tag')
-# Q 3759 : # tagging.tag
-Query(Tag)
-.where("id = ?")
-# Q 3760 : # tagging.tag.tag
-Query(Tag)
-.where("id = ?")
-.select('tag')
-# Q 3761 : # tagging.tag
-Query(Tag)
-.where("id = ?")
-# Q 3762 : # tagging.mark_for_destruction
-Query(Tagging)
-
-# Q 3763 : # tagging.mark_for_destruction
-Query(Tagging)
-
-# Q 3764 : # tagging.mark_for_destruction
-Query(Tagging)
-
-# Q 3765 : # tagging.mark_for_destruction
-Query(Tagging)
-
-# Q 3766 : # self.tags.exists?(:tag => tag_name)
-Query(Tag)
-.where("story_id = ?")
-.return_limit('1')
-# Q 3767 : # self.tags.exists?
-Query(Tag)
-.where("story_id = ?")
-.return_limit('1')
-# Q 3768 : # self.tags
-Query(Tag)
-.where("story_id = ?")
-# Q 3769 : # self.tags.exists?(:tag => tag_name)
-Query(Tag)
-.where("story_id = ?")
-.return_limit('1')
-# Q 3770 : # self.tags.exists?
-Query(Tag)
-.where("story_id = ?")
-.return_limit('1')
-# Q 3771 : # self.tags
-Query(Tag)
-.where("story_id = ?")
-# Q 3772 : # self.tags.exists?
-Query(Tag)
-.where("story_id = ?")
-.return_limit('1')
-# Q 3773 : # self.tags
-Query(Tag)
-.where("story_id = ?")
-# Q 3774 : # Tag.active.where(:tag => tag_name).first
-Query(Tag)
-.where("tag = ?")
-.return_limit('1')
-# Q 3775 : # Tag.active.where(:tag => tag_name).first
-Query(Tag)
-.where("tag = ?")
-.return_limit('1')
-# Q 3776 : # Tag.active.where(:tag => tag_name)
-Query(Tag)
-.where("tag = ?")
-# Q 3777 : # Tag.active.where
-Query(Tag)
-
-# Q 3778 : # Tag.active
-Query(Tag)
-
-# Q 3779 : # Tag.active.where(:tag => tag_name).first
-Query(Tag)
-.where("tag = ?")
-.return_limit('1')
-# Q 3780 : # Tag.active.where(:tag => tag_name)
-Query(Tag)
-.where("tag = ?")
-# Q 3781 : # Tag.active.where
-Query(Tag)
-
-# Q 3782 : # Tag.active
-Query(Tag)
-
-# Q 3783 : # Tag.active.where(:tag => tag_name).first
-Query(Tag)
-.where("tag = ?")
-.return_limit('1')
-# Q 3784 : # Tag.active.where(:tag => tag_name)
-Query(Tag)
-.where("tag = ?")
-# Q 3785 : # Tag.active.where
-Query(Tag)
-
-# Q 3786 : # Tag.active
-Query(Tag)
-
-# Q 3787 : # Tag.active.where(:tag => tag_name).first
-Query(Tag)
-.where("tag = ?")
-.return_limit('1')
-# Q 3788 : # Tag.active.where
-Query(Tag)
-
-# Q 3789 : # Tag.active
-Query(Tag)
-
-# Q 3790 : # self.taggings.build
-Query(Tagging)
-.where("story_id = ?")
-# Q 3791 : # self.taggings.build
-Query(Tagging)
-.where("story_id = ?")
-# Q 3792 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3793 : # self.taggings.build
-Query(Tagging)
-.where("story_id = ?")
-# Q 3794 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3795 : # self.taggings.build
-Query(Tagging)
-.where("story_id = ?")
-# Q 3796 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3797 : # tg = self.taggings.build
-Query(Tagging)
-.where("story_id = ?")
-# Q 3798 : # self.taggings.build
-Query(Tagging)
-.where("story_id = ?")
-# Q 3799 : # self.taggings
-Query(Tagging)
-.where("story_id = ?")
-# Q 3800 : # self.suggested_taggings.where(:user_id => user.id)
-Query(SuggestedTagging)
-.where("story_id = ?")
-.where("user_id = ?")
-# Q 3801 : # self.suggested_taggings.where(:user_id => user.id)
-Query(SuggestedTagging)
-.where("story_id = ?")
-.where("user_id = ?")
-# Q 3802 : # self.suggested_taggings.where
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3803 : # self.suggested_taggings
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3804 : # user.id
+# Q 3829 : # self.id
 Query(User)
 
-# Q 3805 : # self.suggested_taggings.where
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3806 : # self.suggested_taggings
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3807 : # user.id
+# Q 3830 : # self.id
 Query(User)
 
-# Q 3808 : # tagging.tag.tag
-Query(Tag)
-.where("id = ?")
-.select('tag')
-# Q 3809 : # tagging.tag
-Query(Tag)
-.where("id = ?")
-# Q 3810 : # tagging.tag.tag
-Query(Tag)
-.where("id = ?")
-.select('tag')
-# Q 3811 : # tagging.tag
-Query(Tag)
-.where("id = ?")
-# Q 3812 : # tagging.tag.tag
-Query(Tag)
-.where("id = ?")
-.select('tag')
-# Q 3813 : # tagging.tag
-Query(Tag)
-.where("id = ?")
-# Q 3814 : # tagging.destroy
-Query(Tagging)
-
-# Q 3815 : # tagging.destroy
-Query(Tagging)
-
-# Q 3816 : # tagging.destroy
-Query(Tagging)
-
-# Q 3817 : # tagging.destroy
-Query(Tagging)
-
-# Q 3818 : # Tag.active.where(:tag => tag_name).first
-Query(Tag)
-.where("tag = ?")
-.return_limit('1')
-# Q 3819 : # Tag.active.where(:tag => tag_name).first
-Query(Tag)
-.where("tag = ?")
-.return_limit('1')
-# Q 3820 : # Tag.active.where(:tag => tag_name)
-Query(Tag)
-.where("tag = ?")
-# Q 3821 : # Tag.active.where
-Query(Tag)
-
-# Q 3822 : # Tag.active
-Query(Tag)
-
-# Q 3823 : # Tag.active.where(:tag => tag_name).first
-Query(Tag)
-.where("tag = ?")
-.return_limit('1')
-# Q 3824 : # Tag.active.where(:tag => tag_name)
-Query(Tag)
-.where("tag = ?")
-# Q 3825 : # Tag.active.where
-Query(Tag)
-
-# Q 3826 : # Tag.active
-Query(Tag)
-
-# Q 3827 : # Tag.active.where(:tag => tag_name).first
-Query(Tag)
-.where("tag = ?")
-.return_limit('1')
-# Q 3828 : # Tag.active.where(:tag => tag_name)
-Query(Tag)
-.where("tag = ?")
-# Q 3829 : # Tag.active.where
-Query(Tag)
-
-# Q 3830 : # Tag.active
-Query(Tag)
-
-# Q 3831 : # t = Tag.active.where(:tag => tag_name).first
-Query(Tag)
-.where("tag = ?")
-.return_limit('1')
-# Q 3832 : # Tag.active.where(:tag => tag_name).first
-Query(Tag)
-.where("tag = ?")
-.return_limit('1')
-# Q 3833 : # Tag.active.where
-Query(Tag)
-
-# Q 3834 : # Tag.active
-Query(Tag)
-
-# Q 3835 : # self.suggested_taggings.build
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3836 : # self.suggested_taggings.build
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3837 : # self.suggested_taggings
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3838 : # self.suggested_taggings.build
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3839 : # self.suggested_taggings
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3840 : # self.suggested_taggings.build
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3841 : # self.suggested_taggings
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3842 : # tg = self.suggested_taggings.build
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3843 : # self.suggested_taggings.build
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3844 : # self.suggested_taggings
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3845 : # user.id
+# Q 3831 : # self.id
 Query(User)
 
-# Q 3846 : # user.id
+# Q 3832 : # self.hat
+Query(Hat)
+.where("id = ?")
+# Q 3833 : # self.hat.modlog_use
+Query(Hat)
+.where("id = ?")
+.select('modlog_use')
+# Q 3834 : # self.hat
+Query(Hat)
+.where("id = ?")
+# Q 3835 : # self.hat
+Query(Hat)
+.where("id = ?")
+# Q 3836 : # self.hat.modlog_use
+Query(Hat)
+.where("id = ?")
+.select('modlog_use')
+# Q 3837 : # self.hat
+Query(Hat)
+.where("id = ?")
+# Q 3838 : # Hat.new
+Query(Hat)
+
+# Q 3839 : # Hat.new
+Query(Hat)
+
+# Q 3840 : # h = Hat.new
+Query(Hat)
+
+# Q 3841 : # Hat.new
+Query(Hat)
+
+# Q 3842 : # self.id
 Query(User)
 
-# Q 3847 : # user.id
+# Q 3843 : # self.id
 Query(User)
+
+# Q 3844 : # self.id
+Query(User)
+
+# Q 3845 : # Moderation.new
+Query(Moderation)
+
+# Q 3846 : # Moderation.new
+Query(Moderation)
+
+# Q 3847 : # Moderation.new
+Query(Moderation)
 
 # Q 3848 : # user.id
 Query(User)
@@ -12748,508 +12609,2512 @@ Query(User)
 # Q 3849 : # user.id
 Query(User)
 
-# Q 3850 : # self.suggested_taggings.group_by(&:user_id).each
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3851 : # self.suggested_taggings.group_by(&:user_id)
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3852 : # self.suggested_taggings.group_by
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3853 : # self.suggested_taggings
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3854 : # self.suggested_taggings.group_by(&:user_id).each
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3855 : # self.suggested_taggings.group_by
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3856 : # self.suggested_taggings
-Query(SuggestedTagging)
-.where("story_id = ?")
-# Q 3857 : # self.tags_a.sort
-Query(Story)
+# Q 3850 : # user.id
+Query(User)
 
-# Q 3858 : # self.tags_a
-Query(Story)
+# Q 3851 : # self.created_at
+Query(Comment)
+.select('created_at')
+# Q 3852 : # self.created_at
+Query(Comment)
+.select('created_at')
+# Q 3853 : # self.created_at
+Query(Comment)
+.select('created_at')
+# Q 3854 : # self.id
+Query(Comment)
 
-# Q 3859 : # self.tags_a.sort
-Query(Story)
+# Q 3855 : # self.id
+Query(Comment)
 
-# Q 3860 : # self.tags_a
-Query(Story)
+# Q 3856 : # self.id
+Query(Comment)
 
-# Q 3861 : # self.id
-Query(Story)
+# Q 3857 : # user.id
+Query(User)
 
-# Q 3862 : # self.id
-Query(Story)
+# Q 3858 : # user.id
+Query(User)
 
-# Q 3863 : # self.tags_a.inspect
-Query(Story)
+# Q 3859 : # user.id
+Query(User)
 
-# Q 3864 : # self.tags_a
-Query(Story)
+# Q 3860 : # self.hat.hat
+Query(Hat)
+.where("id = ?")
+.select('hat')
+# Q 3861 : # self.hat
+Query(Hat)
+.where("id = ?")
+# Q 3862 : # self.hat.hat
+Query(Hat)
+.where("id = ?")
+.select('hat')
+# Q 3863 : # self.hat
+Query(Hat)
+.where("id = ?")
+# Q 3864 : # @user.is_moderator?
+Query(User)
 
-# Q 3865 : # self.tags_a.inspect
-Query(Story)
+# Q 3865 : # @user.is_moderator?
+Query(User)
 
-# Q 3866 : # self.tags_a
+# Q 3866 : # self.description
 Query(Story)
-
-# Q 3867 : # self.save
+.select('description')
+# Q 3867 : # self.description
 Query(Story)
-
-# Q 3868 : # self.save
+.select('description')
+# Q 3868 : # Story.where(:short_id => params[:story_id] || params[:id]).first
 Query(Story)
-
-# Q 3869 : # self.id
-Query(Story)
-
-# Q 3870 : # self.id
-Query(Story)
-
-# Q 3871 : # self.errors.inspect
-Query(Story)
-
-# Q 3872 : # self.errors
-Query(Story)
-
-# Q 3873 : # self.errors.inspect
-Query(Story)
-
-# Q 3874 : # self.errors
-Query(Story)
-
-# Q 3875 : # self.suggested_titles.where(:user_id => user.id).first
-Query(SuggestedTitle)
-.where("story_id = ?")
-.where("user_id = ?")
+.where("short_id = ?")
 .return_limit('1')
-# Q 3876 : # self.suggested_titles.where(:user_id => user.id).first
-Query(SuggestedTitle)
-.where("story_id = ?")
-.where("user_id = ?")
+# Q 3869 : # Story.where(:short_id => params[:story_id] || params[:id]).first
+Query(Story)
+.where("short_id = ?")
 .return_limit('1')
-# Q 3877 : # self.suggested_titles.where(:user_id => user.id)
-Query(SuggestedTitle)
-.where("story_id = ?")
-.where("user_id = ?")
-# Q 3878 : # self.suggested_titles.where
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 3879 : # self.suggested_titles
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 3880 : # user.id
-Query(User)
-
-# Q 3881 : # self.suggested_titles.where(:user_id => user.id).first
-Query(SuggestedTitle)
-.where("story_id = ?")
-.where("user_id = ?")
+# Q 3870 : # Story.where(:short_id => params[:story_id] || params[:id])
+Query(Story)
+.where("short_id = ?")
+# Q 3871 : # Story.where(:short_id => params[:story_id] || params[:id]).first
+Query(Story)
+.where("short_id = ?")
 .return_limit('1')
-# Q 3882 : # self.suggested_titles.where
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 3883 : # self.suggested_titles
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 3884 : # user.id
+# Q 3872 : # Story.where(:user_id => @user.id, :short_id => (
+# params[:story_id] || params[:id])).first
+Query(Story)
+.where("user_id = ?")
+.where("short_id = ?")
+.return_limit('1')
+# Q 3873 : # Story.where(:user_id => @user.id, :short_id => (
+# params[:story_id] || params[:id])).first
+Query(Story)
+.where("user_id = ?")
+.where("short_id = ?")
+.return_limit('1')
+# Q 3874 : # Story.where(:user_id => @user.id, :short_id => (
+# params[:story_id] || params[:id]))
+Query(Story)
+.where("user_id = ?")
+.where("short_id = ?")
+# Q 3875 : # @user.id
 Query(User)
 
-# Q 3885 : # self.suggested_titles.build
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 3886 : # self.suggested_titles.build
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 3887 : # self.suggested_titles
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 3888 : # self.suggested_titles.build
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 3889 : # self.suggested_titles
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 3890 : # user.id
+# Q 3876 : # Story.where(:user_id => @user.id, :short_id => (
+# params[:story_id] || params[:id])).first
+Query(Story)
+.where("user_id = ?")
+.where("short_id = ?")
+.return_limit('1')
+# Q 3877 : # @user.id
 Query(User)
 
-# Q 3891 : # user.id
+# Q 3878 : # Keystore.increment_value_for
+Query(Keystore)
+
+# Q 3879 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 3880 : # Keystore.increment_value_for
+Query(Keystore)
+
+# Q 3881 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 3882 : # self.save!
 Query(User)
 
-# Q 3892 : # user.id
+# Q 3883 : # self.save!
 Query(User)
 
-# Q 3893 : # self.suggested_titles.each
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 3894 : # self.suggested_titles
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 3895 : # self.suggested_titles.each
-Query(SuggestedTitle)
-.where("story_id = ?")
-# Q 3896 : # self.suggested_titles
-Query(SuggestedTitle)
-.where("story_id = ?")
+# Q 3884 : # Story.connection.execute
+Query(Story)
+
+# Q 3885 : # Story.connection
+Query(Story)
+
+# Q 3886 : # Story.table_name
+Query(Story)
+
+# Q 3887 : # Story.connection.execute
+Query(Story)
+
+# Q 3888 : # Story.connection
+Query(Story)
+
+# Q 3889 : # Story.table_name
+Query(Story)
+
+# Q 3890 : # self.short_id
+Query(Comment)
+.select('short_id')
+# Q 3891 : # self.short_id
+Query(Comment)
+.select('short_id')
+# Q 3892 : # self.calculated_hotness
+Query(Story)
+
+# Q 3893 : # self.id.to_i
+Query(Story)
+
+# Q 3894 : # self.id
+Query(Story)
+
+# Q 3895 : # self.calculated_hotness
+Query(Story)
+
+# Q 3896 : # self.id.to_i
+Query(Story)
+
 # Q 3897 : # self.id
 Query(Story)
 
-# Q 3898 : # self.id
+# Q 3898 : # self.is_from_email
+Query(Comment)
+.select('is_from_email')
+# Q 3899 : # self.is_from_email
+Query(Comment)
+.select('is_from_email')
+# Q 3900 : # self.totp_secret.present?
+Query(User)
+
+# Q 3901 : # self.totp_secret
+Query(User)
+
+# Q 3902 : # self.totp_secret.present?
+Query(User)
+
+# Q 3903 : # self.totp_secret
+Query(User)
+
+# Q 3904 : # self.suggested_taggings.any?
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 3905 : # self.suggested_taggings
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 3906 : # self.suggested_titles.any?
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 3907 : # self.suggested_titles
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 3908 : # self.suggested_taggings.any?
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 3909 : # self.suggested_taggings
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 3910 : # self.suggested_titles.any?
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 3911 : # self.suggested_titles
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 3912 : # Vote.where(:user_id => @user.id, :story_id => @story.id, :comment_id => nil).first
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where("comment_id = ?")
+.return_limit('1')
+# Q 3913 : # Vote.where(:user_id => @user.id, :story_id => @story.id, :comment_id => nil).first
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where("comment_id = ?")
+.return_limit('1')
+# Q 3914 : # Vote.where(:user_id => @user.id, :story_id => @story.id, :comment_id => nil)
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where("comment_id = ?")
+# Q 3915 : # @user.id
+Query(User)
+
+# Q 3916 : # @story.id
 Query(Story)
 
-# Q 3899 : # self.id
+# Q 3917 : # Vote.where(:user_id => @user.id, :story_id => @story.id, :comment_id => nil).first
+Query(Vote)
+.where("user_id = ?")
+.where("story_id = ?")
+.where("comment_id = ?")
+.return_limit('1')
+# Q 3918 : # @user.id
+Query(User)
+
+# Q 3919 : # @story.id
 Query(Story)
 
-# Q 3900 : # self.id
+# Q 3920 : # self.story.comments_path
 Query(Story)
-
-# Q 3901 : # self.title.inspect
+.where("id = ?")
+# Q 3921 : # self.story
 Query(Story)
-.select('title')
-# Q 3902 : # self.title
-Query(Story)
-.select('title')
-# Q 3903 : # self.title.inspect
-Query(Story)
-.select('title')
-# Q 3904 : # self.title
-Query(Story)
-.select('title')
-# Q 3905 : # self.title.inspect
-Query(Story)
-.select('title')
-# Q 3906 : # self.title.inspect
-Query(Story)
-.select('title')
-# Q 3907 : # self.title
-Query(Story)
-.select('title')
-# Q 3908 : # self.save
-Query(Story)
-
-# Q 3909 : # self.save
-Query(Story)
-
-# Q 3910 : # self.save
-Query(Story)
-
-# Q 3911 : # self.save
-Query(Story)
-
-# Q 3912 : # self.id
-Query(Story)
-
-# Q 3913 : # self.id
-Query(Story)
-
-# Q 3914 : # self.id
-Query(Story)
-
-# Q 3915 : # self.id
-Query(Story)
-
-# Q 3916 : # self.id
-Query(Story)
-
-# Q 3917 : # self.errors.inspect
-Query(Story)
-
-# Q 3918 : # self.errors
-Query(Story)
-
-# Q 3919 : # self.errors.inspect
-Query(Story)
-
-# Q 3920 : # self.errors
-Query(Story)
-
-# Q 3921 : # self.errors.inspect
-Query(Story)
-
-# Q 3922 : # self.errors
-Query(Story)
-
-# Q 3923 : # self.errors.inspect
-Query(Story)
-
-# Q 3924 : # self.errors
-Query(Story)
-
-# Q 3925 : # self.title.downcase.gsub(/[,'`\"]/, "").gsub(/[^a-z0-9]/, "_").split("_").reject { |z|
-#   
-#   ["", "a", "an", "and", "but", "in", "of", "or", "that", "the", "to"].include?(z)
-# }.each
-Query(Story)
-.select('title')
-# Q 3926 : # self.title.downcase.gsub(/[,'`\"]/, "").gsub(/[^a-z0-9]/, "_").split("_").reject
-Query(Story)
-.select('title')
-# Q 3927 : # self.title.downcase.gsub(/[,'`\"]/, "").gsub(/[^a-z0-9]/, "_").split("_")
-Query(Story)
-.select('title')
-# Q 3928 : # self.title.downcase.gsub(/[,'`\"]/, "").gsub(/[^a-z0-9]/, "_").split
-Query(Story)
-.select('title')
-# Q 3929 : # self.title.downcase.gsub(/[,'`\"]/, "").gsub(/[^a-z0-9]/, "_")
-Query(Story)
-.select('title')
-# Q 3930 : # self.title.downcase.gsub(/[,'`\"]/, "").gsub
-Query(Story)
-.select('title')
-# Q 3931 : # self.title.downcase.gsub(/[,'`\"]/, "")
-Query(Story)
-.select('title')
-# Q 3932 : # self.title.downcase.gsub
-Query(Story)
-.select('title')
-# Q 3933 : # self.title.downcase
-Query(Story)
-.select('title')
-# Q 3934 : # self.title
-Query(Story)
-.select('title')
-# Q 3935 : # self.title.downcase.gsub(/[,'`\"]/, "").gsub(/[^a-z0-9]/, "_").split("_").reject { |z|
-#   
-#   ["", "a", "an", "and", "but", "in", "of", "or", "that", "the", "to"].include?(z)
-# }.each
-Query(Story)
-.select('title')
-# Q 3936 : # self.title.downcase.gsub(/[,'`\"]/, "").gsub(/[^a-z0-9]/, "_").split("_").reject
-Query(Story)
-.select('title')
-# Q 3937 : # self.title.downcase.gsub(/[,'`\"]/, "").gsub(/[^a-z0-9]/, "_").split
-Query(Story)
-.select('title')
-# Q 3938 : # self.title.downcase.gsub(/[,'`\"]/, "").gsub
-Query(Story)
-.select('title')
-# Q 3939 : # self.title.downcase.gsub
-Query(Story)
-.select('title')
-# Q 3940 : # self.title.downcase
-Query(Story)
-.select('title')
-# Q 3941 : # self.title
-Query(Story)
-.select('title')
-# Q 3942 : # self.short_id
-Query(Story)
+.where("id = ?")
+# Q 3922 : # self.short_id
+Query(Comment)
 .select('short_id')
-# Q 3943 : # self.short_id
-Query(Story)
+# Q 3923 : # self.short_id
+Query(Comment)
 .select('short_id')
-# Q 3944 : # self.is_unavailable
+# Q 3924 : # self.story.comments_path
+Query(Story)
+.where("id = ?")
+# Q 3925 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3926 : # self.short_id
+Query(Comment)
+.select('short_id')
+# Q 3927 : # self.short_id
+Query(Comment)
+.select('short_id')
+# Q 3928 : # HiddenStory.where(:story_id => self.id).count
+Query(HiddenStory)
+.where("story_id = ?")
+# Q 3929 : # HiddenStory.where(:story_id => self.id)
+Query(HiddenStory)
+.where("story_id = ?")
+# Q 3930 : # self.id
 Query(Story)
 
-# Q 3945 : # self.unavailable_at
-Query(Story)
-.select('unavailable_at')
-# Q 3946 : # self.is_unavailable
-Query(Story)
-
-# Q 3947 : # self.unavailable_at
-Query(Story)
-.select('unavailable_at')
-# Q 3948 : # self.unavailable_at
-Query(Story)
-.select('unavailable_at')
-# Q 3949 : # self.is_unavailable
+# Q 3931 : # HiddenStory.where(:story_id => self.id).count
+Query(HiddenStory)
+.where("story_id = ?")
+# Q 3932 : # self.id
 Query(Story)
 
-# Q 3950 : # self.unavailable_at
-Query(Story)
-.select('unavailable_at')
-# Q 3951 : # self.is_unavailable
+# Q 3933 : # @story.is_hidden_by_user?(@user)
 Query(Story)
 
-# Q 3952 : # self.merged_comments.arrange_for_user(nil)
+# Q 3934 : # @story.is_hidden_by_user?(@user)
 Query(Story)
 
-# Q 3953 : # self.merged_comments.arrange_for_user(nil)
+# Q 3935 : # @story.is_hidden_by_user?
 Query(Story)
 
-# Q 3954 : # self.merged_comments.arrange_for_user
+# Q 3936 : # @story.is_hidden_by_user?
 Query(Story)
 
-# Q 3955 : # self.merged_comments
+# Q 3937 : # @story.is_saved_by_user?(@user)
 Query(Story)
 
-# Q 3956 : # self.merged_comments.arrange_for_user
+# Q 3938 : # @story.is_saved_by_user?(@user)
 Query(Story)
 
-# Q 3957 : # self.merged_comments
+# Q 3939 : # @story.is_saved_by_user?
 Query(Story)
 
-# Q 3958 : # comments.count
+# Q 3940 : # @story.is_saved_by_user?
+Query(Story)
+
+# Q 3941 : # self.created_at
+Query(User)
+.select('created_at')
+# Q 3942 : # self.created_at
+Query(User)
+.select('created_at')
+# Q 3943 : # self.user.is_active?
+Query(User)
+.where("id = ?")
+# Q 3944 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3945 : # self.user.is_active?
+Query(User)
+.where("id = ?")
+# Q 3946 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3947 : # Vote.comment_votes_by_user_for_story_hash(@user.id, @story.id)
+Query(Vote)
+
+# Q 3948 : # Vote.comment_votes_by_user_for_story_hash(@user.id, @story.id)
+Query(Vote)
+
+# Q 3949 : # Vote.comment_votes_by_user_for_story_hash
+Query(Vote)
+
+# Q 3950 : # @user.id
+Query(User)
+
+# Q 3951 : # @story.id
+Query(Story)
+
+# Q 3952 : # Vote.comment_votes_by_user_for_story_hash
+Query(Vote)
+
+# Q 3953 : # @user.id
+Query(User)
+
+# Q 3954 : # @story.id
+Query(Story)
+
+# Q 3955 : # self.user.is_new?
+Query(User)
+.where("id = ?")
+# Q 3956 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3957 : # self.user.is_new?
+Query(User)
+.where("id = ?")
+# Q 3958 : # self.user
+Query(User)
+.where("id = ?")
+# Q 3959 : # @comments.each
 Query(Comment)
 
-# Q 3959 : # comments.count
+# Q 3960 : # @comments.each
 Query(Comment)
 
-# Q 3960 : # self.recalculate_hotness!
-Query(Story)
+# Q 3961 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, self.story_id, self.id, self.user_id, nil, false)
+Query(Vote)
 
-# Q 3961 : # self.recalculate_hotness!
-Query(Story)
+# Q 3962 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
 
-# Q 3962 : # self.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 3963 : # self.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 3964 : # self.merged_into_story.update_comments_count!
-Query(Story)
-.where("id = ?")
-# Q 3965 : # self.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 3966 : # self.merged_into_story.update_comments_count!
-Query(Story)
-.where("id = ?")
-# Q 3967 : # self.merged_into_story
-Query(Story)
-.where("id = ?")
-# Q 3968 : # self.new_record?
-Query(Story)
+# Q 3963 : # self.story_id
+Query(Comment)
+.select('story_id')
+# Q 3964 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
 
-# Q 3969 : # self.new_record?
-Query(Story)
+# Q 3965 : # self.story_id
+Query(Comment)
+.select('story_id')
+# Q 3966 : # self.id
+Query(Comment)
 
-# Q 3970 : # user.is_moderator?
+# Q 3967 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 3968 : # self.id
+Query(Comment)
+
+# Q 3969 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 3970 : # self.stories_submitted_count
 Query(User)
 
-# Q 3971 : # self.url.present?
-Query(Story)
-.select('url')
-# Q 3972 : # self.url
-Query(Story)
-.select('url')
-# Q 3973 : # user.is_moderator?
+# Q 3971 : # self.stories_submitted_count
 Query(User)
 
-# Q 3974 : # self.url.present?
-Query(Story)
-.select('url')
-# Q 3975 : # self.url
-Query(Story)
-.select('url')
-# Q 3976 : # self.url.blank?
-Query(Story)
-.select('url')
-# Q 3977 : # self.url
-Query(Story)
-.select('url')
-# Q 3978 : # self.comments_path
+# Q 3972 : # self.stories_submitted_count
+Query(User)
+
+# Q 3973 : # self.user_is_author?
 Query(Story)
 
-# Q 3979 : # self.url
-Query(Story)
-.select('url')
-# Q 3980 : # self.url.blank?
-Query(Story)
-.select('url')
-# Q 3981 : # self.url
-Query(Story)
-.select('url')
-# Q 3982 : # self.comments_path
+# Q 3974 : # self.user_is_author?
 Query(Story)
 
-# Q 3983 : # self.url
+# Q 3975 : # self.story.update_comments_count!
 Query(Story)
-.select('url')
-# Q 3984 : # self.url.blank?
+.where("id = ?")
+# Q 3976 : # self.story
 Query(Story)
-.select('url')
-# Q 3985 : # self.url
+.where("id = ?")
+# Q 3977 : # self.story.update_comments_count!
 Query(Story)
-.select('url')
-# Q 3986 : # self.comments_url
+.where("id = ?")
+# Q 3978 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 3979 : # self.stories.where(:user_is_author => true).count
+Query(Story)
+.where("user_id = ?")
+.where("user_is_author = ?")
+# Q 3980 : # self.stories.where(:user_is_author => true).count
+Query(Story)
+.where("user_id = ?")
+.where("user_is_author = ?")
+# Q 3981 : # self.stories.where(:user_is_author => true)
+Query(Story)
+.where("user_id = ?")
+.where("user_is_author = ?")
+# Q 3982 : # self.stories.where
+Query(Story)
+.where("user_id = ?")
+# Q 3983 : # self.stories
+Query(Story)
+.where("user_id = ?")
+# Q 3984 : # self.stories.where(:user_is_author => true).count
+Query(Story)
+.where("user_id = ?")
+.where("user_is_author = ?")
+# Q 3985 : # self.stories.where
+Query(Story)
+.where("user_id = ?")
+# Q 3986 : # self.stories
+Query(Story)
+.where("user_id = ?")
+# Q 3987 : # self.upvotes
+Query(Comment)
+.select('upvotes')
+# Q 3988 : # self.downvotes
+Query(Comment)
+.select('downvotes')
+# Q 3989 : # self.upvotes
+Query(Comment)
+.select('upvotes')
+# Q 3990 : # self.downvotes
+Query(Comment)
+.select('downvotes')
+# Q 3991 : # @user.can_submit_stories?
+Query(User)
+
+# Q 3992 : # @user.can_submit_stories?
+Query(User)
+
+# Q 3993 : # self.created_at
+Query(Story)
+.select('created_at')
+# Q 3994 : # self.score
 Query(Story)
 
-# Q 3987 : # self.url
+# Q 3995 : # self.created_at
 Query(Story)
-.select('url')
-# Q 3988 : # self.url.blank?
-Query(Story)
-.select('url')
-# Q 3989 : # self.url
-Query(Story)
-.select('url')
-# Q 3990 : # self.comments_url
+.select('created_at')
+# Q 3996 : # self.score
 Query(Story)
 
-# Q 3991 : # self.url
+# Q 3997 : # self.created_at
+Query(Story)
+.select('created_at')
+# Q 3998 : # self.created_at
+Query(Story)
+.select('created_at')
+# Q 3999 : # self.showing_downvotes_for_user?(u)
+Query(Comment)
+
+# Q 4000 : # self.showing_downvotes_for_user?
+Query(Comment)
+
+# Q 4001 : # self.showing_downvotes_for_user?
+Query(Comment)
+
+# Q 4002 : # self.about
+Query(User)
+.select('about')
+# Q 4003 : # self.about
+Query(User)
+.select('about')
+# Q 4004 : # Story.where(short_id: params[:id]).first!
+Query(Story)
+.where("short_id = ?")
+.return_limit('1')
+# Q 4005 : # Story.where(short_id: params[:id]).first!
+Query(Story)
+.where("short_id = ?")
+.return_limit('1')
+# Q 4006 : # Story.where(short_id: params[:id])
+Query(Story)
+.where("short_id = ?")
+# Q 4007 : # Story.where(short_id: params[:id]).first!
+Query(Story)
+.where("short_id = ?")
+.return_limit('1')
+# Q 4008 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group(Tag.arel_table[:id]).order("COUNT(*) desc").first
+Query(Tag)
+.joins('stories')
+.where("user_id = ?")
+.group('')
+.order('id')
+.return_limit('1')
+# Q 4009 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group(Tag.arel_table[:id]).order("COUNT(*) desc")
+Query(Tag)
+.joins('stories')
+.where("user_id = ?")
+.group('')
+.order('id')
+# Q 4010 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group(Tag.arel_table[:id]).order
+Query(Tag)
+.joins('stories')
+.where("user_id = ?")
+.group('')
+# Q 4011 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group(Tag.arel_table[:id])
+Query(Tag)
+.joins('stories')
+.where("user_id = ?")
+.group('')
+# Q 4012 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group
+Query(Tag)
+.joins('stories')
+.where("user_id = ?")
+.group('')
+# Q 4013 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id })
+Query(Tag)
+.joins('stories')
+.where("user_id = ?")
+# Q 4014 : # Tag.active.joins(:stories).where
+Query(Tag)
+.joins('stories')
+# Q 4015 : # Tag.active.joins(:stories)
+Query(Tag)
+.joins('stories')
+# Q 4016 : # Tag.active.joins
+Query(Tag)
+
+# Q 4017 : # Tag.active
+Query(Tag)
+
+# Q 4018 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group(Tag.arel_table[:id]).order("COUNT(*) desc").first
+Query(Tag)
+.joins('stories')
+.where("user_id = ?")
+.group('')
+.order('id')
+.return_limit('1')
+# Q 4019 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group(Tag.arel_table[:id]).order
+Query(Tag)
+.joins('stories')
+.where("user_id = ?")
+.group('')
+# Q 4020 : # Tag.active.joins(:stories).where(:stories => { :user_id => self.id }).group
+Query(Tag)
+.joins('stories')
+.where("user_id = ?")
+.group('')
+# Q 4021 : # Tag.active.joins(:stories).where
+Query(Tag)
+.joins('stories')
+# Q 4022 : # Tag.active.joins
+Query(Tag)
+
+# Q 4023 : # Tag.active
+Query(Tag)
+
+# Q 4024 : # ReadRibbon.where(user: @user, story: @story).first_or_create
+Query(ReadRibbon)
+.where("user = ?")
+.where("story = ?")
+# Q 4025 : # ReadRibbon.where(user: @user, story: @story).first_or_create
+Query(ReadRibbon)
+.where("user = ?")
+.where("story = ?")
+# Q 4026 : # ReadRibbon.where(user: @user, story: @story)
+Query(ReadRibbon)
+.where("user = ?")
+.where("story = ?")
+# Q 4027 : # ReadRibbon.where(user: @user, story: @story).first_or_create
+Query(ReadRibbon)
+.where("user = ?")
+.where("story = ?")
+# Q 4028 : # user.is_moderator?
+Query(User)
+
+# Q 4029 : # user.is_moderator?
+Query(User)
+
+# Q 4030 : # self.id
+Query(User)
+
+# Q 4031 : # self.id
+Query(User)
+
+# Q 4032 : # user.id
+Query(User)
+
+# Q 4033 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 4034 : # user.id
+Query(User)
+
+# Q 4035 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 4036 : # self.is_moderated?
+Query(Story)
+
+# Q 4037 : # self.is_moderated?
+Query(Story)
+
+# Q 4038 : # self.short_id
+Query(Comment)
+.select('short_id')
+# Q 4039 : # self.short_id
+Query(Comment)
+.select('short_id')
+# Q 4040 : # Tag.arel_table
+Query(Tag)
+
+# Q 4041 : # Tag.arel_table
+Query(Tag)
+
+# Q 4042 : # self.created_at.to_i
+Query(Story)
+.select('created_at')
+# Q 4043 : # self.created_at
+Query(Story)
+.select('created_at')
+# Q 4044 : # self.created_at.to_i
+Query(Story)
+.select('created_at')
+# Q 4045 : # self.created_at
+Query(Story)
+.select('created_at')
+# Q 4046 : # self.created_at
+Query(Comment)
+.select('created_at')
+# Q 4047 : # self.created_at
+Query(Comment)
+.select('created_at')
+# Q 4048 : # self.created_at
+Query(Comment)
+.select('created_at')
+# Q 4049 : # self.created_at
+Query(Comment)
+.select('created_at')
+# Q 4050 : # self.score
+Query(Comment)
+
+# Q 4051 : # self.score
+Query(Comment)
+
+# Q 4052 : # self.pushover_user_key.present?
+Query(User)
+
+# Q 4053 : # self.pushover_user_key
+Query(User)
+
+# Q 4054 : # self.pushover_user_key.present?
+Query(User)
+
+# Q 4055 : # self.pushover_user_key
+Query(User)
+
+# Q 4056 : # self.pushover_user_key
+Query(User)
+
+# Q 4057 : # self.pushover_user_key
+Query(User)
+
+# Q 4058 : # self.short_id
+Query(Comment)
+.select('short_id')
+# Q 4059 : # self.short_id
+Query(Comment)
+.select('short_id')
+# Q 4060 : # self.user.is_banned?
+Query(User)
+.where("id = ?")
+# Q 4061 : # self.user
+Query(User)
+.where("id = ?")
+# Q 4062 : # self.user.is_banned?
+Query(User)
+.where("id = ?")
+# Q 4063 : # self.user
+Query(User)
+.where("id = ?")
+# Q 4064 : # self.comments.active.group(:thread_id).order("MAX(created_at) DESC").limit(amount).pluck(:thread_id)
+Query(Comment)
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+.return_limit('')
+.select('thread_id')
+# Q 4065 : # self.comments.active.group(:thread_id).order("MAX(created_at) DESC").limit(amount).pluck(:thread_id)
+Query(Comment)
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+.return_limit('')
+.select('thread_id')
+# Q 4066 : # self.comments.active.group(:thread_id).order("MAX(created_at) DESC").limit(amount).pluck
+Query(Comment)
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+.return_limit('')
+# Q 4067 : # self.comments.active.group(:thread_id).order("MAX(created_at) DESC").limit(amount)
+Query(Comment)
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+.return_limit('')
+# Q 4068 : # self.comments.active.group(:thread_id).order("MAX(created_at) DESC").limit
+Query(Comment)
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+.return_limit('')
+# Q 4069 : # self.comments.active.group(:thread_id).order("MAX(created_at) DESC")
+Query(Comment)
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+# Q 4070 : # self.comments.active.group(:thread_id).order
+Query(Comment)
+.where("user_id = ?")
+.group('thread_id')
+# Q 4071 : # self.comments.active.group(:thread_id)
+Query(Comment)
+.where("user_id = ?")
+.group('thread_id')
+# Q 4072 : # self.comments.active.group
+Query(Comment)
+.where("user_id = ?")
+.group('')
+# Q 4073 : # self.comments.active
+Query(Comment)
+.where("user_id = ?")
+# Q 4074 : # self.comments
+Query(Comment)
+.where("user_id = ?")
+# Q 4075 : # self.comments.active.group(:thread_id).order("MAX(created_at) DESC").limit(amount).pluck
+Query(Comment)
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+.return_limit('')
+# Q 4076 : # self.comments.active.group(:thread_id).order("MAX(created_at) DESC").limit
+Query(Comment)
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+.return_limit('')
+# Q 4077 : # self.comments.active.group(:thread_id).order
+Query(Comment)
+.where("user_id = ?")
+.group('thread_id')
+# Q 4078 : # self.comments.active.group
+Query(Comment)
+.where("user_id = ?")
+.group('')
+# Q 4079 : # self.comments.active
+Query(Comment)
+.where("user_id = ?")
+# Q 4080 : # self.comments
+Query(Comment)
+.where("user_id = ?")
+# Q 4081 : # self.story.update_comments_count!
+Query(Story)
+.where("id = ?")
+# Q 4082 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 4083 : # self.story.update_comments_count!
+Query(Story)
+.where("id = ?")
+# Q 4084 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 4085 : # HiddenStory.where(:user_id => user.id, :story_id => self.id).first
+Query(HiddenStory)
+.where("user_id = ?")
+.where("story_id = ?")
+.return_limit('1')
+# Q 4086 : # HiddenStory.where(:user_id => user.id, :story_id => self.id)
+Query(HiddenStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 4087 : # user.id
+Query(User)
+
+# Q 4088 : # self.id
+Query(Story)
+
+# Q 4089 : # HiddenStory.where(:user_id => user.id, :story_id => self.id).first
+Query(HiddenStory)
+.where("user_id = ?")
+.where("story_id = ?")
+.return_limit('1')
+# Q 4090 : # user.id
+Query(User)
+
+# Q 4091 : # self.id
+Query(Story)
+
+# Q 4092 : # self.show_submitted_story_threads
+Query(User)
+
+# Q 4093 : # self.show_submitted_story_threads
+Query(User)
+
+# Q 4094 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order("MAX(comments.created_at) DESC").limit(amount).pluck(:thread_id)
+Query(Comment)
+.joins('story')
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+.return_limit('')
+.select('thread_id')
+# Q 4095 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order("MAX(comments.created_at) DESC").limit(amount).pluck
+Query(Comment)
+.joins('story')
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+.return_limit('')
+# Q 4096 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order("MAX(comments.created_at) DESC").limit(amount)
+Query(Comment)
+.joins('story')
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+.return_limit('')
+# Q 4097 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order("MAX(comments.created_at) DESC").limit
+Query(Comment)
+.joins('story')
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+.return_limit('')
+# Q 4098 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order("MAX(comments.created_at) DESC")
+Query(Comment)
+.joins('story')
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+# Q 4099 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order
+Query(Comment)
+.joins('story')
+.where("user_id = ?")
+.group('thread_id')
+# Q 4100 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id)
+Query(Comment)
+.joins('story')
+.where("user_id = ?")
+.group('thread_id')
+# Q 4101 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group
+Query(Comment)
+.joins('story')
+.where("user_id = ?")
+.group('')
+# Q 4102 : # Comment.joins(:story).where(:stories => { :user_id => self.id })
+Query(Comment)
+.joins('story')
+.where("user_id = ?")
+# Q 4103 : # Comment.joins(:story).where
+Query(Comment)
+.joins('story')
+# Q 4104 : # Comment.joins(:story)
+Query(Comment)
+.joins('story')
+# Q 4105 : # Comment.joins
+Query(Comment)
+
+# Q 4106 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order("MAX(comments.created_at) DESC").limit(amount).pluck
+Query(Comment)
+.joins('story')
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+.return_limit('')
+# Q 4107 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order("MAX(comments.created_at) DESC").limit
+Query(Comment)
+.joins('story')
+.where("user_id = ?")
+.group('thread_id')
+.order('id')
+.order('created_at')
+.return_limit('')
+# Q 4108 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group(:thread_id).order
+Query(Comment)
+.joins('story')
+.where("user_id = ?")
+.group('thread_id')
+# Q 4109 : # Comment.joins(:story).where(:stories => { :user_id => self.id }).group
+Query(Comment)
+.joins('story')
+.where("user_id = ?")
+.group('')
+# Q 4110 : # Comment.joins(:story).where
+Query(Comment)
+.joins('story')
+# Q 4111 : # Comment.joins
+Query(Comment)
+
+# Q 4112 : # self.story.comments_url
+Query(Story)
+.where("id = ?")
+# Q 4113 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 4114 : # self.short_id
+Query(Comment)
+.select('short_id')
+# Q 4115 : # self.story.comments_url
+Query(Story)
+.where("id = ?")
+# Q 4116 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 4117 : # self.short_id
+Query(Comment)
+.select('short_id')
+# Q 4118 : # self.id
+Query(User)
+
+# Q 4119 : # self.id
+Query(User)
+
+# Q 4120 : # self.created_at
+Query(Story)
+.select('created_at')
+# Q 4121 : # self.created_at
+Query(Story)
+.select('created_at')
+# Q 4122 : # SavedStory.where(:user_id => user.id, :story_id => self.id).first
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+.return_limit('1')
+# Q 4123 : # SavedStory.where(:user_id => user.id, :story_id => self.id)
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+# Q 4124 : # user.id
+Query(User)
+
+# Q 4125 : # self.id
+Query(Story)
+
+# Q 4126 : # SavedStory.where(:user_id => user.id, :story_id => self.id).first
+Query(SavedStory)
+.where("user_id = ?")
+.where("story_id = ?")
+.return_limit('1')
+# Q 4127 : # user.id
+Query(User)
+
+# Q 4128 : # self.id
+Query(Story)
+
+# Q 4129 : # self.votes.each
+Query(Vote)
+.where("comment_id = ?")
+# Q 4130 : # self.votes
+Query(Vote)
+.where("comment_id = ?")
+# Q 4131 : # self.votes.each
+Query(Vote)
+.where("comment_id = ?")
+# Q 4132 : # self.votes
+Query(Vote)
+.where("comment_id = ?")
+# Q 4133 : # self.unavailable_at
+Query(Story)
+.select('unavailable_at')
+# Q 4134 : # self.unavailable_at
+Query(Story)
+.select('unavailable_at')
+# Q 4135 : # Keystore.value_for
+Query(Keystore)
+
+# Q 4136 : # self.id
+Query(User)
+
+# Q 4137 : # Keystore.value_for
+Query(Keystore)
+
+# Q 4138 : # self.id
+Query(User)
+
+# Q 4139 : # self.is_unavailable
+Query(Story)
+
+# Q 4140 : # self.is_unavailable
+Query(Story)
+
+# Q 4141 : # user.is_moderator?
+Query(User)
+
+# Q 4142 : # user.is_moderator?
+Query(User)
+
+# Q 4143 : # user.id
+Query(User)
+
+# Q 4144 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 4145 : # self.is_moderated?
+Query(Story)
+
+# Q 4146 : # user.id
+Query(User)
+
+# Q 4147 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 4148 : # self.is_moderated?
+Query(Story)
+
+# Q 4149 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 4150 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 4151 : # self.save!
+Query(User)
+
+# Q 4152 : # self.save!
+Query(User)
+
+# Q 4153 : # Moderation.new
+Query(Moderation)
+
+# Q 4154 : # Moderation.new
+Query(Moderation)
+
+# Q 4155 : # Moderation.new
+Query(Moderation)
+
+# Q 4156 : # self.id
+Query(User)
+
+# Q 4157 : # self.id
+Query(User)
+
+# Q 4158 : # self.id
+Query(User)
+
+# Q 4159 : # self.new_record?
+Query(Story)
+
+# Q 4160 : # self.new_record?
+Query(Story)
+
+# Q 4161 : # self.editing_from_suggestions
+Query(Story)
+
+# Q 4162 : # self.editor
+Query(Story)
+
+# Q 4163 : # self.editor.id
+Query(Story)
+
+# Q 4164 : # self.editor
+Query(Story)
+
+# Q 4165 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 4166 : # self.editing_from_suggestions
+Query(Story)
+
+# Q 4167 : # self.editor
+Query(Story)
+
+# Q 4168 : # self.editor.id
+Query(Story)
+
+# Q 4169 : # self.editor
+Query(Story)
+
+# Q 4170 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 4171 : # self.changes.merge(self.tagging_changes)
+Query(Story)
+
+# Q 4172 : # self.changes.merge(self.tagging_changes)
+Query(Story)
+
+# Q 4173 : # self.changes.merge
+Query(Story)
+
+# Q 4174 : # self.changes
+Query(Story)
+
+# Q 4175 : # self.tagging_changes
+Query(Story)
+
+# Q 4176 : # self.changes.merge
+Query(Story)
+
+# Q 4177 : # self.changes
+Query(Story)
+
+# Q 4178 : # self.tagging_changes
+Query(Story)
+
+# Q 4179 : # user.is_moderator?
+Query(User)
+
+# Q 4180 : # user.is_moderator?
+Query(User)
+
+# Q 4181 : # User.transaciton
+Query(User)
+
+# Q 4182 : # User.transaciton
+Query(User)
+
+# Q 4183 : # user.id
+Query(User)
+
+# Q 4184 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 4185 : # user.id
+Query(User)
+
+# Q 4186 : # self.user_id
+Query(Comment)
+.select('user_id')
+# Q 4187 : # Moderation.new
+Query(Moderation)
+
+# Q 4188 : # Moderation.new
+Query(Moderation)
+
+# Q 4189 : # Moderation.new
+Query(Moderation)
+
+# Q 4190 : # self.id
+Query(Comment)
+
+# Q 4191 : # self.id
+Query(Comment)
+
+# Q 4192 : # self.id
+Query(Comment)
+
+# Q 4193 : # self.save!
+Query(User)
+
+# Q 4194 : # self.save!
+Query(User)
+
+# Q 4195 : # self.save!
+Query(User)
+
+# Q 4196 : # Moderation.new
+Query(Moderation)
+
+# Q 4197 : # Moderation.new
+Query(Moderation)
+
+# Q 4198 : # Moderation.new
+Query(Moderation)
+
+# Q 4199 : # user.id
+Query(User)
+
+# Q 4200 : # user.id
+Query(User)
+
+# Q 4201 : # user.id
+Query(User)
+
+# Q 4202 : # self.editing_from_suggestions
+Query(Story)
+
+# Q 4203 : # self.editing_from_suggestions
+Query(Story)
+
+# Q 4204 : # Moderation.new
+Query(Moderation)
+
+# Q 4205 : # Moderation.new
+Query(Moderation)
+
+# Q 4206 : # m = Moderation.new
+Query(Moderation)
+
+# Q 4207 : # Moderation.new
+Query(Moderation)
+
+# Q 4208 : # self.id
+Query(User)
+
+# Q 4209 : # self.id
+Query(User)
+
+# Q 4210 : # self.id
+Query(User)
+
+# Q 4211 : # self.editor.try(:id)
+Query(Story)
+.select('id')
+# Q 4212 : # self.editor.try(:id)
+Query(Story)
+.select('id')
+# Q 4213 : # self.editor.try
+Query(Story)
+
+# Q 4214 : # self.editor
+Query(Story)
+
+# Q 4215 : # self.editor.try
+Query(Story)
+
+# Q 4216 : # self.editor
+Query(Story)
+
+# Q 4217 : # self.id
+Query(Story)
+
+# Q 4218 : # self.id
+Query(Story)
+
+# Q 4219 : # self.id
+Query(Story)
+
+# Q 4220 : # self.save(:validate => false)
+Query(Comment)
+
+# Q 4221 : # self.save
+Query(Comment)
+
+# Q 4222 : # self.save
+Query(Comment)
+
+# Q 4223 : # self.is_expired?
+Query(Story)
+
+# Q 4224 : # self.is_expired?
+Query(Story)
+
+# Q 4225 : # self.story.update_comments_count!
+Query(Story)
+.where("id = ?")
+# Q 4226 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 4227 : # self.story.update_comments_count!
+Query(Story)
+.where("id = ?")
+# Q 4228 : # self.story
+Query(Story)
+.where("id = ?")
+# Q 4229 : # self.is_expired?
+Query(Story)
+
+# Q 4230 : # self.is_expired?
+Query(Story)
+
+# Q 4231 : # self.user.update_comments_posted_count!
+Query(User)
+.where("id = ?")
+# Q 4232 : # self.user
+Query(User)
+.where("id = ?")
+# Q 4233 : # self.user.update_comments_posted_count!
+Query(User)
+.where("id = ?")
+# Q 4234 : # self.user
+Query(User)
+.where("id = ?")
+# Q 4235 : # self.merged_into_story.short_id
+Query(Story)
+.where("id = ?")
+.select('short_id')
+# Q 4236 : # self.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 4237 : # self.merged_into_story.short_id
+Query(Story)
+.where("id = ?")
+.select('short_id')
+# Q 4238 : # self.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 4239 : # self.merged_into_story.title
+Query(Story)
+.where("id = ?")
+.select('title')
+# Q 4240 : # self.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 4241 : # self.merged_into_story.title
+Query(Story)
+.where("id = ?")
+.select('title')
+# Q 4242 : # self.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 4243 : # Keystore.value_for
+Query(Keystore)
+
+# Q 4244 : # self.id
+Query(User)
+
+# Q 4245 : # Keystore.value_for
+Query(Keystore)
+
+# Q 4246 : # self.id
+Query(User)
+
+# Q 4247 : # Keystore.put
+Query(Keystore)
+
+# Q 4248 : # self.id
+Query(User)
+
+# Q 4249 : # Keystore.put
+Query(Keystore)
+
+# Q 4250 : # self.id
+Query(User)
+
+# Q 4251 : # self.received_messages.unread.count
+Query(Message)
+.where("user_id = ?")
+# Q 4252 : # self.received_messages.unread
+Query(Message)
+.where("user_id = ?")
+# Q 4253 : # self.received_messages
+Query(Message)
+.where("user_id = ?")
+# Q 4254 : # self.received_messages.unread.count
+Query(Message)
+.where("user_id = ?")
+# Q 4255 : # self.received_messages.unread
+Query(Message)
+.where("user_id = ?")
+# Q 4256 : # self.received_messages
+Query(Message)
+.where("user_id = ?")
+# Q 4257 : # self.moderation_reason
+Query(Story)
+
+# Q 4258 : # self.moderation_reason
+Query(Story)
+
+# Q 4259 : # self.moderation_reason
+Query(Story)
+
+# Q 4260 : # ReplyingComment.where(user_id: self.id, is_unread: true).count
+Query(ReplyingComment)
+.where("user_id = ?")
+.where("is_unread = ?")
+# Q 4261 : # ReplyingComment.where(user_id: self.id, is_unread: true)
+Query(ReplyingComment)
+.where("user_id = ?")
+.where("is_unread = ?")
+# Q 4262 : # self.id
+Query(User)
+
+# Q 4263 : # ReplyingComment.where(user_id: self.id, is_unread: true).count
+Query(ReplyingComment)
+.where("user_id = ?")
+.where("is_unread = ?")
+# Q 4264 : # self.id
+Query(User)
+
+# Q 4265 : # self.votes.joins(:story, :comment).where("comments.user_id <> votes.user_id AND " << "stories.user_id <> votes.user_id").order("id DESC")
+Query(Vote)
+.where("user_id = ?")
+.joins('story')
+.joins('comment')
+.order('id')
+.order('id')
+# Q 4266 : # self.votes.joins(:story, :comment).where("comments.user_id <> votes.user_id AND " << "stories.user_id <> votes.user_id").order
+Query(Vote)
+.where("user_id = ?")
+.joins('story')
+.joins('comment')
+# Q 4267 : # self.votes.joins(:story, :comment).where("comments.user_id <> votes.user_id AND " << "stories.user_id <> votes.user_id")
+Query(Vote)
+.where("user_id = ?")
+.joins('story')
+.joins('comment')
+# Q 4268 : # self.votes.joins(:story, :comment).where
+Query(Vote)
+.where("user_id = ?")
+.joins('story')
+.joins('comment')
+# Q 4269 : # self.votes.joins(:story, :comment)
+Query(Vote)
+.where("user_id = ?")
+.joins('story')
+.joins('comment')
+# Q 4270 : # self.votes.joins
+Query(Vote)
+.where("user_id = ?")
+# Q 4271 : # self.votes
+Query(Vote)
+.where("user_id = ?")
+# Q 4272 : # self.votes.joins(:story, :comment).where("comments.user_id <> votes.user_id AND " << "stories.user_id <> votes.user_id").order
+Query(Vote)
+.where("user_id = ?")
+.joins('story')
+.joins('comment')
+# Q 4273 : # self.votes.joins(:story, :comment).where
+Query(Vote)
+.where("user_id = ?")
+.joins('story')
+.joins('comment')
+# Q 4274 : # self.votes.joins
+Query(Vote)
+.where("user_id = ?")
+# Q 4275 : # self.votes
+Query(Vote)
+.where("user_id = ?")
+# Q 4276 : # Keystore.increment_value_for
+Query(Keystore)
+
+# Q 4277 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 4278 : # Keystore.increment_value_for
+Query(Keystore)
+
+# Q 4279 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 4280 : # Comment.where(:story_id => Story.select(:id).where(:merged_story_id => self.id) + [self.id])
+Query(Comment)
+.where("story_id = ?")
+# Q 4281 : # Story.select(:id).where(:merged_story_id => self.id)
+Query(Story)
+.select('id')
+.where("merged_story_id = ?")
+# Q 4282 : # Story.select(:id).where
+Query(Story)
+.select('id')
+# Q 4283 : # Story.select(:id)
+Query(Story)
+.select('id')
+# Q 4284 : # Story.select
+Query(Story)
+
+# Q 4285 : # Story.select(:id).where
+Query(Story)
+.select('id')
+# Q 4286 : # Story.select
+Query(Story)
+
+# Q 4287 : # self.id
+Query(Story)
+
+# Q 4288 : # self.id
+Query(Story)
+
+# Q 4289 : # self.id
+Query(Story)
+
+# Q 4290 : # self.id
+Query(Story)
+
+# Q 4291 : # Story.where(:short_id => sid).first.id
+Query(Story)
+.where("short_id = ?")
+.return_limit('1')
+# Q 4292 : # Story.where(:short_id => sid).first
+Query(Story)
+.where("short_id = ?")
+.return_limit('1')
+# Q 4293 : # Story.where(:short_id => sid)
+Query(Story)
+.where("short_id = ?")
+# Q 4294 : # Story.where(:short_id => sid).first.id
+Query(Story)
+.where("short_id = ?")
+.return_limit('1')
+# Q 4295 : # Story.where(:short_id => sid).first
+Query(Story)
+.where("short_id = ?")
+.return_limit('1')
+# Q 4296 : # self.merged_story_id
+Query(Story)
+.select('merged_story_id')
+# Q 4297 : # self.merged_into_story.try(:short_id)
+Query(Story)
+.where("id = ?")
+.select('short_id')
+# Q 4298 : # self.merged_into_story.try
+Query(Story)
+.where("id = ?")
+# Q 4299 : # self.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 4300 : # self.merged_story_id
+Query(Story)
+.select('merged_story_id')
+# Q 4301 : # self.merged_into_story.try
+Query(Story)
+.where("id = ?")
+# Q 4302 : # self.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 4303 : # Vote.vote_thusly_on_story_or_comment_for_user_because(1, self.id, nil, self.user_id, nil, false)
+Query(Vote)
+
+# Q 4304 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 4305 : # self.id
+Query(Story)
+
+# Q 4306 : # Vote.vote_thusly_on_story_or_comment_for_user_because
+Query(Vote)
+
+# Q 4307 : # self.id
+Query(Story)
+
+# Q 4308 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 4309 : # self.user_id
+Query(Story)
+.select('user_id')
+# Q 4310 : # self.short_id
+Query(Story)
+.select('short_id')
+# Q 4311 : # self.short_id
+Query(Story)
+.select('short_id')
+# Q 4312 : # self.short_id
+Query(Story)
+.select('short_id')
+# Q 4313 : # self.short_id
+Query(Story)
+.select('short_id')
+# Q 4314 : # self.taggings.sort_by { |t|
+#   
+#   t.tag.tag
+# }.sort_by
+Query(Tagging)
+.where("story_id = ?")
+# Q 4315 : # self.taggings.sort_by
+Query(Tagging)
+.where("story_id = ?")
+# Q 4316 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 4317 : # self.taggings.sort_by { |t|
+#   
+#   t.tag.tag
+# }.sort_by
+Query(Tagging)
+.where("story_id = ?")
+# Q 4318 : # self.taggings.sort_by
+Query(Tagging)
+.where("story_id = ?")
+# Q 4319 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 4320 : # self.taggings.reject { |tg|
+#   
+#   tg.new_record?
+# }.map { |tg|
+#   
+#   tg.tag.tag
+# }.join(" ")
+Query(Tagging)
+.where("story_id = ?")
+# Q 4321 : # self.taggings.reject { |tg|
+#   
+#   tg.new_record?
+# }.map { |tg|
+#   
+#   tg.tag.tag
+# }.join(" ")
+Query(Tagging)
+.where("story_id = ?")
+# Q 4322 : # self.taggings.reject { |tg|
+#   
+#   tg.new_record?
+# }.map { |tg|
+#   
+#   tg.tag.tag
+# }.join
+Query(Tagging)
+.where("story_id = ?")
+# Q 4323 : # self.taggings.reject { |tg|
+#   
+#   tg.new_record?
+# }.map
+Query(Tagging)
+.where("story_id = ?")
+# Q 4324 : # self.taggings.reject
+Query(Tagging)
+.where("story_id = ?")
+# Q 4325 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 4326 : # self.taggings.reject { |tg|
+#   
+#   tg.new_record?
+# }.map { |tg|
+#   
+#   tg.tag.tag
+# }.join
+Query(Tagging)
+.where("story_id = ?")
+# Q 4327 : # self.taggings.reject { |tg|
+#   
+#   tg.new_record?
+# }.map
+Query(Tagging)
+.where("story_id = ?")
+# Q 4328 : # self.taggings.reject
+Query(Tagging)
+.where("story_id = ?")
+# Q 4329 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 4330 : # self.taggings.reject { |tg|
+#   
+#   tg.marked_for_destruction?
+# }.map { |tg|
+#   
+#   tg.tag.tag
+# }.join(" ")
+Query(Tagging)
+.where("story_id = ?")
+# Q 4331 : # self.taggings.reject { |tg|
+#   
+#   tg.marked_for_destruction?
+# }.map { |tg|
+#   
+#   tg.tag.tag
+# }.join(" ")
+Query(Tagging)
+.where("story_id = ?")
+# Q 4332 : # self.taggings.reject { |tg|
+#   
+#   tg.marked_for_destruction?
+# }.map { |tg|
+#   
+#   tg.tag.tag
+# }.join
+Query(Tagging)
+.where("story_id = ?")
+# Q 4333 : # self.taggings.reject { |tg|
+#   
+#   tg.marked_for_destruction?
+# }.map
+Query(Tagging)
+.where("story_id = ?")
+# Q 4334 : # self.taggings.reject
+Query(Tagging)
+.where("story_id = ?")
+# Q 4335 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 4336 : # self.taggings.reject { |tg|
+#   
+#   tg.marked_for_destruction?
+# }.map { |tg|
+#   
+#   tg.tag.tag
+# }.join
+Query(Tagging)
+.where("story_id = ?")
+# Q 4337 : # self.taggings.reject { |tg|
+#   
+#   tg.marked_for_destruction?
+# }.map
+Query(Tagging)
+.where("story_id = ?")
+# Q 4338 : # self.taggings.reject
+Query(Tagging)
+.where("story_id = ?")
+# Q 4339 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 4340 : # self.taggings.reject { |t|
+#   
+#   t.marked_for_destruction?
+# }.map
+Query(Tagging)
+.where("story_id = ?")
+# Q 4341 : # self.taggings.reject
+Query(Tagging)
+.where("story_id = ?")
+# Q 4342 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 4343 : # self.taggings.reject { |t|
+#   
+#   t.marked_for_destruction?
+# }.map
+Query(Tagging)
+.where("story_id = ?")
+# Q 4344 : # self.taggings.reject
+Query(Tagging)
+.where("story_id = ?")
+# Q 4345 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 4346 : # self.taggings.each
+Query(Tagging)
+.where("story_id = ?")
+# Q 4347 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 4348 : # self.taggings.each
+Query(Tagging)
+.where("story_id = ?")
+# Q 4349 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 4350 : # tagging.tag.tag
+Query(Tag)
+.where("id = ?")
+.select('tag')
+# Q 4351 : # tagging.tag
+Query(Tag)
+.where("id = ?")
+# Q 4352 : # tagging.tag.tag
+Query(Tag)
+.where("id = ?")
+.select('tag')
+# Q 4353 : # tagging.tag
+Query(Tag)
+.where("id = ?")
+# Q 4354 : # tagging.tag.tag
+Query(Tag)
+.where("id = ?")
+.select('tag')
+# Q 4355 : # tagging.tag
+Query(Tag)
+.where("id = ?")
+# Q 4356 : # tagging.mark_for_destruction
+Query(Tagging)
+
+# Q 4357 : # tagging.mark_for_destruction
+Query(Tagging)
+
+# Q 4358 : # tagging.mark_for_destruction
+Query(Tagging)
+
+# Q 4359 : # tagging.mark_for_destruction
+Query(Tagging)
+
+# Q 4360 : # self.tags.exists?(:tag => tag_name)
+Query(Tag)
+.where("story_id = ?")
+.return_limit('1')
+# Q 4361 : # self.tags.exists?
+Query(Tag)
+.where("story_id = ?")
+.return_limit('1')
+# Q 4362 : # self.tags
+Query(Tag)
+.where("story_id = ?")
+# Q 4363 : # self.tags.exists?(:tag => tag_name)
+Query(Tag)
+.where("story_id = ?")
+.return_limit('1')
+# Q 4364 : # self.tags.exists?
+Query(Tag)
+.where("story_id = ?")
+.return_limit('1')
+# Q 4365 : # self.tags
+Query(Tag)
+.where("story_id = ?")
+# Q 4366 : # self.tags.exists?
+Query(Tag)
+.where("story_id = ?")
+.return_limit('1')
+# Q 4367 : # self.tags
+Query(Tag)
+.where("story_id = ?")
+# Q 4368 : # Tag.active.where(:tag => tag_name).first
+Query(Tag)
+.where("tag = ?")
+.return_limit('1')
+# Q 4369 : # Tag.active.where(:tag => tag_name).first
+Query(Tag)
+.where("tag = ?")
+.return_limit('1')
+# Q 4370 : # Tag.active.where(:tag => tag_name)
+Query(Tag)
+.where("tag = ?")
+# Q 4371 : # Tag.active.where
+Query(Tag)
+
+# Q 4372 : # Tag.active
+Query(Tag)
+
+# Q 4373 : # Tag.active.where(:tag => tag_name).first
+Query(Tag)
+.where("tag = ?")
+.return_limit('1')
+# Q 4374 : # Tag.active.where(:tag => tag_name)
+Query(Tag)
+.where("tag = ?")
+# Q 4375 : # Tag.active.where
+Query(Tag)
+
+# Q 4376 : # Tag.active
+Query(Tag)
+
+# Q 4377 : # Tag.active.where(:tag => tag_name).first
+Query(Tag)
+.where("tag = ?")
+.return_limit('1')
+# Q 4378 : # Tag.active.where(:tag => tag_name)
+Query(Tag)
+.where("tag = ?")
+# Q 4379 : # Tag.active.where
+Query(Tag)
+
+# Q 4380 : # Tag.active
+Query(Tag)
+
+# Q 4381 : # Tag.active.where(:tag => tag_name).first
+Query(Tag)
+.where("tag = ?")
+.return_limit('1')
+# Q 4382 : # Tag.active.where
+Query(Tag)
+
+# Q 4383 : # Tag.active
+Query(Tag)
+
+# Q 4384 : # self.taggings.build
+Query(Tagging)
+.where("story_id = ?")
+# Q 4385 : # self.taggings.build
+Query(Tagging)
+.where("story_id = ?")
+# Q 4386 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 4387 : # self.taggings.build
+Query(Tagging)
+.where("story_id = ?")
+# Q 4388 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 4389 : # self.taggings.build
+Query(Tagging)
+.where("story_id = ?")
+# Q 4390 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 4391 : # tg = self.taggings.build
+Query(Tagging)
+.where("story_id = ?")
+# Q 4392 : # self.taggings.build
+Query(Tagging)
+.where("story_id = ?")
+# Q 4393 : # self.taggings
+Query(Tagging)
+.where("story_id = ?")
+# Q 4394 : # self.suggested_taggings.where(:user_id => user.id)
+Query(SuggestedTagging)
+.where("story_id = ?")
+.where("user_id = ?")
+# Q 4395 : # self.suggested_taggings.where(:user_id => user.id)
+Query(SuggestedTagging)
+.where("story_id = ?")
+.where("user_id = ?")
+# Q 4396 : # self.suggested_taggings.where
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4397 : # self.suggested_taggings
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4398 : # user.id
+Query(User)
+
+# Q 4399 : # self.suggested_taggings.where
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4400 : # self.suggested_taggings
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4401 : # user.id
+Query(User)
+
+# Q 4402 : # tagging.tag.tag
+Query(Tag)
+.where("id = ?")
+.select('tag')
+# Q 4403 : # tagging.tag
+Query(Tag)
+.where("id = ?")
+# Q 4404 : # tagging.tag.tag
+Query(Tag)
+.where("id = ?")
+.select('tag')
+# Q 4405 : # tagging.tag
+Query(Tag)
+.where("id = ?")
+# Q 4406 : # tagging.tag.tag
+Query(Tag)
+.where("id = ?")
+.select('tag')
+# Q 4407 : # tagging.tag
+Query(Tag)
+.where("id = ?")
+# Q 4408 : # tagging.destroy
+Query(Tagging)
+
+# Q 4409 : # tagging.destroy
+Query(Tagging)
+
+# Q 4410 : # tagging.destroy
+Query(Tagging)
+
+# Q 4411 : # tagging.destroy
+Query(Tagging)
+
+# Q 4412 : # Tag.active.where(:tag => tag_name).first
+Query(Tag)
+.where("tag = ?")
+.return_limit('1')
+# Q 4413 : # Tag.active.where(:tag => tag_name).first
+Query(Tag)
+.where("tag = ?")
+.return_limit('1')
+# Q 4414 : # Tag.active.where(:tag => tag_name)
+Query(Tag)
+.where("tag = ?")
+# Q 4415 : # Tag.active.where
+Query(Tag)
+
+# Q 4416 : # Tag.active
+Query(Tag)
+
+# Q 4417 : # Tag.active.where(:tag => tag_name).first
+Query(Tag)
+.where("tag = ?")
+.return_limit('1')
+# Q 4418 : # Tag.active.where(:tag => tag_name)
+Query(Tag)
+.where("tag = ?")
+# Q 4419 : # Tag.active.where
+Query(Tag)
+
+# Q 4420 : # Tag.active
+Query(Tag)
+
+# Q 4421 : # Tag.active.where(:tag => tag_name).first
+Query(Tag)
+.where("tag = ?")
+.return_limit('1')
+# Q 4422 : # Tag.active.where(:tag => tag_name)
+Query(Tag)
+.where("tag = ?")
+# Q 4423 : # Tag.active.where
+Query(Tag)
+
+# Q 4424 : # Tag.active
+Query(Tag)
+
+# Q 4425 : # t = Tag.active.where(:tag => tag_name).first
+Query(Tag)
+.where("tag = ?")
+.return_limit('1')
+# Q 4426 : # Tag.active.where(:tag => tag_name).first
+Query(Tag)
+.where("tag = ?")
+.return_limit('1')
+# Q 4427 : # Tag.active.where
+Query(Tag)
+
+# Q 4428 : # Tag.active
+Query(Tag)
+
+# Q 4429 : # self.suggested_taggings.build
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4430 : # self.suggested_taggings.build
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4431 : # self.suggested_taggings
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4432 : # self.suggested_taggings.build
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4433 : # self.suggested_taggings
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4434 : # self.suggested_taggings.build
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4435 : # self.suggested_taggings
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4436 : # tg = self.suggested_taggings.build
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4437 : # self.suggested_taggings.build
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4438 : # self.suggested_taggings
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4439 : # user.id
+Query(User)
+
+# Q 4440 : # user.id
+Query(User)
+
+# Q 4441 : # user.id
+Query(User)
+
+# Q 4442 : # user.id
+Query(User)
+
+# Q 4443 : # user.id
+Query(User)
+
+# Q 4444 : # self.suggested_taggings.group_by(&:user_id).each
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4445 : # self.suggested_taggings.group_by(&:user_id)
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4446 : # self.suggested_taggings.group_by
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4447 : # self.suggested_taggings
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4448 : # self.suggested_taggings.group_by(&:user_id).each
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4449 : # self.suggested_taggings.group_by
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4450 : # self.suggested_taggings
+Query(SuggestedTagging)
+.where("story_id = ?")
+# Q 4451 : # self.tags_a.sort
+Query(Story)
+
+# Q 4452 : # self.tags_a
+Query(Story)
+
+# Q 4453 : # self.tags_a.sort
+Query(Story)
+
+# Q 4454 : # self.tags_a
+Query(Story)
+
+# Q 4455 : # self.id
+Query(Story)
+
+# Q 4456 : # self.id
+Query(Story)
+
+# Q 4457 : # self.tags_a.inspect
+Query(Story)
+
+# Q 4458 : # self.tags_a
+Query(Story)
+
+# Q 4459 : # self.tags_a.inspect
+Query(Story)
+
+# Q 4460 : # self.tags_a
+Query(Story)
+
+# Q 4461 : # self.save
+Query(Story)
+
+# Q 4462 : # self.save
+Query(Story)
+
+# Q 4463 : # self.id
+Query(Story)
+
+# Q 4464 : # self.id
+Query(Story)
+
+# Q 4465 : # self.errors.inspect
+Query(Story)
+
+# Q 4466 : # self.errors
+Query(Story)
+
+# Q 4467 : # self.errors.inspect
+Query(Story)
+
+# Q 4468 : # self.errors
+Query(Story)
+
+# Q 4469 : # self.suggested_titles.where(:user_id => user.id).first
+Query(SuggestedTitle)
+.where("story_id = ?")
+.where("user_id = ?")
+.return_limit('1')
+# Q 4470 : # self.suggested_titles.where(:user_id => user.id).first
+Query(SuggestedTitle)
+.where("story_id = ?")
+.where("user_id = ?")
+.return_limit('1')
+# Q 4471 : # self.suggested_titles.where(:user_id => user.id)
+Query(SuggestedTitle)
+.where("story_id = ?")
+.where("user_id = ?")
+# Q 4472 : # self.suggested_titles.where
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 4473 : # self.suggested_titles
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 4474 : # user.id
+Query(User)
+
+# Q 4475 : # self.suggested_titles.where(:user_id => user.id).first
+Query(SuggestedTitle)
+.where("story_id = ?")
+.where("user_id = ?")
+.return_limit('1')
+# Q 4476 : # self.suggested_titles.where
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 4477 : # self.suggested_titles
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 4478 : # user.id
+Query(User)
+
+# Q 4479 : # self.suggested_titles.build
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 4480 : # self.suggested_titles.build
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 4481 : # self.suggested_titles
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 4482 : # self.suggested_titles.build
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 4483 : # self.suggested_titles
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 4484 : # user.id
+Query(User)
+
+# Q 4485 : # user.id
+Query(User)
+
+# Q 4486 : # user.id
+Query(User)
+
+# Q 4487 : # self.suggested_titles.each
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 4488 : # self.suggested_titles
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 4489 : # self.suggested_titles.each
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 4490 : # self.suggested_titles
+Query(SuggestedTitle)
+.where("story_id = ?")
+# Q 4491 : # self.id
+Query(Story)
+
+# Q 4492 : # self.id
+Query(Story)
+
+# Q 4493 : # self.id
+Query(Story)
+
+# Q 4494 : # self.id
+Query(Story)
+
+# Q 4495 : # self.title.inspect
+Query(Story)
+.select('title')
+# Q 4496 : # self.title
+Query(Story)
+.select('title')
+# Q 4497 : # self.title.inspect
+Query(Story)
+.select('title')
+# Q 4498 : # self.title
+Query(Story)
+.select('title')
+# Q 4499 : # self.title.inspect
+Query(Story)
+.select('title')
+# Q 4500 : # self.title.inspect
+Query(Story)
+.select('title')
+# Q 4501 : # self.title
+Query(Story)
+.select('title')
+# Q 4502 : # self.save
+Query(Story)
+
+# Q 4503 : # self.save
+Query(Story)
+
+# Q 4504 : # self.save
+Query(Story)
+
+# Q 4505 : # self.save
+Query(Story)
+
+# Q 4506 : # self.id
+Query(Story)
+
+# Q 4507 : # self.id
+Query(Story)
+
+# Q 4508 : # self.id
+Query(Story)
+
+# Q 4509 : # self.id
+Query(Story)
+
+# Q 4510 : # self.id
+Query(Story)
+
+# Q 4511 : # self.errors.inspect
+Query(Story)
+
+# Q 4512 : # self.errors
+Query(Story)
+
+# Q 4513 : # self.errors.inspect
+Query(Story)
+
+# Q 4514 : # self.errors
+Query(Story)
+
+# Q 4515 : # self.errors.inspect
+Query(Story)
+
+# Q 4516 : # self.errors
+Query(Story)
+
+# Q 4517 : # self.errors.inspect
+Query(Story)
+
+# Q 4518 : # self.errors
+Query(Story)
+
+# Q 4519 : # self.short_id
+Query(Story)
+.select('short_id')
+# Q 4520 : # self.short_id
+Query(Story)
+.select('short_id')
+# Q 4521 : # self.is_unavailable
+Query(Story)
+
+# Q 4522 : # self.unavailable_at
+Query(Story)
+.select('unavailable_at')
+# Q 4523 : # self.is_unavailable
+Query(Story)
+
+# Q 4524 : # self.unavailable_at
+Query(Story)
+.select('unavailable_at')
+# Q 4525 : # self.unavailable_at
+Query(Story)
+.select('unavailable_at')
+# Q 4526 : # self.is_unavailable
+Query(Story)
+
+# Q 4527 : # self.unavailable_at
+Query(Story)
+.select('unavailable_at')
+# Q 4528 : # self.is_unavailable
+Query(Story)
+
+# Q 4529 : # self.merged_comments.arrange_for_user(nil)
+Query(Story)
+
+# Q 4530 : # self.merged_comments.arrange_for_user(nil)
+Query(Story)
+
+# Q 4531 : # self.merged_comments.arrange_for_user
+Query(Story)
+
+# Q 4532 : # self.merged_comments
+Query(Story)
+
+# Q 4533 : # self.merged_comments.arrange_for_user
+Query(Story)
+
+# Q 4534 : # self.merged_comments
+Query(Story)
+
+# Q 4535 : # comments.count
+Query(Comment)
+
+# Q 4536 : # comments.count
+Query(Comment)
+
+# Q 4537 : # self.recalculate_hotness!
+Query(Story)
+
+# Q 4538 : # self.recalculate_hotness!
+Query(Story)
+
+# Q 4539 : # self.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 4540 : # self.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 4541 : # self.merged_into_story.update_comments_count!
+Query(Story)
+.where("id = ?")
+# Q 4542 : # self.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 4543 : # self.merged_into_story.update_comments_count!
+Query(Story)
+.where("id = ?")
+# Q 4544 : # self.merged_into_story
+Query(Story)
+.where("id = ?")
+# Q 4545 : # self.new_record?
+Query(Story)
+
+# Q 4546 : # self.new_record?
+Query(Story)
+
+# Q 4547 : # user.is_moderator?
+Query(User)
+
+# Q 4548 : # self.url.present?
 Query(Story)
 .select('url')
-# Q 3992 : # Vote.where(:story_id => self.id, :comment_id => nil).where("vote != 0").each
+# Q 4549 : # self.url
+Query(Story)
+.select('url')
+# Q 4550 : # user.is_moderator?
+Query(User)
+
+# Q 4551 : # self.url.present?
+Query(Story)
+.select('url')
+# Q 4552 : # self.url
+Query(Story)
+.select('url')
+# Q 4553 : # self.url.blank?
+Query(Story)
+.select('url')
+# Q 4554 : # self.url
+Query(Story)
+.select('url')
+# Q 4555 : # self.comments_path
+Query(Story)
+
+# Q 4556 : # self.url
+Query(Story)
+.select('url')
+# Q 4557 : # self.url.blank?
+Query(Story)
+.select('url')
+# Q 4558 : # self.url
+Query(Story)
+.select('url')
+# Q 4559 : # self.comments_path
+Query(Story)
+
+# Q 4560 : # self.url
+Query(Story)
+.select('url')
+# Q 4561 : # self.url.blank?
+Query(Story)
+.select('url')
+# Q 4562 : # self.url
+Query(Story)
+.select('url')
+# Q 4563 : # self.comments_url
+Query(Story)
+
+# Q 4564 : # self.url
+Query(Story)
+.select('url')
+# Q 4565 : # self.url.blank?
+Query(Story)
+.select('url')
+# Q 4566 : # self.url
+Query(Story)
+.select('url')
+# Q 4567 : # self.comments_url
+Query(Story)
+
+# Q 4568 : # self.url
+Query(Story)
+.select('url')
+# Q 4569 : # Vote.where(:story_id => self.id, :comment_id => nil).where("vote != 0").each
 Query(Vote)
 .where("story_id = ?")
 .where("comment_id = ?")
 .where(" = ?")
-# Q 3993 : # Vote.where(:story_id => self.id, :comment_id => nil).where("vote != 0")
+# Q 4570 : # Vote.where(:story_id => self.id, :comment_id => nil).where("vote != 0")
 Query(Vote)
 .where("story_id = ?")
 .where("comment_id = ?")
 .where(" = ?")
-# Q 3994 : # Vote.where(:story_id => self.id, :comment_id => nil).where
+# Q 4571 : # Vote.where(:story_id => self.id, :comment_id => nil).where
 Query(Vote)
 .where("story_id = ?")
 .where("comment_id = ?")
-# Q 3995 : # Vote.where(:story_id => self.id, :comment_id => nil)
+# Q 4572 : # Vote.where(:story_id => self.id, :comment_id => nil)
 Query(Vote)
 .where("story_id = ?")
 .where("comment_id = ?")
-# Q 3996 : # self.id
+# Q 4573 : # self.id
 Query(Story)
 
-# Q 3997 : # Vote.where(:story_id => self.id, :comment_id => nil).where("vote != 0").each
+# Q 4574 : # Vote.where(:story_id => self.id, :comment_id => nil).where("vote != 0").each
 Query(Vote)
 .where("story_id = ?")
 .where("comment_id = ?")
 .where(" = ?")
-# Q 3998 : # Vote.where(:story_id => self.id, :comment_id => nil).where
+# Q 4575 : # Vote.where(:story_id => self.id, :comment_id => nil).where
 Query(Vote)
 .where("story_id = ?")
 .where("comment_id = ?")
-# Q 3999 : # self.id
+# Q 4576 : # self.id
 Query(Story)
 
-# Q 4000 : # user.is_moderator?
+# Q 4577 : # user.is_moderator?
 Query(User)
 
-# Q 4001 : # user.is_moderator?
+# Q 4578 : # user.is_moderator?
 Query(User)
 
-# Q 4002 : # user.is_moderator?
+# Q 4579 : # user.is_moderator?
 Query(User)
 
-# Q 4003 : # user.is_moderator?
+# Q 4580 : # user.is_moderator?
 Query(User)
 
-# Q 4004 : # user.is_moderator?
+# Q 4581 : # user.is_moderator?
 Query(User)
 
-# Q 4005 : # self.url
+# Q 4582 : # self.url
 Query(Story)
 .select('url')
-# Q 4006 : # self.url
+# Q 4583 : # self.url
 Query(Story)
 .select('url')
-# Q 4007 : # self.url
+# Q 4584 : # self.url
 Query(Story)
 .select('url')
-# Q 4008 : # self.url
+# Q 4585 : # self.url
 Query(Story)
 .select('url')
-# Q 4009 : # self.fetching_ip
+# Q 4586 : # self.fetching_ip
 Query(Story)
 
-# Q 4010 : # self.fetching_ip
+# Q 4587 : # self.fetching_ip
 Query(Story)
 
