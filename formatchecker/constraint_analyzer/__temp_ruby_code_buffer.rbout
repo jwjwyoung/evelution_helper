@@ -1,1 +1,0 @@
-puts "UPDATE Story SET " << "upvotes = COALESCE(upvotes, 0) + ? , " << "downvotes = COALESCE(downvotes, 0) + ? , " << "hotness = '? ' WHERE id = ? "

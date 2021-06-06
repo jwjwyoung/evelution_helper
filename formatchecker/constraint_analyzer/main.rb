@@ -97,8 +97,8 @@ OptionParser.new do |opts|
   opts.on("--check", "check errors") do |_|
     options[:check] = true
   end
-  opts.on("--consistency", "check inconsistency") do |_|
-    options[:consistency] = true
+  opts.on("--consistency consistency", "check inconsistency") do |v|
+    options[:consistency] = v.to_i
   end
   opts.on("--cvers version", "which version to check") do |v|
     options[:check_vers] = v
@@ -135,7 +135,7 @@ if options[:check]
   check_code(application_dir, options[:check_vers] || "master", options[:check_tab], options[:check_col])
 end
 if options[:consistency]
-  $check_queries = true
+  $check_queries = options[:consistency]
 end
 tag_unit = true
 if options[:commit_unit]

@@ -386,4 +386,34 @@ class TestParseDBConstriant < Test::Unit::TestCase
     assert_equal model_class.getColumns[0], temp_model_class.getColumns[0]
     assert_equal model_class.indices[0], temp_model_class.indices[0]
   end
+  def test_rename_table2
+    contents = "class RenameAllowLocalRequestsFromHooksAndServicesApplicationSetting < ActiveRecord::Migration[5.2]
+              include Gitlab::Database::MigrationHelpers
+            
+              DOWNTIME = false
+            
+              disable_ddl_transaction!
+            
+              def up
+                rename_column :application_settings, :allow_local_requests_from_hooks_and_services, :allow_local_requests_from_web_hooks_and_services
+              end
+            
+              def down
+                rename_column :application_settings, :allow_local_requests_from_web_hooks_and_services, :allow_local_requests_from_hooks_and_services
+              end
+    end"
+    ast = YARD::Parser::Ruby::RubyParser.parse(contents).root
+    model_class = File_class.new("products.rb")
+    model_class.class_name = "ApplicationSetting"
+    model_class.upper_class_name == "ActiveRecord::Base"
+    model_class.is_activerecord = true
+    $model_classes = {}
+    $model_classes[model_class.class_name] = model_class
+    $cur_class = File_class.new("test.rb")
+    $cur_class.ast = ast
+    parse_db_constraint_file(ast)
+    assert_equal 1, model_class.getColumns.length
+    column = model_class.getColumns.values[0]
+    assert_equal "allow_local_requests_from_hooks_and_services", column.column_name
+  end
 end

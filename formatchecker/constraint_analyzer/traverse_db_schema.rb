@@ -69,7 +69,40 @@ class Version_class
       old_has = aggregate_many_one(old_fk, old_many, old_one, old_both)
       new_keys = new_fk + new_one + new_many + new_both
       old_keys = old_fk + old_one + old_many + old_both
+     # association change
+      new_keys.intersection(old_keys).each do |k|
+        if old_has[k] != new_has[k]
+          yield :assoc_change, key, k, new_has[k], old_has[k]
+        end
+      end
 
+      # association add
+      (new_keys - old_keys).each do |k|
+        case new_has[k]
+        when :belongs
+          yield :fk_add, key, k
+        when :many
+          yield :has_many_add, key, k
+        when :one
+          yield :has_one_add, key, k
+        when :has_belong
+          yield :has_belong_add, key, k
+        end
+      end
+
+      # association delete
+      (old_keys - new_keys).each do |k|
+        case old_has[k]
+        when :belongs
+          yield :fk_del, key, k
+        when :many
+          yield :has_many_del, key, k
+        when :one
+          yield :has_one_del, key, k
+        when :has_belong
+          yield :has_belong_del, key, k
+        end
+      end
       # Index add/del
       idx = file.indices.keys.to_set
       old_idx = old_file.indices.keys.to_set
@@ -227,7 +260,11 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[], tag_unit=tr
   version_his_folder = File.expand_path("../log/vhf_#{app_name}", __dir__)
   Dir.mkdir(version_his_folder) unless Dir.exist? version_his_folder
   puts("LENGTH: #{versions.length} #{versions[0].commit}")
-  
+  change_logfile = "../log/#{app_name}_change.csv"
+  processed_versions = open(change_logfile).readlines.map{|x| x.split("\t")[0]}
+  versions = versions.reject{|v| processed_versions.include?v.commit} unless $check_queries
+  puts "NEW VERSION #{versions.length}"
+  output_file = open(change_logfile, 'a')
   return if versions.length <= 0
 
   # versions << Version_class.new(app_dir, "00000000")
@@ -322,8 +359,14 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[], tag_unit=tr
         puts  "====change====\n#{change}"
         if $check_queries
           curv.extract_queries
-          newv.extract_queries
-          json_contents = newv.check_queries(curv.schema, change)
+          puts "$check_queries  is #{$check_queries}"
+          if $check_queries == 1
+            newv.extract_queries
+            json_contents = newv.check_queries(curv.schema, change)
+          else
+            puts "use current version to compare"
+            json_contents = curv.check_queries(curv.schema, change)
+          end
           if json_contents.length > 0
             log_filename = "#{app_name}_#{curv.commit}_#{newv.commit}.log".gsub("/",'')
             log_filepath = File.join(File.expand_path(File.dirname(__FILE__)), "../log/#{log_filename}")
@@ -339,6 +382,7 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[], tag_unit=tr
         version_with[ac] += 1 unless num.zero?
         total_action[ac] += num
       end
+      output_file.write("#{newv.commit}\t#{newv.time}\t#{this_version_has}\n") unless $check_queries
     rescue StandardError => e
       puts "#{e}"
     end
@@ -346,6 +390,7 @@ def traverse_all_for_db_schema(app_dir, interval = nil, versions=[], tag_unit=tr
   p "#{version_with_change(version_chg)}/#{version_chg.length}"
   p freq_change_column(column_changes).join "/"
   p total_action
+  output_file.close
   return json_contents
 end
 

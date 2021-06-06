@@ -113,7 +113,7 @@ module RailsBestPractices
         end
 
         # By default, tmp, vender, spec, test, features are ignored.
-        %w[vendor features tmp].each do |dir|
+        %w[features tmp].each do |dir|
           files = file_ignore(files, File.join(@path, dir)) unless @options[dir]
         end
 

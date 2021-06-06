@@ -1,6 +1,6 @@
 class Version_class
   attr_accessor :app_dir, :commit, :total_constraints_num, :db_constraints_num, :model_constraints_num,
-                :html_constraints_num, :loc, :activerecord_files, :validation_functions, :concerns, :queries, :scope, :schema, :raw_queries
+                :html_constraints_num, :loc, :activerecord_files, :validation_functions, :concerns, :queries, :scope, :schema, :raw_queries, :time
 
   def initialize(app_dir, commit)
     @app_dir = app_dir
@@ -48,11 +48,11 @@ class Version_class
   end
     
   def extract_queries
-    puts "====start extracting queries===="
+    puts "====start extracting queries from #{self.commit}===="
     app_name = @app_dir.split("/")[-1]
     options, app_dir = get_config(app_name)
     puts "CONFIG : #{options} #{app_dir}"
-    `cd #{app_dir}; git checkout -f #{self.commit}`
+    `cd #{app_dir} && git checkout -f #{self.commit}`
     return if @raw_queries.length > 0 # already has queries, no need to run
     @raw_queries, @scopes, @schema = load_queries_and_schema(@app_dir, options[:tmp_dir], options[:rails_best_practices_cmd], self)
     puts "QUERY NUM #{@raw_queries.length}"
@@ -61,6 +61,7 @@ class Version_class
   end 
   def check_queries(schema, change)
     # use the old version's schema
+    `cd #{app_dir}; git checkout -f #{self.commit}`
     print_detail_with_sql(@raw_queries, @scopes, schema, change)
   end
 
@@ -555,6 +556,8 @@ class Version_class
     end
   end
   def build
+    @time = `cd #{app_dir} && git checkout -f #{self.commit} && git log | grep Date | head -1`.strip.split("Date: ")[-1]
+    puts "TIME #{@time}"
     extract_files
     annotate_model_class
     extract_constraints if $extract_constraints

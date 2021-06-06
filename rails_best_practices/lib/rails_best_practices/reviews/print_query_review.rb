@@ -4,7 +4,7 @@ require 'pp'
 module RailsBestPractices
   module Reviews
     class PrintQueryReview < Review
-      interesting_nodes :def, :defs, :command, :call, :module, :class, :method_add_arg, :method_add_block, :do_block, :brace_block
+      interesting_nodes :def, :defs, :command, :call, :module, :class, :method_add_arg, :method_add_block, :do_block, :brace_block, :assign
       interesting_files SPEC_FILES, CONTROLLER_FILES, MODEL_FILES, LIB_FILES, HELPER_FILES, VIEW_FILES, EXTRA_FILES
       url 'https://rails-bestpractices.com/posts/2010/10/03/use-query-attribute/'
 
@@ -28,6 +28,7 @@ module RailsBestPractices
       end
 
       add_callback :start_module do |node|
+        # puts "FILE #{node.file} #{node.sexp_type} #{node} #{to_source(node).chomp}"
         @current_class_name = node.module_name.to_s
         @combined_class_name += node.module_name.to_s
       end
@@ -51,6 +52,7 @@ module RailsBestPractices
 
 
       add_callback :start_def, :start_defs, :start_call, :start_command, :start_do_block, :start_brace_block do |node|
+        # puts "FILE #{node.file} #{node.sexp_type} #{node} #{to_source(node).chomp}"
         if node.sexp_type == :def or node.sexp_type == :defs
               node.recursive_children do |child|
                 begin
@@ -75,10 +77,12 @@ module RailsBestPractices
               #puts "HERE #{node.children}"
               node.recursive_children do |child|
                 begin
-                  #puts "child #{child} #{child.sexp_type}"
+                  # puts "child #{to_source(child).chomp} #{child.sexp_type}"
                   if child.sexp_type == :stmts_add
                     # puts "child #{child[2].children}"
                     process_method_call_node(child[2], "")
+                  elsif child.sexp_type == :field
+                    process_method_call_node(child, "")
                   end
                 rescue
                 end
@@ -87,7 +91,7 @@ module RailsBestPractices
            end
 		  		elsif node.sexp_type == :command
             case node.message.to_s
-          	  when 'named_scope', 'scope'
+          	  when 'named_scope', 'scope', 'has_many'
           			process_scope(node)
           			scope_name = node.arguments.all[0].to_s
 								node.arguments.all[1].recursive_children do |child|
@@ -162,9 +166,10 @@ module RailsBestPractices
         # puts "is method_call #{is_method_call?node}"
 				if is_method_call?(node)
 					call_node = node
-          # puts "call_node #{call_node}"
 				elsif (is_scope.call() and node.sexp_type == :command)
 					call_node = node
+        elsif node.sexp_type == :field
+          call_node = node
 				else
           node.children.each do |child| 
             if is_call_node?(child) #is_method_call?(child) 
@@ -286,6 +291,12 @@ module RailsBestPractices
           class_name = variable_node.to_s
         else
           # puts "#{variable_node.to_s.sub(/^@/, '').gsub(/[0-9]/, '')}"
+          # puts "variable_node #{variable_node}"
+          variable_node = "user" if variable_node.to_s == "current_user"
+          variable_node = "post" if variable_node.to_s == "fetched_post"
+          variable_node = "post" if variable_node.to_s == "new_post"
+          variable_node = "person" if ["head", "child", "spouse", "new_child", "p"].include?variable_node.to_s
+          variable_node = "family" if ["subject"].include?variable_node.to_s
           class_name = variable_node.to_s.sub(/^@/, '').sub(/[0-9]/, '').classify
         end
         models.include?(class_name)

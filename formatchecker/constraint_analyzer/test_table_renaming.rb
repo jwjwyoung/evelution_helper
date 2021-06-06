@@ -78,6 +78,13 @@ class TestVersionClassConstraint < Test::Unit::TestCase
         test_change(app_dir, commits)
         # 2 column_rename in lobsters
     end
+    def test_lobsters31
+        commits = ["89cdf1101adf25be32232ca543822fd7a24486a9", "67fc2cc75c3df047d2d04e210058341dcdc73dc0"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/lobsters"
+        $check_queries = 2
+        test_change(app_dir, commits)
+        # 2 column_rename in lobsters
+    end
     def test_lobsters4
         # false positive caused by deleted models
         commits = ["a15c5d540ed4529d1f2551cee3aa2a337a8d7c8d", "113bb5e9ccd1a3419997adc3b73a31f8bd93fa61"]
@@ -100,6 +107,15 @@ class TestVersionClassConstraint < Test::Unit::TestCase
     def test_tracks2
         # RIGHT case
         # 4 column delete, Todo.done
+        $check_queries = 1
+        commits = ["c51587e4229f7dad7876ae8be33f1e8af0f5c487", "883bcb30bb3b4027375fb03185e5d11b80d622b5"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/tracks"
+        test_change(app_dir, commits)
+    end
+    def test_tracks21
+        # RIGHT case
+        # 4 column delete, Todo.done
+        $check_queries = 2
         commits = ["c51587e4229f7dad7876ae8be33f1e8af0f5c487", "883bcb30bb3b4027375fb03185e5d11b80d622b5"]
         app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/tracks"
         test_change(app_dir, commits)
@@ -107,6 +123,15 @@ class TestVersionClassConstraint < Test::Unit::TestCase
     def test_tracks3
         # RIGHT case
         # 1 association rename 
+        $check_queries = 1
+        commits = ["01057af684cd926ac7719fcb615103acb98ba036", "de7b8e329d482e9504fb7c0daa0b53025fa106fa"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/tracks"
+        test_change(app_dir, commits)
+    end
+    def test_tracks31
+        # RIGHT case
+        # 1 association rename 
+        $check_queries = 2
         commits = ["01057af684cd926ac7719fcb615103acb98ba036", "de7b8e329d482e9504fb7c0daa0b53025fa106fa"]
         app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/tracks"
         test_change(app_dir, commits)
@@ -117,11 +142,27 @@ class TestVersionClassConstraint < Test::Unit::TestCase
         commits = ["f79c28231b4b935c0756e456bb84d59661bd4d8b", "65fe971d32fc9eb5e20099fdbe2bbc23d3272283"]
         app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/tracks"
         test_change(app_dir, commits)
-    end    
+    end 
+    def test_tracks41
+        # RIGHT case 
+        # 3 association deletion 
+        $check_queries = 2
+        commits = ["f79c28231b4b935c0756e456bb84d59661bd4d8b", "65fe971d32fc9eb5e20099fdbe2bbc23d3272283"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/tracks"
+        test_change(app_dir, commits)
+    end       
     def test_ror1
         # no case false positive
         # delegate is used which mitigate the error
         commits = ["f486af5a660fd7ca345ba03e54e1354ffea6b2f2", "f9272d0ef7060ffd323e723ab3dde666f80846da"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/ror_ecommerce"
+        test_change(app_dir, commits)
+    end
+    def test_ror2
+        # no case false positive
+        # delegate is used which mitigate the error
+        $check_queries = 1
+        commits = ["d0dc8f88", "a40318b6c2fc8b7406326da41046e3490c3d4e39"]
         app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/ror_ecommerce"
         test_change(app_dir, commits)
     end
@@ -142,11 +183,18 @@ class TestVersionClassConstraint < Test::Unit::TestCase
         test_change(app_dir, commits)
     end
     def test_diaspora4
-        # 7 column deletion
+        # 4 column deletion
+        $check_queries = 1
         commits = ["b9f5328d47f332348a010fe400d03f5cb16ec069", "f948120ba6bf4f084738a1cd3eda18f3b3bedbd0"]
         app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/diaspora"
         test_change(app_dir, commits)
     end    
+    def test_diaspora41
+        $check_queries = 2
+        commits = ["b9f5328d47f332348a010fe400d03f5cb16ec069", "f948120ba6bf4f084738a1cd3eda18f3b3bedbd0"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/diaspora"
+        test_change(app_dir, commits)
+    end  
     def test_diaspora5
         # index deletion
         commits = ["e9f6dbdffd8b9c74238e1183cff3918a487e4a89", "b7cd9d6238b7a62f0ca2e5bf940d02c491bad694"]
@@ -159,17 +207,75 @@ class TestVersionClassConstraint < Test::Unit::TestCase
          app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/diaspora"
          test_change(app_dir, commits)
     end
+    def test_spree11
+        $check_queries = 2
+        commits = ["b8c53df208abf8fcf9887774135dbe4daec62d2b", "a1bf7cbc1815a3e6e2eeedcb60db74c0732fe78b"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/spree"
+        test_change(app_dir, commits)
+    end
     def test_spree2
-        # index deletion
+        $check_queries = 1
         commits = ["dc429bb3350629e73633b40c107ad3a0862f3d85", "8e02594ac94ae6adbaa021a6fe6f7362b7ef2849"]
         app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/spree"
         test_change(app_dir, commits)
    end
+   def test_spree21
+        $check_queries = 2
+        # index deletion
+        commits = ["dc429bb3350629e73633b40c107ad3a0862f3d85", "8e02594ac94ae6adbaa021a6fe6f7362b7ef2849"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/spree"
+        test_change(app_dir, commits)
+    end
+    def test_spree3
+        $check_queries = 1
+        commits = ["d4d955017102f31980cc3cf3c0ca7ad9f5b053bd", "a377adcc8ceb9d6e1e9f80688a7604b6594c3593"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/spree"
+        test_change(app_dir, commits)
+   end
+   def test_spree31
+        $check_queries = 2
+        # index deletion
+        commits = ["76b598d28f5c9ac1d77a6fe7bcd06a817b04766c", "0c1cbf4654c77e58e1d1d5d177a05ed1d48a769e"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/spree"
+        test_change(app_dir, commits)
+    end
     def test_gitlab1
         # Jul 26 => AUG 1, takes 6 days
         # fix commit 5e3a208f58a7a887370888055da180f64b3692a3
         commits = ["e5e1c907c01b53194f77e8d8de53554ba1824e7c", "eb2d4adf38726da62f62e850d181cedf12c64c5e"]
         app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/gitlabhq"
+        test_change(app_dir, commits)
+    end
+    def test_gitlab11
+        $check_queries = 2
+        # Jul 26 => AUG 1, takes 6 days
+        # fix commit 5e3a208f58a7a887370888055da180f64b3692a3
+        commits = ["e5e1c907c01b53194f77e8d8de53554ba1824e7c", "eb2d4adf38726da62f62e850d181cedf12c64c5e"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/gitlabhq"
+        test_change(app_dir, commits)
+    end
+    def test_onebody1
+        $check_queries = 1
+        commits = ["3.4.0", "3.3.0"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/onebody"
+        test_change(app_dir, commits)
+    end
+    def test_onebody11
+        $check_queries = 2
+        commits = ["3.4.0", "3.3.0"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/onebody"
+        test_change(app_dir, commits)
+    end
+    def test_onebody2
+        $check_queries = 1
+        commits = ["d4d955017102f31980cc3cf3c0ca7ad9f5b053bd", "38099672c2220f23b0940f86c56d046536ea2747"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/onebody"
+        test_change(app_dir, commits)
+    end
+    def test_onebody21
+        $check_queries = 2
+        commits = ["afafb44481e8745f7e99d5b987c31626e2e5b452", "38099672c2220f23b0940f86c56d046536ea2747"]
+        app_dir =  "/home/junwen/Research/evolution_helper/ruby_apps/onebody"
         test_change(app_dir, commits)
     end
 end

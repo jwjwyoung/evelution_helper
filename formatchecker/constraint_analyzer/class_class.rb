@@ -104,7 +104,7 @@ class File_class
   end
 
   def addForeignKey(key_name)
-    #@foreign_keys[key_name] 
+    @foreign_keys[key_name] = ''
   end
 
   def getForeignKeys
